@@ -31,25 +31,25 @@ const ING = {
 };
 
 /* ============ PRODUKTER ============ */
-/* cf = dyretestfritt (Leaping Bunny/PETA-listet e.l.), vg = vegansk. Demo-data – verifiseres mot offisielle lister i full versjon. */
+/* cf = Leaping Bunny-sertifisert, vg = vegansk, tester = vet at merket tester på dyr (utelukkes alltid). Demo-data – verifiseres mot offisielle lister i full versjon. */
 const P = [
   { id:"o5", cat:"olje", name:"Squalane Cleanser", brand:"The Ordinary", tier:1, ings:["skvalan"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:true, vg:true },
-  { id:"c9", cat:"rens", name:"Salicylic Acid Cleanser", brand:"CeraVe", tier:1, ings:["salisylsyre","niacinamid"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, vg:false },
-  { id:"c10", cat:"rens", name:"Pure Clay Cleanser", brand:"L'Oréal", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:false, vg:false },
+  { id:"c9", cat:"rens", name:"Salicylic Acid Cleanser", brand:"CeraVe", tier:1, ings:["salisylsyre","niacinamid"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c10", cat:"rens", name:"Pure Clay Cleanser", brand:"L'Oréal", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c11", cat:"rens", name:"Soy Face Cleanser", brand:"Fresh", tier:3, ings:[], for:["torr","normal","sens","kombi"], hue:"#D9F2E6", cf:true, vg:false },
   { id:"t3", cat:"toner", name:"Centella Toner", brand:"Skin1004", tier:1, ings:["centella"], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"t4", cat:"toner", name:"AHA/BHA Clarifying Treatment Toner", brand:"COSRX", tier:1, ings:["glykolsyre","salisylsyre"], for:["fet","kombi","normal"], hue:"#EAE2FF", cf:true, vg:true },
-  { id:"t5", cat:"toner", name:"Daily Reviving Concentrate", brand:"Kiehl's", tier:2, ings:["gronn-te","skvalan"], for:["normal","torr","kombi"], hue:"#EAE2FF", cf:false, vg:false },
+  { id:"t5", cat:"toner", name:"Daily Reviving Concentrate", brand:"Kiehl's", tier:2, ings:["gronn-te","skvalan"], for:["normal","torr","kombi"], hue:"#EAE2FF", cf:false, tester:true, vg:false },
   { id:"t6", cat:"toner", name:"Ginseng Essence Water", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], for:["torr","normal","kombi","sens"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"s15", cat:"serum", name:"Alpha Arbutin 2% + HA", brand:"The Ordinary", tier:1, ings:["hyaluron"], goal:"glow", for:["normal","kombi","fet","torr","sens"], hue:"#FFF2BD", cf:true, vg:true },
-  { id:"s16", cat:"serum", name:"Revitalizing Supreme Serum", brand:"Estée Lauder", tier:3, ings:["peptider","hyaluron"], goal:"aldring", for:["torr","normal","kombi"], hue:"#FFD6E4", cf:false, vg:false },
+  { id:"s16", cat:"serum", name:"Revitalizing Supreme Serum", brand:"Estée Lauder", tier:3, ings:["peptider","hyaluron"], goal:"aldring", for:["torr","normal","kombi"], hue:"#FFD6E4", cf:false, tester:true, vg:false },
   { id:"s17", cat:"serum", name:"B-Hydra Intensive Hydration", brand:"Drunk Elephant", tier:3, ings:["niacinamid","hyaluron"], goal:"ro", for:["torr","normal","kombi","sens","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"s18", cat:"serum", name:"PHA Facial Serum", brand:"The Inkey List", tier:1, ings:["pha"], goal:"glow", for:["sens","normal","kombi","torr"], hue:"#FFD9C7", cf:true, vg:true },
   { id:"s19", cat:"serum", name:"Retinal Serum 0.05%", brand:"Naturium", tier:2, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:true, vg:true },
-  { id:"m9", cat:"krem", name:"Ultra Facial Cream", brand:"Kiehl's", tier:2, ings:["skvalan","hyaluron"], for:["torr","normal","kombi"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"m9", cat:"krem", name:"Ultra Facial Cream", brand:"Kiehl's", tier:2, ings:["skvalan","hyaluron"], for:["torr","normal","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m10", cat:"krem", name:"Protini Polypeptide Cream", brand:"Drunk Elephant", tier:3, ings:["peptider"], for:["normal","kombi","torr"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m11", cat:"krem", name:"Panthenol Barrier Cream", brand:"Byoma", tier:1, ings:["panthenol","ceramider"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"m12", cat:"krem", name:"Oil-Free Moisturizer", brand:"Cetaphil", tier:1, ings:["hyaluron"], for:["fet","kombi"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"m12", cat:"krem", name:"Oil-Free Moisturizer", brand:"Cetaphil", tier:1, ings:["hyaluron"], for:["fet","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"f5", cat:"spf", name:"UV Clear SPF 46", brand:"EltaMD", tier:2, ings:["niacinamid"], for:["fet","kombi","sens","normal"], hue:"#FFE59A", cf:false, vg:false },
   { id:"f6", cat:"spf", name:"Vitamin C SPF 40", brand:"Naturium", tier:1, ings:["vitamin-c","vitamin-e"], for:["normal","kombi","torr","fet"], hue:"#FFE59A", cf:true, vg:true },
   { id:"k1", cat:"maske", name:"Indian Healing Clay", brand:"Aztec Secret", tier:1, ings:[], for:["fet","kombi","normal"], hue:"#E8DDC8", cf:true, vg:true },
@@ -67,12 +67,12 @@ const P = [
   { id:"s14", cat:"serum", name:"Hyaluronic Acid Serum", brand:"The Inkey List", tier:1, ings:["hyaluron"], goal:"ro", for:["torr","normal","sens","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"m7", cat:"krem", name:"Moisturizing Rich Cream", brand:"Byoma", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m8", cat:"krem", name:"Holy Hydration! Face Cream", brand:"e.l.f.", tier:1, ings:["hyaluron","niacinamid","peptider"], for:["torr","normal","kombi","fet"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#D9F2E6", cf:false, vg:false },
-  { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:2, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#D9F2E6", cf:false, vg:false },
+  { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:2, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c3", cat:"rens", name:"Low pH Good Morning Gel", brand:"COSRX", tier:1, ings:["gronn-te","salisylsyre"], for:["fet","kombi","normal","sens"], hue:"#D9F2E6", cf:true, vg:true },
   { id:"c4", cat:"rens", name:"Green Clean Balm", brand:"Farmacy", tier:3, ings:["gronn-te"], for:["torr","normal","kombi"], hue:"#D9F2E6", cf:true, vg:false },
   { id:"c6", cat:"rens", name:"Matcha Hemp Hydrating Cleanser", brand:"Krave Beauty", tier:2, ings:["gronn-te","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#D9F2E6", cf:true, vg:true },
-  { id:"c5", cat:"rens", name:"Foaming Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","niacinamid","hyaluron"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, vg:false },
+  { id:"c5", cat:"rens", name:"Foaming Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","niacinamid","hyaluron"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"t1", cat:"toner", name:"Supple Preparation Toner", brand:"Klairs", tier:2, ings:["centella","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"t2", cat:"toner", name:"Advanced Snail 96 Mucin", brand:"COSRX", tier:2, ings:["mucin","hyaluron"], for:["torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:false },
   { id:"s10", cat:"serum", name:"Lactic Acid 10% + HA", brand:"The Ordinary", tier:1, ings:["glykolsyre","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFD9C7", cf:true, vg:true },
@@ -86,13 +86,13 @@ const P = [
   { id:"s7", cat:"serum", name:"Bakuchiol Serum", brand:"Herbivore", tier:3, ings:["bakuchiol"], goal:"aldring", for:["sens","torr","normal"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"s8", cat:"serum", name:"Centella Unscented Serum", brand:"Purito", tier:1, ings:["centella","niacinamid"], goal:"ro", for:["sens","torr","normal","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"s9", cat:"serum", name:"Niacinamide 10% + Zinc", brand:"The Ordinary", tier:1, ings:["niacinamid"], goal:"glow", for:["fet","kombi","normal"], hue:"#D6E9FF", cf:true, vg:true },
-  { id:"m1", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, vg:false },
-  { id:"m2", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:2, ings:["centella","niacinamid"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"m1", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"m2", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:2, ings:["centella","niacinamid"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m6", cat:"krem", name:"Natural Moisturizing Factors + HA", brand:"The Ordinary", tier:1, ings:["hyaluron","ceramider"], for:["torr","normal","sens","kombi"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m3", cat:"krem", name:"Water Cream", brand:"Tatcha", tier:3, ings:["gronn-te","hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:true, vg:false },
-  { id:"m4", cat:"krem", name:"Hydro Boost Gel", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"m4", cat:"krem", name:"Hydro Boost Gel", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m5", cat:"krem", name:"Dynamic Skin Recovery", brand:"Dermalogica", tier:3, ings:["peptider","hyaluron"], for:["normal","torr","kombi"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"f1", cat:"spf", name:"Anthelios UVMune 400", brand:"La Roche-Posay", tier:2, ings:["hyaluron"], for:["sens","torr","normal","kombi","fet"], hue:"#FFE59A", cf:false, vg:false },
+  { id:"f1", cat:"spf", name:"Anthelios UVMune 400", brand:"La Roche-Posay", tier:2, ings:["hyaluron"], for:["sens","torr","normal","kombi","fet"], hue:"#FFE59A", cf:false, tester:true, vg:false },
   { id:"f2", cat:"spf", name:"Relief Sun SPF50", brand:"Beauty of Joseon", tier:1, ings:["mucin","gronn-te"], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:false },
   { id:"f4", cat:"spf", name:"Rice + Probiotics SPF50 (vegansk)", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], for:["torr","normal","kombi","sens","fet"], hue:"#FFE59A", cf:true, vg:true },
   { id:"f3", cat:"spf", name:"Unseen Sunscreen", brand:"Supergoop!", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFE59A", cf:true, vg:true },
@@ -148,7 +148,8 @@ function scoreProduct(p, ans, avoid, dislikedIngs) {
   if (p.goal && p.goal === ans.maal) sc += 4;
   if (ans.budsjett.includes(p.tier)) sc += 2; else sc -= 2;
   if (ans.etikk?.includes("parfymefri") && p.ings.includes("parfyme")) return -999;
-  if (!p.cf && !p.custom) return -999; /* Dyretestfritt er standard */
+  if (p.tester && !p.custom) return -999; /* Utelukk merker vi vet tester på dyr */
+  if (ans.etikk?.includes("lb") && !p.cf && !p.custom) return -999; /* Valgfritt: kun Leaping Bunny */
   if (ans.toleranse === "erfaren" && p.ings.some((i) => ING[i]?.sun || i === "retinol")) sc += 1;
   if (ans.toleranse === "ny" && ans.sensitiv !== "nei" && p.ings.includes("retinol")) sc -= 1;
   for (const d of dislikedIngs) if (p.ings.includes(d)) sc -= 3;
@@ -174,10 +175,11 @@ function analyse(p, ans) {
   if ((ans.sensitiv === "ja") && !p.for.includes("sens")) rows.push(["Ikke merket sensitiv-trygg", "−3"]);
   if (p.goal && p.goal === ans.maal) rows.push(["Hovedingrediens rettet mot målet ditt", "+4"]);
   if (ans.budsjett.includes(p.tier)) rows.push(["I prisklassene du valgte", "+2"]);
-  rows.push(["Dyretestfri (vår standard)", "✓"]);
+  if (!p.tester) rows.push(["Ikke kjent for dyretesting", "✓"]);
+  if (p.cf) rows.push(["Leaping Bunny-sertifisert", "✓"]);
   if (ans.toleranse === "erfaren" && p.ings.some((i) => ING[i]?.sun || i === "retinol")) rows.push(["Skin-geek: god toleranse for aktive", "+1"]);
   if (ans.helse.includes("gravid") && !p.ings.includes("retinol") && !p.ings.includes("salisylsyre")) rows.push(["Trygg ved graviditet", "✓"]);
-  if (ans.etikk?.includes("cf") && p.cf) rows.push(["Dyretestfri (ditt krav)", "✓"]);
+  if (ans.etikk?.includes("lb") && p.cf) rows.push(["Leaping Bunny (ditt krav)", "✓"]);
   if (ans.etikk?.includes("vegan") && p.vg) rows.push(["Vegansk (ditt krav)", "✓"]);
   for (const st of ans.sensList) if (!p.ings.includes(st)) {} 
   if (ans.sensList.length) rows.push(["Fri for ingrediensene du ikke tåler", "✓"]);
@@ -362,7 +364,7 @@ export default function Klinikk() {
     if (!ans.budsjett) return null;
     const avoid = [...ans.sensList];
     const dislikedIngs = disliked.flatMap((id) => allProducts.find((x) => x.id === id)?.ings || []);
-    const etikkOK = (p) => p.custom || ((!ans.etikk?.includes("cf") || p.cf) && (!ans.etikk?.includes("vegan") || p.vg));
+    const etikkOK = (p) => p.custom || (!p.tester && (!ans.etikk?.includes("lb") || p.cf) && (!ans.etikk?.includes("vegan") || p.vg) && (!ans.etikk?.includes("parfymefri") || !p.ings.includes("parfyme")));
     const isAMserum = (p) => p.ings.includes("vitamin-c") || (p.ings.includes("niacinamid") && !p.ings.some((i) => ING[i]?.sun));
     const build = (cat, filterFn) => {
       const likedHere = [...liked, ...custom.map((c) => c.id)].find((id) => { const x = allProducts.find((y) => y.id === id); return x?.cat === cat && (!filterFn || filterFn(x)); });
@@ -536,12 +538,12 @@ export default function Klinikk() {
         <button key={o.v} className={"opt" + (ans.budsjett.includes(o.v) ? " on" : "")} onClick={() => setAns({ ...ans, budsjett: ans.budsjett.includes(o.v) ? ans.budsjett.filter((x) => x !== o.v) : [...ans.budsjett, o.v] })}>{o.t}<small>{o.d}</small></button>
       ))}
       <button className="primary" onClick={() => { if (ans.budsjett.length) setStep(7); else ping("Velg minst ett nivå"); }}>Fortsett</button>
-      <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>🐇 <b>Alt vi anbefaler er dyretestfritt</b> – merker på uavhengige lister (Leaping Bunny er strengest, med revisjoner av hele leverandørkjeden). Det er ikke et valg hos oss, det er standarden.</div>
+      <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>🐇 <b>Vi viser aldri merker vi vet tester på dyr.</b> Vil du ha den strengeste garantien, kan du filtrere på Leaping Bunny-sertifisering nedenfor – den gullstandarden reviderer hele leverandørkjeden.</div>
       <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>💡 <b>Myteknuser:</b> Dyrere er ikke bedre. Pris er ofte merkevarestrategi – huden bryr seg om ingrediensene, ikke prislappen.</div>
       {toast && <div className="toast">{toast}</div>}
       <div style={{maxWidth:430, margin:"14px auto 0"}}>
         <div style={{fontSize:11, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", marginBottom:4}}>Flere valg (valgfritt)</div>
-        {[["vegan","🌱 Kun veganske produkter","Uten animalske ingredienser som sneglemucin, honning og lanolin"],["parfymefri","🌸 Parfymefritt","Duft er en av de vanligste årsakene til hudreaksjoner"]].map(([v,t,d]) => (
+        {[["lb","🐇 Kun Leaping Bunny-sertifisert","Strengeste dyretestfri-garantien – reviderer hele leverandørkjeden. Skjuler merker uten sertifikat."],["vegan","🌱 Kun veganske produkter","Uten animalske ingredienser som sneglemucin, honning og lanolin"],["parfymefri","🌸 Parfymefritt","Duft er en vanlig årsak til hudreaksjoner"]].map(([v,t,d]) => (
           <button key={v} className={"opt" + (ans.etikk.includes(v) ? " on" : "")} onClick={() => setAns({ ...ans, etikk: ans.etikk.includes(v) ? ans.etikk.filter((x) => x !== v) : [...ans.etikk, v] })}>{t}<small>{d}</small></button>
         ))}
       </div>
@@ -652,7 +654,7 @@ export default function Klinikk() {
       <p className="sub" style={{marginTop:10}}>
         {ans.sensitiv === "ja" || ans.helse.length ? "Introduser ETT nytt produkt om gangen, 3–4 dager mellom hver." : "Introduser gjerne ett produkt om gangen, så vet du hva som virker."}
         {ans.sensList.length > 0 && ` Alt er fritt for: ${ans.sensList.map(nvn).join(", ")}.`}
-        {ans.etikk?.includes("cf") && " Kun dyretestfrie merker."}
+        {ans.etikk?.includes("lb") && " Kun Leaping Bunny-sertifiserte merker."}
         {ans.etikk?.includes("vegan") && " Kun veganske produkter."}
       </p>
 
@@ -703,9 +705,9 @@ export default function Klinikk() {
                 <div className="pbrand" style={{marginTop:6}}>{p.brand}</div>
                 <div className="pname">{p.name}</div>
                 <div style={{display:"flex", gap:5, marginTop:4, flexWrap:"wrap"}}>
-                  {p.cf && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}}>🐇 Dyretestfri</span>}
+                  {p.cf && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}} title="Leaping Bunny-sertifisert – strengeste dyretestfri-standard">🐇 Leaping Bunny</span>}
                   {p.vg && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}}>🌱 Vegansk</span>}
-                  {!p.custom && !p.cf && <span className="ingtag" style={{background:"#FBEFEC", cursor:"default"}} title="Merket er ikke på uavhengige dyretestfri-lister (Leaping Bunny/PETA)">⚠️ Ikke sertifisert dyretestfri</span>}
+                  {p.tester && <span className="ingtag" style={{background:"#FBEFEC", cursor:"default"}} title="Vi viser normalt ikke slike merker">⚠️ Tester på dyr</span>}
                 </div>
                 <div style={{fontSize:13, color:"#6B6862", marginTop:5, lineHeight:1.55}}>{whyText(p, ans)} <button className="learn" onClick={() => setOpenAnalyse(openAnalyse === o.cat ? null : o.cat)}>{openAnalyse === o.cat ? "Skjul analysen" : "Vis analysen →"}</button></div>
                 {openAnalyse === o.cat && (
