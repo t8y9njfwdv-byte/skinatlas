@@ -34,6 +34,19 @@ const ING = {
 /* cf = Leaping Bunny-sertifisert, vg = vegansk, tester = vet at merket tester på dyr (utelukkes alltid). Demo-data – verifiseres mot offisielle lister i full versjon. */
 const P = [
   { id:"a9", cat:"olje", name:"Lipikar Cleansing Oil", brand:"La Roche-Posay", tier:4, ings:["niacinamid"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:false, tester:true, vg:false },
+  { id:"a10", cat:"serum", name:"Pure Vitamin C10 Serum", brand:"La Roche-Posay", tier:4, ings:["vitamin-c","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFF2BD", cf:false, tester:true, vg:false, inci:"Aqua, Ascorbic Acid, Alcohol Denat, Propylene Glycol, Glycerin, Triethanolamine, Sodium Hyaluronate, Tocopherol" },
+  { id:"a11", cat:"serum", name:"Retinol B3 Serum", brand:"La Roche-Posay", tier:4, ings:["retinol","niacinamid"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:false, tester:true, vg:false },
+  { id:"a12", cat:"serum", name:"Retrinal 0.1 Intensive Cream", brand:"Avène", tier:4, ings:["retinol"], goal:"aldring", for:["normal","torr","kombi"], hue:"#FFD6E4", cf:true, vg:false },
+  { id:"a13", cat:"serum", name:"Azelaic Acid Serum", brand:"Naturium", tier:4, ings:["azelainsyre","niacinamid"], goal:"kviser", for:["fet","kombi","sens","normal"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"a14", cat:"serum", name:"Hydrating B5 Gel", brand:"SkinCeuticals", tier:4, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","sens","normal","kombi"], hue:"#E2F3D5", cf:false, vg:false },
+  { id:"a15", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:4, ings:["panthenol","ceramider"], for:["sens","torr","normal","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false, inci:"Aqua, Glycerin, Butyrospermum Parkii Butter, Panthenol, Zinc Gluconate, Madecassoside, Phenoxyethanol" },
+  { id:"a16", cat:"maske", name:"Cicalfate Repair Mask", brand:"Avène", tier:4, ings:["panthenol","sink"], for:["sens","torr","normal"], hue:"#E8DDC8", cf:true, vg:false },
+  { id:"a17", cat:"maske", name:"Rehydrating Sheet Mask", brand:"Eucerin", tier:4, ings:["hyaluron"], for:["torr","normal","sens","kombi","fet"], hue:"#E8DDC8", cf:false, tester:true, vg:false },
+  { id:"a18", cat:"toner", name:"Thermal Spring Water", brand:"Avène", tier:4, ings:[], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"a19", cat:"toner", name:"Effaclar Micellar Water", brand:"La Roche-Posay", tier:4, ings:["niacinamid"], for:["fet","kombi","normal"], hue:"#EAE2FF", cf:false, tester:true, vg:false },
+  { id:"a20", cat:"krem", name:"AtoPalm MLE Cream", brand:"AtoPalm", tier:4, ings:["ceramider"], for:["torr","sens","normal"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"a21", cat:"spf", name:"Photoderm Nude Touch SPF50+", brand:"Bioderma", tier:4, ings:[], for:["fet","kombi","normal","sens","torr"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"a22", cat:"olje", name:"Lipikar Cleansing Oil AP+", brand:"Avène", tier:4, ings:[], for:["torr","sens","normal"], hue:"#FFE9D6", cf:true, vg:false },
   { id:"a1", cat:"rens", name:"Toleriane Caring Wash", brand:"La Roche-Posay", tier:4, ings:["ceramider","niacinamid"], for:["sens","torr","normal","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"a2", cat:"serum", name:"Hyalu B5 Serum", brand:"La Roche-Posay", tier:4, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","sens","normal","kombi"], hue:"#E2F3D5", cf:false, tester:true, vg:false },
   { id:"a3", cat:"serum", name:"Sebiaclear Serum", brand:"Avène", tier:4, ings:["niacinamid"], goal:"kviser", for:["fet","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
@@ -455,6 +468,7 @@ export default function Klinikk() {
   const [swaps, setSwaps] = useState({});
   const [removed, setRemoved] = useState([]);
   const [openIng, setOpenIng] = useState(null);
+  const [openFullIng, setOpenFullIng] = useState(null);
   const [deepIng, setDeepIng] = useState(null);
   const [toast, setToast] = useState(null);
   const [saved, setSaved] = useState(null);
@@ -900,8 +914,20 @@ export default function Klinikk() {
                 {o.cat === "spf" && <div className="note">☀️ <b>Hvorfor så viktig?</b> UV-stråler står for opptil 80 % av synlig hudaldring – og SPF beskytter mot hudkreft. Solkremen er limet som gjør at resten av rutinen virker.</div>}
                 <div style={{marginTop:8}}>
                   {p.ings.map((ing) => <span key={ing} className="ingtag" onClick={() => { setOpenIng(openIng === ing ? null : ing); setDeepIng(null); }}>{nvn(ing)}</span>)}
+                  {p.inci && <span className="ingtag" style={{background: openFullIng === p.id ? "#16130F" : "#F0EEE8", color: openFullIng === p.id ? "#fff" : "#16130F"}} onClick={() => setOpenFullIng(openFullIng === p.id ? null : p.id)}>🔬 {openFullIng === p.id ? "Skjul" : "Forklar hele lista"}</span>}
                   {!p.custom && <a className="ingtag" style={{textDecoration:"none"}} href={`https://incidecoder.com/search?query=${encodeURIComponent(p.brand + " " + p.name)}`} target="_blank" rel="noreferrer">📋 Full ingrediensliste (INCIDecoder) →</a>}
                 </div>
+                {openFullIng === p.id && p.inci && (
+                  <div className="note" style={{marginTop:6}}>
+                    <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880", marginBottom:6}}>Ingredienslista forklart</div>
+                    {analyserFullListe(p.inci).map((x, ix) => (
+                      <div key={ix} style={{display:"flex", gap:8, padding:"5px 0", borderBottom:"1px solid #EDEAE3", fontSize:12.5, alignItems:"flex-start"}}>
+                        <span style={{minWidth:120, fontWeight:600, color: x.info ? "#16130F" : "#B8B4AA"}}>{x.info ? x.info.navn : x.raa}</span>
+                        {x.info ? <span style={{flex:1, color:"#4A4842"}}><b style={{fontSize:10, letterSpacing:".05em", textTransform:"uppercase", color:"#8B8880"}}>{x.info.rolle}</b> · {x.info.d}</span> : <span style={{flex:1, color:"#B8B4AA", fontStyle:"italic"}}>ikke i databasen ennå</span>}
+                      </div>
+                    ))}
+                  </div>
+                )}
                 {openIng && p.ings.includes(openIng) && (
                   <div className="note">
                     <b>{nvn(openIng)}</b> – {ING[openIng].s}.
