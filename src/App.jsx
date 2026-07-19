@@ -189,16 +189,40 @@ function analyse(p, ans) {
 function oppsummering(nivaa, routine, ans, cycling) {
   const amIng = routine.serumAM?.main?.ings.find((i) => ING[i]);
   const pmP = cycling ? null : routine.serumPM?.main;
-  const pmIng = pmP?.ings.find((i) => ING[i]?.freq) || pmP?.ings[0];
+  const pmIng = (pmP?.ings.find((i) => ING[i]?.freq)) || (pmP?.ings[0]);
   const kremIng = routine.krem?.main?.ings[0];
-  const hud = { torr:"tørr", fet:"fet", kombi:"kombinert", normal:"balansert" }[ans.hudtype];
-  const maal = { kviser:"urenheter", glow:"glød og jevnere hudtone", aldring:"fine linjer", ro:"roligere hud" }[ans.maal];
+  const hud = { torr:"tørr", fet:"fet", kombi:"kombinert", normal:"balansert" }[ans.hudtype] || "din";
+  const maal = { kviser:"urenheter", glow:"glød og jevnere hudtone", aldring:"fine linjer", ro:"roligere hud" }[ans.maal] || "sunn hud";
 
-  if (nivaa === 1) return `Rutinen din er bygget for ${hud} hud med mål om ${maal} – og den følger en enkel logikk: rens skånsomt, behandle målrettet, beskytt alltid. Om morgenen gjør du minst mulig (vann, ${amIng ? nvn(amIng).toLowerCase() + "-serum, " : ""}krem og solkrem), for morgenens viktigste jobb er beskyttelse. Om kvelden gjør du selve jobben: dobbelrens fjerner dagens solkrem og smuss, ${cycling ? "og de aktive ingrediensene dine veksler mellom kvelder så huden får hvile mellom øktene" : pmIng ? "og " + nvn(pmIng).toLowerCase() + " jobber mens du sover" : "og huden får ro"}. Fuktighetskremen til slutt låser alt inn. Hvorfor funker dette? Fordi hvert steg har én tydelig jobb, ingenting krangler med hverandre, og det viktigste steget av alle – solkrem – er med hver eneste dag.`;
+  if (nivaa === 1) {
+    const am = amIng ? (nvn(amIng).toLowerCase() + "-serum, ") : "";
+    let kveld;
+    if (cycling) kveld = "og de aktive ingrediensene dine veksler mellom kvelder så huden får hvile mellom øktene";
+    else if (pmIng) kveld = "og " + nvn(pmIng).toLowerCase() + " jobber mens du sover";
+    else kveld = "og huden får ro";
+    return "Rutinen din er bygget for " + hud + " hud med mål om " + maal + " – og den følger en enkel logikk: rens skånsomt, behandle målrettet, beskytt alltid. Om morgenen gjør du minst mulig (vann, " + am + "krem og solkrem), for morgenens viktigste jobb er beskyttelse. Om kvelden gjør du selve jobben: dobbelrens fjerner dagens solkrem og smuss, " + kveld + ". Fuktighetskremen til slutt låser alt inn. Hvorfor funker dette? Fordi hvert steg har én tydelig jobb, ingenting krangler med hverandre, og det viktigste steget av alle – solkrem – er med hver eneste dag.";
+  }
 
-  if (nivaa === 2) return `Strukturen følger prinsippet tynnest til tykkest, og deler døgnet i to roller: dagen beskytter, natten reparerer. ${amIng ? nvn(amIng) + " om morgenen er plassert der med vilje – antioksidanter jobber best under solkremen, hvor de fanger frie radikaler før de når kollagenet." : "Morgenrutinen er bevisst minimal for å bevare hudbarrieren."} ${cycling ? "Kveldene dine kjører skin-cycling: eksfoliering og retinol på hver sine kvelder, med pausenetter imellom – slik får du effekten av begge uten irritasjonen av å stable dem." : pmIng ? "Kveldens " + nvn(pmIng).toLowerCase() + " ligger på kvelden fordi " + (ING[pmIng]?.sun ? "den gjør huden mer lysfølsom og brytes ned av UV" : "natten er hudens reparasjonsvindu") + "."} ${kremIng ? "Fuktighetskremen med " + nvn(kremIng).toLowerCase() + " er støtteapparatet: den styrker barrieren slik at de aktive ingrediensene kan virke uten å tære på huden." : ""} Ingrediensene er valgt for å komplementere, ikke konkurrere – ingen overlappende syrer, ingen kombinasjoner som nøytraliserer hverandre.`;
+  if (nivaa === 2) {
+    const amDel = amIng ? (nvn(amIng) + " om morgenen er plassert der med vilje – antioksidanter jobber best under solkremen, hvor de fanger frie radikaler før de når kollagenet.") : "Morgenrutinen er bevisst minimal for å bevare hudbarrieren.";
+    let pmDel = "";
+    if (cycling) pmDel = "Kveldene dine kjører skin-cycling: eksfoliering og retinol på hver sine kvelder, med pausenetter imellom – slik får du effekten av begge uten irritasjonen av å stable dem.";
+    else if (pmIng) { const grunn = ING[pmIng]?.sun ? "den gjør huden mer lysfølsom og brytes ned av UV" : "natten er hudens reparasjonsvindu"; pmDel = "Kveldens " + nvn(pmIng).toLowerCase() + " ligger på kvelden fordi " + grunn + "."; }
+    const kremDel = kremIng ? ("Fuktighetskremen med " + nvn(kremIng).toLowerCase() + " er støtteapparatet: den styrker barrieren slik at de aktive ingrediensene kan virke uten å tære på huden.") : "";
+    return "Strukturen følger prinsippet tynnest til tykkest, og deler døgnet i to roller: dagen beskytter, natten reparerer. " + amDel + " " + pmDel + " " + kremDel + " Ingrediensene er valgt for å komplementere, ikke konkurrere – ingen overlappende syrer, ingen kombinasjoner som nøytraliserer hverandre.";
+  }
 
-  return `For nerden: rutinen er komponert rundt barriere-først-prinsippet. ${amIng === "vitamin-c" ? "L-askorbinsyre/C-derivat i AM gir fotoprotektiv synergi med SPF – antioksidant + filter demper UV-indusert oksidativt stress bedre enn filter alene." : amIng ? nvn(amIng) + " i AM gir antiinflammatorisk støtte uten fotosensitivisering." : ""} ${cycling ? "PM kjører syklisk eksponering: kjemisk eksfoliering øker celleturnover og penetrasjon, retinoid oppregulerer kollagensyntese via retinsyrereseptorene, og recovery-netter lar TEWL normaliseres – dokumentert strategi for å bevare retinoid-effekt med lavere irritasjonsscore." : pmIng ? nvn(pmIng) + " i PM: " + (ING[pmIng]?.d || "").split(".")[0].toLowerCase() + "." : ""} ${kremIng === "ceramider" ? "Ceramid-dominant okklusjon post-aktiver reduserer irritasjonsrisiko og støtter lamellær lipidstruktur." : kremIng === "niacinamid" ? "Niacinamid i fuktighetslaget øker endogen ceramidsyntese – smart pairing med aktive." : ""} ${routine.olje?.main ? "Dobbelrensen sikrer fullstendig fjerning av filmdannende UV-filtre uten å stripped barrieren (lav-pH andretrinn)." : ""} Ingen ingrediens-antagonisme: syrer og retinoider er temporalt separert, og pH-avhengige aktiver ligger på egne tidspunkt.`;
+  let amN = "";
+  if (amIng === "vitamin-c") amN = "L-askorbinsyre/C-derivat i AM gir fotoprotektiv synergi med SPF – antioksidant + filter demper UV-indusert oksidativt stress bedre enn filter alene.";
+  else if (amIng) amN = nvn(amIng) + " i AM gir antiinflammatorisk støtte uten fotosensitivisering.";
+  let pmN = "";
+  if (cycling) pmN = "PM kjører syklisk eksponering: kjemisk eksfoliering øker celleturnover og penetrasjon, retinoid oppregulerer kollagensyntese via retinsyrereseptorene, og recovery-netter lar TEWL normaliseres – dokumentert strategi for å bevare retinoid-effekt med lavere irritasjonsscore.";
+  else if (pmIng) pmN = nvn(pmIng) + " i PM: " + ((ING[pmIng]?.d || "").split(".")[0].toLowerCase()) + ".";
+  let kremN = "";
+  if (kremIng === "ceramider") kremN = "Ceramid-dominant okklusjon post-aktiver reduserer irritasjonsrisiko og støtter lamellær lipidstruktur.";
+  else if (kremIng === "niacinamid") kremN = "Niacinamid i fuktighetslaget øker endogen ceramidsyntese – smart pairing med aktive.";
+  const oljeN = routine.olje?.main ? "Dobbelrensen sikrer fullstendig fjerning av filmdannende UV-filtre uten å stripped barrieren (lav-pH andretrinn)." : "";
+  return "For nerden: rutinen er komponert rundt barriere-først-prinsippet. " + amN + " " + pmN + " " + kremN + " " + oljeN + " Ingen ingrediens-antagonisme: syrer og retinoider er temporalt separert, og pH-avhengige aktiver ligger på egne tidspunkt.";
 }
 
 function serumTiming(p) {
