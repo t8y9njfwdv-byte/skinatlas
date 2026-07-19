@@ -9,25 +9,25 @@ const storage = {
 
 /* ============ INGREDIENS-KUNNSKAP ============ */
 const ING = {
-  ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pubmed.ncbi.nlm.nih.gov/29692196/" },
-  hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pubmed.ncbi.nlm.nih.gov/22052267/" },
-  niacinamid: { s:"Jevner hudtone, roer rødhet", d:"Niacinamid (vitamin B3) demper betennelsessignaler og bremser overføring av pigment til hudoverflaten – jevnere tone, roligere rødhet. Øker også hudens egen ceramidproduksjon.", u:"https://pubmed.ncbi.nlm.nih.gov/16766489/" },
-  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", u:"https://pubmed.ncbi.nlm.nih.gov/26480473/", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true },
-  glykolsyre: { s:"Eksfolierer overflaten (AHA)", d:"Løsner «limet» mellom døde hudceller så de slipper taket – glattere hud som reflekterer lys bedre.", u:"https://pubmed.ncbi.nlm.nih.gov/32090395/", freq:"Start 1–2 kvelder/uke → maks annenhver kveld. Øker solfølsomhet betydelig.", sun:true },
-  retinol: { s:"Gullstandard mot linjer og tekstur", d:"Vitamin A som skrur opp cellefornyelse og kollagenproduksjon – den mest dokumenterte anti-aldringsingrediensen. Kun kveld (brytes ned av UV-lys).", u:"https://pubmed.ncbi.nlm.nih.gov/17515510/", freq:"Uke 1–2: 2 kvelder/uke · Uke 3–4: annenhver kveld · Deretter: hver kveld hvis huden tåler det. Litt flassing i starten er normalt.", sun:true, preg:true },
-  bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt med retinol-lignende effekt på linjer og pigment i studier – uten irritasjonen. Trygt ved graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/29947134/", freq:"Kan brukes hver kveld fra dag én." },
-  "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", u:"https://pubmed.ncbi.nlm.nih.gov/28805671/", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
-  centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", u:"https://pubmed.ncbi.nlm.nih.gov/23075185/", freq:"Daglig, morgen og/eller kveld." },
-  azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/26244269/", freq:"1x daglig første uken → øk til morgen + kveld." },
-  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", u:"https://pubmed.ncbi.nlm.nih.gov/32671986/", freq:"Daglig." },
-  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", u:"https://pubmed.ncbi.nlm.nih.gov/32671986/", freq:"Daglig." },
-  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", u:"https://pubmed.ncbi.nlm.nih.gov/30061924/", },
-  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", u:"https://pubmed.ncbi.nlm.nih.gov/28217909/", },
-  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", u:"https://pubmed.ncbi.nlm.nih.gov/27559512/", },
-  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", u:"https://pubmed.ncbi.nlm.nih.gov/30085366/", },
-  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", u:"https://pubmed.ncbi.nlm.nih.gov/15841642/", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
-  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", u:"https://pubmed.ncbi.nlm.nih.gov/25120566/", },
-  "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress.", u:"https://pubmed.ncbi.nlm.nih.gov/29672394/" },
+  ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=ceramides+skin+barrier" },
+  hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=hyaluronic+acid+topical+skin+hydration" },
+  niacinamid: { s:"Jevner hudtone, roer rødhet", d:"Niacinamid (vitamin B3) demper betennelsessignaler og bremser overføring av pigment til hudoverflaten – jevnere tone, roligere rødhet. Øker også hudens egen ceramidproduksjon.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=niacinamide+topical+skin" },
+  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=salicylic+acid+acne+treatment", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true },
+  glykolsyre: { s:"Eksfolierer overflaten (AHA)", d:"Løsner «limet» mellom døde hudceller så de slipper taket – glattere hud som reflekterer lys bedre.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=glycolic+acid+skin+exfoliation", freq:"Start 1–2 kvelder/uke → maks annenhver kveld. Øker solfølsomhet betydelig.", sun:true },
+  retinol: { s:"Gullstandard mot linjer og tekstur", d:"Vitamin A som skrur opp cellefornyelse og kollagenproduksjon – den mest dokumenterte anti-aldringsingrediensen. Kun kveld (brytes ned av UV-lys).", u:"https://pubmed.ncbi.nlm.nih.gov/?term=retinol+topical+skin+aging", freq:"Uke 1–2: 2 kvelder/uke · Uke 3–4: annenhver kveld · Deretter: hver kveld hvis huden tåler det. Litt flassing i starten er normalt.", sun:true, preg:true },
+  bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt med retinol-lignende effekt på linjer og pigment i studier – uten irritasjonen. Trygt ved graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=bakuchiol+retinol", freq:"Kan brukes hver kveld fra dag én." },
+  "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=topical+vitamin+C+ascorbic+acid+skin", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
+  centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=centella+asiatica+skin", freq:"Daglig, morgen og/eller kveld." },
+  azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=azelaic+acid+acne+rosacea", freq:"1x daglig første uken → øk til morgen + kveld." },
+  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=peptides+topical+skin+collagen", freq:"Daglig." },
+  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=snail+mucin+secretion+filtrate+skin", freq:"Daglig." },
+  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=squalane+skin", },
+  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=panthenol+dexpanthenol+skin+barrier", },
+  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=tocopherol+topical+vitamin+E+skin", },
+  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=urea+emollient+xerosis", },
+  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=polyhydroxy+acid+gluconolactone+skin", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
+  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=zinc+topical+sebum+acne", },
+  "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=green+tea+EGCG+topical+skin" },
 };
 
 /* ============ PRODUKTER ============ */
@@ -307,6 +307,13 @@ export default function Klinikk() {
   const [layers, setLayers] = useState({ tonerCount:0, maske:false });
   const [oppsNivaa, setOppsNivaa] = useState(1);
   const [custIngs, setCustIngs] = useState([]);
+  /* Auto-aktiver valgfrie lag når brukeren har eget/likt produkt i kategorien */
+  useEffect(() => {
+    const mine = [...liked, ...custom.map((c) => c.id)].map((id) => allProducts.find((x) => x.id === id)).filter(Boolean);
+    const harToner = mine.some((p) => p.cat === "toner");
+    const harMaske = mine.some((p) => p.cat === "maske");
+    setLayers((l) => ({ ...l, tonerCount: harToner && l.tonerCount === 0 ? 1 : l.tonerCount, maske: harMaske ? true : l.maske }));
+  }, [liked, custom]);
   const [ingSok, setIngSok] = useState("");
   const [maskeFreq, setMaskeFreq] = useState(1);
   const [lockedIn, setLockedIn] = useState(false);
@@ -680,7 +687,7 @@ export default function Klinikk() {
                   <div className="note">
                     <b>{nvn(openIng)}</b> – {ING[openIng].s}.
                     {deepIng === openIng
-                      ? <><div style={{marginTop:6}}>{ING[openIng].d}</div><a className="learn" href={ING[openIng].u} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:6}}>📄 Les forskningen (PubMed) →</a></>
+                      ? <><div style={{marginTop:6}}>{ING[openIng].d}</div><a className="learn" href={ING[openIng].u} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:6}}>📄 Se forskningen på PubMed →</a></>
                       : <button className="learn" style={{marginLeft:6}} onClick={() => setDeepIng(openIng)}>Lær mer →</button>}
                   </div>
                 )}
@@ -805,8 +812,8 @@ export default function Klinikk() {
                   <span style={{fontSize:11.5, color:"#8B8880", marginLeft:6}}>{amRens ? "Ditt valg – helt greit for fet hud!" : "Anbefalt: kun vann"}</span>
                 </div>
               </div>
-              {cycling && <div className="note" style={{marginTop:10}}>🔄 <b>Skin-cycling:</b> Du roterer syre-kveld → retinol-kveld → pausekvelder (kun fukt). Idéen, popularisert av dermatolog Whitney Bowe, er at pausenettene lar hudbarrieren reparere seg – slik at du får effekten av begge aktive uten irritasjonen av å stable dem. Konseptet bygger på dokumentasjonen for at gradvis, ikke-daglig retinoidbruk gir mindre irritasjon med bevart effekt. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/17515510/" target="_blank" rel="noreferrer">Retinoid-forskning →</a> <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/32090395/" target="_blank" rel="noreferrer">AHA-forskning →</a> Aldri syre og retinol samme kveld i starten.</div>}
-              <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/29692196/" target="_blank" rel="noreferrer">Om hudbarrieren →</a></div>
+              {cycling && <div className="note" style={{marginTop:10}}>🔄 <b>Skin-cycling:</b> Du roterer syre-kveld → retinol-kveld → pausekvelder (kun fukt). Idéen, popularisert av dermatolog Whitney Bowe, er at pausenettene lar hudbarrieren reparere seg – slik at du får effekten av begge aktive uten irritasjonen av å stable dem. Konseptet bygger på dokumentasjonen for at gradvis, ikke-daglig retinoidbruk gir mindre irritasjon med bevart effekt. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/?term=retinoid+irritation+tolerability" target="_blank" rel="noreferrer">Retinoid-forskning →</a> <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/?term=alpha+hydroxy+acid+skin" target="_blank" rel="noreferrer">AHA-forskning →</a> Aldri syre og retinol samme kveld i starten.</div>}
+              <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/?term=skin+barrier+cleansing+surfactant" target="_blank" rel="noreferrer">Om hudbarrieren →</a></div>
             </div>
           </>
         )}
