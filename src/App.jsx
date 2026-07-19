@@ -33,6 +33,7 @@ const ING = {
 /* ============ PRODUKTER ============ */
 /* cf = Leaping Bunny-sertifisert, vg = vegansk, tester = vet at merket tester på dyr (utelukkes alltid). Demo-data – verifiseres mot offisielle lister i full versjon. */
 const P = [
+  { id:"a9", cat:"olje", name:"Lipikar Cleansing Oil", brand:"La Roche-Posay", tier:4, ings:["niacinamid"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:false, tester:true, vg:false },
   { id:"a1", cat:"rens", name:"Toleriane Caring Wash", brand:"La Roche-Posay", tier:4, ings:["ceramider","niacinamid"], for:["sens","torr","normal","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"a2", cat:"serum", name:"Hyalu B5 Serum", brand:"La Roche-Posay", tier:4, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","sens","normal","kombi"], hue:"#E2F3D5", cf:false, tester:true, vg:false },
   { id:"a3", cat:"serum", name:"Sebiaclear Serum", brand:"Avène", tier:4, ings:["niacinamid"], goal:"kviser", for:["fet","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
@@ -131,13 +132,64 @@ const INCI_MAP = {
   "pha": ["gluconolactone","lactobionic acid","galactose"],
   "sink": ["zinc pca","zinc oxide","zinc gluconate"],
   "parfyme": ["parfum","fragrance","perfume","aroma","linalool","limonene","citronellol","geraniol"],
-  "alkohol": ["alcohol denat","denatured alcohol","sd alcohol","isopropyl alcohol","ethanol"],
+  "alkohol": ["alcohol denat","denatured alcohol","sd alcohol","isopropyl alcohol"],
 };
+/* Ord som må matche som helord (unngår at f.eks. triethanolamine treffer "ethanol") */
+function inneholderOrd(tekst, frag) {
+  if (frag.includes(" ")) return tekst.includes(frag);
+  const re = new RegExp("\\b" + frag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b");
+  return re.test(tekst);
+}
+/* Funksjonelt ingrediensbibliotek: forklarer HVA en ingrediens gjør og HVORFOR den er i produktet.
+   Dekker aktive + støtteingredienser (fuktbindere, emulgatorer, konservering, tekstur, pH). */
+const INGREDIENS_INFO = [
+  // Baser & fuktbindere
+  { m:["aqua","water"], n:"Vann", r:"Base", d:"Løsemiddelet de fleste ingrediensene er blandet i. Står nesten alltid først." },
+  { m:["propanediol","propylene glycol","butylene glycol","pentylene glycol"], n:"Glykol (fuktbinder)", r:"Fuktbinder", d:"Trekker fukt inn i huden og hjelper andre ingredienser å trenge inn. Mild og vanlig." },
+  { m:["glycerin","glycerol"], n:"Glyserin", r:"Fuktbinder", d:"En av de mest brukte og best dokumenterte fuktgiverne – trekker vann inn i huden." },
+  { m:["dimethyl isosorbide"], n:"Dimethyl Isosorbide", r:"Bærer", d:"Hjelper aktive ingredienser (som vitamin C) å løses opp og trenge bedre inn i huden." },
+  { m:["ethoxydiglycol"], n:"Ethoxydiglycol", r:"Bærer", d:"Løsemiddel som øker opptak og stabilitet av aktive ingredienser." },
+  { m:["1,2-hexanediol","hexanediol"], n:"Hexanediol", r:"Fukt + konservering", d:"Gir fukt og bidrar til å holde produktet friskt uten tradisjonelle konserveringsmidler." },
+  // Emulgatorer & tekstur
+  { m:["isoceteth","ceteth","steareth","laureth"], n:"Emulgator", r:"Tekstur", d:"Binder vann og olje sammen så kremen ikke skiller seg. Gir jevn tekstur." },
+  { m:["xanthan gum"], n:"Xantangummi", r:"Fortykningsmiddel", d:"Naturlig fortykningsmiddel som gir produktet gel-/serumtekstur." },
+  { m:["carbomer"], n:"Carbomer", r:"Fortykningsmiddel", d:"Skaper gelaktig konsistens og holder formelen stabil." },
+  { m:["cetearyl alcohol","cetyl alcohol","stearyl alcohol"], n:"Fettalkohol", r:"Tekstur", d:"IKKE uttørkende alkohol – dette er mykgjørende fettstoffer som gir kremet konsistens." },
+  { m:["caprylic/capric triglyceride"], n:"Triglyserid", r:"Mykgjører", d:"Lett olje fra kokos som glatter og mykgjør huden." },
+  { m:["dimethicone","cyclopentasiloxane"], n:"Silikon", r:"Tekstur", d:"Gir silkeaktig gli og danner en pustende film som holder på fukt." },
+  // pH & stabilitet
+  { m:["triethanolamine","aminomethyl propanol","sodium hydroxide","tromethamine"], n:"pH-justerer", r:"pH", d:"Justerer produktets surhet til et hudvennlig nivå så det virker godt og ikke irriterer." },
+  { m:["trisodium ethylenediamine","disodium edta","tetrasodium edta","edta"], n:"Chelateringsmiddel", r:"Stabilisator", d:"Binder metallioner i vannet så produktet holder seg stabilt og friskt lenger." },
+  { m:["sodium metabisulfite","sodium sulfite"], n:"Antioksidant (stabilisator)", r:"Stabilisator", d:"Hindrer at aktive ingredienser (som vitamin C) oksiderer og mister effekt." },
+  // Konserveringsmidler
+  { m:["phenoxyethanol"], n:"Phenoxyethanol", r:"Konservering", d:"Vanlig, godt tolerert konserveringsmiddel som hindrer bakterie- og soppvekst." },
+  { m:["caprylyl glycol"], n:"Caprylyl Glycol", r:"Fukt + konservering", d:"Gir fukt og forsterker konserveringen mildt – vanlig i «konserveringsmiddel-frie» formler." },
+  { m:["ethylhexylglycerin"], n:"Ethylhexylglycerin", r:"Konservering", d:"Mildt konserveringsforsterkende stoff som også mykgjør." },
+  { m:["potassium sorbate","sodium benzoate","benzoic acid"], n:"Mild konservering", r:"Konservering", d:"Matvaregodkjente konserveringsmidler som holder produktet trygt." },
+  { m:["chlorphenesin"], n:"Chlorphenesin", r:"Konservering", d:"Konserveringsmiddel som hindrer mikrobevekst." },
+];
+function forklarIngrediens(navn) {
+  const l = navn.toLowerCase().trim();
+  // Først: er det en aktiv vi kjenner?
+  for (const [key, syns] of Object.entries(INCI_MAP)) {
+    if (syns.some((syn) => inneholderOrd(l, syn))) return { navn: nvn(key), rolle: "Aktiv", d: ING[key]?.s || "Aktiv ingrediens", aktivKey: key };
+  }
+  // Så: støtteingrediens?
+  for (const it of INGREDIENS_INFO) {
+    if (it.m.some((frag) => l.includes(frag))) return { navn: it.n, rolle: it.r, d: it.d };
+  }
+  return null;
+}
+function analyserFullListe(text) {
+  const deler = (text || "").split(/,|\n/).map((x) => x.replace(/\([^)]*\)/g, "").trim()).filter((x) => x.length > 1);
+  return deler.map((navn) => ({ raa: navn, info: forklarIngrediens(navn) }));
+}
+
 function matchINCI(text) {
   const lower = (text || "").toLowerCase();
   const funnet = [];
   for (const [key, syns] of Object.entries(INCI_MAP)) {
-    if (syns.some((syn) => lower.includes(syn))) funnet.push(key);
+    if (syns.some((syn) => inneholderOrd(lower, syn))) funnet.push(key);
   }
   return funnet;
 }
@@ -187,7 +239,8 @@ function scoreProduct(p, ans, avoid, dislikedIngs) {
   if (gentle && p.for.includes("sens")) sc += 3;
   if (gentle && !p.for.includes("sens")) sc -= 3;
   if (p.goal && p.goal === ans.maal) sc += 4;
-  if (ans.budsjett.includes(p.tier)) sc += 2; else sc -= 2;
+  if (!ans.budsjett.includes(p.tier)) return -999; /* Hardt budsjett-filter */
+  sc += 2;
   if (ans.etikk?.includes("parfymefri") && p.ings.includes("parfyme")) return -999;
   if (p.tester && !p.custom) return -999; /* Utelukk merker vi vet tester på dyr */
   if (ans.etikk?.includes("lb") && !p.cf && !p.custom) return -999; /* Valgfritt: kun Leaping Bunny */
@@ -450,14 +503,21 @@ export default function Klinikk() {
     const dislikedIngs = disliked.flatMap((id) => allProducts.find((x) => x.id === id)?.ings || []);
     const etikkOK = (p) => p.custom || (!p.tester && (!ans.etikk?.includes("lb") || p.cf) && (!ans.etikk?.includes("vegan") || p.vg) && (!ans.etikk?.includes("parfymefri") || !p.ings.includes("parfyme")));
     const isAMserum = (p) => p.ings.includes("vitamin-c") || (p.ings.includes("niacinamid") && !p.ings.some((i) => ING[i]?.sun));
+    const scoreWith = (p, ignoreBudget) => {
+      if (ignoreBudget) { const saved = ans.budsjett; const tmp = { ...ans, budsjett: [1,2,3,4] }; return scoreProduct(p, tmp, avoid, dislikedIngs); }
+      return scoreProduct(p, ans, avoid, dislikedIngs);
+    };
     const build = (cat, filterFn) => {
       const likedHere = [...liked, ...custom.map((c) => c.id)].find((id) => { const x = allProducts.find((y) => y.id === id); return x?.cat === cat && (!filterFn || filterFn(x)); });
-      const pool = allProducts.filter((p) => p.cat === cat && !disliked.includes(p.id) && !p.custom && etikkOK(p) && (!filterFn || filterFn(p)))
-        .map((p) => ({ p, sc: scoreProduct(p, ans, avoid, dislikedIngs) }))
-        .filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc);
+      const base = allProducts.filter((p) => p.cat === cat && !disliked.includes(p.id) && !p.custom && etikkOK(p) && (!filterFn || filterFn(p)));
+      // Primær: kun valgt(e) budsjettnivå
+      let pool = base.map((p) => ({ p, sc: scoreWith(p, false), off: false })).filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc);
+      // Fallback: hvis ingen i valgt nivå, tillat andre nivåer (markeres off=true)
+      if (pool.length === 0) pool = base.map((p) => ({ p, sc: scoreWith(p, true), off: true })).filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc);
       const key = filterFn ? cat + (filterFn === isAMserum ? "AM" : "PM") : cat;
       const main = swaps[key] || (likedHere ? allProducts.find((x) => x.id === likedHere) : pool[0]?.p || null);
-      return { main, locked: !!likedHere && !swaps[key], alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 3).map((x) => x.p) };
+      const offBudget = pool[0]?.off && !swaps[key] && !likedHere;
+      return { main, locked: !!likedHere && !swaps[key], offBudget, alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 3).map((x) => x.p) };
     };
     const out = {};
     out.olje = build("olje");
@@ -671,7 +731,7 @@ export default function Klinikk() {
           <textarea className="search" style={{marginTop:8, minHeight:80, resize:"vertical", fontFamily:"inherit"}} placeholder="Aqua, Ascorbyl Glucoside, Propanediol, Niacinamide, ..." value={inciTekst} onChange={(e) => { setInciTekst(e.target.value); setInciTreff(matchINCI(e.target.value)); }} />
           {inciTreff.length > 0 && (
             <div style={{marginTop:10}}>
-              <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880"}}>Gjenkjent ({inciTreff.length}) – huk av det som stemmer:</div>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880"}}>Aktive ingredienser gjenkjent ({inciTreff.length}) – huk av det som skal telle i analysen:</div>
               <div style={{marginTop:6}}>
                 {inciTreff.map((k) => (
                   <button key={k} className="chip" style={{background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : [...custIngs, k])}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
@@ -679,7 +739,19 @@ export default function Klinikk() {
               </div>
             </div>
           )}
-          {inciTekst.length > 20 && inciTreff.length === 0 && <div className="note" style={{marginTop:8}}>Fant ingen kjente aktive ingredienser i teksten – produktet er nok en fukt-/støtteformel. Det kan fortsatt legges inn som eget steg.</div>}
+          {inciTekst.length > 10 && (() => { const full = analyserFullListe(inciTekst); const kjent = full.filter((x) => x.info); return kjent.length > 0 && (
+            <div style={{marginTop:12, paddingTop:10, borderTop:"1px solid #E4E1DA"}}>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880", marginBottom:6}}>Hele lista forklart ({kjent.length} av {full.length} gjenkjent)</div>
+              {full.map((x, i) => (
+                <div key={i} style={{display:"flex", gap:8, padding:"6px 0", borderBottom:"1px solid #F0EEE8", fontSize:12.5, alignItems:"flex-start"}}>
+                  <span style={{minWidth:130, fontWeight:600, color: x.info ? "#16130F" : "#B8B4AA"}}>{x.info ? x.info.navn : x.raa}</span>
+                  {x.info ? <span style={{flex:1, color:"#4A4842"}}><b style={{fontSize:10, letterSpacing:".06em", textTransform:"uppercase", color:"#8B8880"}}>{x.info.rolle}</b> · {x.info.d}</span> : <span style={{flex:1, color:"#B8B4AA", fontStyle:"italic"}}>{x.raa} – ikke i databasen ennå</span>}
+                </div>
+              ))}
+              <div style={{fontSize:11, color:"#8B8880", marginTop:8, fontStyle:"italic"}}>Aktive ingredienser påvirker rutine-analysen. Støtteingredienser (fuktbindere, emulgatorer, konservering) er med for kunnskapens skyld – de forteller hva produktet ellers inneholder og hvorfor.</div>
+            </div>
+          ); })()}
+          {inciTekst.length > 20 && inciTreff.length === 0 && <div className="note" style={{marginTop:8}}>Ingen aktive ingredienser gjenkjent – produktet er nok en fukt-/støtteformel. Det kan fortsatt legges inn som eget steg.</div>}
           <div style={{marginTop:10, fontSize:11, color:"#8B8880"}}>Eller velg manuelt:</div>
           <div style={{marginTop:4}}>
             {Object.keys(ING).map((k) => (
@@ -801,6 +873,7 @@ export default function Klinikk() {
                 <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"center"}}>
                   <div style={{fontSize:10.5, letterSpacing:".14em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>{o.label} · {o.when}</div>
                   {slot.locked && <span className="badge">Din favoritt</span>}
+                  {slot.offBudget && <span className="ingtag" style={{background:"#FFF3EC", cursor:"default"}} title="Vi hadde ingen god match i prisnivået du valgte, så vi viser beste alternativ fra et annet nivå">ⓘ Utenfor valgt prisnivå</span>}
                 </div>
                 <div className="pbrand" style={{marginTop:6}}>{p.brand}</div>
                 <div className="pname">{p.name}</div>
