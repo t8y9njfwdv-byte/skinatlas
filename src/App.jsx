@@ -27,6 +27,17 @@ const ING = {
 /* ============ PRODUKTER ============ */
 /* cf = dyretestfritt (Leaping Bunny/PETA-listet e.l.), vg = vegansk. Demo-data – verifiseres mot offisielle lister i full versjon. */
 const P = [
+  { id:"o1", cat:"olje", name:"Clean It Zero Original", brand:"Banila Co", tier:1, ings:[], for:["torr","fet","kombi","normal","sens"], hue:"#F2DFC9", cf:true, vg:false },
+  { id:"o2", cat:"olje", name:"All Clean Balm", brand:"Heimish", tier:1, ings:[], for:["torr","fet","kombi","normal","sens"], hue:"#F2DFC9", cf:true, vg:false },
+  { id:"o3", cat:"olje", name:"Ginseng Cleansing Oil", brand:"Beauty of Joseon", tier:1, ings:[], for:["torr","normal","kombi","sens"], hue:"#F2DFC9", cf:true, vg:true },
+  { id:"o4", cat:"olje", name:"Deep Cleansing Oil", brand:"DHC", tier:2, ings:[], for:["torr","normal","kombi","fet"], hue:"#F2DFC9", cf:true, vg:true },
+  { id:"c7", cat:"rens", name:"Heartleaf Quercetinol Cleanser", brand:"Anua", tier:1, ings:["centella"], for:["sens","torr","normal","kombi"], hue:"#BFD8CD", cf:true, vg:true },
+  { id:"c8", cat:"rens", name:"Creamy Jelly Cleanser", brand:"Byoma", tier:1, ings:["ceramider"], for:["torr","normal","sens","kombi"], hue:"#BFD8CD", cf:true, vg:true },
+  { id:"s12", cat:"serum", name:"C-Glow Vitamin C", brand:"Geek & Gorgeous", tier:1, ings:["vitamin-c"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#F9DE8B", cf:true, vg:true },
+  { id:"s13", cat:"serum", name:"Snail 96 Mucin Power Essence", brand:"COSRX", tier:1, ings:["mucin","hyaluron"], goal:"ro", for:["torr","normal","kombi","fet"], hue:"#C4DDB2", cf:true, vg:false },
+  { id:"s14", cat:"serum", name:"Hyaluronic Acid Serum", brand:"The Inkey List", tier:1, ings:["hyaluron"], goal:"ro", for:["torr","normal","sens","kombi","fet"], hue:"#C4DDB2", cf:true, vg:true },
+  { id:"m7", cat:"krem", name:"Moisturizing Rich Cream", brand:"Byoma", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#BCD0EA", cf:true, vg:true },
+  { id:"m8", cat:"krem", name:"Holy Hydration! Face Cream", brand:"e.l.f.", tier:1, ings:["hyaluron","niacinamid","peptider"], for:["torr","normal","kombi","fet"], hue:"#BCD0EA", cf:true, vg:true },
   { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#BFD8CD", cf:false, vg:false },
   { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:2, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#BFD8CD", cf:false, vg:false },
   { id:"c3", cat:"rens", name:"Low pH Good Morning Gel", brand:"COSRX", tier:1, ings:["gronn-te","salisylsyre"], for:["fet","kombi","normal","sens"], hue:"#BFD8CD", cf:true, vg:true },
@@ -82,6 +93,7 @@ const GOALS = [
 ];
 
 const NYBEGYNNER = {
+  olje: { how:"Kveld, som steg 1 av dobbelrensen: masser inn på TØRR hud i 60 sek – oljen løser opp solkrem, sminke og talg. Skyll, og følg opp med vanlig rens. Dette er K-beauty-metoden for å faktisk få av dagens SPF.", amount:"1–2 pumper / mandelstor klatt" },
   rens: { how:"Kveld: masser inn med lunkent vann i ~60 sek, klapp tørt. Morgen: for de fleste holder det å skylle med lunkent vann – huden er allerede ren fra kvelden, og mindre rens = sterkere hudbarriere. Unntak: veldig fet hud, eller hvis du brukte tunge produkter natten før.", amount:"1 pump / kirsebærstor klatt" },
   toner: { how:"Klapp på rett etter rens, på lett fuktig hud.", amount:"3–4 dråper" },
   serum: { how:"På ren, tørr hud. Vent 1–2 min før neste steg.", amount:"3–4 dråper / ertestor" },
@@ -301,6 +313,7 @@ export default function Klinikk() {
       return { main, locked: !!likedHere && !swaps[key], alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 3).map((x) => x.p) };
     };
     const out = {};
+    out.olje = build("olje");
     out.rens = build("rens");
     out.serumAM = build("serum", isAMserum);
     out.serumPM = build("serum", (p) => !isAMserum(p));
@@ -459,7 +472,7 @@ export default function Klinikk() {
       {addingCat === "velg" && (
         <div className="stepcard">
           <div style={{fontSize:13, fontWeight:700}}>Hva slags produkt er «{q}»?</div>
-          {[["rens","Rens"],["toner","Toner/essence"],["serum","Serum"],["krem","Fuktighetskrem"],["spf","Solkrem"]].map(([v,t]) => (
+          {[["olje","Oljerens/balm"],["rens","Rens"],["toner","Toner/essence"],["serum","Serum"],["krem","Fuktighetskrem"],["spf","Solkrem"]].map(([v,t]) => (
             <button key={v} className="altbtn" onClick={() => {
               const np = { id:"cu"+Date.now(), cat:v, name:q, brand:"Ditt produkt", tier:ans.budsjett||2, ings:[], for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#E3E0D8" };
               setCustom([...custom, np]); setQ(""); setAddingCat(null); ping("Lagt inn i rutinen din ♥");
@@ -479,7 +492,8 @@ export default function Klinikk() {
 
   /* ---- RESULTAT ---- */
   const order = [
-    { cat:"rens", label:"Rens", when:"PM · om morgenen holder lunkent vann", n:NYBEGYNNER.rens },
+    { cat:"olje", label:"Oljerens (dobbelrens steg 1)", when:"PM · løser opp SPF og sminke", n:NYBEGYNNER.olje },
+    { cat:"rens", label:"Rens (dobbelrens steg 2)", when:"PM · om morgenen holder lunkent vann", n:NYBEGYNNER.rens },
     { cat:"serumAM", label:"Dagserum", when:"AM – antioksidant-skjold under solkremen", n:NYBEGYNNER.serum },
     ...(routine?.serumEx?.main ? [
       { cat:"serumEx", label:"Kveld A – Eksfoliering", when:"PM · syre-kveld i syklusen", n:NYBEGYNNER.serum },
@@ -629,6 +643,7 @@ export default function Klinikk() {
                   <td style={{fontWeight:700}}>🌙 PM</td>
                   {DAGER.map((_, d) => (
                     <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
+                      {routine.olje?.main && <div style={{background:routine.olje.main.hue, borderRadius:4, padding:"1px 4px"}}>Olje</div>}
                       <div style={{background:routine.rens?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Rens</div>
                       {cycling && CYCLE[d] === "ex" && <div style={{background:exP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Syre</div>}
                       {cycling && CYCLE[d] === "ret" && <div style={{background:retP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Retinol</div>}
