@@ -33,8 +33,16 @@ const ING = {
 /* ============ PRODUKTER ============ */
 /* cf = Leaping Bunny-sertifisert, vg = vegansk, tester = vet at merket tester på dyr (utelukkes alltid). Demo-data – verifiseres mot offisielle lister i full versjon. */
 const P = [
+  { id:"a1", cat:"rens", name:"Toleriane Caring Wash", brand:"La Roche-Posay", tier:4, ings:["ceramider","niacinamid"], for:["sens","torr","normal","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"a2", cat:"serum", name:"Hyalu B5 Serum", brand:"La Roche-Posay", tier:4, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","sens","normal","kombi"], hue:"#E2F3D5", cf:false, tester:true, vg:false },
+  { id:"a3", cat:"serum", name:"Sebiaclear Serum", brand:"Avène", tier:4, ings:["niacinamid"], goal:"kviser", for:["fet","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
+  { id:"a4", cat:"krem", name:"Tolérance Control Cream", brand:"Avène", tier:4, ings:["ceramider"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"a5", cat:"krem", name:"Aquaphor / Repair Balm", brand:"Eucerin", tier:4, ings:["panthenol"], for:["torr","sens","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"a6", cat:"serum", name:"Hyaluron-Filler Serum", brand:"Eucerin", tier:4, ings:["hyaluron"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#FFD6E4", cf:false, tester:true, vg:false },
+  { id:"a7", cat:"spf", name:"Anthelios Fluid SPF50+", brand:"La Roche-Posay", tier:4, ings:[], for:["fet","kombi","normal","sens"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"a8", cat:"toner", name:"Sensibio Micellar Water", brand:"Bioderma", tier:4, ings:[], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:false, tester:true, vg:false },
   { id:"o5", cat:"olje", name:"Squalane Cleanser", brand:"The Ordinary", tier:1, ings:["skvalan"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:true, vg:true },
-  { id:"c9", cat:"rens", name:"Salicylic Acid Cleanser", brand:"CeraVe", tier:1, ings:["salisylsyre","niacinamid"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c9", cat:"rens", name:"Salicylic Acid Cleanser", brand:"CeraVe", tier:4, ings:["salisylsyre","niacinamid"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c10", cat:"rens", name:"Pure Clay Cleanser", brand:"L'Oréal", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c11", cat:"rens", name:"Soy Face Cleanser", brand:"Fresh", tier:3, ings:[], for:["torr","normal","sens","kombi"], hue:"#D9F2E6", cf:true, vg:false },
   { id:"t3", cat:"toner", name:"Centella Toner", brand:"Skin1004", tier:1, ings:["centella"], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
@@ -49,7 +57,7 @@ const P = [
   { id:"m9", cat:"krem", name:"Ultra Facial Cream", brand:"Kiehl's", tier:2, ings:["skvalan","hyaluron"], for:["torr","normal","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m10", cat:"krem", name:"Protini Polypeptide Cream", brand:"Drunk Elephant", tier:3, ings:["peptider"], for:["normal","kombi","torr"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m11", cat:"krem", name:"Panthenol Barrier Cream", brand:"Byoma", tier:1, ings:["panthenol","ceramider"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"m12", cat:"krem", name:"Oil-Free Moisturizer", brand:"Cetaphil", tier:1, ings:["hyaluron"], for:["fet","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"m12", cat:"krem", name:"Oil-Free Moisturizer", brand:"Cetaphil", tier:4, ings:["hyaluron"], for:["fet","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"f5", cat:"spf", name:"UV Clear SPF 46", brand:"EltaMD", tier:2, ings:["niacinamid"], for:["fet","kombi","sens","normal"], hue:"#FFE59A", cf:false, vg:false },
   { id:"f6", cat:"spf", name:"Vitamin C SPF 40", brand:"Naturium", tier:1, ings:["vitamin-c","vitamin-e"], for:["normal","kombi","torr","fet"], hue:"#FFE59A", cf:true, vg:true },
   { id:"k1", cat:"maske", name:"Indian Healing Clay", brand:"Aztec Secret", tier:1, ings:[], for:["fet","kombi","normal"], hue:"#E8DDC8", cf:true, vg:true },
@@ -67,12 +75,12 @@ const P = [
   { id:"s14", cat:"serum", name:"Hyaluronic Acid Serum", brand:"The Inkey List", tier:1, ings:["hyaluron"], goal:"ro", for:["torr","normal","sens","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"m7", cat:"krem", name:"Moisturizing Rich Cream", brand:"Byoma", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m8", cat:"krem", name:"Holy Hydration! Face Cream", brand:"e.l.f.", tier:1, ings:["hyaluron","niacinamid","peptider"], for:["torr","normal","kombi","fet"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
-  { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:2, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:4, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:4, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c3", cat:"rens", name:"Low pH Good Morning Gel", brand:"COSRX", tier:1, ings:["gronn-te","salisylsyre"], for:["fet","kombi","normal","sens"], hue:"#D9F2E6", cf:true, vg:true },
   { id:"c4", cat:"rens", name:"Green Clean Balm", brand:"Farmacy", tier:3, ings:["gronn-te"], for:["torr","normal","kombi"], hue:"#D9F2E6", cf:true, vg:false },
   { id:"c6", cat:"rens", name:"Matcha Hemp Hydrating Cleanser", brand:"Krave Beauty", tier:2, ings:["gronn-te","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#D9F2E6", cf:true, vg:true },
-  { id:"c5", cat:"rens", name:"Foaming Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","niacinamid","hyaluron"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c5", cat:"rens", name:"Foaming Cleanser", brand:"CeraVe", tier:4, ings:["ceramider","niacinamid","hyaluron"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"t1", cat:"toner", name:"Supple Preparation Toner", brand:"Klairs", tier:2, ings:["centella","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"t2", cat:"toner", name:"Advanced Snail 96 Mucin", brand:"COSRX", tier:2, ings:["mucin","hyaluron"], for:["torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:false },
   { id:"s10", cat:"serum", name:"Lactic Acid 10% + HA", brand:"The Ordinary", tier:1, ings:["glykolsyre","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFD9C7", cf:true, vg:true },
@@ -86,13 +94,13 @@ const P = [
   { id:"s7", cat:"serum", name:"Bakuchiol Serum", brand:"Herbivore", tier:3, ings:["bakuchiol"], goal:"aldring", for:["sens","torr","normal"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"s8", cat:"serum", name:"Centella Unscented Serum", brand:"Purito", tier:1, ings:["centella","niacinamid"], goal:"ro", for:["sens","torr","normal","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"s9", cat:"serum", name:"Niacinamide 10% + Zinc", brand:"The Ordinary", tier:1, ings:["niacinamid"], goal:"glow", for:["fet","kombi","normal"], hue:"#D6E9FF", cf:true, vg:true },
-  { id:"m1", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
-  { id:"m2", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:2, ings:["centella","niacinamid"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"m1", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:4, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"m2", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:4, ings:["centella","niacinamid"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m6", cat:"krem", name:"Natural Moisturizing Factors + HA", brand:"The Ordinary", tier:1, ings:["hyaluron","ceramider"], for:["torr","normal","sens","kombi"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m3", cat:"krem", name:"Water Cream", brand:"Tatcha", tier:3, ings:["gronn-te","hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:true, vg:false },
   { id:"m4", cat:"krem", name:"Hydro Boost Gel", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m5", cat:"krem", name:"Dynamic Skin Recovery", brand:"Dermalogica", tier:3, ings:["peptider","hyaluron"], for:["normal","torr","kombi"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"f1", cat:"spf", name:"Anthelios UVMune 400", brand:"La Roche-Posay", tier:2, ings:["hyaluron"], for:["sens","torr","normal","kombi","fet"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"f1", cat:"spf", name:"Anthelios UVMune 400", brand:"La Roche-Posay", tier:4, ings:["hyaluron"], for:["sens","torr","normal","kombi","fet"], hue:"#FFE59A", cf:false, tester:true, vg:false },
   { id:"f2", cat:"spf", name:"Relief Sun SPF50", brand:"Beauty of Joseon", tier:1, ings:["mucin","gronn-te"], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:false },
   { id:"f4", cat:"spf", name:"Rice + Probiotics SPF50 (vegansk)", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], for:["torr","normal","kombi","sens","fet"], hue:"#FFE59A", cf:true, vg:true },
   { id:"f3", cat:"spf", name:"Unseen Sunscreen", brand:"Supergoop!", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFE59A", cf:true, vg:true },
@@ -100,6 +108,39 @@ const P = [
 
 const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin" };
 const nvn = (i) => NAVN[i] || i;
+
+/* INCI-gjenkjenning: mapper offisielle ingrediensnavn til våre nøkler. Utvid fritt. */
+const INCI_MAP = {
+  "vitamin-c": ["ascorbic acid","l-ascorbic acid","ascorbyl glucoside","sodium ascorbyl phosphate","magnesium ascorbyl phosphate","ascorbyl palmitate","tetrahexyldecyl ascorbate","3-o-ethyl ascorbic acid","ethyl ascorbic acid","ascorbyl tetraisopalmitate"],
+  "niacinamid": ["niacinamide","nicotinamide"],
+  "hyaluron": ["hyaluronic acid","sodium hyaluronate","hydrolyzed hyaluronic acid","sodium acetylated hyaluronate"],
+  "ceramider": ["ceramide","ceramide np","ceramide ap","ceramide eop","ceramide ns"],
+  "salisylsyre": ["salicylic acid","betaine salicylate"],
+  "glykolsyre": ["glycolic acid","lactic acid","mandelic acid","citric acid","tartaric acid"],
+  "retinol": ["retinol","retinal","retinaldehyde","hydroxypinacolone retinoate","retinyl palmitate","granactive retinoid","retinoic acid"],
+  "bakuchiol": ["bakuchiol"],
+  "centella": ["centella asiatica","asiaticoside","madecassoside","asiatic acid","cica"],
+  "azelainsyre": ["azelaic acid","potassium azeloyl diglycinate"],
+  "peptider": ["peptide","palmitoyl","copper tripeptide","matrixyl","acetyl hexapeptide","oligopeptide"],
+  "mucin": ["snail secretion filtrate","snail mucin"],
+  "gronn-te": ["camellia sinensis","green tea","egcg"],
+  "skvalan": ["squalane","squalene"],
+  "panthenol": ["panthenol","dexpanthenol","pantothenic acid"],
+  "vitamin-e": ["tocopherol","tocopheryl acetate","vitamin e"],
+  "urea": ["urea"],
+  "pha": ["gluconolactone","lactobionic acid","galactose"],
+  "sink": ["zinc pca","zinc oxide","zinc gluconate"],
+  "parfyme": ["parfum","fragrance","perfume","aroma","linalool","limonene","citronellol","geraniol"],
+  "alkohol": ["alcohol denat","denatured alcohol","sd alcohol","isopropyl alcohol","ethanol"],
+};
+function matchINCI(text) {
+  const lower = (text || "").toLowerCase();
+  const funnet = [];
+  for (const [key, syns] of Object.entries(INCI_MAP)) {
+    if (syns.some((syn) => lower.includes(syn))) funnet.push(key);
+  }
+  return funnet;
+}
 
 const SENS_OPTS = [
   { v:"parfyme", t:"Parfyme/duft" }, { v:"alkohol", t:"Alkohol" },
@@ -158,13 +199,30 @@ function scoreProduct(p, ans, avoid, dislikedIngs) {
 
 function whyText(p, ans) {
   const bits = [];
-  if (p.custom) return "Ditt eget produkt – rutinen er bygget rundt det.";
+  // Egne produkter: forklar ut fra gjenkjente ingredienser + quiz-svar
+  if (p.custom) {
+    if (!p.ings || p.ings.length === 0) return "Ditt eget produkt – lagt inn i rutinen. Legg til ingredienser for en personlig analyse.";
+    const iBits = [];
+    const heroer = p.ings.filter((i) => ING[i]).map((i) => nvn(i));
+    if (p.ings.includes("vitamin-c")) iBits.push(ans.maal === "glow" ? "vitamin C treffer glød-målet ditt direkte – den bremser pigment og gir jevnere tone" : "vitamin C gir antioksidant-beskyttelse alle har nytte av, uansett mål");
+    if (p.ings.includes("niacinamid")) iBits.push(ans.sensitiv === "ja" ? "niacinamid er mild og roer rødhet – trygt for sensitiv hud" : "niacinamid jevner tonen og styrker barrieren");
+    if (p.ings.includes("hyaluron")) iBits.push(ans.hudtype === "torr" ? "hyaluronsyre gir tørr hud ekstra fukt" : "hyaluronsyre gir lett fukt");
+    if (p.ings.includes("retinol")) iBits.push(ans.toleranse === "ny" ? "retinol er kraftig – start forsiktig siden du er ny på aktive" : "retinol jobber mot linjer og tekstur");
+    if (p.ings.includes("salisylsyre")) iBits.push("salisylsyre renser porene – bra mot urenheter");
+    if (p.ings.includes("centella")) iBits.push("centella roer og reparerer – snill mot huden");
+    if (p.ings.includes("panthenol")) iBits.push("panthenol beroliger og støtter barrieren");
+    const grunn = iBits.length ? iBits.join(". ") + "." : "Inneholder " + heroer.join(", ") + " – analysert mot resten av rutinen din.";
+    let advarsel = "";
+    if (p.ings.some((i) => ING[i]?.sun)) advarsel = " ☀️ Gir økt solfølsomhet – SPF hver morgen er ekstra viktig.";
+    if (ans.sensitiv === "ja" && p.ings.includes("retinol")) advarsel += " ⚠️ Du oppga sensitiv hud – introduser dette sakte.";
+    return "Ditt produkt. " + grunn + advarsel;
+  }
   if (p.for.includes(ans.hudtype)) bits.push(`passer ${ans.hudtype === "torr" ? "tørr" : ans.hudtype} hud`);
   if (ans.sensitiv === "ja" && p.for.includes("sens")) bits.push("trygg for sensitiv hud");
   if (ans.helse.includes("gravid") && !pregnancyUnsafe(p) && p.cat === "serum") bits.push("trygg ved graviditet");
   if (p.goal === ans.maal) bits.push("treffer hovedmålet ditt");
   const hero = p.ings.find((i) => ING[i]);
-  if (hero) bits.push(`inneholder ${hero} (${ING[hero].s.toLowerCase()})`);
+  if (hero) bits.push(`inneholder ${nvn(hero)} (${ING[hero].s.toLowerCase()})`);
   return bits.length ? "Valgt fordi den " + bits.join(" · ") : "Solid allrounder for din profil";
 }
 
@@ -246,7 +304,7 @@ function serumDays(p) {
 }
 
 /* ============ PRISER ============ */
-const BASE = { 1: 149, 2: 329, 3: 749 };
+const BASE = { 1: 149, 2: 329, 3: 749, 4: 219 };
 function offers(p) {
   const base = BASE[p.tier] + ((p.id.charCodeAt(1) || 5) % 7) * 10;
   return [
@@ -362,6 +420,8 @@ export default function Klinikk() {
     setLayers((l) => ({ ...l, tonerCount: harToner && l.tonerCount === 0 ? 1 : l.tonerCount, maske: harMaske ? true : l.maske }));
   }, [liked, custom]);
   const [ingSok, setIngSok] = useState("");
+  const [inciTekst, setInciTekst] = useState("");
+  const [inciTreff, setInciTreff] = useState([]);
   const [maskeFreq, setMaskeFreq] = useState(1);
   const [lockedIn, setLockedIn] = useState(false);
   const [openAnalyse, setOpenAnalyse] = useState(null);
@@ -561,8 +621,8 @@ export default function Klinikk() {
   if (step === 6) return (
     <Shell eyebrow="Steg 6 av 7" title="Hvilket nivå skal vi handle på?">
       <Prog />
-      <p className="sub" style={{fontSize:13, marginBottom:6}}>Velg ett eller flere – mange kombinerer billig rens med luksus-serum. Vi finner beste match i nivåene du åpner for.</p>
-      {[{v:1,t:"Smart budsjett",d:"Effektivt uten å blø – The Ordinary, K-beauty"},{v:2,t:"Klinikk-klassikere",d:"Paula's Choice, Klairs, Pixi"},{v:3,t:"Luksus",d:"Tatcha, Medik8, Herbivore"}].map((o) => (
+      <p className="sub" style={{fontSize:13, marginBottom:6}}>Velg ett eller flere prisnivåer – merkene under er bare eksempler, ikke en fasit. Mange kombinerer billig rens med dyrere serum. Vi finner beste match i nivåene du åpner for.</p>
+      {[{v:1,t:"Smart budsjett",d:"Rimelig og effektivt. F.eks. The Ordinary, COSRX, The Inkey List, Byoma"},{v:4,t:"Apotek",d:"Dermatolog-testet, ofte for sensitiv hud. F.eks. La Roche-Posay, Avène, CeraVe, Eucerin, Bioderma"},{v:2,t:"Mellomsjikt",d:"F.eks. Paula's Choice, Klairs, Pixi, Naturium, Beauty of Joseon"},{v:3,t:"Luksus",d:"F.eks. Tatcha, Medik8, Drunk Elephant, Herbivore"}].map((o) => (
         <button key={o.v} className={"opt" + (ans.budsjett.includes(o.v) ? " on" : "")} onClick={() => setAns({ ...ans, budsjett: ans.budsjett.includes(o.v) ? ans.budsjett.filter((x) => x !== o.v) : [...ans.budsjett, o.v] })}>{o.t}<small>{o.d}</small></button>
       ))}
       <button className="primary" onClick={() => { if (ans.budsjett.length) setStep(7); else ping("Velg minst ett nivå"); }}>Fortsett</button>
@@ -606,18 +666,29 @@ export default function Klinikk() {
       )}
       {addingCat && addingCat.cat && (
         <div className="stepcard" style={{marginTop:10}}>
-          <div style={{fontSize:13, fontWeight:700}}>Hvilke hovedingredienser har «{addingCat.navn}»?</div>
-          <div style={{fontSize:12, color:"#6B6862", marginTop:2}}>Sjekk baksiden av produktet eller søk det opp på incidecoder.com – velg de 1–4 viktigste, så analyserer vi det mot resten av rutinen din (soltimer, hyppighet, kollisjoner osv.).</div>
-          <input className="search" style={{marginTop:8}} placeholder="Filtrer ingredienser..." value={ingSok} onChange={(e) => setIngSok(e.target.value)} />
-          <div style={{marginTop:8}}>
-            {Object.keys(ING).filter((k) => nvn(k).toLowerCase().includes(ingSok.toLowerCase())).map((k) => (
-              <button key={k} className="chip" style={{background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : custIngs.length < 4 ? [...custIngs, k] : custIngs)}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
+          <div style={{fontSize:13, fontWeight:700}}>Lim inn ingredienslisten til «{addingCat.navn}»</div>
+          <div style={{fontSize:12, color:"#6B6862", marginTop:2}}>Kopier hele INCI-listen fra produktsiden (f.eks. KICKS, incidecoder.com eller baksiden), lim inn her, og vi gjenkjenner de aktive ingrediensene automatisk – inkludert derivater som «Ascorbyl Glucoside» (vitamin C).</div>
+          <textarea className="search" style={{marginTop:8, minHeight:80, resize:"vertical", fontFamily:"inherit"}} placeholder="Aqua, Ascorbyl Glucoside, Propanediol, Niacinamide, ..." value={inciTekst} onChange={(e) => { setInciTekst(e.target.value); setInciTreff(matchINCI(e.target.value)); }} />
+          {inciTreff.length > 0 && (
+            <div style={{marginTop:10}}>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880"}}>Gjenkjent ({inciTreff.length}) – huk av det som stemmer:</div>
+              <div style={{marginTop:6}}>
+                {inciTreff.map((k) => (
+                  <button key={k} className="chip" style={{background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : [...custIngs, k])}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
+                ))}
+              </div>
+            </div>
+          )}
+          {inciTekst.length > 20 && inciTreff.length === 0 && <div className="note" style={{marginTop:8}}>Fant ingen kjente aktive ingredienser i teksten – produktet er nok en fukt-/støtteformel. Det kan fortsatt legges inn som eget steg.</div>}
+          <div style={{marginTop:10, fontSize:11, color:"#8B8880"}}>Eller velg manuelt:</div>
+          <div style={{marginTop:4}}>
+            {Object.keys(ING).map((k) => (
+              <button key={k} className="chip" style={{padding:"4px 9px", background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : [...custIngs, k])}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
             ))}
           </div>
-          <a className="learn" href={`https://incidecoder.com/search?query=${encodeURIComponent(addingCat.navn)}`} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:8}}>🔍 Slå opp «{addingCat.navn}» på INCIDecoder →</a>
           <button className="primary" style={{marginTop:12}} onClick={() => {
-            const np = { id:"cu"+Date.now(), cat:addingCat.cat, name:addingCat.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:custIngs, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6" };
-            setCustom([...custom, np]); setQ(""); setAddingCat(null); setCustIngs([]);
+            const np = { id:"cu"+Date.now(), cat:addingCat.cat, name:addingCat.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:custIngs, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6", vg:true, inci:inciTekst };
+            setCustom([...custom, np]); setQ(""); setAddingCat(null); setCustIngs([]); setInciTekst(""); setInciTreff([]);
             ping(custIngs.length ? "Lagt inn med " + custIngs.length + " ingredienser – analyseres i rutinen ♥" : "Lagt inn i rutinen din ♥");
           }}>{custIngs.length ? `Lagre med ${custIngs.length} ingrediens${custIngs.length > 1 ? "er" : ""}` : "Lagre uten ingredienser"}</button>
         </div>
