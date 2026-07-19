@@ -21,6 +21,12 @@ const ING = {
   azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/26244269/", freq:"1x daglig første uken → øk til morgen + kveld." },
   peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", u:"https://pubmed.ncbi.nlm.nih.gov/32671986/", freq:"Daglig." },
   mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", u:"https://pubmed.ncbi.nlm.nih.gov/32671986/", freq:"Daglig." },
+  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", u:"https://pubmed.ncbi.nlm.nih.gov/30061924/", },
+  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", u:"https://pubmed.ncbi.nlm.nih.gov/28217909/", },
+  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", u:"https://pubmed.ncbi.nlm.nih.gov/27559512/", },
+  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", u:"https://pubmed.ncbi.nlm.nih.gov/30085366/", },
+  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", u:"https://pubmed.ncbi.nlm.nih.gov/15841642/", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
+  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", u:"https://pubmed.ncbi.nlm.nih.gov/25120566/", },
   "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress.", u:"https://pubmed.ncbi.nlm.nih.gov/29672394/" },
 };
 
@@ -73,7 +79,7 @@ const P = [
   { id:"f3", cat:"spf", name:"Unseen Sunscreen", brand:"Supergoop!", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFE59A", cf:true, vg:true },
 ];
 
-const NAVN = { "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin" };
+const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin" };
 const nvn = (i) => NAVN[i] || i;
 
 const SENS_OPTS = [
@@ -222,10 +228,10 @@ const css = `
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
 *{box-sizing:border-box}
 .page{min-height:100vh;background:#FAFAF7;font-family:Inter,system-ui,sans-serif;color:${ink};display:flex;justify-content:center;padding:28px 16px 64px}
-.wrap{width:100%;max-width:560px}
+.wrap{width:100%;max-width:760px}
 .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:${sage};font-weight:700;text-align:center}
 h1{font-family:'Fraunces',serif;font-weight:600;font-size:32px;line-height:1.12;text-align:center;margin:10px 0 8px;letter-spacing:-.01em}
-.sub{color:#6B6862;font-size:14.5px;line-height:1.6;text-align:center;margin:0 auto;max-width:430px}
+.sub{color:#6B6862;font-size:14.5px;line-height:1.6;text-align:center;margin:0 auto;max-width:560px}
 .opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid ${line};border-radius:14px;padding:15px 16px;font-size:15px;font-weight:600;color:${ink};cursor:pointer;margin-top:10px;transition:border-color .15s, transform .1s;font-family:Inter}
 .opt:hover{border-color:${ink};transform:translateY(-1px)}
 .opt.on{border-color:${coral};background:#FEF1EE}
@@ -298,8 +304,10 @@ export default function Klinikk() {
   const [showTrust, setShowTrust] = useState(false);
   const [showPersonvern, setShowPersonvern] = useState(false);
   const [showHow, setShowHow] = useState(false);
-  const [layers, setLayers] = useState({ toner:false, maske:false });
+  const [layers, setLayers] = useState({ tonerCount:0, maske:false });
   const [oppsNivaa, setOppsNivaa] = useState(1);
+  const [custIngs, setCustIngs] = useState([]);
+  const [ingSok, setIngSok] = useState("");
   const [maskeFreq, setMaskeFreq] = useState(1);
   const [lockedIn, setLockedIn] = useState(false);
   const [openAnalyse, setOpenAnalyse] = useState(null);
@@ -340,6 +348,10 @@ export default function Klinikk() {
     const out = {};
     out.olje = build("olje");
     out.toner = build("toner");
+    /* Full rangert liste for toner-lag (K-beauty layering) */
+    out.tonerRanked = allProducts.filter((p) => p.cat === "toner" && !disliked.includes(p.id) && etikkOK(p))
+      .map((p) => ({ p, sc: p.custom ? 999 : scoreProduct(p, ans, avoid, dislikedIngs) }))
+      .filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc).map((x) => x.p);
     out.maske = build("maske");
     out.rens = build("rens");
     out.serumAM = build("serum", isAMserum);
@@ -530,11 +542,26 @@ export default function Klinikk() {
         <div className="stepcard">
           <div style={{fontSize:13, fontWeight:700}}>Hva slags produkt er «{q}»?</div>
           {[["olje","Oljerens/balm"],["rens","Rens"],["toner","Toner/essence"],["serum","Serum"],["krem","Fuktighetskrem"],["maske","Maske"],["spf","Solkrem"]].map(([v,t]) => (
-            <button key={v} className="altbtn" onClick={() => {
-              const np = { id:"cu"+Date.now(), cat:v, name:q, brand:"Ditt produkt", tier:ans.budsjett||2, ings:[], for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6" };
-              setCustom([...custom, np]); setQ(""); setAddingCat(null); ping("Lagt inn i rutinen din ♥");
-            }}>{t}</button>
+            <button key={v} className="altbtn" onClick={() => { setAddingCat({ cat:v, navn:q }); setCustIngs([]); setIngSok(""); }}>{t}</button>
           ))}
+        </div>
+      )}
+      {addingCat && addingCat.cat && (
+        <div className="stepcard" style={{marginTop:10}}>
+          <div style={{fontSize:13, fontWeight:700}}>Hvilke hovedingredienser har «{addingCat.navn}»?</div>
+          <div style={{fontSize:12, color:"#6B6862", marginTop:2}}>Sjekk baksiden av produktet eller søk det opp på incidecoder.com – velg de 1–4 viktigste, så analyserer vi det mot resten av rutinen din (soltimer, hyppighet, kollisjoner osv.).</div>
+          <input className="search" style={{marginTop:8}} placeholder="Filtrer ingredienser..." value={ingSok} onChange={(e) => setIngSok(e.target.value)} />
+          <div style={{marginTop:8}}>
+            {Object.keys(ING).filter((k) => nvn(k).toLowerCase().includes(ingSok.toLowerCase())).map((k) => (
+              <button key={k} className="chip" style={{background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : custIngs.length < 4 ? [...custIngs, k] : custIngs)}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
+            ))}
+          </div>
+          <a className="learn" href={`https://incidecoder.com/search?query=${encodeURIComponent(addingCat.navn)}`} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:8}}>🔍 Slå opp «{addingCat.navn}» på INCIDecoder →</a>
+          <button className="primary" style={{marginTop:12}} onClick={() => {
+            const np = { id:"cu"+Date.now(), cat:addingCat.cat, name:addingCat.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:custIngs, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6" };
+            setCustom([...custom, np]); setQ(""); setAddingCat(null); setCustIngs([]);
+            ping(custIngs.length ? "Lagt inn med " + custIngs.length + " ingredienser – analyseres i rutinen ♥" : "Lagt inn i rutinen din ♥");
+          }}>{custIngs.length ? `Lagre med ${custIngs.length} ingrediens${custIngs.length > 1 ? "er" : ""}` : "Lagre uten ingredienser"}</button>
         </div>
       )}
       <div style={{marginTop:14}}>
@@ -558,12 +585,18 @@ export default function Klinikk() {
     ] : [
       { cat:"serumPM", label:"Kveldsserum (aktiv)", when:serumTiming(routine?.serumPM?.main), n:NYBEGYNNER.serum },
     ]),
-    ...(layers.toner ? [{ cat:"toner", label:"Toner/essence (lag)", when:"AM + PM · etter rens", n:NYBEGYNNER.toner, layer:true }] : []),
+    ...tonerSlots.map((_, i) => ({ cat:"tonerL" + i, tslot:i, label: i === 0 ? "Toner/essence · lag 1" : `Essence · lag ${i + 1}`, when:"AM + PM · tynnest først", n:NYBEGYNNER.toner, layer:true })),
     { cat:"krem", label:"Fuktighet", when:"AM + PM", n:NYBEGYNNER.krem },
     ...(layers.maske ? [{ cat:"maske", label:"Maske (ukentlig)", when:`${maskeFreq}x i uken · kveld uten aktive`, n:NYBEGYNNER.maske, layer:true }] : []),
     { cat:"spf", label:"Solbeskyttelse", when:"AM – hver dag, hele året", n:NYBEGYNNER.spf },
   ].filter((o) => !removed.includes(o.cat));
 
+  const tonerSlots = [...Array(layers.tonerCount)].map((_, i) => {
+    const used = [...Array(i)].map((__, j) => (swaps["tonerL" + j] || routine.tonerRanked[j])?.id);
+    const pool = routine.tonerRanked.filter((p) => !used.includes(p.id));
+    const main = swaps["tonerL" + i] || pool[0] || null;
+    return { main, locked:false, alts: pool.filter((p) => p.id !== main?.id).slice(0, 3) };
+  });
   const serum = routine?.serumPM?.main;
   const cycling = !!routine?.serumEx?.main;
   const exP = routine?.serumEx?.main, retP = routine?.serumRet?.main;
@@ -577,7 +610,7 @@ export default function Klinikk() {
   const HUDNAVN = { torr:"Tørr", fet:"Fet", kombi:"Kombinert", normal:"Balansert" };
 
   return (
-    <div className="page"><style>{css}</style><div className="wrap" style={{maxWidth:720}}>
+    <div className="page"><style>{css}</style><div className="wrap" style={{maxWidth:980}}>
       <div className="eyebrow">{lockedIn ? "Din faste rutine" : "Deres personlige resept"}</div>
       <h1>{lockedIn ? "Rutinen din, klar til bruk" : "Rutinen, kuratert for deg"}</h1>
 
@@ -601,7 +634,7 @@ export default function Klinikk() {
       <div style={{height:10}} />
 
       {order.map((o, i) => {
-        const slot = routine[o.cat];
+        const slot = o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat];
         if (!slot?.main) return null;
         const p = slot.main;
         return (
@@ -693,7 +726,8 @@ export default function Klinikk() {
         <div style={{fontFamily:"'Fraunces',serif", fontSize:19}}>Bygg på med flere lag 🧅</div>
         <div style={{fontSize:12.5, color:"#6B6862", marginTop:2}}>K-beauty handler om lag. Legg til det du vil – fjern det igjen med ett trykk.</div>
         <div style={{display:"flex", gap:8, marginTop:10, flexWrap:"wrap"}}>
-          <button className="altbtn" style={{width:"auto"}} onClick={() => { setLayers({ ...layers, toner: !layers.toner }); ping(layers.toner ? "Toner fjernet −" : "Toner lagt til +"); }}>{layers.toner ? "− Fjern toner/essence" : "+ Toner/essence"}</button>
+          <button className="altbtn" style={{width:"auto"}} onClick={() => { if (layers.tonerCount < 3) { setLayers({ ...layers, tonerCount: layers.tonerCount + 1 }); ping(`Lag ${layers.tonerCount + 1} lagt til +`); } }}>+ Toner/essence-lag {layers.tonerCount > 0 ? `(${layers.tonerCount}/3)` : ""}</button>
+          {layers.tonerCount > 0 && <button className="altbtn" style={{width:"auto"}} onClick={() => { setLayers({ ...layers, tonerCount: layers.tonerCount - 1 }); ping("Lag fjernet −"); }}>− Fjern siste lag</button>}
           <button className="altbtn" style={{width:"auto"}} onClick={() => { setLayers({ ...layers, maske: !layers.maske }); ping(layers.maske ? "Maske fjernet −" : "Maske lagt til +"); }}>{layers.maske ? "− Fjern maske" : "+ Ukentlig maske"}</button>
           {layers.maske && (
             <span style={{display:"inline-flex", alignItems:"center", gap:6, fontSize:13}}>
@@ -722,7 +756,7 @@ export default function Klinikk() {
                   {DAGER.map((_, d) => (
                     <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
                       <div style={{color:"#8B8880"}}>{amRens ? "Rens" : "Vann"}</div>
-                      {layers.toner && routine.toner?.main && <div style={{background:routine.toner.main.hue, borderRadius:4, padding:"1px 4px"}}>Toner</div>}
+                      {layers.tonerCount > 0 && <div style={{background:"#EAE2FF", borderRadius:4, padding:"1px 4px"}}>Toner{layers.tonerCount > 1 ? " ×" + layers.tonerCount : ""}</div>}
                       {serumAMp && <div style={{background:serumAMp.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Dagserum</div>}
                       <div style={{background:routine.krem?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Krem</div>
                       <div style={{background:routine.spf?.main?.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>SPF</div>
@@ -735,7 +769,7 @@ export default function Klinikk() {
                     <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
                       {routine.olje?.main && <div style={{background:routine.olje.main.hue, borderRadius:4, padding:"1px 4px"}}>Olje</div>}
                       <div style={{background:routine.rens?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Rens</div>
-                      {layers.toner && routine.toner?.main && <div style={{background:routine.toner.main.hue, borderRadius:4, padding:"1px 4px"}}>Toner</div>}
+                      {layers.tonerCount > 0 && <div style={{background:"#EAE2FF", borderRadius:4, padding:"1px 4px"}}>Toner{layers.tonerCount > 1 ? " ×" + layers.tonerCount : ""}</div>}
                       {layers.maske && routine.maske?.main && (maskeFreq === 2 ? [2,6] : [6]).includes(d) && <div style={{background:routine.maske.main.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Maske</div>}
                       {cycling && CYCLE[d] === "ex" && <div style={{background:exP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Syre</div>}
                       {cycling && CYCLE[d] === "ret" && <div style={{background:retP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Retinol</div>}
