@@ -466,9 +466,11 @@ export default function Klinikk() {
     <Shell eyebrow="Steg 1 av 7" title="Hvordan oppfører huden din seg?">
       <Prog />
       {[{v:"torr",t:"Tørr",d:"Stram, flasser lett, drikker krem"},{v:"fet",t:"Fet",d:"Blank utover dagen, synlige porer"},{v:"kombi",t:"Kombinert",d:"Fet T-sone, tørre kinn"},{v:"normal",t:"Balansert",d:"Sjelden problemer, vil optimalisere"}].map((o) => (
-        <button key={o.v} className="opt" onClick={() => set("hudtype", o.v)}>{o.t}<small>{o.d}</small></button>
+        <button key={o.v} className={"opt" + (ans.hudtype === o.v ? " on" : "")} onClick={() => setAns({ ...ans, hudtype: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
       <p className="sub" style={{fontSize:12, marginTop:14}}>Usikker? Vask ansiktet, vent 1 time uten produkter: stram = tørr, blank = fet, blank kun i T-sonen = kombinert.</p>
+      <button className="primary" onClick={() => { if (ans.hudtype) setStep(2); else ping("Velg ett svar"); }}>Fortsett</button>
+      {toast && <div className="toast">{toast}</div>}
     </Shell>
   );
 
@@ -522,10 +524,12 @@ export default function Klinikk() {
     <Shell eyebrow="Steg 5 av 7" title="Hva er hovedmålet ditt?">
       <Prog />
       {GOALS.map((o) => (
-        <button key={o.v} className="opt" onClick={() => set("maal", o.v)}>{o.t}<small>{o.d}</small></button>
+        <button key={o.v} className={"opt" + (ans.maal === o.v ? " on" : "")} onClick={() => setAns({ ...ans, maal: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
       <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>💡 <b>Psst:</b> Konsistens slår skippertak. Det du gjør hver dag betyr mer enn en intens kur hver tredje uke.</div>
+      <button className="primary" onClick={() => { if (ans.maal) setStep(6); else ping("Velg ett svar"); }}>Fortsett</button>
       <button className="ghost" onClick={() => setStep(step - 1)}>← Tilbake</button>
+      {toast && <div className="toast">{toast}</div>}
     </Shell>
   );
 
@@ -646,7 +650,7 @@ export default function Klinikk() {
 
       <div style={{display:"flex", flexWrap:"wrap", gap:6, justifyContent:"center", marginTop:10}}>
         <span className="chip" onClick={() => setStep(1)}>🧬 {HUDNAVN[ans.hudtype]} ✎</span>
-        <span className="chip" onClick={() => setStep(2)}>🌡️ Sensitiv: {ans.sensitiv} ✎</span>
+        <span className="chip" onClick={() => setStep(3)}>🌡️ Sensitiv: {ans.sensitiv} ✎</span>
         <span className="chip" onClick={() => setStep(5)}>🎯 {GOALNAVN[ans.maal]} ✎</span>
         <span className="chip" onClick={() => setStep(6)}>💳 Nivå {ans.budsjett.join("+")} ✎</span>
         <span className="chip" onClick={() => setStep(7)}>♥ Produkter ✎</span>
