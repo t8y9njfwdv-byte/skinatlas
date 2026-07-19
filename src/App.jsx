@@ -633,6 +633,21 @@ export default function Klinikk() {
   );
 
   /* ---- RESULTAT ---- */
+  const tonerSlots = [...Array(layers.tonerCount)].map((_, i) => {
+    const used = [...Array(i)].map((__, j) => (swaps["tonerL" + j] || routine.tonerRanked[j])?.id);
+    const pool = routine.tonerRanked.filter((p) => !used.includes(p.id));
+    const main = swaps["tonerL" + i] || pool[0] || null;
+    return { main, locked:false, alts: pool.filter((p) => p.id !== main?.id).slice(0, 3) };
+  });
+  const serum = routine?.serumPM?.main;
+  const cycling = !!routine?.serumEx?.main;
+  const exP = routine?.serumEx?.main, retP = routine?.serumRet?.main;
+  /* Skin-cycling: Syre → Retinol → Pause → Pause (erfaren: kortere pause) */
+  const CYCLE = ans.toleranse === "erfaren" ? ["ex","ret","pause","ex","ret","pause","pause"] : ["ex","ret","pause","pause","ex","ret","pause"];
+  const sDays = custDays ?? serumDays(serum);
+  const serumAMp = routine?.serumAM?.main;
+  const serumIsAM = false;
+
   const order = [
     { cat:"olje", label:"Oljerens (dobbelrens steg 1)", when:"PM · løser opp SPF og sminke", n:NYBEGYNNER.olje },
     { cat:"rens", label:"Rens (dobbelrens steg 2)", when:"PM · om morgenen holder lunkent vann", n:NYBEGYNNER.rens },
@@ -649,20 +664,6 @@ export default function Klinikk() {
     { cat:"spf", label:"Solbeskyttelse", when:"AM – hver dag, hele året", n:NYBEGYNNER.spf },
   ].filter((o) => !removed.includes(o.cat));
 
-  const tonerSlots = [...Array(layers.tonerCount)].map((_, i) => {
-    const used = [...Array(i)].map((__, j) => (swaps["tonerL" + j] || routine.tonerRanked[j])?.id);
-    const pool = routine.tonerRanked.filter((p) => !used.includes(p.id));
-    const main = swaps["tonerL" + i] || pool[0] || null;
-    return { main, locked:false, alts: pool.filter((p) => p.id !== main?.id).slice(0, 3) };
-  });
-  const serum = routine?.serumPM?.main;
-  const cycling = !!routine?.serumEx?.main;
-  const exP = routine?.serumEx?.main, retP = routine?.serumRet?.main;
-  /* Skin-cycling: Syre → Retinol → Pause → Pause (erfaren: kortere pause) */
-  const CYCLE = ans.toleranse === "erfaren" ? ["ex","ret","pause","ex","ret","pause","pause"] : ["ex","ret","pause","pause","ex","ret","pause"];
-  const sDays = custDays ?? serumDays(serum);
-  const serumAMp = routine?.serumAM?.main;
-  const serumIsAM = false;
   const DAGER = ["Man","Tir","Ons","Tor","Fre","Lør","Søn"];
   const GOALNAVN = { kviser:"Kviser", glow:"Glød", aldring:"Linjer", ro:"Roe hud" };
   const HUDNAVN = { torr:"Tørr", fet:"Fet", kombi:"Kombinert", normal:"Balansert" };
