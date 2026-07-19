@@ -276,6 +276,7 @@ export default function Klinikk() {
   const [saved, setSaved] = useState(null);
   const [priceFor, setPriceFor] = useState(null);
   const [showTrust, setShowTrust] = useState(false);
+  const [showPersonvern, setShowPersonvern] = useState(false);
   const [lockedIn, setLockedIn] = useState(false);
   const [openAnalyse, setOpenAnalyse] = useState(null);
   const [custDays, setCustDays] = useState(null);
@@ -352,9 +353,27 @@ export default function Klinikk() {
           <p style={{margin:"0 0 10px"}}><b>Ingrediensene bestemmer – ikke betalinger.</b> Anbefalingene velges av en åpen logikk basert på hudtypen, helsen og målene dine. Ingen produkter kan kjøpe seg plass.</p>
           <p style={{margin:"0 0 10px"}}><b>Vi tjener penger på annonselenker.</b> Handler du via «til butikk», får vi en liten provisjon – uten ekstra kostnad for deg, og uten å påvirke anbefalingene. Billigst sorteres alltid først.</p>
           <p style={{margin:"0 0 10px"}}><b>Dokumentasjon fremfor hype.</b> Hver ingrediens lenker til publisert forskning.</p>
+          <p style={{margin:"0 0 10px"}}><b>Åpen bruk av kunstig intelligens.</b> Vi bruker KI til å analysere produkter, ingredienser og kompatibilitet mot huden din. Analysen bak hvert valg kan alltid åpnes («Vis analysen»).</p>
           <p style={{margin:0}}><b>Vi er nysgjerrige nerder, ikke leger.</b> Ved hudsykdom eller behandling: rådfør deg alltid med lege.</p>
         </div>
       )}
+      {showPersonvern && (
+        <div className="stepcard" style={{fontSize:13, lineHeight:1.65, textAlign:"left"}}>
+          <div style={{fontFamily:"'Fraunces',serif", fontSize:20, marginBottom:8}}>Personvern</div>
+          <p style={{margin:"0 0 8px"}}><b>Kort versjon:</b> Svarene dine lagres kun lokalt i din egen nettleser. Ingen brukerkontoer, ingenting sendes til noen server, og vi selger aldri opplysninger om deg.</p>
+          <p style={{margin:"0 0 8px"}}><b>Rutinen din:</b> Beregningen skjer i nettleseren. Lagrer du rutinen, ligger den i nettleserens lokale lagring på din enhet – vi kan ikke se den. Helsesvar (som graviditet) forlater aldri enheten din. Sletter du nettleserdata, slettes rutinen.</p>
+          <p style={{margin:"0 0 8px"}}><b>Annonselenker:</b> Klikker du «Se beste pris», sendes du videre via et annonsenettverk som kan bruke cookies for å registrere at kjøpet kom fra oss. Vi mottar kun anonym statistikk – aldri hvem du er eller hva du kjøpte.</p>
+          <p style={{margin:"0 0 8px"}}><b>Cookies:</b> Skinatlas setter ingen egne sporingscookies. Lokal lagring brukes kun til «lagre min rutine».</p>
+          <p style={{margin:"0 0 8px"}}><b>Dine rettigheter (GDPR):</b> Innsyn, retting, sletting og klage til Datatilsynet (datatilsynet.no).</p>
+          <p style={{margin:0}}><b>Behandlingsansvarlig:</b> Skinatlas · hei@skinatlas.no</p>
+        </div>
+      )}
+      <div style={{textAlign:"center", marginTop:18, fontSize:12, color:"#8B8880"}}>
+        <button className="learn" onClick={() => { setShowPersonvern(!showPersonvern); setShowTrust(false); }}>Personvern</button>
+        {" · "}
+        <a className="learn" href="mailto:hei@skinatlas.no">hei@skinatlas.no</a>
+        <div style={{marginTop:6}}>Skinatlas © 2026 · Uavhengig · Generell veiledning, ikke medisinsk rådgivning</div>
+      </div>
     </Shell>
   );
 
@@ -696,7 +715,7 @@ export default function Klinikk() {
         : <button className="ghost" onClick={() => setLockedIn(false)}>🔓 Lås opp for å justere</button>}
       <button className="primary" style={{background:"#fff", color:"#16130F", border:"1.5px solid #16130F"}} onClick={() => {
         const lines = order.filter((o) => routine[o.cat]?.main).map((o, i) => `${i + 1}. ${o.label} (${o.when}): ${routine[o.cat].main.brand} ${routine[o.cat].main.name} – ${o.n.amount}`);
-        const body = encodeURIComponent(`Min hudpleierutine fra Atelier Hud:\n\n${lines.join("\n")}\n\nHusk: SPF hver morgen, og introduser ett produkt om gangen.\n\nLaget med Skinatlas – skinatlas.no`);
+        const body = encodeURIComponent(`Min hudpleierutine fra Skinatlas:\n\n${lines.join("\n")}\n\nHusk: SPF hver morgen, og introduser ett produkt om gangen.\n\nLaget med Skinatlas – skinatlas.no`);
         window.open(`mailto:?subject=${encodeURIComponent("Min hudpleierutine ✨")}&body=${body}`);
       }}>📧 Send rutinen på e-post</button>
       <p style={{fontSize:11.5, color:"#8B8880", textAlign:"center", marginTop:8}}>Rutinen lagres automatisk på denne enheten når du låser den – du kan komme tilbake og justere når som helst. Innlogging på tvers av enheter kommer i full versjon.</p>
