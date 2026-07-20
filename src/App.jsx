@@ -434,6 +434,30 @@ function serumTiming(p) {
   return "AM eller PM";
 }
 
+function erAktivEksfoliant(p) { return p?.ings?.some((i) => ["glykolsyre","salisylsyre","pha","azelainsyre"].includes(i)); }
+function erAktivPM(p) { return p?.ings?.some((i) => ING[i]?.sun || i === "retinol"); }
+/* Analyserer hvor invasivt/sterkt et aktivt produkt er, ut fra produkttype + konsentrasjon.
+   Renseprodukter som skylles av er mildere enn leave-on serum med samme syre. */
+function kortnavn(p) {
+  if (!p) return "";
+  const ord = (p.name || "").split(" ");
+  return ord.slice(0, 2).join(" ");
+}
+function aktivStyrke(p) {
+  if (!p || !erAktivEksfoliant(p) && !p.ings?.includes("retinol")) return null;
+  const tekst = ((p.name || "") + " " + (p.inci || "")).toLowerCase();
+  const pctMatch = tekst.match(/(\d{1,2}(?:[.,]\d)?)\s*%/g);
+  let pct = 0;
+  if (pctMatch) pct = Math.max(...pctMatch.map((x) => parseFloat(x.replace(",", ".").replace("%", ""))));
+  const skyllesAv = p.cat === "rens" || p.cat === "olje";
+  let niva, tekst2;
+  if (skyllesAv) { niva = "mild"; tekst2 = "Skylles av – syren har kort kontakttid, så dette er et mildt eksfolierings-trinn du trygt kan bruke ofte."; }
+  else if (pct >= 10 || p.name?.toLowerCase().includes("peel")) { niva = "sterk"; tekst2 = pct ? `Høy konsentrasjon (~${pct}%) og ligger på huden – dette er et kraftig aktivt trinn. Start 1–2x/uke og bygg opp.` : "Konsentrert peel som ligger på huden – kraftig. Start forsiktig, 1–2x/uke."; }
+  else if (pct >= 5) { niva = "moderat"; tekst2 = `Moderat konsentrasjon (~${pct}%), leave-on. Bygg opp til annenhver kveld etter toleranse.`; }
+  else if (p.ings?.includes("retinol")) { niva = "moderat"; tekst2 = "Retinol/retinoid som ligger på huden – introduser gradvis, 2–3 kvelder/uke først."; }
+  else { niva = "mild-moderat"; tekst2 = "Leave-on syre i lav/uoppgitt konsentrasjon – mild til moderat. Følg med på hvordan huden reagerer."; }
+  return { niva, pct, skyllesAv, tekst: tekst2 };
+}
 function sunWarning(p) { return p?.ings.some((i) => ING[i]?.sun); }
 function freqText(p) { const i = p?.ings.find((x) => ING[x]?.freq); return i ? ING[i].freq : null; }
 
@@ -540,6 +564,10 @@ export default function Klinikk() {
   const [liked, setLiked] = useState([]);
   const [custom, setCustom] = useState([]);
   const [disliked, setDisliked] = useState([]);
+  const [feedback, setFeedback] = useState({});
+  const [fbOpen, setFbOpen] = useState(null);
+  const [cellEdit, setCellEdit] = useState(null);
+  const [cellOverrides, setCellOverrides] = useState({});
   const [q, setQ] = useState("");
   const [addingCat, setAddingCat] = useState(null);
   const [swaps, setSwaps] = useState({});
@@ -577,6 +605,7 @@ export default function Klinikk() {
   useEffect(() => {
     (async () => {
       try { const r = await storage.get("min-rutine"); if (r) { const sv = JSON.parse(r.value); if (typeof sv.ans?.budsjett === "number") sv.ans.budsjett = [sv.ans.budsjett]; if (!sv.ans?.toleranse) sv.ans.toleranse = "litt"; if (!sv.ans?.etikk) sv.ans.etikk = []; setSaved(sv); } } catch (e) {}
+      try { const fb = await storage.get("skinatlas-feedback"); if (fb) setFeedback(JSON.parse(fb.value)); } catch (e) {}
     })();
   }, []);
 
@@ -961,19 +990,21 @@ export default function Klinikk() {
                 <Flaske p={p} />
               </div>
               <div style={{flex:1}}>
-                <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"center"}}>
-                  <div style={{fontSize:10.5, letterSpacing:".14em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>{o.label} · {o.when}</div>
-                  {slot.locked && <span className="badge">Din favoritt</span>}
-                  {slot.offBudget && <span className="ingtag" style={{background:"#FFF3EC", cursor:"default"}} title="Vi hadde ingen god match i prisnivået du valgte, så vi viser beste alternativ fra et annet nivå">ⓘ Utenfor valgt prisnivå</span>}
+                <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"flex-start", flexWrap:"wrap"}}>
+                  <div style={{display:"flex", alignItems:"center", gap:8, flexWrap:"wrap"}}>
+                    <span style={{fontFamily:"'Fraunces',serif", fontSize:17, fontWeight:600, color:"#16130F"}}>{(o.label.split("(")[0]).trim()}</span>
+                    <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#8B8880", background:"#F3F0EA", borderRadius:20, padding:"2px 9px"}}>{(o.when.split("·")[0]).trim()}</span>
+                  </div>
+                  <div style={{display:"flex", gap:5, flexWrap:"wrap"}}>
+                    {p.vg && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default", fontSize:11}} title="Vegansk – ingen animalske ingredienser">🌱</span>}
+                    {p.cf && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default", fontSize:11}} title="Leaping Bunny – dyretestfri">🐇</span>}
+                    {slot.locked && <span className="badge">Favoritt</span>}
+                    {slot.offBudget && <span className="ingtag" style={{background:"#FFF3EC", cursor:"default", fontSize:11}} title="Ingen match i valgt prisnivå – viser beste alternativ">ⓘ</span>}
+                  </div>
                 </div>
-                <div className="pbrand" style={{marginTop:6}}>{p.brand}</div>
-                <div className="pname">{p.name}</div>
-                <div style={{display:"flex", gap:5, marginTop:4, flexWrap:"wrap"}}>
-                  {p.cf && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}} title="Leaping Bunny-sertifisert – strengeste dyretestfri-standard">🐇 Leaping Bunny</span>}
-                  {p.vg && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}}>🌱 Vegansk</span>}
-                  {p.tester && <span className="ingtag" style={{background:"#FBEFEC", cursor:"default"}} title="Vi viser normalt ikke slike merker">⚠️ Tester på dyr</span>}
-                </div>
-                <div style={{fontSize:13, color:"#6B6862", marginTop:5, lineHeight:1.55}}>{whyText(p, ans)} <button className="learn" onClick={() => setOpenAnalyse(openAnalyse === o.cat ? null : o.cat)}>{openAnalyse === o.cat ? "Skjul analysen" : "Vis analysen →"}</button></div>
+                <div style={{marginTop:6}}><span className="pbrand">{p.brand}</span> <span className="pname">{p.name}</span></div>
+                <div style={{fontSize:12.5, color:"#8B8880", marginTop:2}}>{o.when}</div>
+                <div style={{fontSize:13, color:"#6B6862", marginTop:6, lineHeight:1.55}}>{whyText(p, ans)} <button className="learn" onClick={() => setOpenAnalyse(openAnalyse === o.cat ? null : o.cat)}>{openAnalyse === o.cat ? "Skjul" : "Lær mer →"}</button></div>
                 {openAnalyse === o.cat && (
                   <div className="note">
                     <b>🤖 Slik ble dette produktet valgt</b>
@@ -987,6 +1018,8 @@ export default function Klinikk() {
                 )}
                 <div className="note">🧑‍🎓 <b>{o.n.amount}:</b> {o.n.how}</div>
                 {o.cat === "serumPM" && freqText(p) && <div className="note">📅 <b>Hvor ofte:</b> {freqText(p)}</div>}
+                {aktivStyrke(p) && (() => { const st = aktivStyrke(p); const farge = { "mild":"#E2F3D5", "mild-moderat":"#FFF2BD", "moderat":"#FFE0C7", "sterk":"#FFD1D1" }[st.niva]; return <div className="note" style={{background:farge}}>💪 <b>Styrke: {st.niva}{st.pct ? ` (~${st.pct}%)` : ""}.</b> {st.tekst}</div>; })()}
+                {o.cat.startsWith("tonerL") && erAktivEksfoliant(p) && <div className="sunwarn">🧪 <b>OBS – aktiv syre-toner:</b> Denne toneren inneholder eksfolierende syrer (AHA/BHA). Behandle den som et aktivt trinn: bruk den om kvelden, ikke samme kveld som retinol eller et annet syre-produkt, og bruk SPF dagen etter. Kjører du skin-cycling, legg denne på syre-kvelden.</div>}
                 {o.cat === "serumPM" && sunWarning(p) && <div className="sunwarn">☀️ <b>Solvarsel:</b> Denne ingrediensen gjør huden mer solfølsom i flere uker. Solkrem SPF 30+ hver dag er ikke valgfritt – uten den kan du få pigmentflekker og skade i stedet for effekt. Vent med oppstart hvis du skal på solferie.</div>}
                 {o.cat === "spf" && <div className="note">☀️ <b>Hvorfor så viktig?</b> UV-stråler står for opptil 80 % av synlig hudaldring – og SPF beskytter mot hudkreft. Solkremen er limet som gjør at resten av rutinen virker.</div>}
                 <div style={{marginTop:8}}>
@@ -1013,6 +1046,19 @@ export default function Klinikk() {
                       : <button className="learn" style={{marginLeft:6}} onClick={() => setDeepIng(openIng)}>Lær mer →</button>}
                   </div>
                 )}
+                {(() => {
+                  // Dine egne/likte produkter i samme kategori som kan roteres inn
+                  const mineIKat = [...liked, ...custom.map((c) => c.id)]
+                    .map((id) => allProducts.find((x) => x.id === id))
+                    .filter((x) => x && x.cat === (o.tslot !== undefined ? "toner" : o.cat.replace(/AM|PM/, "")) && x.id !== p.id && !(rotations[o.cat] || []).includes(x.id));
+                  return mineIKat.length > 0 && (
+                    <div className="note" style={{background:"#F3F0FF"}}>
+                      🔄 <b>Roter inn dine egne:</b> Du har flere produkter i denne kategorien.
+                      {" "}{mineIKat.map((mp) => <button key={mp.id} className="chip" style={{padding:"3px 9px"}} onClick={() => { const r = rotations[o.cat] || []; setRotations({ ...rotations, [o.cat]: [...r, mp.id] }); ping("Lagt i rotasjon 🔄"); }}>+ {mp.brand} {mp.name}</button>)}
+                      {(o.cat === "krem" || o.cat === "rens") && <div style={{marginTop:6, fontSize:11.5, fontStyle:"italic", color:"#6B6862"}}>💡 Tips: {o.cat === "krem" ? "Har kremene ulik funksjon (f.eks. lett gel-krem vs. tykk barriere-krem), er det ofte smartest å bruke riktig krem etter behov – lett når huden er i balanse, rik når den er tørr/irritert – heller enn fast rotasjon. Har de lik funksjon, roter fritt." : "Renseprodukter kan trygt veksles etter behov."}</div>}
+                    </div>
+                  );
+                })()}
                 {!lockedIn && slot.alts.length > 0 && (
                   <div style={{marginTop:10}}>
                     <div style={{fontSize:10.5, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>Eller velg:</div>
@@ -1026,9 +1072,27 @@ export default function Klinikk() {
                 )}
                 <div style={{display:"flex", gap:4, marginTop:8, alignItems:"center", flexWrap:"wrap"}}>
                   <button className="buy" onClick={() => setPriceFor(p)}>Se beste pris</button>
+                  <button className="mini" onClick={() => setFbOpen(fbOpen === p.id ? null : p.id)}>💬 Tilbakemelding{feedback[p.id] ? " ✓" : ""}</button>
                   {!p.custom && <button className="mini" onClick={() => { setDisliked([...new Set([...disliked, p.id])]); const ns = { ...swaps }; delete ns[o.cat]; setSwaps(ns); ping("Notert! Vi husker det og har byttet til nest beste match ✓"); }}>✕ Passer ikke meg</button>}
                   {!lockedIn && <button className="mini" onClick={() => setRemoved([...removed, o.cat])}>Fjern steg</button>}
                 </div>
+                {fbOpen === p.id && (
+                  <div className="note" style={{marginTop:8, background:"#F7F5FF"}}>
+                    <div style={{fontSize:12.5, fontWeight:700}}>Hvordan reagerer huden på dette? 💬</div>
+                    <div style={{fontSize:11.5, color:"#6B6862", marginTop:2, marginBottom:8}}>Etter 2–3 ukers bruk lærer dette verktøyet hvordan akkurat DIN hud reagerer – og bruker det til å justere fremtidige anbefalinger. Kom tilbake og oppdater etter hvert.</div>
+                    {[["elsker","😍 Elsker det","#E2F3D5"],["ok","🙂 Greit","#FFF2BD"],["irriterer","😣 Irriterer / bryter ut","#FFD1D1"]].map(([v,t,c]) => (
+                      <button key={v} className="chip" style={{background: feedback[p.id]?.reaksjon === v ? "#16130F" : c, color: feedback[p.id]?.reaksjon === v ? "#fff" : "#16130F"}} onClick={() => {
+                        const nf = { ...feedback, [p.id]: { ...feedback[p.id], reaksjon: v, dato: Date.now(), ings: p.ings } };
+                        setFeedback(nf); try { storage.set("skinatlas-feedback", JSON.stringify(nf)); } catch(e){}
+                        if (v === "irriterer") { const badIngs = p.ings.filter((i) => ING[i]); ping(badIngs.length ? "Notert – vi blir mer forsiktige med " + badIngs.map(nvn).join(", ") + " 📝" : "Notert – takk! 📝"); }
+                        else ping("Notert – takk for tilbakemeldingen! 📝");
+                      }}>{t}</button>
+                    ))}
+                    {feedback[p.id]?.reaksjon === "irriterer" && p.ings.filter((i) => ING[i]).length > 0 && (
+                      <div style={{fontSize:11.5, marginTop:8, color:"#4A4842"}}>Vil du at vi skal styre unna <b>{p.ings.filter((i) => ING[i]).map(nvn).join(", ")}</b> fremover? <button className="learn" onClick={() => { const ex = ans.sensList || []; const nye = [...new Set([...ex, ...p.ings.filter((i) => ING[i])])]; setAns({ ...ans, sensList: nye }); ping("Lagt til i «unngå»-lista – rutinen oppdateres ✓"); setFbOpen(null); }}>Ja, unngå disse →</button></div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -1061,42 +1125,82 @@ export default function Klinikk() {
           <div style={{fontFamily:"'Fraunces',serif", fontSize:19}}>Ukeplanen din 📅</div>
           <button className="mini" onClick={() => setShowWeek(!showWeek)}>{showWeek ? "Skjul" : "Vis"}</button>
         </div>
-        {showWeek && (
+        {showWeek && (() => {
+          // Bygg celleinnhold per dag/tid: liste av {label, hue, prod, aktiv, warn}
+          const spf = routine.spf?.main, krem = routine.krem?.main, dagS = routine.serumAM?.main, rens = routine.rens?.main, olje = routine.olje?.main;
+          const kremRot = [krem?.id, ...(rotations.krem || [])].filter(Boolean);
+          const serumRot = [serum?.id, ...(rotations.serumPM || [])].filter(Boolean);
+          const byId = (id) => allProducts.find((x) => x.id === id);
+          const buildCells = (dag, tid) => {
+            const ov = cellOverrides[tid + dag];
+            if (ov) return ov.map((id) => { const pr = byId(id); return pr && { id, navn: kortnavn(pr), hue: pr.hue, aktiv: erAktivEksfoliant(pr) || pr.ings?.includes("retinol"), prod: pr }; }).filter(Boolean);
+            const cells = [];
+            if (tid === "AM") {
+              cells.push({ navn: amRens ? "Rens" : "Vann", hue: "#F3F0EA" });
+              tonerSlots.forEach((ts) => ts.main && cells.push({ id: ts.main.id, navn: kortnavn(ts.main), hue: ts.main.hue, aktiv: erAktivEksfoliant(ts.main), prod: ts.main }));
+              if (dagS) cells.push({ id: dagS.id, navn: kortnavn(dagS), hue: dagS.hue, aktiv: false, prod: dagS });
+              const km = byId(kremRot[dag % kremRot.length]) || krem; if (km) cells.push({ id: km.id, navn: kortnavn(km), hue: km.hue, prod: km });
+              if (spf) cells.push({ id: spf.id, navn: kortnavn(spf), hue: spf.hue, prod: spf, spf: true });
+            } else {
+              if (olje) cells.push({ id: olje.id, navn: kortnavn(olje), hue: olje.hue, prod: olje });
+              if (rens) cells.push({ id: rens.id, navn: kortnavn(rens), hue: rens.hue, prod: rens });
+              tonerSlots.forEach((ts) => ts.main && cells.push({ id: ts.main.id, navn: kortnavn(ts.main), hue: ts.main.hue, aktiv: erAktivEksfoliant(ts.main), prod: ts.main }));
+              if (layers.maske && routine.maske?.main && (maskeFreq === 2 ? [2,6] : [6]).includes(dag)) cells.push({ id: routine.maske.main.id, navn: "Maske", hue: routine.maske.main.hue, prod: routine.maske.main });
+              if (cycling) {
+                if (CYCLE[dag] === "ex" && exP) cells.push({ id: exP.id, navn: kortnavn(exP), hue: exP.hue, aktiv: true, prod: exP });
+                else if (CYCLE[dag] === "ret" && retP) cells.push({ id: retP.id, navn: kortnavn(retP), hue: retP.hue, aktiv: true, prod: retP });
+                else cells.push({ navn: "Pause", hue: "#F3F0EA", pause: true });
+              } else if (serum && sDays.includes(dag)) {
+                const sv = byId(serumRot[dag % serumRot.length]) || serum;
+                cells.push({ id: sv.id, navn: kortnavn(sv), hue: sv.hue, aktiv: erAktivEksfoliant(sv) || sv.ings?.includes("retinol"), prod: sv });
+              }
+              const km = byId(kremRot[dag % kremRot.length]) || krem; if (km) cells.push({ id: km.id, navn: kortnavn(km), hue: km.hue, prod: km });
+            }
+            return cells;
+          };
+          // Kollisjonssjekk: to aktive samme kveld?
+          const cellWarn = (cells) => cells.filter((c) => c.aktiv).length > 1;
+          return (
           <>
-            <div style={{fontSize:12, color:"#6B6862", marginTop:4}}>Tilvenningsuke – {serum ? `«${serum.name}» kun på markerte dager` : "uten aktivt serum"}.</div>
+            <div style={{fontSize:12, color:"#6B6862", marginTop:4}}>Trykk en celle for å bytte, fjerne eller legge til produkt. Rødt = mulig kollisjon.</div>
             <table className="week">
               <thead><tr><th></th>{DAGER.map((d) => <th key={d}>{d}</th>)}</tr></thead>
               <tbody>
-                <tr>
-                  <td style={{fontWeight:700}}>☀️ AM</td>
-                  {DAGER.map((_, d) => (
-                    <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
-                      <div style={{color:"#8B8880"}}>{amRens ? "Rens" : "Vann"}</div>
-                      {layers.tonerCount > 0 && <div style={{background:"#EAE2FF", borderRadius:4, padding:"1px 4px"}}>Toner{layers.tonerCount > 1 ? " ×" + layers.tonerCount : ""}</div>}
-                      {serumAMp && <div style={{background:serumAMp.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Dagserum</div>}
-                      <div style={{background:routine.krem?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Krem</div>
-                      <div style={{background:routine.spf?.main?.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>SPF</div>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td style={{fontWeight:700}}>🌙 PM</td>
-                  {DAGER.map((_, d) => (
-                    <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
-                      {routine.olje?.main && <div style={{background:routine.olje.main.hue, borderRadius:4, padding:"1px 4px"}}>Olje</div>}
-                      <div style={{background:routine.rens?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Rens</div>
-                      {layers.tonerCount > 0 && <div style={{background:"#EAE2FF", borderRadius:4, padding:"1px 4px"}}>Toner{layers.tonerCount > 1 ? " ×" + layers.tonerCount : ""}</div>}
-                      {layers.maske && routine.maske?.main && (maskeFreq === 2 ? [2,6] : [6]).includes(d) && <div style={{background:routine.maske.main.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Maske</div>}
-                      {cycling && CYCLE[d] === "ex" && <div style={{background:exP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Syre</div>}
-                      {cycling && CYCLE[d] === "ret" && <div style={{background:retP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Retinol</div>}
-                      {cycling && CYCLE[d] === "pause" && <div style={{color:"#B8B4AA"}}>Pause</div>}
-                      {!cycling && serum && sDays.includes(d) && (() => { const rot = rotations.serumPM || []; const pool = [serum.id, ...rot]; const valgt = allProducts.find((x) => x.id === pool[d % pool.length]) || serum; return <div style={{background:valgt.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}} title={valgt.brand + " " + valgt.name}>{pool.length > 1 ? valgt.name.split(" ").slice(0,2).join(" ") : "Aktiv"}</div>; })()}
-                      {(() => { const rot = rotations.krem || []; const km = routine.krem?.main; if (!km) return null; const pool = [km.id, ...rot]; const valgt = allProducts.find((x) => x.id === pool[d % pool.length]) || km; return <div style={{background:valgt.hue, borderRadius:4, padding:"1px 4px"}} title={valgt.brand + " " + valgt.name}>{pool.length > 1 ? "Krem: " + valgt.name.split(" ")[0] : "Krem"}</div>; })()}
-                    </td>
-                  ))}
-                </tr>
+                {["AM","PM"].map((tid) => (
+                  <tr key={tid}>
+                    <td style={{fontWeight:700}}>{tid === "AM" ? "☀️ AM" : "🌙 PM"}</td>
+                    {DAGER.map((_, d) => { const cells = buildCells(d, tid); const warn = cellWarn(cells); return (
+                      <td key={d} onClick={() => setCellEdit({ dag: d, tid, cells })} style={{fontSize:9.5, lineHeight:1.6, textAlign:"left", padding:"5px 4px", cursor:"pointer", background: warn ? "#FFECEC" : (cellEdit && cellEdit.dag === d && cellEdit.tid === tid ? "#F3F0FF" : "transparent"), borderRadius:6}}>
+                        {cells.map((c, ci) => <div key={ci} style={{background:c.hue, borderRadius:4, padding:"1px 4px", fontWeight: c.aktiv || c.spf ? 700 : 400, color: c.pause ? "#B8B4AA" : "#16130F", marginBottom:1, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis"}} title={c.prod ? c.prod.brand + " " + c.prod.name : c.navn}>{c.navn}</div>)}
+                        {warn && <div style={{color:"#C0392B", fontWeight:700, fontSize:9}}>⚠️ 2 aktive</div>}
+                      </td>
+                    ); })}
+                  </tr>
+                ))}
               </tbody>
             </table>
+            {cellEdit && (() => { const cells = buildCells(cellEdit.dag, cellEdit.tid); const key = cellEdit.tid + cellEdit.dag; const kat = order.filter((o) => routine[o.cat]?.main || (o.tslot !== undefined)); return (
+              <div className="note" style={{background:"#F7F5FF", marginTop:8}}>
+                <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+                  <b style={{fontSize:13}}>{DAGER[cellEdit.dag]} {cellEdit.tid} – juster</b>
+                  <button className="mini" onClick={() => setCellEdit(null)}>Lukk ✕</button>
+                </div>
+                <div style={{fontSize:11.5, color:"#6B6862", margin:"4px 0 8px"}}>Produkter denne økten:</div>
+                {cells.map((c, ci) => c.prod && (
+                  <div key={ci} style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:6, padding:"3px 0"}}>
+                    <span style={{fontSize:12}}>{c.prod.brand} {c.prod.name} {c.aktiv && <span style={{color:"#C0392B"}}>· aktiv</span>}</span>
+                    <button className="mini" onClick={() => { const base = cells.map((x) => x.id).filter(Boolean); setCellOverrides({ ...cellOverrides, [key]: base.filter((id) => id !== c.id) }); }}>Fjern</button>
+                  </div>
+                ))}
+                <div style={{fontSize:11.5, color:"#6B6862", margin:"8px 0 4px"}}>Legg til fra rutinen din:</div>
+                <div>{[...new Set(order.map((o) => routine[o.cat]?.main).filter(Boolean).concat(tonerSlots.map((t) => t.main).filter(Boolean)).concat([...liked, ...custom.map((c) => c.id)].map((id) => byId(id)).filter(Boolean)))].map((mp) => (
+                  <button key={mp.id} className="chip" style={{padding:"3px 9px"}} onClick={() => { const base = cells.map((x) => x.id).filter(Boolean); if (!base.includes(mp.id)) setCellOverrides({ ...cellOverrides, [key]: [...base, mp.id] }); }}>+ {kortnavn(mp)}</button>
+                ))}</div>
+                {cellWarn(cells) && <div style={{fontSize:11.5, color:"#C0392B", marginTop:8}}>⚠️ Du har to aktive ingredienser samme økt (f.eks. to syrer, eller syre + retinol). Det kan irritere huden – vurder å flytte den ene til en annen kveld.</div>}
+                {cellOverrides[key] && <button className="learn" style={{marginTop:8}} onClick={() => { const no = { ...cellOverrides }; delete no[key]; setCellOverrides(no); }}>↺ Tilbakestill denne økten til anbefaling</button>}
+              </div>
+            ); })()}
+            {Object.keys(cellOverrides).length > 0 && <button className="ghost" style={{marginTop:8}} onClick={() => { setCellOverrides({}); ping("Kalenderen er tilbakestilt til anbefaling ✓"); }}>↺ Tilbakestill HELE kalenderen til anbefaling</button>}
             <div style={{fontSize:12, color:"#6B6862", marginTop:10, lineHeight:1.7}}>
               {order.map((o, i) => routine[o.cat]?.main && <div key={o.cat}><b style={{background:routine[o.cat].main.hue, borderRadius:4, padding:"0 5px"}}>{o.label}</b> = {routine[o.cat].main.brand} {routine[o.cat].main.name} · {o.n.amount}</div>)}
               <div style={{marginTop:12, paddingTop:10, borderTop:"1px solid #E4E1DA"}}>
@@ -1125,8 +1229,8 @@ export default function Klinikk() {
               <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/?term=skin+barrier+cleansing+surfactant" target="_blank" rel="noreferrer">Om hudbarrieren →</a></div>
             </div>
           </>
-        )}
-      </div>
+          ); })()}
+        </div>
 
       <div className="note" style={{marginTop:14}}>🤝 <b>Åpenhet:</b> «Se beste pris» inneholder annonselenker – handler du der, får vi provisjon uten ekstra kostnad for deg. Anbefalingene er valgt av ingredienser og din profil, aldri av hvem som betaler.</div>
 
