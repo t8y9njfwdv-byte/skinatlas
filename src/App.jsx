@@ -12,7 +12,7 @@ const ING = {
   ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC6197824/" },
   hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC8322246/" },
   niacinamid: { s:"Jevner hudtone, roer rødhet", d:"Niacinamid (vitamin B3) demper betennelsessignaler og bremser overføring av pigment til hudoverflaten – jevnere tone, roligere rødhet. Øker også hudens egen ceramidproduksjon.", u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8389214/" },
-  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true , u:"https://pubmed.ncbi.nlm.nih.gov/33852244/"},
+  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true , u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC12274963/"},
   glykolsyre: { s:"Eksfolierer overflaten (AHA)", d:"Løsner «limet» mellom døde hudceller så de slipper taket – glattere hud som reflekterer lys bedre.", u:"https://pubmed.ncbi.nlm.nih.gov/22916351/", freq:"Start 1–2 kvelder/uke → maks annenhver kveld. Øker solfølsomhet betydelig.", sun:true },
   retinol: { s:"Gullstandard mot linjer og tekstur", d:"Vitamin A som skrur opp cellefornyelse og kollagenproduksjon – den mest dokumenterte anti-aldringsingrediensen. Finnes i ulik styrke: retinylester (mildest) → retinol → retinaldehyd (retinal, sterkere) → tretinoin (reseptbelagt, sterkest). Nybegynnere bør starte lavt og bygge opp. Kun kveld (brytes ned av UV-lys).", u:"https://pubmed.ncbi.nlm.nih.gov/25738849/", freq:"Uke 1–2: 2 kvelder/uke · Uke 3–4: annenhver kveld · Deretter: hver kveld hvis huden tåler det. Litt flassing i starten er normalt.", sun:true, preg:true },
   bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt (ikke en ekte retinoid) med retinol-lignende effekt på linjer og pigment i studier – med langt mindre irritasjon. En kjent studie i British Journal of Dermatology fant effekt på linjer sammenlignbar med retinol, men bedre tålt. Ved graviditet/amming: mildere enn retinol, men det finnes lite forskning på trygghet, så mange hudleger anbefaler å heller velge azelainsyre eller niacinamid, som har mer dokumentasjon – rådfør deg med lege.", freq:"Kan brukes hver kveld fra dag én." , u:"https://pubmed.ncbi.nlm.nih.gov/29947134/"},
@@ -25,7 +25,7 @@ const ING = {
   panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", },
   "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", },
   urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", },
-  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
+  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon. En 12-ukers studie fant lik anti-aldringseffekt som AHA, men bedre tålt og mindre svie. Styrker faktisk hudbarrieren, og gir ikke økt solfølsomhet slik AHA gjør.", freq:"2–4 kvelder/uke, mildere enn AHA.", u:"https://pubmed.ncbi.nlm.nih.gov/15002657/" },
   sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", },
   "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress." },
 };
@@ -209,6 +209,20 @@ const P = [
   { id:"r20", cat:"serum", name:"Bakuchiol Boosting Serum", brand:"Paula's Choice", tier:3, ings:["bakuchiol"], goal:"aldring", for:["sens","normal","kombi","torr"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"r21", cat:"serum", name:"Azelaic Acid Suspension 10%", brand:"The Ordinary", tier:1, ings:["azelainsyre"], goal:"aldring", for:["sens","normal","kombi","fet"], hue:"#FFE5CC", cf:true, vg:true },
   { id:"r22", cat:"serum", name:"Facial Redness Relief Azelaic Acid", brand:"Paula's Choice", tier:3, ings:["azelainsyre","salisylsyre"], goal:"ro", for:["sens","normal","kombi"], hue:"#FFE5CC", cf:true, vg:true },
+  /* ── POPULÆRE K-BEAUTY & VIRALE (med reelt belegg) ── */
+  { id:"k30", cat:"serum", name:"Advanced Snail 96 Mucin Power Essence", brand:"COSRX", tier:1, ings:["mucin","niacinamid"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#EAE2FF", cf:true, vg:false },
+  { id:"k31", cat:"toner", name:"Heartleaf 77 Soothing Toner", brand:"Anua", tier:1, ings:["centella"], goal:"ro", for:["sens","fet","kombi","normal"], hue:"#E2F3D5", cf:true, vg:true },
+  { id:"k32", cat:"serum", name:"Glow Serum Propolis + Niacinamide", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi"], hue:"#EAE2FF", cf:true, vg:false },
+  { id:"k33", cat:"serum", name:"Green Tea Hyaluronic Serum", brand:"Isntree", tier:1, ings:["hyaluron","gronn-te"], goal:"ro", for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"k34", cat:"toner", name:"Green Tea 80 Hydrating Toner", brand:"Isntree", tier:1, ings:["gronn-te","hyaluron"], goal:"ro", for:["sens","torr","normal","kombi"], hue:"#E2F3D5", cf:true, vg:true },
+  { id:"k35", cat:"serum", name:"Relief Sun Rice + Probiotics", brand:"Purito", tier:1, ings:["niacinamid"], goal:"glow", for:["sens","torr","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"k36", cat:"krem", name:"Dynasty Cream", brand:"Beauty of Joseon", tier:1, ings:["niacinamid","ceramider"], goal:"aldring", for:["torr","normal","kombi"], hue:"#D6E9FF", cf:true, vg:false },
+  { id:"k37", cat:"krem", name:"Madagascar Centella Cream", brand:"Skin1004", tier:1, ings:["centella","hyaluron"], goal:"ro", for:["sens","torr","normal","kombi"], hue:"#D6E9FF", cf:true, vg:true },
+  { id:"k38", cat:"serum", name:"Centella Ampoule", brand:"Skin1004", tier:1, ings:["centella"], goal:"ro", for:["sens","fet","kombi","normal"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"k39", cat:"toner", name:"Ginseng Essence Water", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi"], hue:"#E2F3D5", cf:true, vg:false },
+  { id:"k40", cat:"rens", name:"Salicylic Acid Daily Gentle Cleanser", brand:"COSRX", tier:1, ings:["salisylsyre"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:true, vg:true },
+  { id:"k41", cat:"serum", name:"Rice Toner (glow, viral)", brand:"I'm From", tier:2, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"k42", cat:"maske", name:"Dead Sea Mud Mask", brand:"Innisfree", tier:1, ings:["gronn-te"], goal:"kviser", for:["fet","kombi"], hue:"#EAD9C7", cf:true, vg:true },
 ];
 
 const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin" };
@@ -480,6 +494,19 @@ function serumTiming(p) {
 
 function erAktivEksfoliant(p) { return p?.ings?.some((i) => ["glykolsyre","salisylsyre","pha","azelainsyre"].includes(i)); }
 
+/* Vurderer om et produkt har dokumentert virkestoff. Produkter uten kjent aktiv ingrediens
+   (f.eks. rene ekstrakt-baserte «virale» produkter) får en nøytral note om at vi ikke kan
+   love effekt – men de kan fortsatt brukes/roteres. Ærlighet framfor hype. */
+function evidensNote(p) {
+  if (!p || p.custom) return null;
+  const dokumenterte = ["retinol","bakuchiol","glykolsyre","salisylsyre","pha","azelainsyre","niacinamid","vitamin-c","hyaluron","ceramider","centella","peptider","panthenol"];
+  const harDokumentert = p.ings?.some((i) => dokumenterte.includes(i));
+  // Rens, olje og SPF vurderes ikke på virkestoff (de har annen funksjon)
+  if (p.cat === "rens" || p.cat === "olje" || p.cat === "spf") return null;
+  if (!harDokumentert) return "Dette produktet er populært, men inneholder ingen av ingrediensene med sterkest forskningsbelegg. Det kan fint fukte og pleie huden, men vi kan ikke love spesifikk effekt på f.eks. linjer eller pigment. Bruk det gjerne – bare med realistiske forventninger.";
+  return null;
+}
+
 /* Retinoid-potens etter forskningsbasert rekkefølge (svakest→sterkest):
    retinylester → retinol → retinaldehyd (retinal) → tretinoin (resept).
    Bakuchiol er IKKE en retinoid, men et mildt, plantebasert alternativ.
@@ -569,13 +596,18 @@ function serumDays(p) {
 /* ============ PRISER ============ */
 const BASE = { 1: 149, 2: 329, 3: 749, 4: 219 };
 function offers(p) {
+  const q = encodeURIComponent(p.brand + " " + p.name);
   const base = BASE[p.tier] + ((p.id.charCodeAt(1) || 5) % 7) * 10;
   return [
-    { store: "Lyko", price: base, ship: "Fri frakt over 299 kr" },
-    { store: "Blivakker", price: Math.round(base * 1.06), ship: "39 kr frakt" },
-    { store: "Coverbrands", price: Math.round(base * 1.11), ship: "Fri frakt over 500 kr" },
-    { store: "Boozt", price: Math.round(base * 1.15), ship: "Fri frakt" },
-  ].sort((a, b) => a.price - b.price);
+    { store: "Lyko", ship: "Fri frakt over 299 kr", url: `https://www.lyko.com/no/search?query=${q}` },
+    { store: "KICKS", ship: "Fri frakt over 349 kr", url: `https://www.kicks.no/sok?query=${q}` },
+    { store: "VITA", ship: "Fri frakt over 349 kr", url: `https://www.vita.no/sok?q=${q}` },
+    { store: "Blivakker", ship: "39 kr frakt", url: `https://www.blivakker.no/search?q=${q}` },
+    { store: "Coverbrands", ship: "Fri frakt over 500 kr", url: `https://www.coverbrands.no/search?q=${q}` },
+    { store: "Boozt", ship: "Fri frakt", url: `https://www.boozt.com/no/no/search?q=${q}` },
+    { store: "H&M Beauty", ship: "Fri frakt for medlemmer", url: `https://www2.hm.com/no_no/search-results.html?q=${q}` },
+    { store: "Fredrik & Louisa", ship: "Fri frakt over 499 kr", url: `https://www.fredriklouisa.no/search?q=${q}` },
+  ];
 }
 
 /* ============ PRODUKTBILDE ============ */
@@ -774,9 +806,20 @@ export default function Klinikk() {
     return out;
   }, [ans, liked, disliked, swaps, custom]);
 
+  // Auto-roter: har man flere likte fuktighetskremer, legg dem automatisk i krem-rotasjonen
+  useEffect(() => {
+    const likteKremer = [...liked, ...custom.map((c) => c.id)].map((id) => allProducts.find((x) => x.id === id)).filter((x) => x?.cat === "krem");
+    if (likteKremer.length > 1 && routine?.krem?.main) {
+      const andre = likteKremer.filter((k) => k.id !== routine.krem.main.id).map((k) => k.id);
+      const mangler = andre.filter((id) => !(rotations.krem || []).includes(id));
+      if (mangler.length > 0) setRotations((r) => ({ ...r, krem: [...(r.krem || []), ...mangler] }));
+    }
+  // eslint-disable-next-line
+  }, [liked, custom, routine?.krem?.main?.id]);
+
   /* ---- INTRO ---- */
   if (step === 0) return (
-    <Shell eyebrow="Skinatlas · Kartet til rutinen din" title="Huden din fortjener en resept, ikke en gjetning" subtitle="Ingen hype, ingen mirakler – en rutine bygget på hudtypen din, helsen din og ingredienser med dokumentert effekt.">
+    <Shell eyebrow="Skinatlas · Kartet til hudpleierutinen din" title="Huden din fortjener en plan, ikke en gjetning" subtitle="Ingen hype, ingen mirakler – en rutine bygget på hudtypen din, helsen din og ingredienser med dokumentert effekt.">
       {saved && (
         <div className="stepcard" style={{textAlign:"center"}}>
           <div className="pbrand">Velkommen tilbake</div>
@@ -832,7 +875,7 @@ export default function Klinikk() {
     </Shell>
   );
 
-  const answered = (i) => i === 1 ? !!ans.hudtype : i === 2 ? true : i === 3 ? (!!ans.sensitiv && !!ans.toleranse) : i === 4 ? true : i === 5 ? !!ans.maal : i === 6 ? ans.budsjett.length > 0 : true;
+  const answered = (i) => i === 1 ? (!!ans.hudtype && !!ans.alder) : i === 2 ? true : i === 3 ? (!!ans.sensitiv && !!ans.toleranse) : i === 4 ? true : i === 5 ? !!ans.maal : i === 6 ? ans.budsjett.length > 0 : true;
   const canGo = (i) => { for (let j = 1; j < i; j++) if (!answered(j)) return false; return true; };
   const Prog = () => <div className="prog">{[1,2,3,4,5,6,7].map((i) => <i key={i} className={i <= step ? "on" : ""} style={{cursor: canGo(i) ? "pointer" : "default", width: i === step ? 34 : 26}} onClick={() => canGo(i) && setStep(i)} title={"Steg " + i} />)}</div>;
 
@@ -912,6 +955,7 @@ export default function Klinikk() {
       <button className="primary" onClick={() => { if (ans.maal) setStep(6); else ping("Velg ett svar"); }}>Fortsett</button>
       <button className="ghost" onClick={() => setStep(step - 1)}>← Tilbake</button>
       {toast && <div className="toast">{toast}</div>}
+      {toast && <div className="toast">{toast}</div>}
     </Shell>
   );
 
@@ -924,6 +968,7 @@ export default function Klinikk() {
         <button key={o.v} className={"opt" + (ans.budsjett.includes(o.v) ? " on" : "")} onClick={() => setAns({ ...ans, budsjett: ans.budsjett.includes(o.v) ? ans.budsjett.filter((x) => x !== o.v) : [...ans.budsjett, o.v] })}>{o.t}<small>{o.d}</small></button>
       ))}
       <button className="primary" onClick={() => { if (ans.budsjett.length) setStep(7); else ping("Velg minst ett nivå"); }}>Fortsett</button>
+      {toast && <div className="toast">{toast}</div>}
       <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>🐇 <b>Vi viser aldri merker vi vet tester på dyr.</b> Vil du ha den strengeste garantien, kan du filtrere på Leaping Bunny-sertifisering nedenfor – den gullstandarden reviderer hele leverandørkjeden.</div>
       <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>💡 <b>Myteknuser:</b> Dyrere er ikke bedre. Pris er ofte merkevarestrategi – huden bryr seg om ingrediensene, ikke prislappen.</div>
       {toast && <div className="toast">{toast}</div>}
@@ -1053,7 +1098,7 @@ export default function Klinikk() {
 
   return (
     <div className="page"><style>{css}</style><div className="wrap" style={{maxWidth:1140}}>
-      <div className="eyebrow">{lockedIn ? "Din faste rutine" : "Deres personlige resept"}</div>
+      <div className="eyebrow">{lockedIn ? "Din faste rutine" : "Din personlige rutine"}</div>
       <h1>{lockedIn ? "Rutinen din, klar til bruk" : "Rutinen, kuratert for deg"}</h1>
 
       <div style={{display:"flex", flexWrap:"wrap", gap:6, justifyContent:"center", marginTop:10}}>
@@ -1199,6 +1244,7 @@ export default function Klinikk() {
                 )}
                 <div className="note">🧑‍🎓 <b>{o.n.amount}:</b> {o.n.how}</div>
                 {o.cat === "serumPM" && freqText(p) && <div className="note">📅 <b>Hvor ofte:</b> {freqText(p)}</div>}
+                {evidensNote(p) && <div className="note" style={{background:"#FFF6E5"}}>💡 <b>Ærlig om effekt:</b> {evidensNote(p)}</div>}
                 {retinoidNiva(p) && (() => { const rn = retinoidNiva(p); const farge = rn.styrke === "mild" ? "#E2F3D5" : rn.styrke === "sterk" ? "#FFD1D1" : "#FFE0C7"; return <div className="note" style={{background:farge}}>🅰️ <b>Vitamin A-type: {rn.navn}.</b> {rn.niva === 0 ? "Bakuchiol er ikke en ekte retinoid, men et plantestoff som gir liknende effekt med minimal irritasjon – et godt startpunkt for sensitiv hud." : rn.niva === 1 ? "Retinylestere er det mildeste trinnet på retinoid-stigen – bra for førstegangsbrukere og sensitiv hud, men virker saktere." : rn.niva === 2 ? "Retinol er «gullstandarden» for nybegynnere: god effekt, håndterbar irritasjon. Start 2–3 kvelder/uke og bygg opp." : rn.niva === 3 ? "Retinaldehyd (retinal) er ett steg sterkere enn retinol og virker raskere – men kan irritere mer. Bygg opp forsiktig." : "Tretinoin er reseptbelagt retinsyre – sterkest og virker umiddelbart. Brukes under veiledning av lege/hudlege."}{" "}<a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/9284094/" target="_blank" rel="noreferrer">Se forskning på retinoid-potens →</a></div>; })()}
                 {aktivStyrke(p) && (() => { const st = aktivStyrke(p); const farge = { "mild":"#E2F3D5", "mild-moderat":"#FFF2BD", "moderat":"#FFE0C7", "sterk":"#FFD1D1" }[st.niva]; return <div className="note" style={{background:farge}}>💪 <b>Styrke: {st.niva}{st.pct ? ` (~${st.pct}%)` : ""}.</b> {st.tekst}</div>; })()}
                 {o.cat.startsWith("tonerL") && erAktivEksfoliant(p) && <div className="sunwarn">🧪 <b>OBS – aktiv syre-toner:</b> Denne toneren inneholder eksfolierende syrer (AHA/BHA). Behandle den som et aktivt trinn: bruk den om kvelden, ikke samme kveld som retinol eller et annet syre-produkt, og bruk SPF dagen etter. Kjører du skin-cycling, legg denne på syre-kvelden.</div>}
@@ -1320,7 +1366,7 @@ export default function Klinikk() {
       {/* LAG-VELGER */}
       <div className="stepcard" style={{marginTop:14}}>
         <div style={{fontFamily:"'Fraunces',serif", fontSize:19}}>Bygg på med flere lag 🧅</div>
-        <div style={{fontSize:12.5, color:"#6B6862", marginTop:2}}>K-beauty handler om lag. Legg til det du vil – fjern det igjen med ett trykk.</div>
+        <div style={{fontSize:12.5, color:"#6B6862", marginTop:2}}>K-beauty handler om lag. Dette er <b>helt valgfritt</b> – grunnrutinen virker utmerket alene. Men vil du bygge videre etter hvert, er dette gode tillegg.</div>
         <div style={{display:"flex", gap:8, marginTop:10, flexWrap:"wrap"}}>
           <button className="altbtn" style={{width:"auto"}} onClick={() => { if (layers.tonerCount < 3) { setLayers({ ...layers, tonerCount: layers.tonerCount + 1 }); ping(`Lag ${layers.tonerCount + 1} lagt til +`); } }}>+ Toner/essence-lag {layers.tonerCount > 0 ? `(${layers.tonerCount}/3)` : ""}</button>
           {layers.tonerCount > 0 && <button className="altbtn" style={{width:"auto"}} onClick={() => { setLayers({ ...layers, tonerCount: layers.tonerCount - 1 }); ping("Lag fjernet −"); }}>− Fjern siste lag</button>}
@@ -1333,6 +1379,8 @@ export default function Klinikk() {
             </span>
           )}
         </div>
+        {layers.tonerCount > 0 && <div className="note" style={{marginTop:10}}>💧 <b>Om toner/essence:</b> Et lett, vannaktig lag du påfører etter rens og før serum. Det gir et ekstra fuktighetslag og forbereder huden til å ta opp produktene etterpå bedre. I K-beauty bruker mange «7-skin»-metoden – flere tynne lag toner for dyp fukt. Du <b>trenger</b> det ikke, men det er et fint, mildt lag å bygge på med hvis huden føles tørr eller stram.</div>}
+        {layers.maske && <div className="note" style={{marginTop:10}}>🧖 <b>Om maske:</b> En ukentlig «boost» – en konsentrert behandling 1–2x/uke, ikke daglig. Leiremasker trekker ut talg (fint for fet/kombinert hud), mens fukt-/arkmasker gir en intens fuktdusj (fint for tørr hud). Bruk den på en rolig kveld <b>uten</b> sterke aktive ingredienser, så du ikke overbelaster huden. Igjen: valgfritt ekstra, ikke et must.</div>}
       </div>
 
       {/* UKEPLAN */}
@@ -1474,7 +1522,16 @@ export default function Klinikk() {
         window.open(`mailto:?subject=${encodeURIComponent("Min hudpleierutine ✨")}&body=${body}`);
       }}>📧 Send rutinen på e-post</button>
       <p style={{fontSize:11.5, color:"#8B8880", textAlign:"center", marginTop:8}}>Rutinen lagres automatisk på denne enheten når du låser den – du kan komme tilbake og justere når som helst. Innlogging på tvers av enheter kommer i full versjon.</p>
-      <button className="ghost" onClick={() => { setStep(0); setSwaps({}); setRemoved([]); setLockedIn(false); }}>Start ny konsultasjon</button>
+      <button className="ghost" onClick={() => {
+        if (!window.confirm("Vil du starte helt på nytt? Dette sletter alle svarene og valgene dine i denne rutinen, og du begynner quizen fra begynnelsen. (En eventuell lagret rutine påvirkes ikke før du lagrer på nytt.)")) return;
+        setAns({ hudtype:null, alder:null, sensitiv:null, toleranse:null, sensList:[], helse:[], maal:null, budsjett:[], etikk:[] });
+        setLiked([]); setDisliked([]); setCustom([]); setSwaps({}); setRotations({}); setRemoved([]);
+        setLayers({ tonerCount:0, maske:false }); setMaskeFreq(1); setLockedIn(false);
+        setStegFerdig({}); setApneSteg(null); setEgetForslag({}); setCellOverrides({}); setCellEdit(null);
+        setAmRens(false); setVisOpps(true); setOppsNivaa(1);
+        setStep(0);
+        ping("Alt nullstilt – du kan begynne helt på nytt ✓");
+      }}>Start helt på nytt</button>
 
       {priceFor && (
         <div className="overlay" onClick={() => setPriceFor(null)}>
@@ -1488,19 +1545,17 @@ export default function Klinikk() {
               </div>
             </div>
             <div style={{height:14}} />
+            <div style={{fontSize:12.5, color:"#6B6862", marginBottom:10}}>Vi henter ikke live priser ennå, men her kan du søke opp produktet direkte hos norske nettbutikker:</div>
             {offers(priceFor).map((o, i) => (
-              <div key={o.store} className={"offer" + (i === 0 ? " best" : "")}>
+              <div key={o.store} className="offer">
                 <div>
-                  <div style={{fontWeight:700, fontSize:14}}>{o.store} {i === 0 && <span className="badge" style={{marginLeft:6}}>Billigst</span>}</div>
+                  <div style={{fontWeight:700, fontSize:14}}>{o.store}</div>
                   <div style={{fontSize:11.5, color:"#8B8880", marginTop:2}}>{o.ship}</div>
                 </div>
-                <div style={{display:"flex", alignItems:"center", gap:10}}>
-                  <div className="pricetag">{o.price} kr</div>
-                  <button className="gostore" onClick={() => ping(`I ekte versjon: affiliate-lenke til ${o.store} 💰`)}>Til butikk</button>
-                </div>
+                <a className="gostore" href={o.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>Søk hos {o.store} →</a>
               </div>
             ))}
-            <p style={{fontSize:11, color:"#8B8880", marginTop:12, lineHeight:1.5}}>Demo-priser. Ekte versjon henter live priser og produktbilder via butikkenes produktfeeder (Adtraction/Partner-ads).</p>
+            <p style={{fontSize:11, color:"#8B8880", marginTop:12, lineHeight:1.5}}>Lenkene går til butikkenes egne søk. Når vi kobler på annonsenettverk (Adtraction/Partner-ads) blir dette direkte produktlenker med live priser og bilder.</p>
             <button className="ghost" onClick={() => setPriceFor(null)}>Lukk</button>
           </div>
         </div>
