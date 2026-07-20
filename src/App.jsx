@@ -229,7 +229,233 @@ const P = [
   { id:"k44", cat:"serum", name:"Salmon DNA PDRN Ampoule", brand:"VT Cosmetics", tier:2, ings:["pdrn","niacinamid"], goal:"glow", for:["torr","normal","kombi"], hue:"#FFD6E4", cf:true, vg:false },
   { id:"k45", cat:"serum", name:"Multi-Peptide + HA Serum", brand:"The Ordinary", tier:1, ings:["peptider","hyaluron"], goal:"aldring", for:["torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"k46", cat:"serum", name:"Peptide Bond Repair Serum", brand:"The Inkey List", tier:1, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
+
+  // ===== APOTEK / PHARMACY =====
+  { id:"ph1", cat:"rens", name:"Toleriane Caring Wash", brand:"La Roche-Posay", tier:2, ings:["niacinamid"], for:["sens","torr","normal"], hue:"#EAF2FF", cf:false, tester:true, vg:true },
+  { id:"ph2", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:2, ings:["panthenol","centella"], goal:"ro", for:["sens","torr","normal","kombi"], hue:"#EAF2FF", cf:false, tester:true, vg:true },
+  { id:"ph3", cat:"serum", name:"Mela B3 Serum", brand:"La Roche-Posay", tier:3, ings:["niacinamid"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFE6D6", cf:false, tester:true, vg:true },
+  { id:"ph4", cat:"spf", name:"Anthelios UVMune 400 SPF50+", brand:"La Roche-Posay", tier:3, ings:[], for:["sens","torr","normal","kombi","fet"], hue:"#FFF3C4", cf:false, tester:true, vg:true },
+  { id:"ph5", cat:"rens", name:"Tolerance Extremely Gentle Cleanser", brand:"Avène", tier:2, ings:[], for:["sens","torr"], hue:"#EAF7F2", cf:false, tester:true, vg:false },
+  { id:"ph6", cat:"krem", name:"Tolerance Control Soothing Cream", brand:"Avène", tier:2, ings:["skvalan"], goal:"ro", for:["sens","torr"], hue:"#EAF7F2", cf:false, tester:true, vg:false },
+  { id:"ph7", cat:"krem", name:"Cicalfate+ Restorative Cream", brand:"Avène", tier:2, ings:["sink"], goal:"ro", for:["sens","torr","normal"], hue:"#EAF7F2", cf:false, tester:true, vg:false },
+  { id:"ph8", cat:"rens", name:"Hydrating Facial Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#EAF4FF", cf:false, tester:true, vg:false },
+  { id:"ph9", cat:"rens", name:"Foaming Facial Cleanser", brand:"CeraVe", tier:1, ings:["niacinamid","ceramider"], for:["fet","kombi","normal"], hue:"#EAF4FF", cf:false, tester:true, vg:false },
+  { id:"ph10", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#EAF4FF", cf:false, tester:true, vg:false },
+  { id:"ph11", cat:"serum", name:"Resurfacing Retinol Serum", brand:"CeraVe", tier:2, ings:["retinol","ceramider"], goal:"kviser", for:["normal","kombi","fet"], hue:"#F3E8D6", cf:false, tester:true, vg:false },
+  { id:"ph12", cat:"rens", name:"Sensibio H2O Micellar Water", brand:"Bioderma", tier:2, ings:[], for:["sens","torr","normal","kombi"], hue:"#EAF2FF", cf:false, tester:true, vg:true },
+  { id:"ph13", cat:"krem", name:"Hydrabio Gel-Cream", brand:"Bioderma", tier:2, ings:["hyaluron"], for:["normal","kombi","fet"], hue:"#EAF2FF", cf:false, tester:true, vg:true },
+  { id:"ph14", cat:"krem", name:"Ultra Sensitive Soothing Cream", brand:"Eucerin", tier:2, ings:["skvalan"], goal:"ro", for:["sens","torr"], hue:"#EFF4F8", cf:false, tester:true, vg:false },
+  { id:"ph15", cat:"serum", name:"Hyaluron-Filler Vitamin C Booster", brand:"Eucerin", tier:3, ings:["vitamin-c","hyaluron"], goal:"glow", for:["normal","kombi","torr"], hue:"#FFE9C9", cf:false, tester:true, vg:false },
+
+  // ===== K-BEAUTY =====
+  { id:"kb1", cat:"serum", name:"Glow Serum: Propolis + Niacinamide", brand:"Beauty of Joseon", tier:1, ings:["niacinamid","gronn-te"], goal:"glow", for:["normal","kombi","torr","sens"], hue:"#FFEFB8", cf:true, vg:false },
+  { id:"kb2", cat:"spf", name:"Relief Sun: Rice + Probiotics SPF50+", brand:"Beauty of Joseon", tier:1, ings:[], for:["normal","kombi","torr","sens"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"kb3", cat:"serum", name:"Revive Serum: Ginseng + Snail Mucin", brand:"Beauty of Joseon", tier:2, ings:["mucin","peptider"], goal:"aldring", for:["torr","normal","kombi"], hue:"#F0E4D0", cf:true, vg:false },
+  { id:"kb4", cat:"rens", name:"Green Tea Cleansing Oil", brand:"Beauty of Joseon", tier:1, ings:["gronn-te"], for:["normal","kombi","fet","torr"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"kb5", cat:"toner", name:"Heartleaf 77% Soothing Toner", brand:"Anua", tier:1, ings:["centella"], goal:"ro", for:["sens","fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"kb6", cat:"rens", name:"Heartleaf Pore Control Cleansing Oil", brand:"Anua", tier:1, ings:["centella"], for:["fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"kb7", cat:"serum", name:"Niacinamide 10% + TXA 4%", brand:"Anua", tier:1, ings:["niacinamid"], goal:"glow", for:["normal","kombi","fet"], hue:"#FFE6D6", cf:true, vg:true },
+  { id:"kb8", cat:"serum", name:"Centella Ampoule", brand:"SKIN1004", tier:1, ings:["centella"], goal:"ro", for:["sens","normal","kombi","fet"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"kb9", cat:"spf", name:"Centella Air-Fit Sun SPF50+", brand:"SKIN1004", tier:1, ings:["centella"], for:["sens","normal","kombi","fet","torr"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"kb10", cat:"toner", name:"Birch Juice Moisturizing Toner", brand:"Round Lab", tier:1, ings:["hyaluron"], for:["torr","normal","sens"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"kb11", cat:"spf", name:"Birch Juice Moisturizing Sun SPF50+", brand:"Round Lab", tier:1, ings:[], for:["normal","kombi","torr","sens"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"kb12", cat:"toner", name:"Dokdo Toner", brand:"Round Lab", tier:1, ings:["panthenol"], for:["normal","kombi","fet"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"kb13", cat:"serum", name:"Hyaluronic Acid Water Essence", brand:"Isntree", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"kb14", cat:"toner", name:"Green Tea Fresh Toner", brand:"Isntree", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"kb15", cat:"serum", name:"Dive-In Low Molecular Hyaluronic Acid", brand:"Torriden", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens","fet"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"kb16", cat:"krem", name:"Dive-In Soothing Cream", brand:"Torriden", tier:1, ings:["hyaluron","centella"], goal:"ro", for:["sens","normal","kombi","torr"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"kb17", cat:"maske", name:"Madagascar Centella Ampoule Mask", brand:"SKIN1004", tier:1, ings:["centella"], goal:"ro", for:["sens","normal","torr"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"kb18", cat:"serum", name:"Snail 96 Mucin Power Essence", brand:"COSRX", tier:1, ings:["mucin"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#F0E4D0", cf:true, vg:false },
+
+  // ===== SALONG-STANDARD / PROFESSIONAL =====
+  { id:"sa1", cat:"serum", name:"C-Tetra Vitamin C Serum", brand:"Medik8", tier:3, ings:["vitamin-c"], goal:"glow", for:["normal","kombi","torr"], hue:"#FFE9C9", cf:true, vg:true },
+  { id:"sa2", cat:"serum", name:"Crystal Retinal 3", brand:"Medik8", tier:4, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"sa3", cat:"serum", name:"Liquid Peptides Advanced MP", brand:"Medik8", tier:4, ings:["peptider"], goal:"aldring", for:["normal","kombi","torr","sens"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"sa4", cat:"rens", name:"Special Cleansing Gel", brand:"Dermalogica", tier:3, ings:[], for:["normal","kombi","fet"], hue:"#EFF4F8", cf:true, vg:true },
+  { id:"sa5", cat:"serum", name:"Age Bright Clearing Serum", brand:"Dermalogica", tier:4, ings:["salisylsyre","niacinamid"], goal:"kviser", for:["fet","kombi"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"sa6", cat:"krem", name:"Skin Smoothing Cream", brand:"Dermalogica", tier:3, ings:["hyaluron","ceramider"], for:["normal","kombi","torr"], hue:"#EFF4F8", cf:true, vg:true },
+  { id:"sa7", cat:"serum", name:"Youth Serum", brand:"iS Clinical", tier:4, ings:["peptider","centella"], goal:"aldring", for:["normal","kombi","torr","sens"], hue:"#EAE2FF", cf:true, vg:false },
+  { id:"sa8", cat:"serum", name:"Pro-Heal Serum Advance+", brand:"iS Clinical", tier:4, ings:["vitamin-c","centella"], goal:"ro", for:["sens","normal","kombi"], hue:"#FFE9C9", cf:true, vg:false },
+  { id:"sa9", cat:"serum", name:"Vitamin A, C & E Intense", brand:"Environ", tier:4, ings:["retinol","vitamin-c"], goal:"aldring", for:["normal","kombi","torr"], hue:"#F3E8D6", cf:false, vg:false },
+  { id:"sa10", cat:"serum", name:"Skin Perfecting Serum 2% BHA", brand:"Paula's Choice", tier:3, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"sa11", cat:"serum", name:"10% Niacinamide Booster", brand:"Paula's Choice", tier:3, ings:["niacinamid"], goal:"glow", for:["fet","kombi","normal"], hue:"#FFE6D6", cf:true, vg:true },
+  { id:"sa12", cat:"krem", name:"Omega+ Complex Moisturizer", brand:"Paula's Choice", tier:3, ings:["ceramider"], for:["torr","normal","sens"], hue:"#EFF4F8", cf:true, vg:true },
+
+  // ===== UTVIDET SORTIMENT: pharmacy, K-beauty, salong, mass =====
+  { id:"x1", cat:"rens", name:"Low pH Good Morning Gel Cleanser", brand:"COSRX", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#EAF2FF", cf:true, vg:true },
+  { id:"x2", cat:"rens", name:"Salicylic Acid Daily Gentle Cleanser", brand:"COSRX", tier:1, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x3", cat:"rens", name:"Rice Water Bright Cleansing Foam", brand:"The Face Shop", tier:1, ings:[], for:["normal","kombi","torr"], hue:"#EAF7F2", cf:true, vg:false },
+  { id:"x4", cat:"rens", name:"Green Tea Foam Cleanser", brand:"Innisfree", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#FDEEE8", cf:true, vg:true },
+  { id:"x5", cat:"rens", name:"Ultra Facial Cleanser", brand:"Kiehl's", tier:3, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#EAF2FF", cf:false, vg:false },
+  { id:"x6", cat:"rens", name:"Rare Earth Deep Pore Cleanser", brand:"Kiehl's", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#E6F2D9", cf:false, vg:false },
+  { id:"x7", cat:"rens", name:"Gentle Skin Cleanser", brand:"Cetaphil", tier:1, ings:[], for:["sens","torr","normal"], hue:"#EAF7F2", cf:false, vg:true },
+  { id:"x8", cat:"rens", name:"Oil-Free Acne Wash", brand:"Neutrogena", tier:1, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FDEEE8", cf:false, vg:true },
+  { id:"x9", cat:"rens", name:"Hydro Boost Cleansing Gel", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#EAF2FF", cf:false, vg:true },
+  { id:"x10", cat:"rens", name:"Effaclar Gel Cleanser", brand:"La Roche-Posay", tier:2, ings:[], for:["fet","kombi","normal"], hue:"#E6F2D9", cf:false, tester:true, vg:true },
+  { id:"x11", cat:"rens", name:"Purifying Foaming Wash", brand:"Eucerin", tier:2, ings:[], for:["fet","kombi","normal"], hue:"#EAF7F2", cf:false, tester:true, vg:false },
+  { id:"x12", cat:"rens", name:"Antioxidant Cleansing Balm", brand:"Farmacy", tier:3, ings:["gronn-te"], for:["torr","normal","kombi","sens"], hue:"#FDEEE8", cf:true, vg:true },
+  { id:"x13", cat:"rens", name:"Ginger Milk Cleanser", brand:"Beauty of Joseon", tier:1, ings:[], for:["torr","normal","sens"], hue:"#EAF2FF", cf:true, vg:false },
+  { id:"x14", cat:"rens", name:"Clarifying Cleanser", brand:"Paula's Choice", tier:3, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x15", cat:"rens", name:"Soy Face Cleanser", brand:"Fresh", tier:3, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#EAF7F2", cf:false, vg:false },
+  { id:"x16", cat:"rens", name:"Cleansing Balm", brand:"Clinique Take The Day Off", tier:3, ings:[], for:["torr","normal","kombi","sens"], hue:"#FDEEE8", cf:false, vg:false },
+  { id:"x17", cat:"rens", name:"Squalane Cleanser", brand:"The Ordinary", tier:1, ings:["skvalan"], for:["torr","normal","kombi","sens"], hue:"#EAF2FF", cf:true, vg:true },
+  { id:"x18", cat:"rens", name:"Pure Cleansing Oil", brand:"DHC", tier:2, ings:[], for:["torr","normal","kombi","sens"], hue:"#E6F2D9", cf:false, vg:false },
+  { id:"x19", cat:"rens", name:"Watermelon Glow PHA Cleanser", brand:"Glow Recipe", tier:3, ings:["pha"], for:["torr","normal","kombi","sens"], hue:"#EAF7F2", cf:true, vg:true },
+  { id:"x20", cat:"rens", name:"Deep Cleansing Foam", brand:"Etude House", tier:1, ings:[], for:["fet","kombi","normal"], hue:"#FDEEE8", cf:true, vg:false },
+  { id:"x21", cat:"rens", name:"AHA/BHA Clarifying Treatment Toner Cleanser", brand:"Some By Mi", tier:1, ings:["glykolsyre","salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#EAF2FF", cf:true, vg:true },
+  { id:"x22", cat:"rens", name:"Heartleaf Quercetinol Cleansing Foam", brand:"Anua", tier:1, ings:["centella"], for:["torr","normal","kombi","sens"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x23", cat:"rens", name:"Cica Cleanser", brand:"Dr.Jart+", tier:3, ings:["centella"], goal:"ro", for:["sens","normal","kombi"], hue:"#EAF7F2", cf:false, vg:false },
+  { id:"x24", cat:"rens", name:"Vitamin C Brightening Cleanser", brand:"Mad Hippie", tier:2, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#FDEEE8", cf:true, vg:true },
+  { id:"x25", cat:"rens", name:"Micellar Cleansing Water", brand:"Garnier", tier:1, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#EAF2FF", cf:false, vg:true },
+  { id:"x26", cat:"rens", name:"Blue Cocoon Cleanser", brand:"May Lindstrom", tier:4, ings:[], for:["sens","torr"], hue:"#E6F2D9", cf:true, vg:false },
+  { id:"x27", cat:"rens", name:"Broad Spectrum Sunscreen Removing Balm", brand:"Then I Met You", tier:3, ings:[], for:["torr","normal","kombi","sens"], hue:"#EAF7F2", cf:true, vg:false },
+  { id:"x28", cat:"rens", name:"Gentle Hydrating Cleanser", brand:"Krave Beauty", tier:2, ings:[], for:["torr","normal","sens"], hue:"#FDEEE8", cf:true, vg:true },
+  { id:"x29", cat:"rens", name:"Matcha Hemp Hydrating Cleanser", brand:"Krave Beauty", tier:2, ings:["gronn-te"], for:["torr","normal","kombi","sens"], hue:"#EAF2FF", cf:true, vg:true },
+  { id:"x30", cat:"toner", name:"AHA/BHA Clarifying Treatment Toner", brand:"COSRX", tier:1, ings:["glykolsyre","salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x31", cat:"toner", name:"Galactomyces 95 Tone Balancing Essence", brand:"COSRX", tier:1, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi","fet","sens"], hue:"#EAF4FF", cf:true, vg:false },
+  { id:"x32", cat:"toner", name:"Ginseng Essence Water", brand:"Beauty of Joseon", tier:1, ings:["peptider"], for:["torr","normal","sens"], hue:"#FFF6E5", cf:true, vg:false },
+  { id:"x33", cat:"toner", name:"PHA Toner", brand:"Isntree", tier:1, ings:["pha"], for:["torr","normal","kombi","fet","sens"], hue:"#E7F0FA", cf:true, vg:true },
+  { id:"x34", cat:"toner", name:"Bija Cica Balancing Toner", brand:"Isntree", tier:1, ings:["centella"], goal:"ro", for:["fet","kombi","normal"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x35", cat:"toner", name:"Cleansing Water Radiance Toner", brand:"Fresh Rose", tier:3, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#EAF4FF", cf:false, vg:false },
+  { id:"x36", cat:"toner", name:"Facial Treatment Essence", brand:"SK-II", tier:4, ings:[], goal:"glow", for:["torr","normal","kombi","fet","sens"], hue:"#FFF6E5", cf:false, vg:false },
+  { id:"x37", cat:"toner", name:"The Treatment Lotion", brand:"La Mer", tier:4, ings:["skvalan"], for:["torr","normal","sens"], hue:"#E7F0FA", cf:false, vg:false },
+  { id:"x38", cat:"toner", name:"Ultra Facial Toner", brand:"Kiehl's", tier:3, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#E6F2D9", cf:false, vg:false },
+  { id:"x39", cat:"toner", name:"Watermelon Glow PHA+BHA Toner", brand:"Glow Recipe", tier:3, ings:["pha","salisylsyre"], for:["fet","kombi","normal"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"x40", cat:"toner", name:"Daily Reviving Concentrate Toner", brand:"Kiehl's", tier:3, ings:["gronn-te"], for:["torr","normal","kombi","fet","sens"], hue:"#FFF6E5", cf:false, vg:false },
+  { id:"x41", cat:"toner", name:"Centella Green Level Toner", brand:"Purito", tier:1, ings:["centella"], goal:"ro", for:["sens","normal","kombi"], hue:"#E7F0FA", cf:true, vg:true },
+  { id:"x42", cat:"toner", name:"Yuja Niacin Brightening Toner", brand:"Some By Mi", tier:1, ings:["niacinamid"], goal:"glow", for:["normal","kombi"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x43", cat:"toner", name:"Snail Bee Essence Toner", brand:"Benton", tier:1, ings:["mucin","niacinamid"], for:["torr","normal","kombi","sens"], hue:"#EAF4FF", cf:true, vg:false },
+  { id:"x44", cat:"toner", name:"Aloe Soothing Toner", brand:"Nature Republic", tier:1, ings:["centella"], goal:"ro", for:["sens","normal"], hue:"#FFF6E5", cf:true, vg:true },
+  { id:"x45", cat:"toner", name:"Vitamin B5 Hydrating Toner", brand:"Naturium", tier:2, ings:["panthenol","hyaluron"], for:["torr","normal","sens"], hue:"#E7F0FA", cf:true, vg:true },
+  { id:"x46", cat:"toner", name:"Rice Toner", brand:"I'm From", tier:2, ings:[], for:["torr","normal","sens"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x47", cat:"toner", name:"Mugwort Essence", brand:"I'm From", tier:2, ings:["centella"], goal:"ro", for:["sens","normal","kombi"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"x48", cat:"toner", name:"Prebiotic Balancing Mist Toner", brand:"The Inkey List", tier:1, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#FFF6E5", cf:true, vg:true },
+  { id:"x49", cat:"toner", name:"Glycolic Acid 7% Toning Solution", brand:"The Ordinary", tier:1, ings:["glykolsyre"], goal:"glow", for:["fet","kombi","normal"], hue:"#E7F0FA", cf:true, vg:true },
+  { id:"x50", cat:"toner", name:"Hydrating Toner", brand:"La Roche-Posay", tier:2, ings:["hyaluron"], for:["torr","normal","sens"], hue:"#E6F2D9", cf:false, tester:true, vg:true },
+  { id:"x51", cat:"toner", name:"Soothing Toner Cica", brand:"SKIN1004", tier:1, ings:["centella"], goal:"ro", for:["sens","normal","kombi"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"x52", cat:"toner", name:"Green Plum Refreshing Toner AHA", brand:"Isntree", tier:1, ings:["glykolsyre"], for:["fet","kombi","normal"], hue:"#FFF6E5", cf:true, vg:true },
+  { id:"x53", cat:"krem", name:"Ultra Facial Cream", brand:"Kiehl's", tier:3, ings:["skvalan"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"x54", cat:"krem", name:"Water Bank Blue Hyaluronic Cream", brand:"Laneige", tier:3, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FDE7CF", cf:false, vg:false },
+  { id:"x55", cat:"krem", name:"Cica Sleeping Mask", brand:"Laneige", tier:3, ings:["centella"], goal:"ro", for:["sens","normal"], hue:"#EAF7F2", cf:false, vg:false },
+  { id:"x56", cat:"krem", name:"Water Sleeping Mask", brand:"Laneige", tier:3, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#EFF4F8", cf:false, vg:false },
+  { id:"x57", cat:"krem", name:"Dynamic Cord Extra Firm Cream", brand:"Sulwhasoo", tier:4, ings:["peptider"], goal:"aldring", for:["torr","normal","sens"], hue:"#EAF4FF", cf:false, vg:false },
+  { id:"x58", cat:"krem", name:"Time Revolution Night Repair Cream", brand:"Missha", tier:2, ings:["peptider"], goal:"aldring", for:["torr","normal","sens"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"x59", cat:"krem", name:"Cicaplast Baume Rich", brand:"La Roche-Posay", tier:2, ings:["panthenol","centella"], goal:"ro", for:["sens","torr"], hue:"#FDE7CF", cf:false, tester:true, vg:true },
+  { id:"x60", cat:"krem", name:"Toleriane Sensitive Fluid", brand:"La Roche-Posay", tier:2, ings:["ceramider"], for:["sens","normal","kombi"], hue:"#EAF7F2", cf:false, tester:true, vg:true },
+  { id:"x61", cat:"krem", name:"Lipikar Balm AP+M", brand:"La Roche-Posay", tier:2, ings:["ceramider","niacinamid"], for:["torr","sens"], hue:"#EFF4F8", cf:false, tester:true, vg:true },
+  { id:"x62", cat:"krem", name:"Skin Barrier Repair Cream", brand:"Dr.Jart+ Cicapair", tier:3, ings:["centella"], goal:"ro", for:["sens","torr"], hue:"#EAF4FF", cf:false, vg:false },
+  { id:"x63", cat:"krem", name:"Ceramidin Cream", brand:"Dr.Jart+", tier:3, ings:["ceramider"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"x64", cat:"krem", name:"Advanced Night Repair Cream", brand:"Estée Lauder", tier:4, ings:["peptider"], goal:"aldring", for:["torr","normal","sens"], hue:"#FDE7CF", cf:false, vg:false },
+  { id:"x65", cat:"krem", name:"Protini Polypeptide Cream", brand:"Drunk Elephant", tier:4, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#EAF7F2", cf:true, vg:true },
+  { id:"x66", cat:"krem", name:"Lala Retro Whipped Cream", brand:"Drunk Elephant", tier:4, ings:["ceramider"], for:["torr","normal","sens"], hue:"#EFF4F8", cf:true, vg:true },
+  { id:"x67", cat:"krem", name:"Natural Moisturizing Factors + HA", brand:"The Ordinary", tier:1, ings:["hyaluron","ceramider"], for:["torr","normal","kombi","sens"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"x68", cat:"krem", name:"Weightless Oil-Free Moisturizer", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:false, vg:true },
+  { id:"x69", cat:"krem", name:"Daily Moisturizing Lotion", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#FDE7CF", cf:false, tester:true, vg:false },
+  { id:"x70", cat:"krem", name:"PM Facial Moisturizing Lotion", brand:"CeraVe", tier:1, ings:["ceramider","niacinamid"], for:["torr","normal","kombi","fet","sens"], hue:"#EAF7F2", cf:false, tester:true, vg:false },
+  { id:"x71", cat:"krem", name:"Gel-Cream Oil-Free", brand:"Belif Aqua Bomb", tier:3, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#EFF4F8", cf:false, vg:false },
+  { id:"x72", cat:"krem", name:"The True Cream Moisturizing Bomb", brand:"Belif", tier:3, ings:["ceramider"], for:["torr","normal","sens"], hue:"#EAF4FF", cf:false, vg:false },
+  { id:"x73", cat:"krem", name:"Cloud Cream", brand:"Kiehl's", tier:3, ings:[], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"x74", cat:"krem", name:"Watermelon Glow Sleeping Mask", brand:"Glow Recipe", tier:3, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FDE7CF", cf:true, vg:true },
+  { id:"x75", cat:"krem", name:"Dewy Skin Cream", brand:"Tatcha", tier:4, ings:[], for:["torr","normal","sens"], hue:"#EAF7F2", cf:false, vg:false },
+  { id:"x76", cat:"krem", name:"The Water Cream", brand:"Tatcha", tier:4, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#EFF4F8", cf:false, vg:false },
+  { id:"x77", cat:"krem", name:"Nutritious Moisturizer", brand:"Weleda Skin Food", tier:2, ings:[], for:["torr","sens"], hue:"#EAF4FF", cf:false, vg:true },
+  { id:"x78", cat:"krem", name:"Redness Relief Moisturizer", brand:"Dr.Jart+", tier:3, ings:["centella"], goal:"ro", for:["sens"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"x79", cat:"krem", name:"Barrier Restore Cream", brand:"Krave Beauty", tier:2, ings:["ceramider"], for:["torr","normal","sens"], hue:"#FDE7CF", cf:true, vg:true },
+  { id:"x80", cat:"krem", name:"Vitamin B5 Gel Moisturizer", brand:"Naturium", tier:2, ings:["panthenol"], for:["fet","kombi","normal"], hue:"#EAF7F2", cf:true, vg:true },
+  { id:"x81", cat:"krem", name:"Peptide + HA Recovery Cream", brand:"The Inkey List", tier:1, ings:["peptider","hyaluron"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#EFF4F8", cf:true, vg:true },
+  { id:"x82", cat:"krem", name:"Panthenol Barrier Cream", brand:"Torriden", tier:1, ings:["panthenol"], goal:"ro", for:["sens","torr","normal"], hue:"#EAF4FF", cf:true, vg:true },
+  { id:"x83", cat:"krem", name:"Madagascar Centella Cream", brand:"SKIN1004", tier:1, ings:["centella"], goal:"ro", for:["sens","normal","kombi"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"x84", cat:"spf", name:"UV Clear SPF46", brand:"EltaMD", tier:4, ings:["niacinamid"], for:["sens","fet","kombi"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"x85", cat:"spf", name:"UV Daily SPF40", brand:"EltaMD", tier:4, ings:["hyaluron"], for:["torr","normal","sens"], hue:"#FFF3C4", cf:false, tester:true, vg:false },
+  { id:"x86", cat:"spf", name:"Unseen Sunscreen SPF40", brand:"Supergoop!", tier:3, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x87", cat:"spf", name:"Glowscreen SPF40", brand:"Supergoop!", tier:3, ings:["hyaluron"], goal:"glow", for:["torr","normal","sens"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x88", cat:"spf", name:"Watery Sun Gel SPF50+", brand:"Biore UV Aqua Rich", tier:1, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#FFE59A", cf:false, vg:true },
+  { id:"x89", cat:"spf", name:"Probiotics Sun Cream SPF50+", brand:"Purito", tier:1, ings:["centella"], for:["sens","normal","kombi"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x90", cat:"spf", name:"Comfort Sun Stick SPF50+", brand:"SKIN1004", tier:1, ings:[], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x91", cat:"spf", name:"Airyfit Daily Sun SPF50+", brand:"Isntree", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x92", cat:"spf", name:"Hyaluronic Watery Sun Gel SPF50+", brand:"Isntree", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x93", cat:"spf", name:"Vita Propolis Sun Serum SPF50+", brand:"Some By Mi", tier:1, ings:["gronn-te"], for:["normal","kombi"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x94", cat:"spf", name:"Invisible UV Fluid SPF50+", brand:"Beauty of Joseon", tier:1, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x95", cat:"spf", name:"Ultra Light Daily UV Defense SPF50", brand:"Kiehl's", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFF3C4", cf:false, vg:false },
+  { id:"x96", cat:"spf", name:"Anthelios Ultra Light Fluid SPF50+", brand:"La Roche-Posay", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFE59A", cf:false, tester:true, vg:true },
+  { id:"x97", cat:"spf", name:"Anthelios Hydrating Lotion SPF50", brand:"La Roche-Posay", tier:3, ings:["hyaluron"], for:["torr","normal","sens"], hue:"#FFF3C4", cf:false, tester:true, vg:true },
+  { id:"x98", cat:"spf", name:"Photoderm Nude Touch SPF50+", brand:"Bioderma", tier:3, ings:[], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:false, tester:true, vg:true },
+  { id:"x99", cat:"spf", name:"Sun Fluid Anti-Age SPF50", brand:"Eucerin", tier:3, ings:[], goal:"aldring", for:["normal","torr"], hue:"#FFF3C4", cf:false, tester:true, vg:false },
+  { id:"x100", cat:"spf", name:"Sun Oil-Control Gel SPF50+", brand:"Eucerin", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"x101", cat:"spf", name:"Clear Face Sunscreen SPF50", brand:"Neutrogena", tier:1, ings:[], for:["fet","kombi","normal"], hue:"#FFF3C4", cf:false, vg:true },
+  { id:"x102", cat:"spf", name:"Mineral UV Filters SPF30", brand:"The Ordinary", tier:1, ings:[], for:["sens","normal"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x103", cat:"spf", name:"Facial Sunscreen SPF46", brand:"Paula's Choice", tier:3, ings:["niacinamid"], for:["normal","kombi"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x104", cat:"spf", name:"Milky Tone Up Sun SPF50+", brand:"Round Lab", tier:1, ings:[], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x105", cat:"spf", name:"Cotton Soft Sun SPF50+", brand:"Numbuzin", tier:1, ings:[], for:["torr","normal","kombi","sens"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x106", cat:"spf", name:"Water Full Sun Cream SPF50+", brand:"Torriden", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x107", cat:"spf", name:"Physical Eye UV Defense SPF50", brand:"Supergoop!", tier:3, ings:[], for:["sens"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x108", cat:"spf", name:"Mineral Sunscreen SPF30", brand:"Beauty of Joseon", tier:1, ings:[], for:["sens","normal"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x109", cat:"spf", name:"Sun Serum SPF50+", brand:"Numbuzin", tier:1, ings:["niacinamid"], for:["normal","kombi"], hue:"#FFF3C4", cf:true, vg:true },
+  { id:"x110", cat:"spf", name:"Daily UV Protection Aqua Fresh SPF50+", brand:"Purito", tier:1, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"x111", cat:"olje", name:"Midnight Recovery Concentrate", brand:"Kiehl's", tier:3, ings:[], for:["torr","normal","sens"], hue:"#FFE9D6", cf:false, vg:false },
+  { id:"x112", cat:"olje", name:"Virgin Marula Luxury Facial Oil", brand:"Drunk Elephant", tier:4, ings:[], for:["torr","normal","sens"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"x113", cat:"olje", name:"100% Plant-Derived Squalane", brand:"The Ordinary", tier:1, ings:["skvalan"], for:["torr","normal","kombi","fet","sens"], hue:"#FFE9D6", cf:true, vg:true },
+  { id:"x114", cat:"olje", name:"Rosehip Seed Oil", brand:"The Ordinary", tier:1, ings:[], for:["torr","normal","sens"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"x115", cat:"olje", name:"Cleansing Oil Green Tea", brand:"Innisfree", tier:1, ings:["gronn-te"], for:["torr","normal","kombi","sens"], hue:"#FFE9D6", cf:true, vg:true },
+  { id:"x116", cat:"olje", name:"Facial Oil No.9", brand:"Votary", tier:4, ings:[], for:["torr","normal","sens"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"x117", cat:"olje", name:"Luminous Dewy Skin Nourishing Oil", brand:"Tatcha", tier:4, ings:[], for:["torr","normal","sens"], hue:"#FFE9D6", cf:false, vg:false },
+  { id:"x118", cat:"olje", name:"Marula Oil", brand:"Paula's Choice", tier:3, ings:[], for:["torr","normal","sens"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"x119", cat:"olje", name:"Ginseng Oil Serum", brand:"Sulwhasoo", tier:4, ings:["peptider"], goal:"aldring", for:["torr","normal","sens"], hue:"#FFE9D6", cf:false, vg:false },
+  { id:"x120", cat:"olje", name:"Squalane + Vitamin C Rose Oil", brand:"Biossance", tier:3, ings:["skvalan","vitamin-c"], goal:"glow", for:["torr","normal","sens"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"x121", cat:"olje", name:"Squalane + Omega Repair Oil", brand:"Biossance", tier:3, ings:["skvalan"], for:["torr","normal","sens"], hue:"#FFE9D6", cf:true, vg:true },
+  { id:"x122", cat:"olje", name:"Camellia Cleansing Oil", brand:"Tatcha", tier:4, ings:[], for:["torr","normal","kombi","sens"], hue:"#F3E8D6", cf:false, vg:false },
+  { id:"x123", cat:"olje", name:"Prickly Pear Facial Oil", brand:"The Inkey List", tier:1, ings:[], for:["torr","normal","sens"], hue:"#FFE9D6", cf:true, vg:true },
+  { id:"x124", cat:"olje", name:"Bakuchiol Retinol Oil", brand:"Herbivore", tier:4, ings:["bakuchiol"], goal:"aldring", for:["normal","sens"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"x125", cat:"maske", name:"Overnight Sleeping Mask Cica", brand:"Laneige", tier:3, ings:["centella"], goal:"ro", for:["sens","normal"], hue:"#E6F2D9", cf:false, vg:false },
+  { id:"x126", cat:"maske", name:"Clay Mask Green Tea", brand:"Innisfree Super Volcanic", tier:1, ings:["gronn-te"], goal:"kviser", for:["fet","kombi","normal"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"x127", cat:"maske", name:"AHA 30% + BHA 2% Peeling Solution", brand:"The Ordinary", tier:1, ings:["glykolsyre","salisylsyre"], goal:"glow", for:["fet","kombi","normal"], hue:"#EAD9C7", cf:true, vg:true },
+  { id:"x128", cat:"maske", name:"Watermelon Glow Sleeping Mask", brand:"Glow Recipe", tier:3, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"x129", cat:"maske", name:"Cicapair Tiger Grass Mask", brand:"Dr.Jart+", tier:3, ings:["centella"], goal:"ro", for:["sens"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"x130", cat:"maske", name:"Aztec Secret Healing Clay", brand:"Aztec", tier:1, ings:[], goal:"kviser", for:["fet","kombi","normal"], hue:"#EAD9C7", cf:true, vg:true },
+  { id:"x131", cat:"maske", name:"Rice Wash Sake Polish Mask", brand:"Tatcha", tier:4, ings:[], goal:"glow", for:["normal","torr"], hue:"#E6F2D9", cf:false, vg:false },
+  { id:"x132", cat:"maske", name:"Blueberry Bounce Gentle Mask", brand:"Glow Recipe", tier:3, ings:[], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"x133", cat:"maske", name:"Instant Detox Clay Mask", brand:"Caudalie", tier:3, ings:[], goal:"kviser", for:["fet","kombi","normal"], hue:"#EAD9C7", cf:false, vg:true },
+  { id:"y1", cat:"serum", name:"Vitamin C Suspension 23%", brand:"The Ordinary", tier:1, ings:["vitamin-c"], goal:"glow", for:["normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"y2", cat:"serum", name:"Alpha Arbutin 2% + HA", brand:"The Ordinary", tier:1, ings:["hyaluron"], goal:"glow", for:["torr","normal","kombi","fet","sens"], hue:"#FFE6D6", cf:true, vg:true },
+  { id:"y3", cat:"serum", name:"Azelaic Acid Suspension 10%", brand:"The Ordinary", tier:1, ings:["azelainsyre"], goal:"kviser", for:["kombi","fet","sens"], hue:"#FFE9C9", cf:true, vg:true },
+  { id:"y4", cat:"serum", name:"Retinol 0.5% in Squalane", brand:"The Ordinary", tier:1, ings:["retinol","skvalan"], goal:"aldring", for:["normal","kombi"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"y5", cat:"serum", name:"Granactive Retinoid 2% Emulsion", brand:"The Ordinary", tier:1, ings:["retinol"], goal:"aldring", for:["normal","sens"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"y6", cat:"serum", name:"Hyaluronic Acid 2% + B5", brand:"The Ordinary", tier:1, ings:["hyaluron","panthenol"], for:["torr","normal","kombi","fet","sens"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"y7", cat:"serum", name:"Caffeine Solution 5% + EGCG", brand:"The Ordinary", tier:1, ings:["gronn-te"], for:["torr","normal","kombi","fet","sens"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"y8", cat:"serum", name:"15% Vitamin C + EGF Serum", brand:"Naturium", tier:2, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"y9", cat:"serum", name:"Niacinamide Serum 12% Plus Zinc", brand:"Naturium", tier:2, ings:["niacinamid","sink"], goal:"glow", for:["fet","kombi","normal"], hue:"#FFE6D6", cf:true, vg:true },
+  { id:"y10", cat:"serum", name:"Multi-Peptide Serum", brand:"Naturium", tier:2, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#FFE9C9", cf:true, vg:true },
+  { id:"y11", cat:"serum", name:"Tranexamic Topical Acid 5%", brand:"Naturium", tier:2, ings:[], goal:"glow", for:["normal","kombi"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"y12", cat:"serum", name:"Vitamin C Serum", brand:"La Roche-Posay Pure", tier:3, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#FFF2BD", cf:false, tester:true, vg:true },
+  { id:"y13", cat:"serum", name:"Retinol B3 Serum", brand:"La Roche-Posay", tier:3, ings:["retinol","niacinamid"], goal:"aldring", for:["normal","kombi"], hue:"#E6F2D9", cf:false, tester:true, vg:true },
+  { id:"y14", cat:"serum", name:"Hyalu B5 Serum", brand:"La Roche-Posay", tier:3, ings:["hyaluron","panthenol"], for:["torr","normal","sens"], hue:"#FFD6E4", cf:false, tester:true, vg:true },
+  { id:"y15", cat:"serum", name:"Vitamin C E Ferulic", brand:"SkinCeuticals CE Ferulic", tier:4, ings:["vitamin-c"], goal:"glow", for:["normal","torr"], hue:"#EAE2FF", cf:false, vg:false },
+  { id:"y16", cat:"serum", name:"Phloretin CF", brand:"SkinCeuticals", tier:4, ings:["vitamin-c"], goal:"glow", for:["normal","kombi","fet"], hue:"#FFE6D6", cf:false, vg:false },
+  { id:"y17", cat:"serum", name:"Hyaluronic Acid Intensifier", brand:"SkinCeuticals", tier:4, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFE9C9", cf:false, vg:false },
+  { id:"y18", cat:"serum", name:"Discoloration Defense", brand:"SkinCeuticals", tier:4, ings:["niacinamid"], goal:"glow", for:["normal","kombi"], hue:"#F3E8D6", cf:false, vg:false },
+  { id:"y19", cat:"serum", name:"Advanced Snail 92 All In One Serum", brand:"COSRX", tier:1, ings:["mucin"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
+  { id:"y20", cat:"serum", name:"The Vitamin C 23 Serum", brand:"COSRX", tier:1, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"y21", cat:"serum", name:"Retinol 0.1 Cream Serum", brand:"COSRX", tier:1, ings:["retinol"], goal:"aldring", for:["normal","kombi"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"y22", cat:"serum", name:"Propolis Light Ampoule", brand:"COSRX", tier:1, ings:["gronn-te"], goal:"glow", for:["torr","normal","sens"], hue:"#EAE2FF", cf:true, vg:false },
+  { id:"y23", cat:"serum", name:"Peptide Booster", brand:"COSRX The 6", tier:1, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#FFE6D6", cf:true, vg:true },
+  { id:"y24", cat:"serum", name:"Time Revolution Ampoule 5X", brand:"Missha", tier:2, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi","fet","sens"], hue:"#FFE9C9", cf:true, vg:false },
+  { id:"y25", cat:"serum", name:"Artemisia Ampoule", brand:"Missha", tier:2, ings:["centella"], goal:"ro", for:["sens","kombi"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"y26", cat:"serum", name:"Hydro Boost Serum", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFF2BD", cf:false, vg:true },
+  { id:"y27", cat:"serum", name:"Rapid Wrinkle Repair Retinol", brand:"Neutrogena", tier:1, ings:["retinol"], goal:"aldring", for:["normal","kombi"], hue:"#E6F2D9", cf:false, vg:true },
+  { id:"y28", cat:"serum", name:"B-Hydra Intensive Hydration Serum", brand:"Glow Recipe", tier:3, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"y29", cat:"serum", name:"Guava Vitamin C Dark Spot Serum", brand:"Glow Recipe", tier:3, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"y30", cat:"serum", name:"Plum Plump Hyaluronic Serum", brand:"Glow Recipe", tier:3, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFE6D6", cf:true, vg:true },
+  { id:"y31", cat:"serum", name:"Truth Serum Vitamin C", brand:"Ole Henriksen", tier:3, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#FFE9C9", cf:true, vg:false },
+  { id:"y32", cat:"serum", name:"C-Firma Fresh Day Serum", brand:"Drunk Elephant", tier:4, ings:["vitamin-c"], goal:"glow", for:["normal","kombi"], hue:"#F3E8D6", cf:true, vg:true },
+  { id:"y33", cat:"serum", name:"A-Passioni Retinol Cream", brand:"Drunk Elephant", tier:4, ings:["retinol"], goal:"aldring", for:["normal","kombi"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"y34", cat:"serum", name:"Marula + Peptide Firming Serum", brand:"Biossance", tier:3, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#E6F2D9", cf:true, vg:true },
+  { id:"y35", cat:"serum", name:"Copper Peptide Serum", brand:"The Inkey List", tier:1, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"y36", cat:"serum", name:"Beta Hydroxy Acid Serum", brand:"The Inkey List", tier:1, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"y37", cat:"serum", name:"Vitamin B, C & E Moisturiser Serum", brand:"The Inkey List", tier:1, ings:["vitamin-c","niacinamid"], for:["normal","kombi"], hue:"#FFE6D6", cf:true, vg:true },
 ];
+
+const STERKE = ["retinol", "glykolsyre", "salisylsyre"];
+const KBEAUTY = ["Beauty of Joseon", "Anua", "SKIN1004", "Round Lab", "Isntree", "Torriden", "COSRX", "VT Cosmetics", "Haruharu", "Medicube"];
 
 const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin", pdrn:"PDRN (laks-DNA)", kollagen:"Kollagen" };
 const nvn = (i) => NAVN[i] || i;
@@ -601,17 +827,129 @@ function serumDays(p) {
 
 /* ============ PRISER ============ */
 const BASE = { 1: 149, 2: 329, 3: 749, 4: 219 };
+// Trygge norske nettbutikker og hvilke merker de fører (basert på faktisk sortiment)
+const BUTIKKER = {
+  "Lyko":        { url:"https://www.lyko.com/no", ship:"Fri frakt over 299 kr" },
+  "KICKS":       { url:"https://www.kicks.no", ship:"Fri frakt over 349 kr" },
+  "VITA":        { url:"https://www.vita.no", ship:"Fri frakt over 349 kr" },
+  "Blivakker":   { url:"https://www.blivakker.no", ship:"39 kr frakt" },
+  "Coverbrands": { url:"https://www.coverbrands.no", ship:"Fri frakt over 500 kr" },
+  "Boozt":       { url:"https://www.boozt.com/no/no", ship:"Fri frakt" },
+  "H&M Beauty":  { url:"https://www2.hm.com/no_no/beauty.html", ship:"Fri frakt for medlemmer" },
+  "Apotek 1":    { url:"https://www.apotek1.no", ship:"Klikk og hent / hjemlevering" },
+  "Vitusapotek": { url:"https://www.vitusapotek.no", ship:"Hjemlevering" },
+  "Farmasiet":   { url:"https://www.farmasiet.no", ship:"Fri frakt over 499 kr" },
+  "Nordicfeel":  { url:"https://www.nordicfeel.no", ship:"Fri frakt over 349 kr" },
+  "Parfym.no":   { url:"https://www.parfym.no", ship:"Fri frakt over 349 kr" },
+};
+// Hvilke butikker fører hvilke merker (apotekmerker → apotek, K-beauty → K-beauty-butikker, osv.)
+const MERKE_BUTIKK = {
+  "La Roche-Posay": ["Apotek 1","Vitusapotek","Farmasiet","VITA"],
+  "Avène": ["Apotek 1","Vitusapotek","Farmasiet"],
+  "CeraVe": ["Apotek 1","Vitusapotek","Farmasiet","VITA"],
+  "Bioderma": ["Apotek 1","Vitusapotek","Farmasiet"],
+  "Eucerin": ["Apotek 1","Vitusapotek","Farmasiet"],
+  "Cetaphil": ["Apotek 1","Vitusapotek","Farmasiet"],
+  "Neutrogena": ["Apotek 1","VITA","Vitusapotek"],
+  "Beauty of Joseon": ["Nordicfeel","Blivakker","Lyko"],
+  "COSRX": ["Nordicfeel","Blivakker","Lyko","VITA"],
+  "Anua": ["Nordicfeel","Blivakker"],
+  "SKIN1004": ["Nordicfeel","Blivakker"],
+  "Round Lab": ["Nordicfeel","Blivakker"],
+  "Isntree": ["Nordicfeel","Blivakker"],
+  "Torriden": ["Nordicfeel","Blivakker"],
+  "Purito": ["Nordicfeel","Blivakker"],
+  "Some By Mi": ["Nordicfeel","Blivakker"],
+  "Numbuzin": ["Nordicfeel","Blivakker"],
+  "Benton": ["Nordicfeel","Blivakker"],
+  "I'm From": ["Nordicfeel","Blivakker"],
+  "Missha": ["Nordicfeel","Blivakker","Lyko"],
+  "VT Cosmetics": ["Nordicfeel","Blivakker"],
+  "Haruharu": ["Nordicfeel","Blivakker"],
+  "Medicube": ["Nordicfeel","Blivakker","Parfym.no"],
+  "The Ordinary": ["Lyko","KICKS","VITA","Nordicfeel"],
+  "The Inkey List": ["Lyko","KICKS","Nordicfeel"],
+  "Naturium": ["Lyko","Nordicfeel"],
+  "Paula's Choice": ["Lyko","Coverbrands","Nordicfeel"],
+  "SkinCeuticals": ["Coverbrands","Apotek 1","Farmasiet"],
+  "Medik8": ["Coverbrands","Lyko"],
+  "Environ": ["Coverbrands"],
+  "iS Clinical": ["Coverbrands"],
+  "Dermalogica": ["Coverbrands","Lyko","KICKS"],
+  "Drunk Elephant": ["KICKS","Lyko","Boozt"],
+  "Biossance": ["Lyko","Nordicfeel"],
+  "Tatcha": ["KICKS","Boozt"],
+  "Fresh": ["KICKS","Boozt"],
+  "Kiehl's": ["KICKS","Boozt","Lyko"],
+  "Estée Lauder": ["KICKS","Boozt","VITA"],
+  "Clinique": ["KICKS","Boozt","VITA"],
+  "Clinique Take The Day Off": ["KICKS","Boozt","VITA"],
+  "SK-II": ["KICKS","Boozt"],
+  "La Mer": ["KICKS","Boozt"],
+  "Ole Henriksen": ["Lyko","KICKS"],
+  "Farmacy": ["Lyko","Nordicfeel"],
+  "Herbivore": ["Lyko","Nordicfeel"],
+  "Glow Recipe": ["Lyko","KICKS","Nordicfeel"],
+  "Laneige": ["Nordicfeel","Blivakker","Lyko"],
+  "Sulwhasoo": ["Nordicfeel","Boozt"],
+  "Dr.Jart+": ["Nordicfeel","Lyko","KICKS"],
+  "Dr.Jart+ Cicapair": ["Nordicfeel","Lyko"],
+  "Belif": ["Nordicfeel","Lyko"],
+  "Innisfree": ["Nordicfeel","Blivakker"],
+  "The Face Shop": ["Nordicfeel","Blivakker"],
+  "Etude House": ["Nordicfeel","Blivakker"],
+  "Nature Republic": ["Nordicfeel","Blivakker"],
+  "Krave Beauty": ["Nordicfeel"],
+  "Then I Met You": ["Nordicfeel"],
+  "Mad Hippie": ["Nordicfeel"],
+  "Biore": ["Nordicfeel","VITA"],
+  "Biore UV Aqua Rich": ["Nordicfeel","VITA"],
+  "DHC": ["Nordicfeel","VITA"],
+  "Garnier": ["VITA","Blivakker","H&M Beauty"],
+  "Neutrogena ": ["VITA","Apotek 1"],
+  "EltaMD": ["Coverbrands","Nordicfeel"],
+  "Supergoop!": ["Lyko","KICKS"],
+  "Weleda Skin Food": ["Apotek 1","VITA","Farmasiet"],
+  "Caudalie": ["KICKS","Apotek 1","Lyko"],
+  "Votary": ["KICKS"],
+  "May Lindstrom": ["KICKS"],
+  "Aztec": ["Nordicfeel","Blivakker"],
+  "Klairs": ["Nordicfeel","Blivakker"],
+  "Axis-Y": ["Nordicfeel","Blivakker"],
+  "Byoma": ["Nordicfeel","VITA","Lyko"],
+  "Heimish": ["Nordicfeel","Blivakker"],
+  "Banila Co": ["Nordicfeel","Blivakker"],
+  "Haruharu Wonder": ["Nordicfeel","Blivakker"],
+  "Skin1004": ["Nordicfeel","Blivakker"],
+  "Dr. Ceuracle": ["Nordicfeel","Blivakker"],
+  "Dr. Althea": ["Nordicfeel","Blivakker"],
+  "Huxley": ["Nordicfeel","Blivakker"],
+  "Hanskin": ["Nordicfeel","Blivakker"],
+  "AtoPalm": ["Nordicfeel","Blivakker"],
+  "Geek & Gorgeous": ["Nordicfeel"],
+  "Timeless": ["Nordicfeel"],
+  "Origins": ["KICKS","Boozt","Lyko"],
+  "Rhode": ["Lyko"],
+  "Murad": ["Lyko","KICKS","Coverbrands"],
+  "Erborian": ["KICKS","Lyko","Boozt"],
+  "Lumene": ["VITA","Nordicfeel","Lyko"],
+  "Korres": ["Lyko","KICKS"],
+  "Exuviance": ["Coverbrands","Lyko"],
+  "L'Oréal": ["VITA","Blivakker","H&M Beauty"],
+  "e.l.f.": ["H&M Beauty","VITA","Nordicfeel"],
+  "Pixi": ["Lyko","Nordicfeel"],
+  "Olay": ["VITA","Blivakker"],
+};
 function offers(p) {
-  return [
-    { store: "Lyko", ship: "Fri frakt over 299 kr", url: "https://www.lyko.com/no" },
-    { store: "KICKS", ship: "Fri frakt over 349 kr", url: "https://www.kicks.no" },
-    { store: "VITA", ship: "Fri frakt over 349 kr", url: "https://www.vita.no" },
-    { store: "Blivakker", ship: "39 kr frakt", url: "https://www.blivakker.no" },
-    { store: "Coverbrands", ship: "Fri frakt over 500 kr", url: "https://www.coverbrands.no" },
-    { store: "Boozt", ship: "Fri frakt", url: "https://www.boozt.com/no/no" },
-    { store: "H&M Beauty", ship: "Fri frakt for medlemmer", url: "https://www2.hm.com/no_no/beauty.html" },
-    { store: "Fredrik & Louisa", ship: "Fri frakt over 499 kr", url: "https://www.fredriklouisa.no" },
-  ];
+  let navn = MERKE_BUTIKK[p.brand];
+  // Delvis match: «Belif Aqua Bomb» → «Belif», «Skin1004» → «SKIN1004»
+  if (!navn) {
+    const nøkler = Object.keys(MERKE_BUTIKK);
+    const treff = nøkler.find((k) => p.brand.toLowerCase().startsWith(k.toLowerCase()) || k.toLowerCase().startsWith(p.brand.toLowerCase()));
+    if (treff) navn = MERKE_BUTIKK[treff];
+  }
+  if (!navn || navn.length === 0) navn = ["Lyko","KICKS","VITA","Nordicfeel"];
+  return navn.filter((n) => BUTIKKER[n]).map((n) => ({ store: n, ship: BUTIKKER[n].ship, url: BUTIKKER[n].url }));
 }
 
 /* ============ PRODUKTBILDE ============ */
@@ -636,7 +974,7 @@ h1{font-family:'Fraunces',serif;font-weight:600;font-size:32px;line-height:1.12;
 .sub{color:#6B6862;font-size:14.5px;line-height:1.6;text-align:center;margin:0 auto;max-width:560px}
 .opt{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid ${line};border-radius:14px;padding:15px 16px;font-size:15px;font-weight:600;color:${ink};cursor:pointer;margin-top:10px;transition:border-color .15s, transform .1s;font-family:Inter}
 .opt:hover{border-color:${ink};transform:translateY(-1px)}
-.opt.on{border-color:${coral};background:#FEF1EE}
+.opt.on{border-color:${sage};background:#EEF4EF}
 .opt small{display:block;color:#8B8880;font-weight:400;margin-top:3px;font-size:12.5px}
 .primary{width:100%;background:${ink};color:#fff;border:none;border-radius:99px;padding:16px;font-size:14px;font-weight:700;cursor:pointer;margin-top:20px;font-family:Inter;transition:transform .1s}
 .primary:hover{transform:translateY(-1px)}
@@ -756,6 +1094,8 @@ export default function Klinikk() {
   const [stegFerdig, setStegFerdig] = useState({});
   const [apneSteg, setApneSteg] = useState(null);
   const [egetForslag, setEgetForslag] = useState({});
+  const [visFlere, setVisFlere] = useState({});
+  const [behovFilter, setBehovFilter] = useState({});
   const [custIngs, setCustIngs] = useState([]);
   /* Auto-aktiver valgfrie lag når brukeren har eget/likt produkt i kategorien */
   useEffect(() => {
@@ -810,7 +1150,7 @@ export default function Klinikk() {
       const key = slotKey || (filterFn ? cat + (filterFn === isAMserum ? "AM" : "PM") : cat);
       const main = swaps[key] || (likedHere ? allProducts.find((x) => x.id === likedHere) : pool[0]?.p || null);
       const offBudget = pool[0]?.off && !swaps[key] && !likedHere;
-      return { main, locked: !!likedHere && !swaps[key], offBudget, alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 3).map((x) => x.p) };
+      return { main, locked: !!likedHere && !swaps[key], offBudget, alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 12).map((x) => x.p) };
     };
     const out = {};
     out.olje = build("olje");
@@ -1323,18 +1663,43 @@ export default function Klinikk() {
                     </div>
                   );
                 })()}
-                {!lockedIn && slot.alts.length > 0 && (
+                {!lockedIn && slot.alts.length > 0 && (() => {
+                  const BEHOV = [
+                    { k:"sensitiv", t:"Skånsom / sensitiv-trygg", test:(p)=>p.for?.includes("sens") && !STERKE.some((s)=>p.ings?.includes(s)) },
+                    { k:"parfymefri", t:"Parfymefri", test:(p)=>p.pf === true || p.brand==="La Roche-Posay" || p.brand==="Avène" || p.brand==="CeraVe" || p.brand==="Bioderma" },
+                    { k:"rimelig", t:"Rimeligere", test:(p)=>p.tier <= 2 },
+                    { k:"vegansk", t:"Vegansk", test:(p)=>p.vg === true },
+                    { k:"kbeauty", t:"K-beauty", test:(p)=>KBEAUTY.includes(p.brand) },
+                  ];
+                  const aktivt = behovFilter[o.cat];
+                  let vis = slot.alts;
+                  if (aktivt) { const f = BEHOV.find((b)=>b.k===aktivt); if (f) vis = slot.alts.filter(f.test); }
+                  const antall = visFlere[o.cat] ? vis.length : 3;
+                  return (
                   <div style={{marginTop:10}}>
-                    <div style={{fontSize:10.5, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>Bytt til, eller legg til i rotasjon:</div>
-                    <div style={{fontSize:11, color:"#8B8880", marginTop:2, marginBottom:6}}>«Bytt» erstatter produktet. «+ Roter» lar deg veksle mellom flere i ukeplanen.</div>
-                    {slot.alts.map((a) => (
+                    <div style={{fontSize:10.5, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>Liker du ikke forslaget? Bytt, eller filtrer på behov:</div>
+                    <div style={{display:"flex", gap:5, flexWrap:"wrap", margin:"8px 0"}}>
+                      {BEHOV.map((b) => {
+                        const på = aktivt === b.k;
+                        const treff = slot.alts.filter(b.test).length;
+                        if (treff === 0 && !på) return null;
+                        return <button key={b.k} onClick={() => { setBehovFilter({ ...behovFilter, [o.cat]: på ? null : b.k }); setVisFlere({ ...visFlere, [o.cat]: true }); }} style={{fontSize:11.5, padding:"5px 11px", borderRadius:20, border:"1px solid " + (på ? "#16130F" : "#D8D4CC"), background: på ? "#16130F" : "#fff", color: på ? "#fff" : "#4A4842", cursor:"pointer", fontWeight:500}}>{på ? "✓ " : ""}{b.t}</button>;
+                      })}
+                    </div>
+                    {vis.length === 0 && <div style={{fontSize:12, color:"#8B8880", fontStyle:"italic", marginBottom:6}}>Fant ingen som matcher akkurat dette behovet i databasen. Prøv et annet filter, eller legg til ditt eget produkt under.</div>}
+                    <div style={{fontSize:11, color:"#8B8880", marginBottom:6}}>«Bytt» erstatter produktet. «+ Roter» lar deg veksle mellom flere i ukeplanen.</div>
+                    {vis.slice(0, antall).map((a) => (
                       <div key={a.id} style={{display:"flex", gap:4, marginBottom:4}}>
                         <button className="altbtn" style={{flex:1, marginTop:0}} onClick={() => { setSwaps({ ...swaps, [o.cat]: a }); ping("Byttet til " + a.brand + " " + a.name + " ✓"); }}>↺ Bytt til {a.brand} — {a.name}</button>
                         <button className="altbtn" style={{width:"auto", whiteSpace:"nowrap", marginTop:0}} title="Legg dette produktet i rotasjon – ukeplanen veksler mellom produktene dine dag for dag" onClick={() => { const r = rotations[o.cat] || []; if (!r.includes(a.id)) setRotations({ ...rotations, [o.cat]: [...r, a.id] }); ping("Lagt i rotasjon – ukeplanen veksler nå 🔄"); }}>+ Roter</button>
                       </div>
                     ))}
+                    {vis.length > antall && (
+                      <button className="mini" onClick={() => setVisFlere({ ...visFlere, [o.cat]: true })}>Vis flere forslag ({vis.length - antall} til) ↓</button>
+                    )}
                   </div>
-                )}
+                  );
+                })()}
                 {!lockedIn && (() => { const kat = o.tslot !== undefined ? "toner" : o.cat.replace(/AM|PM/, ""); const ek = egetForslag[o.cat]; return (
                   <div style={{marginTop:8}}>
                     {!ek ? (
@@ -1584,7 +1949,7 @@ export default function Klinikk() {
               </div>
             </div>
             <div style={{height:14}} />
-            <div style={{fontSize:12.5, color:"#6B6862", marginBottom:10}}>Vi henter ikke live priser ennå. Her er norske nettbutikker som fører hudpleie – søk opp <b>{priceFor.brand} {priceFor.name}</b> hos dem du liker best:</div>
+            <div style={{fontSize:12.5, color:"#6B6862", marginBottom:10}}>Vi henter ikke live priser ennå, men disse norske nettbutikkene fører vanligvis <b>{priceFor.brand}</b> – søk opp <b>{priceFor.name}</b> hos den du foretrekker:</div>
             {offers(priceFor).map((o, i) => (
               <div key={o.store} className="offer">
                 <div>
