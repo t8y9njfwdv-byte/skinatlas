@@ -596,17 +596,15 @@ function serumDays(p) {
 /* ============ PRISER ============ */
 const BASE = { 1: 149, 2: 329, 3: 749, 4: 219 };
 function offers(p) {
-  const q = encodeURIComponent(p.brand + " " + p.name);
-  const base = BASE[p.tier] + ((p.id.charCodeAt(1) || 5) % 7) * 10;
   return [
-    { store: "Lyko", ship: "Fri frakt over 299 kr", url: `https://www.lyko.com/no/search?query=${q}` },
-    { store: "KICKS", ship: "Fri frakt over 349 kr", url: `https://www.kicks.no/sok?query=${q}` },
-    { store: "VITA", ship: "Fri frakt over 349 kr", url: `https://www.vita.no/sok?q=${q}` },
-    { store: "Blivakker", ship: "39 kr frakt", url: `https://www.blivakker.no/search?q=${q}` },
-    { store: "Coverbrands", ship: "Fri frakt over 500 kr", url: `https://www.coverbrands.no/search?q=${q}` },
-    { store: "Boozt", ship: "Fri frakt", url: `https://www.boozt.com/no/no/search?q=${q}` },
-    { store: "H&M Beauty", ship: "Fri frakt for medlemmer", url: `https://www2.hm.com/no_no/search-results.html?q=${q}` },
-    { store: "Fredrik & Louisa", ship: "Fri frakt over 499 kr", url: `https://www.fredriklouisa.no/search?q=${q}` },
+    { store: "Lyko", ship: "Fri frakt over 299 kr", url: "https://www.lyko.com/no" },
+    { store: "KICKS", ship: "Fri frakt over 349 kr", url: "https://www.kicks.no" },
+    { store: "VITA", ship: "Fri frakt over 349 kr", url: "https://www.vita.no" },
+    { store: "Blivakker", ship: "39 kr frakt", url: "https://www.blivakker.no" },
+    { store: "Coverbrands", ship: "Fri frakt over 500 kr", url: "https://www.coverbrands.no" },
+    { store: "Boozt", ship: "Fri frakt", url: "https://www.boozt.com/no/no" },
+    { store: "H&M Beauty", ship: "Fri frakt for medlemmer", url: "https://www2.hm.com/no_no/beauty.html" },
+    { store: "Fredrik & Louisa", ship: "Fri frakt over 499 kr", url: "https://www.fredriklouisa.no" },
   ];
 }
 
@@ -819,7 +817,11 @@ export default function Klinikk() {
 
   /* ---- INTRO ---- */
   if (step === 0) return (
-    <Shell eyebrow="Skinatlas · Kartet til hudpleierutinen din" title="Huden din fortjener en plan, ikke en gjetning" subtitle="Ingen hype, ingen mirakler – en rutine bygget på hudtypen din, helsen din og ingredienser med dokumentert effekt.">
+    <Shell eyebrow="Kartet til hudpleierutinen din" title="Huden din fortjener en plan, ikke en gjetning" subtitle="Ingen hype, ingen mirakler – en rutine bygget på hudtypen din, helsen din og ingredienser med dokumentert effekt.">
+      <div style={{marginBottom:24}}>
+        <span style={{fontFamily:"'Fraunces',serif", fontSize:34, fontWeight:600, color:"#16130F"}}>Skin<span style={{color:"#E8896B"}}>atlas</span></span>
+        <div style={{width:150, height:3, borderRadius:2, background:"#E8896B", marginTop:4}} />
+      </div>
       {saved && (
         <div className="stepcard" style={{textAlign:"center"}}>
           <div className="pbrand">Velkommen tilbake</div>
@@ -1545,14 +1547,14 @@ export default function Klinikk() {
               </div>
             </div>
             <div style={{height:14}} />
-            <div style={{fontSize:12.5, color:"#6B6862", marginBottom:10}}>Vi henter ikke live priser ennå, men her kan du søke opp produktet direkte hos norske nettbutikker:</div>
+            <div style={{fontSize:12.5, color:"#6B6862", marginBottom:10}}>Vi henter ikke live priser ennå. Her er norske nettbutikker som fører hudpleie – søk opp <b>{priceFor.brand} {priceFor.name}</b> hos dem du liker best:</div>
             {offers(priceFor).map((o, i) => (
               <div key={o.store} className="offer">
                 <div>
                   <div style={{fontWeight:700, fontSize:14}}>{o.store}</div>
                   <div style={{fontSize:11.5, color:"#8B8880", marginTop:2}}>{o.ship}</div>
                 </div>
-                <a className="gostore" href={o.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>Søk hos {o.store} →</a>
+                <a className="gostore" href={o.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>Til {o.store} →</a>
               </div>
             ))}
             <p style={{fontSize:11, color:"#8B8880", marginTop:12, lineHeight:1.5}}>Lenkene går til butikkenes egne søk. Når vi kobler på annonsenettverk (Adtraction/Partner-ads) blir dette direkte produktlenker med live priser og bilder.</p>
