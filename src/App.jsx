@@ -38,7 +38,7 @@ const P = [
   { id:"u1", cat:"serum", name:"Reedle Shot 100", brand:"VT Cosmetics", tier:2, ings:["niacinamid","hyaluron","centella"], goal:"glow", for:["normal","kombi","fet","torr","sens"], hue:"#FFF2BD", cf:true, vg:false, inci:"Purified Water, Dipropylene Glycol, Glycerin, Niacinamide, Butylene Glycol, Macadamia Ternifolia Seed Oil, 1,2-Hexanediol, Hydrolyzed Sponge, Centella Asiatica Extract, Sodium Hyaluronate, Propolis Extract, Panthenol, Tromethamine, Disodium EDTA" },
   { id:"u2", cat:"krem", name:"PDRN Capsule Cream 100", brand:"VT Cosmetics", tier:2, ings:["niacinamid","hyaluron"], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:false },
   { id:"u3", cat:"serum", name:"Lactic Acid 10% + HA", brand:"The Ordinary", tier:1, ings:["glykolsyre","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFD9C7", cf:true, vg:true, inci:"Aqua, Lactic Acid, Sodium Hydroxide, Sodium Hyaluronate, Potassium Citrate, Hydroxyethylcellulose, Ethoxydiglycol, Phenoxyethanol" },
-  { id:"u4", cat:"maske", name:"Youthtopia Refining Apple Peel", brand:"Origins", tier:2, ings:["glykolsyre"], for:["normal","kombi","fet"], hue:"#E8DDC8", cf:false, vg:false },
+  { id:"u4", cat:"serum", name:"Youthtopia Refining Apple Peel", brand:"Origins", tier:2, ings:["glykolsyre"], goal:"glow", for:["normal","kombi","fet"], hue:"#FFD9C7", cf:false, vg:false },
   { id:"u5", cat:"serum", name:"C-Firma Fresh Day Serum", brand:"Drunk Elephant", tier:3, ings:["vitamin-c","vitamin-e"], goal:"glow", for:["normal","kombi","torr","fet"], hue:"#FFF2BD", cf:true, vg:true },
   { id:"u6", cat:"serum", name:"Skin Perfecting 2% BHA Liquid", brand:"Paula's Choice", tier:2, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFD9C7", cf:true, vg:true, inci:"Water, Methylpropanediol, Butylene Glycol, Salicylic Acid, Polysorbate 20, Camellia Oleifera Leaf Extract, Sodium Hydroxide, Tetrasodium EDTA" },
   { id:"u7", cat:"serum", name:"The 6 Peptide Skin Booster Serum", brand:"COSRX", tier:1, ings:["peptider","niacinamid"], goal:"aldring", for:["normal","kombi","torr","sens"], hue:"#FFD6E4", cf:true, vg:true },
@@ -983,7 +983,7 @@ export default function Klinikk() {
                   </div>
                 )}
                 {(rotations[o.cat] || []).length > 0 && (
-                  <div className="note">🔄 <b>I rotasjon (ditt skin-geek-valg):</b> {rotations[o.cat].map((id) => { const rp = allProducts.find((x) => x.id === id); return rp && <span key={id} className="chip" style={{padding:"3px 9px"}} onClick={() => setRotations({ ...rotations, [o.cat]: rotations[o.cat].filter((x) => x !== id) })}>{rp.brand} {rp.name} ✕</span>; })} Veksle etter humør eller annenhver dag – helt trygt så lenge de aktive følger syklusen.</div>
+                  <div className="note">🔄 <b>I rotasjon:</b> {rotations[o.cat].map((id) => { const rp = allProducts.find((x) => x.id === id); return rp && <span key={id} className="chip" style={{padding:"3px 9px"}} onClick={() => setRotations({ ...rotations, [o.cat]: rotations[o.cat].filter((x) => x !== id) })}>{rp.brand} {rp.name} ✕</span>; })} Ukeplanen veksler mellom disse dag for dag. {o.cat.startsWith("serum") ? "For aktive syrer/retinol: hold syklusen så du ikke stabler dem samme kveld." : "Fukt, toner og krem kan roteres fritt – gøy for deg som liker variasjon."}</div>
                 )}
                 <div className="note">🧑‍🎓 <b>{o.n.amount}:</b> {o.n.how}</div>
                 {o.cat === "serumPM" && freqText(p) && <div className="note">📅 <b>Hvor ofte:</b> {freqText(p)}</div>}
@@ -1090,8 +1090,8 @@ export default function Klinikk() {
                       {cycling && CYCLE[d] === "ex" && <div style={{background:exP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Syre</div>}
                       {cycling && CYCLE[d] === "ret" && <div style={{background:retP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Retinol</div>}
                       {cycling && CYCLE[d] === "pause" && <div style={{color:"#B8B4AA"}}>Pause</div>}
-                      {!cycling && serum && sDays.includes(d) && <div style={{background:serum.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Aktiv</div>}
-                      <div style={{background:routine.krem?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Krem</div>
+                      {!cycling && serum && sDays.includes(d) && (() => { const rot = rotations.serumPM || []; const pool = [serum.id, ...rot]; const valgt = allProducts.find((x) => x.id === pool[d % pool.length]) || serum; return <div style={{background:valgt.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}} title={valgt.brand + " " + valgt.name}>{pool.length > 1 ? valgt.name.split(" ").slice(0,2).join(" ") : "Aktiv"}</div>; })()}
+                      {(() => { const rot = rotations.krem || []; const km = routine.krem?.main; if (!km) return null; const pool = [km.id, ...rot]; const valgt = allProducts.find((x) => x.id === pool[d % pool.length]) || km; return <div style={{background:valgt.hue, borderRadius:4, padding:"1px 4px"}} title={valgt.brand + " " + valgt.name}>{pool.length > 1 ? "Krem: " + valgt.name.split(" ")[0] : "Krem"}</div>; })()}
                     </td>
                   ))}
                 </tr>
