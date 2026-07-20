@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 /* Lagring i nettleseren (localStorage) */
 const storage = {
@@ -853,6 +854,7 @@ export default function Klinikk() {
       <p className="sub" style={{fontSize:11.5, marginTop:8}}>Alder finjusterer anbefalingen – men hudtype og toleranse betyr mest. En robust hud tåler mer uansett alder.</p>
       <button className="primary" onClick={() => { if (ans.hudtype && ans.alder) setStep(2); else ping("Velg hudtype og alder"); }}>Fortsett</button>
       {toast && <div className="toast">{toast}</div>}
+      <Analytics />
     </Shell>
   );
 
@@ -886,6 +888,7 @@ export default function Klinikk() {
       <button className="primary" onClick={() => { if (ans.sensitiv && ans.toleranse) setStep(4); else ping("Velg ett svar på begge"); }}>Fortsett</button>
       <button className="ghost" onClick={() => setStep(step - 1)}>← Tilbake</button>
       {toast && <div className="toast">{toast}</div>}
+      <Analytics />
     </Shell>
   );
 
@@ -912,6 +915,7 @@ export default function Klinikk() {
       <button className="primary" onClick={() => { if (ans.maal) setStep(6); else ping("Velg ett svar"); }}>Fortsett</button>
       <button className="ghost" onClick={() => setStep(step - 1)}>← Tilbake</button>
       {toast && <div className="toast">{toast}</div>}
+      <Analytics />
     </Shell>
   );
 
@@ -927,6 +931,7 @@ export default function Klinikk() {
       <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>🐇 <b>Vi viser aldri merker vi vet tester på dyr.</b> Vil du ha den strengeste garantien, kan du filtrere på Leaping Bunny-sertifisering nedenfor – den gullstandarden reviderer hele leverandørkjeden.</div>
       <div className="note" style={{maxWidth:430, margin:"14px auto 0"}}>💡 <b>Myteknuser:</b> Dyrere er ikke bedre. Pris er ofte merkevarestrategi – huden bryr seg om ingrediensene, ikke prislappen.</div>
       {toast && <div className="toast">{toast}</div>}
+      <Analytics />
       <div style={{maxWidth:430, margin:"14px auto 0"}}>
         <div style={{fontSize:11, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", marginBottom:4}}>Flere valg (valgfritt)</div>
         {[["lb","🐇 Kun Leaping Bunny-sertifisert","Strengeste dyretestfri-garantien – reviderer hele leverandørkjeden. Skjuler merker uten sertifikat."],["vegan","🌱 Kun veganske produkter","Uten animalske ingredienser som sneglemucin, honning og lanolin"],["parfymefri","🌸 Parfymefritt","Duft er en vanlig årsak til hudreaksjoner"]].map(([v,t,d]) => (
@@ -1010,6 +1015,7 @@ export default function Klinikk() {
       <button className="primary" onClick={() => setStep(8)}>Lag min rutine</button>
       <button className="ghost" onClick={() => setStep(step - 1)}>← Tilbake</button>
       {toast && <div className="toast">{toast}</div>}
+      <Analytics />
     </Shell>
   );
 
@@ -1507,6 +1513,7 @@ export default function Klinikk() {
       )}
 
       {toast && <div className="toast">{toast}</div>}
+      <Analytics />
     </div></div>
   );
 }
