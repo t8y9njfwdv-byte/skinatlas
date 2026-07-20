@@ -9,25 +9,25 @@ const storage = {
 
 /* ============ INGREDIENS-KUNNSKAP ============ */
 const ING = {
-  ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=ceramides+skin+barrier" },
-  hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=hyaluronic+acid+topical+skin+hydration" },
+  ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC6197824/" },
+  hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC8322246/" },
   niacinamid: { s:"Jevner hudtone, roer rødhet", d:"Niacinamid (vitamin B3) demper betennelsessignaler og bremser overføring av pigment til hudoverflaten – jevnere tone, roligere rødhet. Øker også hudens egen ceramidproduksjon.", u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8389214/" },
-  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=salicylic+acid+acne+treatment", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true },
+  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true , u:"https://pubmed.ncbi.nlm.nih.gov/33852244/"},
   glykolsyre: { s:"Eksfolierer overflaten (AHA)", d:"Løsner «limet» mellom døde hudceller så de slipper taket – glattere hud som reflekterer lys bedre.", u:"https://pubmed.ncbi.nlm.nih.gov/22916351/", freq:"Start 1–2 kvelder/uke → maks annenhver kveld. Øker solfølsomhet betydelig.", sun:true },
   retinol: { s:"Gullstandard mot linjer og tekstur", d:"Vitamin A som skrur opp cellefornyelse og kollagenproduksjon – den mest dokumenterte anti-aldringsingrediensen. Kun kveld (brytes ned av UV-lys).", u:"https://pubmed.ncbi.nlm.nih.gov/25738849/", freq:"Uke 1–2: 2 kvelder/uke · Uke 3–4: annenhver kveld · Deretter: hver kveld hvis huden tåler det. Litt flassing i starten er normalt.", sun:true, preg:true },
-  bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt med retinol-lignende effekt på linjer og pigment i studier – uten irritasjonen. Trygt ved graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=bakuchiol+retinol", freq:"Kan brukes hver kveld fra dag én." },
-  "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=topical+vitamin+C+ascorbic+acid+skin", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
-  centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=centella+asiatica+skin", freq:"Daglig, morgen og/eller kveld." },
-  azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=azelaic+acid+acne+rosacea", freq:"1x daglig første uken → øk til morgen + kveld." },
-  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=peptides+topical+skin+collagen", freq:"Daglig." },
-  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=snail+mucin+secretion+filtrate+skin", freq:"Daglig." },
-  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=squalane+skin", },
-  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=panthenol+dexpanthenol+skin+barrier", },
-  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=tocopherol+topical+vitamin+E+skin", },
-  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=urea+emollient+xerosis", },
-  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=polyhydroxy+acid+gluconolactone+skin", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
-  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=zinc+topical+sebum+acne", },
-  "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=green+tea+EGCG+topical+skin" },
+  bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt med retinol-lignende effekt på linjer og pigment i studier – uten irritasjonen. Trygt ved graviditet.", freq:"Kan brukes hver kveld fra dag én." , u:"https://pubmed.ncbi.nlm.nih.gov/29947134/"},
+  "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
+  centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", freq:"Daglig, morgen og/eller kveld." , u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8956065/"},
+  azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", freq:"1x daglig første uken → øk til morgen + kveld." , u:"https://pubmed.ncbi.nlm.nih.gov/37550898/"},
+  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", freq:"Daglig." },
+  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", freq:"Daglig." },
+  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", },
+  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", },
+  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", },
+  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", },
+  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
+  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", },
+  "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress." },
 };
 
 /* ============ PRODUKTER ============ */
@@ -336,6 +336,25 @@ function scoreProduct(p, ans, avoid, dislikedIngs) {
   if (ans.etikk?.includes("lb") && !p.cf && !p.custom) return -999; /* Valgfritt: kun Leaping Bunny */
   if (ans.toleranse === "erfaren" && p.ings.some((i) => ING[i]?.sun || i === "retinol")) sc += 1;
   if (ans.toleranse === "ny" && ans.sensitiv !== "nei" && p.ings.includes("retinol")) sc -= 1;
+  // Aldersjustering (finjustering – hudtype/toleranse veier tyngre)
+  if (ans.alder === "ung") {
+    // Under 20: styr mot mildt, fukt og SPF. Demp anti-aldring-aktive; behold BHA mot kviser.
+    if (p.ings.includes("retinol")) sc -= 6;
+    if (p.ings.includes("glykolsyre")) sc -= 2;
+    if (p.ings.includes("peptider")) sc -= 3;
+    if (p.goal === "aldring") sc -= 4;
+    if (p.ings.includes("salisylsyre") || p.ings.includes("niacinamid")) sc += 1; // trygge mot kviser
+    if (p.cat === "spf" || p.ings.includes("hyaluron") || p.ings.includes("centella")) sc += 1;
+  } else if (ans.alder === "20") {
+    if (p.ings.includes("vitamin-c")) sc += 1; // prevention-fasen: antioksidanter
+  } else if (ans.alder === "30") {
+    if (p.ings.includes("retinol") || p.ings.includes("peptider")) sc += 2;
+  } else if (ans.alder === "45") {
+    // Modnere hud: løft fukt, barriere og retinoider; syrer times forsiktigere (håndteres andre steder)
+    if (p.ings.includes("retinol") || p.ings.includes("peptider")) sc += 2;
+    if (p.ings.includes("ceramider") || p.ings.includes("hyaluron") || p.ings.includes("panthenol")) sc += 2;
+    if (p.goal === "aldring") sc += 1;
+  }
   for (const d of dislikedIngs) if (p.ings.includes(d)) sc -= 3;
   return sc;
 }
@@ -436,6 +455,41 @@ function serumTiming(p) {
 
 function erAktivEksfoliant(p) { return p?.ings?.some((i) => ["glykolsyre","salisylsyre","pha","azelainsyre"].includes(i)); }
 function erAktivPM(p) { return p?.ings?.some((i) => ING[i]?.sun || i === "retinol"); }
+
+/* Helhetlig konfliktsjekk: ser på ALLE produktene i rutinen samlet og advarer om
+   kombinasjoner som kan irritere eller nøytralisere hverandre. Returnerer liste med advarsler. */
+function finnKonflikter(produkter, cycling) {
+  const advarsler = [];
+  const alle = produkter.filter(Boolean);
+  const harIng = (ing) => alle.filter((p) => p.ings?.includes(ing));
+  const navnliste = (ps) => ps.map((p) => `${p.brand} ${p.name}`).join(" + ");
+
+  // 1. Flere eksfolierende syrer samtidig (AHA + BHA + PHA)
+  const syrer = alle.filter((p) => erAktivEksfoliant(p));
+  if (syrer.length > 1 && !cycling) {
+    advarsler.push({ niva:"advarsel", tekst:`Du har flere eksfolierende syrer i rutinen (${navnliste(syrer)}). Å bruke dem samtidig kan overeksfoliere og skade hudbarrieren. Bruk dem på ulike dager, eller velg én.` });
+  }
+  // 2. Syre + retinol (uten skin-cycling som separerer dem)
+  const retinoler = harIng("retinol");
+  if (syrer.length >= 1 && retinoler.length >= 1 && !cycling) {
+    advarsler.push({ niva:"advarsel", tekst:`Syre (${navnliste(syrer)}) og retinol (${navnliste(retinoler)}) samme kveld kan gi kraftig irritasjon. Bruk dem på hver sine kvelder – eller la verktøyet sette opp skin-cycling for deg.` });
+  }
+  // 3. Flere retinoider/retinol-produkter
+  if (retinoler.length > 1) {
+    advarsler.push({ niva:"advarsel", tekst:`Du har flere retinol-produkter (${navnliste(retinoler)}). Å stable retinoider øker irritasjon uten ekstra effekt – hold deg til ett.` });
+  }
+  // 4. Ren vitamin C (L-askorbinsyre) + retinol – kan begge irritere; info-nivå
+  const cvit = harIng("vitamin-c");
+  if (cvit.length >= 1 && retinoler.length >= 1) {
+    advarsler.push({ niva:"info", tekst:`Vitamin C og retinol brukes best til hver sin tid på døgnet: vitamin C om morgenen (antioksidant under SPF), retinol om kvelden. Rutinen din er satt opp slik – bare bekreftende.` });
+  }
+  // 5. Mange aktive totalt for nybegynner-lignende rutine
+  const aktiveTotalt = alle.filter((p) => erAktivEksfoliant(p) || p.ings?.includes("retinol")).length;
+  if (aktiveTotalt >= 3 && !cycling) {
+    advarsler.push({ niva:"info", tekst:`Rutinen inneholder ${aktiveTotalt} aktive ingredienser. Det er mye på én gang – vurder å introdusere dem gradvis, ett produkt hver 1–2 uke, så huden får venne seg til.` });
+  }
+  return advarsler;
+}
 /* Analyserer hvor invasivt/sterkt et aktivt produkt er, ut fra produkttype + konsentrasjon.
    Renseprodukter som skylles av er mildere enn leave-on serum med samme syre. */
 function kortnavn(p) {
@@ -541,7 +595,8 @@ h1{font-family:'Fraunces',serif;font-weight:600;font-size:32px;line-height:1.12;
 .offer.best{border-color:${sage}}
 .gostore{font-size:12px;font-weight:700;color:#fff;background:${ink};border:none;border-radius:99px;padding:9px 14px;cursor:pointer;font-family:Inter;white-space:nowrap}
 .pricetag{font-size:17px;font-weight:700}
-.week{width:100%;border-collapse:collapse;font-size:11px;margin-top:10px}
+.weekscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px -4px 0;padding:0 4px}
+.week{width:100%;min-width:560px;border-collapse:collapse;font-size:11px}
 .week th{font-weight:700;padding:6px 2px;color:#8B8880;text-transform:uppercase;letter-spacing:.06em;font-size:9.5px}
 .week td{border:1px solid ${line};padding:5px 3px;text-align:center;background:#fff;border-radius:4px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin:1px}
@@ -560,7 +615,7 @@ const Shell = ({ eyebrow, title, subtitle, children }) => (
 /* ============ APP ============ */
 export default function Klinikk() {
   const [step, setStep] = useState(0);
-  const [ans, setAns] = useState({ hudtype:null, sensitiv:null, toleranse:null, sensList:[], helse:[], maal:null, budsjett:[], etikk:[] });
+  const [ans, setAns] = useState({ hudtype:null, alder:null, sensitiv:null, toleranse:null, sensList:[], helse:[], maal:null, budsjett:[], etikk:[] });
   const [liked, setLiked] = useState([]);
   const [custom, setCustom] = useState([]);
   const [disliked, setDisliked] = useState([]);
@@ -585,6 +640,8 @@ export default function Klinikk() {
   const [oppsNivaa, setOppsNivaa] = useState(1);
   const [visOpps, setVisOpps] = useState(true);
   const [stegFerdig, setStegFerdig] = useState({});
+  const [apneSteg, setApneSteg] = useState(null);
+  const [egetForslag, setEgetForslag] = useState({});
   const [custIngs, setCustIngs] = useState([]);
   /* Auto-aktiver valgfrie lag når brukeren har eget/likt produkt i kategorien */
   useEffect(() => {
@@ -606,7 +663,7 @@ export default function Klinikk() {
 
   useEffect(() => {
     (async () => {
-      try { const r = await storage.get("min-rutine"); if (r) { const sv = JSON.parse(r.value); if (typeof sv.ans?.budsjett === "number") sv.ans.budsjett = [sv.ans.budsjett]; if (!sv.ans?.toleranse) sv.ans.toleranse = "litt"; if (!sv.ans?.etikk) sv.ans.etikk = []; setSaved(sv); } } catch (e) {}
+      try { const r = await storage.get("min-rutine"); if (r) { const sv = JSON.parse(r.value); if (typeof sv.ans?.budsjett === "number") sv.ans.budsjett = [sv.ans.budsjett]; if (!sv.ans?.toleranse) sv.ans.toleranse = "litt"; if (!sv.ans?.etikk) sv.ans.etikk = []; if (!sv.ans?.alder) sv.ans.alder = "30"; setSaved(sv); } } catch (e) {}
       try { const fb = await storage.get("skinatlas-feedback"); if (fb) setFeedback(JSON.parse(fb.value)); } catch (e) {}
     })();
   }, []);
@@ -651,10 +708,14 @@ export default function Klinikk() {
       .filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc).map((x) => x.p);
     out.maske = build("maske");
     out.rens = build("rens");
-    out.serumAM = build("serum", isAMserum);
-    out.serumPM = build("serum", (p) => !isAMserum(p));
+    const erCvit = (p) => p.ings.includes("vitamin-c");
+    const erFuktserum = (p) => (p.ings.includes("hyaluron") || p.ings.includes("panthenol") || p.ings.includes("centella") || p.ings.includes("mucin")) && !p.ings.some((i) => ING[i]?.sun) && !p.ings.includes("vitamin-c") && !p.ings.includes("niacinamid");
+    out.serumC = build("serum", erCvit);                       // C-vitamin / antioksidant (AM)
+    out.serumAM = build("serum", (p) => isAMserum(p) && !erCvit(p)); // annet dagserum (f.eks. niacinamid)
+    out.serumHydra = build("serum", erFuktserum);              // rent fuktserum – eget trinn
+    out.serumPM = build("serum", (p) => !isAMserum(p) && !erFuktserum(p)); // aktivt kveldsserum
     /* Skin-cycling for erfarne: både eksfoliering og retinol */
-    const wantCycle = ans.toleranse !== "ny" && !ans.helse.includes("gravid") && (ans.maal === "aldring" || ans.maal === "glow") && !ans.sensList.includes("retinol") && !ans.sensList.includes("salisylsyre");
+    const wantCycle = ans.alder !== "ung" && ans.toleranse !== "ny" && !ans.helse.includes("gravid") && (ans.maal === "aldring" || ans.maal === "glow") && !ans.sensList.includes("retinol") && !ans.sensList.includes("salisylsyre");
     if (wantCycle) {
       const ex = build("serum", (p) => p.ings.includes("glykolsyre") || p.ings.includes("salisylsyre"));
       const ret = build("serum", (p) => p.ings.includes("retinol") || p.ings.includes("bakuchiol"));
@@ -663,7 +724,11 @@ export default function Klinikk() {
     out.krem = build("krem");
     out.spf = build("spf");
     /* Unngå duplikat-effekt: hvis AM og PM endte med samme hero, dropp AM */
-    if (out.serumAM.main && out.serumPM.main && out.serumAM.main.id === out.serumPM.main.id) out.serumAM.main = null;
+    // Fjern duplikater på tvers av serum-slots (samme produkt skal ikke stå to steder)
+    const brukteSerum = new Set();
+    ["serumC","serumAM","serumHydra","serumPM","serumEx","serumRet"].forEach((k) => {
+      if (out[k]?.main) { if (brukteSerum.has(out[k].main.id)) out[k] = { main:null, alts:out[k].alts || [] }; else brukteSerum.add(out[k].main.id); }
+    });
     return out;
   }, [ans, liked, disliked, swaps, custom]);
 
@@ -681,6 +746,7 @@ export default function Klinikk() {
         </div>
       )}
       <button className="primary" onClick={() => setStep(1)}>Begynn konsultasjonen</button>
+      <p className="sub" style={{fontSize:11.5, marginTop:10, color:"#8B8880"}}>Nytt verktøy under utvikling. Gir generell veiledning basert på ingredienser – ikke medisinske råd. Introduser produkter forsiktig, og rådfør deg med lege ved graviditet, hudsykdom eller tvil.</p>
       <div style={{display:"flex", gap:0}}>
         <button className="ghost" onClick={() => { setShowHow(!showHow); setShowTrust(false); setShowPersonvern(false); }}>🤖 Hvordan funker veilederen?</button>
         <button className="ghost" onClick={() => { setShowTrust(!showTrust); setShowHow(false); setShowPersonvern(false); }}>Hvorfor stole på oss? ↓</button>
@@ -736,7 +802,14 @@ export default function Klinikk() {
         <button key={o.v} className={"opt" + (ans.hudtype === o.v ? " on" : "")} onClick={() => setAns({ ...ans, hudtype: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
       <p className="sub" style={{fontSize:12, marginTop:14}}>Usikker? Vask ansiktet, vent 1 time uten produkter: stram = tørr, blank = fet, blank kun i T-sonen = kombinert.</p>
-      <button className="primary" onClick={() => { if (ans.hudtype) setStep(2); else ping("Velg ett svar"); }}>Fortsett</button>
+      <div style={{fontSize:13, fontWeight:700, margin:"20px 0 6px"}}>Hvor gammel er du?</div>
+      <div style={{display:"flex", gap:6, flexWrap:"wrap"}}>
+        {[{v:"ung",t:"Under 20"},{v:"20",t:"20–29"},{v:"30",t:"30–44"},{v:"45",t:"45+"}].map((o) => (
+          <button key={o.v} className="chip" style={{padding:"8px 14px", background: ans.alder === o.v ? "#16130F" : "#fff", color: ans.alder === o.v ? "#fff" : "#16130F"}} onClick={() => setAns({ ...ans, alder: o.v })}>{o.t}</button>
+        ))}
+      </div>
+      <p className="sub" style={{fontSize:11.5, marginTop:8}}>Alder finjusterer anbefalingen – men hudtype og toleranse betyr mest. En robust hud tåler mer uansett alder.</p>
+      <button className="primary" onClick={() => { if (ans.hudtype && ans.alder) setStep(2); else ping("Velg hudtype og alder"); }}>Fortsett</button>
       {toast && <div className="toast">{toast}</div>}
     </Shell>
   );
@@ -917,7 +990,9 @@ export default function Klinikk() {
   const order = [
     { cat:"olje", label:"Oljerens (dobbelrens steg 1)", when:"PM · løser opp SPF og sminke", n:NYBEGYNNER.olje },
     { cat:"rens", label:"Rens (dobbelrens steg 2)", when:"PM · om morgenen holder lunkent vann", n:NYBEGYNNER.rens },
-    { cat:"serumAM", label:"Dagserum", when:"AM – antioksidant-skjold under solkremen", n:NYBEGYNNER.serum },
+    ...(routine?.serumC?.main ? [{ cat:"serumC", label:"C-vitamin / antioksidant", when:"AM – antioksidant-skjold under solkremen", n:NYBEGYNNER.serum }] : []),
+    ...(routine?.serumAM?.main ? [{ cat:"serumAM", label:"Dagserum", when:"AM – etter C-vitamin", n:NYBEGYNNER.serum }] : []),
+    ...(routine?.serumHydra?.main ? [{ cat:"serumHydra", label:"Fuktserum", when:"AM + PM – hydrerende lag", n:NYBEGYNNER.serum }] : []),
     ...(routine?.serumEx?.main ? [
       { cat:"serumEx", label:"Kveld A – Eksfoliering", when:"PM · syre-kveld i syklusen", n:NYBEGYNNER.serum },
       { cat:"serumRet", label:"Kveld B – Retinol", when:"PM · retinol-kveld i syklusen", n:NYBEGYNNER.serum },
@@ -954,6 +1029,8 @@ export default function Klinikk() {
       </p>
 
       {ans.helse.includes("gravid") && <div className="note" style={{maxWidth:460, margin:"12px auto 0"}}>🤰 Tilpasset graviditet/amming: uten retinol og sterke syrer.</div>}
+      {ans.alder === "ung" && <div className="note" style={{maxWidth:460, margin:"12px auto 0"}}>🌱 Tilpasset ung hud: fokus på mild rensing, fukt og solkrem. Vi holder igjen på retinol og sterke anti-aldringssyrer – ung hud fornyer seg raskt selv og trenger dem sjelden. Har du kviser, er mild BHA (salisylsyre) trygt. Er du under 18 og vurderer aktive ingredienser, snakk gjerne med en voksen eller lege først.</div>}
+      {ans.alder === "45" && <div className="note" style={{maxWidth:460, margin:"12px auto 0"}}>🌿 Tilpasset modnere hud: ekstra vekt på fukt, barrierestøtte (ceramider, hyaluron) og dokumenterte anti-aldringsingredienser som retinoider og peptider. Aktive syrer times gjerne litt forsiktigere når huden er tørrere.</div>}
       {(ans.helse.includes("hudsykdom") || ans.helse.includes("behandling") || ans.helse.includes("hormon")) && <div className="warn" style={{maxWidth:460, margin:"12px auto 0"}}>⚕️ Med helsesituasjonen du oppga: vis denne rutinen til lege/dermatolog før du starter. Generell veiledning erstatter ikke medisinsk vurdering.</div>}
 
       <div style={{height:10}} />
@@ -984,12 +1061,30 @@ export default function Klinikk() {
         </>)}
       </div>
 
+      {(() => {
+        // Samle faktiske produkter i rutinen (respekterer bytter og rotasjon)
+        const iRutinen = [];
+        order.forEach((o) => { const sl = o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat]; if (sl?.main) iRutinen.push(sl.main); (rotations[o.cat] || []).forEach((id) => { const rp = allProducts.find((x) => x.id === id); if (rp) iRutinen.push(rp); }); });
+        const konflikter = finnKonflikter(iRutinen, cycling);
+        return konflikter.length > 0 && (
+          <div className={konflikter.some((k) => k.niva === "advarsel") ? "warn" : "note"} style={{marginBottom:14}}>
+            <div style={{fontWeight:700, marginBottom:6}}>{konflikter.some((k) => k.niva === "advarsel") ? "⚠️ Sjekk kombinasjonene dine" : "ℹ️ Om kombinasjonene dine"}</div>
+            {konflikter.map((k, i) => (
+              <p key={i} style={{margin: i === konflikter.length - 1 ? 0 : "0 0 8px", fontSize:13, lineHeight:1.55}}>{k.niva === "advarsel" ? "⚠️ " : "• "}{k.tekst}</p>
+            ))}
+          </div>
+        );
+      })()}
+
       {(() => { const totalt = order.filter((o) => (o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat])?.main).length; const ferdig = order.filter((o) => stegFerdig[o.cat]).length; return ferdig > 0 && (
         <div className="note" style={{display:"flex", justifyContent:"space-between", alignItems:"center", background:"#EAF4E6"}}>
-          <span style={{fontSize:13}}>✓ <b>{ferdig} av {totalt}</b> steg sjekket ut{ferdig === totalt ? " – rutinen din er komplett! 🎉" : ""}</span>
-          <button className="mini" onClick={() => setStegFerdig({})}>Åpne alle igjen</button>
+          <span style={{fontSize:13}}>✓ <b>{ferdig} av {totalt}</b> steg lagret{ferdig === totalt ? " – rutinen din er komplett! 🎉" : ""}</span>
+          <button className="mini" onClick={() => { setStegFerdig({}); setApneSteg(null); }}>Åpne alle igjen</button>
         </div>
       ); })()}
+      <div style={{display:"flex", justifyContent:"flex-end", marginBottom:8}}>
+        <button className="mini" onClick={() => setApneSteg(apneSteg === "ALLE" ? null : "ALLE")}>{apneSteg === "ALLE" ? "▤ Vis ett steg av gangen" : "▦ Vis alle steg samtidig"}</button>
+      </div>
       {order.map((o, i) => {
         const slot = o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat];
         if (!slot?.main) return null;
@@ -1005,6 +1100,24 @@ export default function Klinikk() {
                 </div>
               </div>
               <button className="mini" onClick={() => setStegFerdig({ ...stegFerdig, [o.cat]: false })}>Endre</button>
+            </div>
+          </div>
+        );
+        // Accordion: hvilket steg er "åpent"? Default = første ikke-ferdige. Bruker kan overstyre.
+        const forsteApne = order.find((oo) => { const sl = oo.tslot !== undefined ? tonerSlots[oo.tslot] : routine[oo.cat]; return sl?.main && !stegFerdig[oo.cat]; });
+        const aktivtApent = apneSteg || forsteApne?.cat;
+        const erApent = o.cat === aktivtApent || apneSteg === "ALLE";
+        if (!erApent) return (
+          <div key={o.cat} className="stepcard" style={{padding:"12px 16px", cursor:"pointer"}} onClick={() => setApneSteg(o.cat)}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8}}>
+              <div style={{display:"flex", alignItems:"center", gap:10}}>
+                <span style={{fontFamily:"'Fraunces',serif", fontSize:15, color:coral, fontWeight:600}}>{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#8B8880"}}>{(o.label.split("(")[0]).trim()}</span>
+                  <div style={{fontSize:13, color:"#6B6862"}}><b>{p.brand}</b> {p.name}</div>
+                </div>
+              </div>
+              <span style={{fontSize:12, color:"#8B8880"}}>Åpne ↓</span>
             </div>
           </div>
         );
@@ -1068,7 +1181,7 @@ export default function Klinikk() {
                   <div className="note">
                     <b>{nvn(openIng)}</b> – {ING[openIng].s}.
                     {deepIng === openIng
-                      ? <><div style={{marginTop:6}}>{ING[openIng].d}</div><a className="learn" href={ING[openIng].u} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:6}}>📄 Se forskningen på PubMed →</a></>
+                      ? <><div style={{marginTop:6}}>{ING[openIng].d}</div>{ING[openIng].u && <a className="learn" href={ING[openIng].u} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:6}}>📄 Se forskningen på PubMed →</a>}</>
                       : <button className="learn" style={{marginLeft:6}} onClick={() => setDeepIng(openIng)}>Lær mer →</button>}
                   </div>
                 )}
@@ -1096,9 +1209,42 @@ export default function Klinikk() {
                     ))}
                   </div>
                 )}
+                {!lockedIn && (() => { const kat = o.tslot !== undefined ? "toner" : o.cat.replace(/AM|PM/, ""); const ek = egetForslag[o.cat]; return (
+                  <div style={{marginTop:8}}>
+                    {!ek ? (
+                      <button className="mini" onClick={() => setEgetForslag({ ...egetForslag, [o.cat]: { navn:"", inci:"", ings:[] } })}>+ Ingen passer – legg til mitt eget produkt her</button>
+                    ) : (
+                      <div className="note" style={{background:"#F3F0FF"}}>
+                        <div style={{fontSize:12.5, fontWeight:700, marginBottom:6}}>Ditt eget produkt til «{(o.label.split("(")[0]).trim()}»</div>
+                        <input className="search" style={{marginTop:0, marginBottom:6}} placeholder="Søk i databasen, eller skriv produktnavn..." value={ek.navn} onChange={(e) => setEgetForslag({ ...egetForslag, [o.cat]: { ...ek, navn: e.target.value } })} />
+                        {ek.navn.trim().length >= 2 && (() => {
+                          const treff = allProducts.filter((x) => !x.custom && (x.brand + " " + x.name).toLowerCase().includes(ek.navn.toLowerCase())).slice(0, 5);
+                          return treff.length > 0 && (
+                            <div style={{marginBottom:8}}>
+                              <div style={{fontSize:10.5, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880", fontWeight:700, marginBottom:4}}>Funnet i databasen – trykk for å velge:</div>
+                              {treff.map((x) => (
+                                <button key={x.id} className="altbtn" style={{textAlign:"left"}} onClick={() => { setSwaps({ ...swaps, [o.cat]: x }); setEgetForslag({ ...egetForslag, [o.cat]: null }); ping("Valgt: " + x.brand + " " + x.name + " ✓"); }}>↺ {x.brand} — {x.name} {x.cat !== kat && <span style={{color:"#C0392B", fontSize:11}}>· ({x.cat})</span>}</button>
+                              ))}
+                            </div>
+                          );
+                        })()}
+                        <textarea className="search" style={{minHeight:60, resize:"vertical", fontFamily:"inherit"}} placeholder="Finner du det ikke? Lim inn ingredienslisten (valgfritt) – vi gjenkjenner de aktive automatisk" value={ek.inci} onChange={(e) => setEgetForslag({ ...egetForslag, [o.cat]: { ...ek, inci: e.target.value, ings: matchINCI(e.target.value) } })} />
+                        {ek.ings.length > 0 && <div style={{marginTop:6, fontSize:12}}>Gjenkjent: {ek.ings.map(nvn).join(", ")}</div>}
+                        <div style={{display:"flex", gap:6, marginTop:8}}>
+                          <button className="primary" style={{width:"auto", marginTop:0}} disabled={!ek.navn.trim()} onClick={() => {
+                            const np = { id:"cu"+Date.now(), cat:kat, name:ek.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:ek.ings, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6", vg:true, inci:ek.inci };
+                            setCustom([...custom, np]); setSwaps({ ...swaps, [o.cat]: np }); setEgetForslag({ ...egetForslag, [o.cat]: null });
+                            ping("Ditt produkt er lagt inn i dette steget ✓");
+                          }}>Bruk som eget produkt</button>
+                          <button className="mini" onClick={() => setEgetForslag({ ...egetForslag, [o.cat]: null })}>Avbryt</button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ); })()}
                 <div style={{display:"flex", gap:4, marginTop:8, alignItems:"center", flexWrap:"wrap"}}>
                   <button className="buy" onClick={() => setPriceFor(p)}>Se beste pris</button>
-                  <button className="mini" style={{background:"#EAF4E6", borderColor:"#4A8B5C"}} onClick={() => { setStegFerdig({ ...stegFerdig, [o.cat]: true }); ping("Steg sjekket ut ✓"); }}>✓ Sjekk ut</button>
+                  <button className="buy" style={{background:"#4A8B5C"}} onClick={() => { setStegFerdig({ ...stegFerdig, [o.cat]: true }); setApneSteg(null); ping("Steg lagret ✓"); }}>✓ Ferdig med dette steget</button>
                   <button className="mini" onClick={() => setFbOpen(fbOpen === p.id ? null : p.id)}>💬 Tilbakemelding{feedback[p.id] ? " ✓" : ""}</button>
                   {!p.custom && <button className="mini" onClick={() => { setDisliked([...new Set([...disliked, p.id])]); const ns = { ...swaps }; delete ns[o.cat]; setSwaps(ns); ping("Notert! Vi husker det og har byttet til nest beste match ✓"); }}>✕ Passer ikke meg</button>}
                   {!lockedIn && <button className="mini" onClick={() => setRemoved([...removed, o.cat])}>Fjern steg</button>}
@@ -1189,7 +1335,8 @@ export default function Klinikk() {
           const cellWarn = (cells) => cells.filter((c) => c.aktiv).length > 1;
           return (
           <>
-            <div style={{fontSize:12, color:"#6B6862", marginTop:4}}>Trykk en celle for å bytte, fjerne eller legge til produkt. Rødt = mulig kollisjon.</div>
+            <div style={{fontSize:12, color:"#6B6862", marginTop:4}}>Trykk en celle for å bytte, fjerne eller legge til produkt. Rødt = mulig kollisjon. <span style={{color:"#B8B4AA"}}>(Sveip sidelengs på mobil →)</span></div>
+            <div className="weekscroll">
             <table className="week">
               <thead><tr><th></th>{DAGER.map((d) => <th key={d}>{d}</th>)}</tr></thead>
               <tbody>
@@ -1206,6 +1353,7 @@ export default function Klinikk() {
                 ))}
               </tbody>
             </table>
+            </div>
             {cellEdit && (() => { const cells = buildCells(cellEdit.dag, cellEdit.tid); const key = cellEdit.tid + cellEdit.dag; const kat = order.filter((o) => routine[o.cat]?.main || (o.tslot !== undefined)); return (
               <div className="note" style={{background:"#F7F5FF", marginTop:8}}>
                 <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
@@ -1253,13 +1401,21 @@ export default function Klinikk() {
                 </div>
               </div>
               {cycling && <div className="note" style={{marginTop:10}}>🔄 <b>Skin-cycling:</b> Du roterer syre-kveld → retinol-kveld → pausekvelder (kun fukt). Idéen, popularisert av dermatolog Whitney Bowe, er at pausenettene lar hudbarrieren reparere seg – slik at du får effekten av begge aktive uten irritasjonen av å stable dem. Konseptet bygger på dokumentasjonen for at gradvis, ikke-daglig retinoidbruk gir mindre irritasjon med bevart effekt. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/25738849/" target="_blank" rel="noreferrer">Retinoid-forskning →</a> <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/22916351/" target="_blank" rel="noreferrer">AHA-forskning →</a> Aldri syre og retinol samme kveld i starten.</div>}
-              <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/?term=skin+barrier+cleansing+surfactant" target="_blank" rel="noreferrer">Om hudbarrieren →</a></div>
+              <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere.</div>
             </div>
           </>
           ); })()}
         </div>
 
       <div className="note" style={{marginTop:14}}>🤝 <b>Åpenhet:</b> «Se beste pris» inneholder annonselenker – handler du der, får vi provisjon uten ekstra kostnad for deg. Anbefalingene er valgt av ingredienser og din profil, aldri av hvem som betaler.</div>
+
+      <div className="warn" style={{marginTop:14}}>
+        <div style={{fontWeight:700, marginBottom:6}}>⚠️ Viktig – les før du starter</div>
+        <p style={{margin:"0 0 8px"}}>Skinatlas er et <b>nytt verktøy under utvikling</b>. Forslagene er automatisk genererte ut fra det du oppga, og bygger på generell ingrediensvitenskap – ikke en undersøkelse av akkurat din hud. Behandle dem som et utgangspunkt til å tenke og lære, <b>ikke som en fasit du kan følge blindt.</b></p>
+        <p style={{margin:"0 0 8px"}}>Introduser alltid ett nytt produkt om gangen, gjør en lappetest på innsiden av underarmen først, og lytt til huden din – opplever du svie, utslett eller vedvarende irritasjon, stopp og ta en pause. Verktøyet kan ta feil, mangle informasjon om et produkt, eller foreslå noe som ikke passer nettopp deg.</p>
+        <p style={{margin:"0 0 8px"}}><b>Ved graviditet/amming, hudsykdom (eksem, rosacea, psoriasis), pågående behandling, eller hvis du er usikker på hva huden din tåler: rådfør deg med lege eller hudlege før du følger rutinen.</b> Skinatlas erstatter ikke medisinsk rådgivning.</p>
+        <p style={{margin:0}}>📩 <b>Oppdager du en feil?</b> Feil ingrediens, et produkt som er feilkategorisert, en anbefaling som virker gal – eller har du et forslag? Si ifra til <a className="learn" href="mailto:hei@skinatlas.no?subject=Tilbakemelding%20om%20Skinatlas">hei@skinatlas.no</a>. Tilbakemeldingene dine gjør verktøyet tryggere og bedre for alle.</p>
+      </div>
 
       {!lockedIn
         ? <button className="primary" onClick={async () => {
