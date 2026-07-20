@@ -691,6 +691,7 @@ const Hjelp = ({ tekst }) => {
 };
 
 const ARTIKLER = [
+  { url: "/hudpleierutine.html", tag: "Start her", t: "Hvordan bygge en hudpleierutine", d: "Steg for steg: riktig rekkefølge, hva du trenger (og ikke), og de vanligste feilene." },
   { url: "/pdrn.html", tag: "Viral", t: "PDRN: hype eller ekte?", d: "«Laks-DNA» er overalt akkurat nå. Vi går ærlig gjennom hva forskningen faktisk viser." },
   { url: "/niacinamid.html", tag: "Ingrediens", t: "Hva er niacinamid?", d: "Den milde allrounderen som roer rødhet, styrker barrieren og jevner ut huden." },
   { url: "/retinol.html", tag: "Nybegynner", t: "Retinol for nybegynnere", d: "Forskjellen på retinol, retinal og tretinoin – og hvordan du starter trygt." },
