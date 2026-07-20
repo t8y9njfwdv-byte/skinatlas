@@ -9,36 +9,142 @@ const storage = {
 
 /* ============ INGREDIENS-KUNNSKAP ============ */
 const ING = {
-  ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=ceramides+skin+barrier" },
-  hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=hyaluronic+acid+topical+skin+hydration" },
+  ceramider: { s:"Bygger opp hudbarrieren", d:"Ceramider er fettstoffer huden selv består av – som mørtelen mellom mursteinene i hudcellene. Tilført ceramid tetter «sprekker», så huden holder på fukt og slipper inn færre irritanter.", u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC6197824/" },
+  hyaluron: { s:"Binder fukt i huden", d:"Hyaluronsyre kan binde opptil 1000x sin egen vekt i vann – en svamp som trekker fukt inn i hudens ytterste lag.", u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC8322246/" },
   niacinamid: { s:"Jevner hudtone, roer rødhet", d:"Niacinamid (vitamin B3) demper betennelsessignaler og bremser overføring av pigment til hudoverflaten – jevnere tone, roligere rødhet. Øker også hudens egen ceramidproduksjon.", u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8389214/" },
-  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=salicylic+acid+acne+treatment", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true },
+  salisylsyre: { s:"Renser porene innenfra (BHA)", d:"Fettløselig syre som går NED i porene og løser opp talg og døde hudceller der kviser starter. Betennelsesdempende.", freq:"Start 2–3 kvelder/uke → øk gradvis. Gjør huden mer solfølsom: SPF hver dag er obligatorisk.", sun:true, preg:true , u:"https://pubmed.ncbi.nlm.nih.gov/33852244/"},
   glykolsyre: { s:"Eksfolierer overflaten (AHA)", d:"Løsner «limet» mellom døde hudceller så de slipper taket – glattere hud som reflekterer lys bedre.", u:"https://pubmed.ncbi.nlm.nih.gov/22916351/", freq:"Start 1–2 kvelder/uke → maks annenhver kveld. Øker solfølsomhet betydelig.", sun:true },
   retinol: { s:"Gullstandard mot linjer og tekstur", d:"Vitamin A som skrur opp cellefornyelse og kollagenproduksjon – den mest dokumenterte anti-aldringsingrediensen. Kun kveld (brytes ned av UV-lys).", u:"https://pubmed.ncbi.nlm.nih.gov/25738849/", freq:"Uke 1–2: 2 kvelder/uke · Uke 3–4: annenhver kveld · Deretter: hver kveld hvis huden tåler det. Litt flassing i starten er normalt.", sun:true, preg:true },
-  bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt med retinol-lignende effekt på linjer og pigment i studier – uten irritasjonen. Trygt ved graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=bakuchiol+retinol", freq:"Kan brukes hver kveld fra dag én." },
-  "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=topical+vitamin+C+ascorbic+acid+skin", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
-  centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=centella+asiatica+skin", freq:"Daglig, morgen og/eller kveld." },
-  azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=azelaic+acid+acne+rosacea", freq:"1x daglig første uken → øk til morgen + kveld." },
-  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=peptides+topical+skin+collagen", freq:"Daglig." },
-  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=snail+mucin+secretion+filtrate+skin", freq:"Daglig." },
-  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=squalane+skin", },
-  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=panthenol+dexpanthenol+skin+barrier", },
-  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=tocopherol+topical+vitamin+E+skin", },
-  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=urea+emollient+xerosis", },
-  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=polyhydroxy+acid+gluconolactone+skin", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
-  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=zinc+topical+sebum+acne", },
-  "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress.", u:"https://pubmed.ncbi.nlm.nih.gov/?term=green+tea+EGCG+topical+skin" },
+  bakuchiol: { s:"Mildt retinol-alternativ", d:"Planteekstrakt med retinol-lignende effekt på linjer og pigment i studier – uten irritasjonen. Trygt ved graviditet.", freq:"Kan brukes hver kveld fra dag én." , u:"https://pubmed.ncbi.nlm.nih.gov/29947134/"},
+  "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
+  centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", freq:"Daglig, morgen og/eller kveld." , u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8956065/"},
+  azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", freq:"1x daglig første uken → øk til morgen + kveld." , u:"https://pubmed.ncbi.nlm.nih.gov/37550898/"},
+  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", freq:"Daglig." },
+  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", freq:"Daglig." },
+  skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", },
+  panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", },
+  "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", },
+  urea: { s:"Fuktbinder og mild eksfoliant", d:"I lave prosenter binder urea fukt; i høyere løser den opp hard, tørr hud. Standard i medisinsk hudpleie for svært tørr hud.", },
+  pha: { s:"Den mildeste syrefamilien", d:"Polyhydroksysyrer (glukonolakton m.fl.) eksfolierer som AHA, men med større molekyler som ikke trenger like dypt – mindre irritasjon, fin for sensitiv hud.", freq:"2–4 kvelder/uke, mildere enn AHA.", sun:true },
+  sink: { s:"Roer og regulerer talg", d:"Sink (ofte som PCA eller oksid) virker antiinflammatorisk og talgregulerende – vanlig i produkter mot uren hud.", },
+  "gronn-te": { s:"Antioksidant, roer huden", d:"EGCG demper betennelse og beskytter mot UV-relatert stress." },
 };
 
 /* ============ PRODUKTER ============ */
 /* cf = Leaping Bunny-sertifisert, vg = vegansk, tester = vet at merket tester på dyr (utelukkes alltid). Demo-data – verifiseres mot offisielle lister i full versjon. */
 const P = [
-  { id:"o5", cat:"olje", name:"Squalane Cleanser", brand:"The Ordinary", tier:1, ings:["skvalan"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:true, vg:true },
-  { id:"c9", cat:"rens", name:"Salicylic Acid Cleanser", brand:"CeraVe", tier:1, ings:["salisylsyre","niacinamid"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"a9", cat:"olje", name:"Lipikar Cleansing Oil", brand:"La Roche-Posay", tier:4, ings:["niacinamid"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:false, tester:true, vg:false },
+  // ===== DINE PRODUKTER + HARUHARU + UTVIDET THE ORDINARY/COSRX =====
+  { id:"u1", cat:"serum", name:"Reedle Shot 100", brand:"VT Cosmetics", tier:2, ings:["niacinamid","hyaluron","centella"], goal:"glow", for:["normal","kombi","fet","torr","sens"], hue:"#FFF2BD", cf:true, vg:false, inci:"Purified Water, Dipropylene Glycol, Glycerin, Niacinamide, Butylene Glycol, Macadamia Ternifolia Seed Oil, 1,2-Hexanediol, Hydrolyzed Sponge, Centella Asiatica Extract, Sodium Hyaluronate, Propolis Extract, Panthenol, Tromethamine, Disodium EDTA" },
+  { id:"u2", cat:"krem", name:"PDRN Capsule Cream 100", brand:"VT Cosmetics", tier:2, ings:["niacinamid","hyaluron"], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"u3", cat:"serum", name:"Lactic Acid 10% + HA", brand:"The Ordinary", tier:1, ings:["glykolsyre","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFD9C7", cf:true, vg:true, inci:"Aqua, Lactic Acid, Sodium Hydroxide, Sodium Hyaluronate, Potassium Citrate, Hydroxyethylcellulose, Ethoxydiglycol, Phenoxyethanol" },
+  { id:"u4", cat:"serum", name:"Youthtopia Refining Apple Peel", brand:"Origins", tier:2, ings:["glykolsyre"], goal:"glow", for:["normal","kombi","fet"], hue:"#FFD9C7", cf:false, vg:false },
+  { id:"u5", cat:"serum", name:"C-Firma Fresh Day Serum", brand:"Drunk Elephant", tier:3, ings:["vitamin-c","vitamin-e"], goal:"glow", for:["normal","kombi","torr","fet"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"u6", cat:"serum", name:"Skin Perfecting 2% BHA Liquid", brand:"Paula's Choice", tier:2, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFD9C7", cf:true, vg:true, inci:"Water, Methylpropanediol, Butylene Glycol, Salicylic Acid, Polysorbate 20, Camellia Oleifera Leaf Extract, Sodium Hydroxide, Tetrasodium EDTA" },
+  { id:"u7", cat:"serum", name:"The 6 Peptide Skin Booster Serum", brand:"COSRX", tier:1, ings:["peptider","niacinamid"], goal:"aldring", for:["normal","kombi","torr","sens"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"u8", cat:"serum", name:"Advanced Snail 96 Mucin Power Essence", brand:"COSRX", tier:1, ings:["mucin"], goal:"ro", for:["torr","normal","kombi","sens","fet"], hue:"#E2F3D5", cf:true, vg:false, inci:"Snail Secretion Filtrate 96.3%, Betaine, Butylene Glycol, 1,2-Hexanediol, Sodium Hyaluronate, Panthenol, Arginine, Allantoin, Ethyl Hexanediol, Sodium Polyacrylate, Carbomer, Phenoxyethanol" },
+  { id:"u9", cat:"krem", name:"Barrier Restore Cream", brand:"Rhode", tier:3, ings:["ceramider","peptider"], for:["torr","normal","sens","kombi"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"u10", cat:"krem", name:"Glazing Milk", brand:"Rhode", tier:3, ings:["niacinamid","panthenol"], for:["torr","normal","sens","kombi"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"u11", cat:"krem", name:"Advanced Repair Ointment", brand:"CeraVe", tier:4, ings:["ceramider"], for:["torr","sens","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"u12", cat:"toner", name:"Vegan Kombucha Tea Essence", brand:"Dr. Ceuracle", tier:2, ings:["niacinamid","gronn-te"], for:["normal","kombi","torr","sens","fet"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"u13", cat:"serum", name:"Secret of Sahara Oil Essence Torridien", brand:"Huxley", tier:2, ings:["vitamin-e"], goal:"ro", for:["torr","normal","kombi"], hue:"#E2F3D5", cf:true, vg:false },
+  { id:"u14", cat:"krem", name:"Hyaluronic Acid Moist Cream", brand:"Isntree", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"u15", cat:"krem", name:"345 Relief Cream", brand:"Dr. Althea", tier:1, ings:["ceramider","panthenol"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"u16", cat:"toner", name:"Milky Toner", brand:"Byoma", tier:1, ings:["ceramider","niacinamid"], for:["sens","torr","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"u17", cat:"krem", name:"PDRN Hyaluronic Acid 100 Moisturizing Cream", brand:"Medicube", tier:2, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"u18", cat:"olje", name:"Gentle Black Deep Cleansing Oil", brand:"Klairs", tier:2, ings:[], for:["torr","normal","kombi","sens","fet"], hue:"#FFE9D6", cf:true, vg:true },
+  { id:"u19", cat:"rens", name:"AHA Cleansing Foam", brand:"Hanskin", tier:2, ings:["glykolsyre"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:true, vg:false },
+  { id:"u20", cat:"rens", name:"BHA Pore Cleansing Foam", brand:"Hanskin", tier:2, ings:["salisylsyre"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:true, vg:false },
+  { id:"u21", cat:"rens", name:"Low pH Good Morning Gel Cleanser", brand:"COSRX", tier:1, ings:["gronn-te","salisylsyre"], for:["fet","kombi","normal","sens"], hue:"#D9F2E6", cf:true, vg:true, inci:"Water, Butylene Glycol, Cocamidopropyl Betaine, Sodium Lauroyl Methyl Isethionate, Sodium Methyl Cocoyl Taurate, Sodium Chloride, Tea Tree Leaf Oil, Betaine Salicylate, Ethyl Hexanediol, Allantoin" },
+  // Haruharu Wonder (populært i Norge)
+  { id:"h1", cat:"toner", name:"Black Rice Hyaluronic Toner", brand:"Haruharu Wonder", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens","fet"], hue:"#EAE2FF", cf:true, vg:true, inci:"Water, Betaine, Glycerin, Propanediol, Oryza Sativa (Rice) Extract, Phyllostachys Pubescens Shoot Bark Extract, Aspergillus Ferment Extract Filtrate, Panax Ginseng Root Extract, Sodium Hyaluronate" },
+  { id:"h2", cat:"serum", name:"Black Rice Hyaluronic Serum", brand:"Haruharu Wonder", tier:1, ings:["hyaluron","niacinamid"], goal:"ro", for:["torr","normal","kombi","sens"], hue:"#E2F3D5", cf:true, vg:true },
+  { id:"h3", cat:"krem", name:"Black Rice Hyaluronic Cream", brand:"Haruharu Wonder", tier:1, ings:["hyaluron","ceramider"], for:["torr","normal","sens","kombi"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"h4", cat:"serum", name:"Black Rice Bakuchiol Eye Serum", brand:"Haruharu Wonder", tier:1, ings:["bakuchiol"], goal:"aldring", for:["sens","normal","kombi","torr"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"h5", cat:"spf", name:"Black Rice Pure Mild Sunscreen SPF50+", brand:"Haruharu Wonder", tier:1, ings:[], for:["sens","normal","kombi","torr","fet"], hue:"#FFE59A", cf:true, vg:true },
+  // The Ordinary – utvidet (stort i Norge)
+  { id:"to1", cat:"serum", name:"Niacinamide 10% + Zinc 1%", brand:"The Ordinary", tier:1, ings:["niacinamid","sink"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFF2BD", cf:true, vg:true, inci:"Aqua, Niacinamide, Pentylene Glycol, Zinc PCA, Dimethyl Isosorbide, Tamarindus Indica Seed Gum, Xanthan Gum, Isoceteth-20, Ethoxydiglycol, Phenoxyethanol" },
+  { id:"to2", cat:"serum", name:"Hyaluronic Acid 2% + B5", brand:"The Ordinary", tier:1, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","normal","kombi","sens","fet"], hue:"#E2F3D5", cf:true, vg:true },
+  { id:"to3", cat:"serum", name:"Ascorbyl Glucoside Solution 12%", brand:"The Ordinary", tier:1, ings:["vitamin-c"], goal:"glow", for:["normal","kombi","fet","torr","sens"], hue:"#FFF2BD", cf:true, vg:true, inci:"Aqua, Ascorbyl Glucoside, Propanediol, Triethanolamine, Aminomethyl Propanol, Isoceteth-20, Xanthan Gum, Dimethyl Isosorbide, Ethoxydiglycol, Trisodium Ethylenediamine Disuccinate, 1,2-Hexanediol, Caprylyl Glycol" },
+  { id:"to4", cat:"serum", name:"Retinol 0.5% in Squalane", brand:"The Ordinary", tier:1, ings:["retinol","skvalan"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"to5", cat:"serum", name:"Granactive Retinoid 2% Emulsion", brand:"The Ordinary", tier:1, ings:["retinol"], goal:"aldring", for:["sens","normal","kombi","torr"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"to6", cat:"serum", name:"Azelaic Acid Suspension 10%", brand:"The Ordinary", tier:1, ings:["azelainsyre"], goal:"kviser", for:["fet","kombi","normal","sens"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"to7", cat:"serum", name:"Salicylic Acid 2% Solution", brand:"The Ordinary", tier:1, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFD9C7", cf:true, vg:true },
+  { id:"to8", cat:"serum", name:"Glycolic Acid 7% Toning Solution", brand:"The Ordinary", tier:1, ings:["glykolsyre"], goal:"glow", for:["normal","kombi","fet"], hue:"#FFD9C7", cf:true, vg:true },
+  { id:"to9", cat:"serum", name:"Marine Hyaluronics", brand:"The Ordinary", tier:1, ings:["hyaluron"], goal:"ro", for:["fet","kombi","normal","sens"], hue:"#E2F3D5", cf:true, vg:true },
+  { id:"to10", cat:"serum", name:"Buffet Multi-Peptide Serum", brand:"The Ordinary", tier:1, ings:["peptider","hyaluron"], goal:"aldring", for:["normal","kombi","torr","sens"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"to11", cat:"krem", name:"Natural Moisturizing Factors + HA", brand:"The Ordinary", tier:1, ings:["hyaluron"], for:["normal","kombi","torr","sens"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"to12", cat:"olje", name:"Squalane Cleanser", brand:"The Ordinary", tier:1, ings:["skvalan"], for:["torr","sens","normal","kombi"], hue:"#FFE9D6", cf:true, vg:true },
+  // COSRX – utvidet
+  { id:"cx1", cat:"serum", name:"The Vitamin C 23 Serum", brand:"COSRX", tier:1, ings:["vitamin-c"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"cx2", cat:"serum", name:"Retinol 0.1 Cream", brand:"COSRX", tier:1, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"cx3", cat:"toner", name:"AHA/BHA Clarifying Treatment Toner", brand:"COSRX", tier:1, ings:["glykolsyre","salisylsyre"], for:["fet","kombi","normal"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"cx4", cat:"serum", name:"Propolis Light Ampoule", brand:"COSRX", tier:1, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
+  { id:"cx5", cat:"serum", name:"BHA Blackhead Power Liquid", brand:"COSRX", tier:1, ings:["salisylsyre"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFD9C7", cf:true, vg:true },
+  { id:"cx6", cat:"spf", name:"Aloe Soothing Sun Cream SPF50+", brand:"COSRX", tier:1, ings:[], for:["sens","normal","kombi","torr","fet"], hue:"#FFE59A", cf:true, vg:false },
+
+  // ===== K-BEAUTY & MERKELISTE (verifisert via research) =====
+  { id:"b1", cat:"toner", name:"Heartleaf 77% Soothing Toner", brand:"Anua", tier:1, ings:["centella","hyaluron","panthenol"], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true, inci:"Houttuynia Cordata Extract 77%, Water, 1,2-Hexanediol, Glycerin, Betaine, Panthenol, Centella Asiatica Extract, Sodium Hyaluronate, Butylene Glycol, Tromethamine, Disodium EDTA" },
+  { id:"b2", cat:"serum", name:"Glow Serum Propolis + Niacinamide", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
+  { id:"b3", cat:"serum", name:"Revive Eye Serum Ginseng + Retinal", brand:"Beauty of Joseon", tier:1, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr"], hue:"#FFD6E4", cf:true, vg:false },
+  { id:"b4", cat:"spf", name:"Relief Sun Rice + Probiotics SPF50+", brand:"Beauty of Joseon", tier:1, ings:[], for:["torr","normal","kombi","sens","fet"], hue:"#FFE59A", cf:true, vg:false },
+  { id:"b5", cat:"serum", name:"Madagascar Centella Ampoule", brand:"Skin1004", tier:1, ings:["centella"], goal:"ro", for:["sens","torr","normal","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true, inci:"Centella Asiatica Extract, Water, Glycerin, Butylene Glycol, 1,2-Hexanediol, Phenoxyethanol, Cellulose Gum" },
+  { id:"b6", cat:"serum", name:"Centella Unscented Serum", brand:"Purito", tier:1, ings:["centella","niacinamid","peptider","ceramider"], goal:"ro", for:["sens","torr","normal","kombi"], hue:"#E2F3D5", cf:true, vg:true, inci:"Centella Asiatica Extract 49%, Water, Glycerin, Dipropylene Glycol, Niacinamide, Butylene Glycol, 1,2-Hexanediol, Ceramide NP, Sodium Hyaluronate, Asiaticoside, Palmitoyl Hexapeptide-12, Panthenol, Camellia Sinensis Leaf Extract, Disodium EDTA, Adenosine" },
+  { id:"b7", cat:"spf", name:"Daily Go-To Sunscreen SPF50+", brand:"Purito", tier:1, ings:["centella"], for:["sens","normal","kombi","torr","fet"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"b8", cat:"toner", name:"Hyaluronic Acid Toner Plus", brand:"Isntree", tier:1, ings:["hyaluron"], for:["torr","normal","kombi","sens"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"b9", cat:"spf", name:"Hyaluronic Acid Watery Sun Gel SPF50+", brand:"Isntree", tier:1, ings:["hyaluron"], for:["fet","kombi","normal","sens","torr"], hue:"#FFE59A", cf:true, vg:true },
+  { id:"b10", cat:"serum", name:"Dark Spot Correcting Glow Serum", brand:"Axis-Y", tier:1, ings:["niacinamid"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"b12", cat:"serum", name:"Advanced Snail 96 Mucin Essence", brand:"COSRX", tier:1, ings:["mucin"], goal:"ro", for:["torr","normal","kombi","sens","fet"], hue:"#E2F3D5", cf:true, vg:false },
+  { id:"b13", cat:"krem", name:"Advanced Snail 92 All In One Cream", brand:"COSRX", tier:1, ings:["mucin"], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"b14", cat:"serum", name:"Vitamin C 23 Serum", brand:"Dr. Althea", tier:1, ings:["vitamin-c","vitamin-e"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"b15", cat:"olje", name:"Clean It Zero Cleansing Balm", brand:"Banila Co", tier:1, ings:[], for:["torr","normal","kombi","fet","sens"], hue:"#FFE9D6", cf:true, vg:false },
+  { id:"b16", cat:"serum", name:"Vegan Active Berry First Serum", brand:"Dr. Ceuracle", tier:2, ings:["niacinamid","hyaluron"], goal:"glow", for:["normal","kombi","torr","sens"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"b17", cat:"krem", name:"Real Barrier Cream", brand:"Hanskin", tier:2, ings:["ceramider","panthenol"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"b18", cat:"olje", name:"Hyaluron Cleansing Oil PHA", brand:"Hanskin", tier:2, ings:["pha","hyaluron"], for:["torr","normal","kombi","sens"], hue:"#FFE9D6", cf:true, vg:true },
+  { id:"b19", cat:"serum", name:"Deep Hydration Serum", brand:"Medicube", tier:2, ings:["hyaluron","niacinamid"], goal:"ro", for:["torr","normal","kombi","sens"], hue:"#E2F3D5", cf:true, vg:false },
+  { id:"b20", cat:"maske", name:"Zero Pore Pad", brand:"Medicube", tier:2, ings:["glykolsyre","salisylsyre"], for:["fet","kombi","normal"], hue:"#E8DDC8", cf:true, vg:false },
+  // ===== VESTLIGE MERKER =====
+  { id:"b21", cat:"serum", name:"C E Ferulic", brand:"SkinCeuticals", tier:3, ings:["vitamin-c","vitamin-e"], goal:"glow", for:["normal","kombi","torr","fet"], hue:"#FFF2BD", cf:false, vg:false, tier_note:"apotek/klinikk" },
+  { id:"b22", cat:"serum", name:"Crystal Retinal 3", brand:"Medik8", tier:3, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:true, vg:false },
+  { id:"b23", cat:"serum", name:"C-Tetra Vitamin C Serum", brand:"Medik8", tier:3, ings:["vitamin-c","vitamin-e"], goal:"glow", for:["normal","kombi","torr","sens"], hue:"#FFF2BD", cf:true, vg:false },
+  { id:"b24", cat:"serum", name:"Retinol Youth Renewal Serum", brand:"Murad", tier:3, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr"], hue:"#FFD6E4", cf:false, vg:false },
+  { id:"b25", cat:"maske", name:"Water Bank Blue Hyaluronic Mask", brand:"Laneige", tier:2, ings:["hyaluron"], for:["torr","normal","kombi","sens","fet"], hue:"#E8DDC8", cf:false, vg:false },
+  { id:"b26", cat:"maske", name:"Water Sleeping Mask", brand:"Laneige", tier:2, ings:["hyaluron"], for:["torr","normal","kombi","fet"], hue:"#E8DDC8", cf:false, vg:false },
+  { id:"b27", cat:"krem", name:"BB Cream Skin Perfecting", brand:"Erborian", tier:2, ings:["centella"], for:["normal","kombi","torr","sens"], hue:"#E1E8FF", cf:false, vg:false },
+  { id:"b28", cat:"krem", name:"Nordic Hydra Lumene Cream", brand:"Lumene", tier:1, ings:["hyaluron","vitamin-c"], for:["torr","normal","kombi","sens"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"b29", cat:"rens", name:"White Tea Foaming Cleanser", brand:"Korres", tier:2, ings:["gronn-te"], for:["normal","kombi","fet","sens"], hue:"#D9F2E6", cf:true, vg:false },
+  { id:"b30", cat:"serum", name:"Greek Yoghurt Probiotic Serum", brand:"Korres", tier:2, ings:["hyaluron"], goal:"ro", for:["sens","torr","normal","kombi"], hue:"#E2F3D5", cf:true, vg:false },
+  { id:"b31", cat:"toner", name:"Green Tea Balancing Toner", brand:"Innisfree", tier:1, ings:["gronn-te"], for:["fet","kombi","normal","sens"], hue:"#EAE2FF", cf:false, vg:false },
+  { id:"b32", cat:"serum", name:"Black Tea Youth Enhancing Serum", brand:"Origins", tier:2, ings:["gronn-te"], goal:"aldring", for:["normal","kombi","torr"], hue:"#FFD6E4", cf:false, vg:false },
+  { id:"b33", cat:"serum", name:"Bakuchiol Retinol Alternative", brand:"The Inkey List", tier:1, ings:["bakuchiol"], goal:"aldring", for:["sens","normal","kombi","torr"], hue:"#FFD6E4", cf:true, vg:true },
+  { id:"b34", cat:"serum", name:"Niacinamide 10% Serum", brand:"The Inkey List", tier:1, ings:["niacinamid","hyaluron"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"b35", cat:"serum", name:"Anti-Wrinkle Retinoid Serum", brand:"Exuviance", tier:2, ings:["retinol"], goal:"aldring", for:["normal","kombi","torr"], hue:"#FFD6E4", cf:false, vg:false },
+  { id:"b36", cat:"serum", name:"Hydra-Collagen Prep Essence", brand:"Huxley", tier:2, ings:["hyaluron"], goal:"ro", for:["torr","normal","sens","kombi"], hue:"#E2F3D5", cf:true, vg:false },
+  { id:"a10", cat:"serum", name:"Pure Vitamin C10 Serum", brand:"La Roche-Posay", tier:4, ings:["vitamin-c","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFF2BD", cf:false, tester:true, vg:false, inci:"Aqua, Ascorbic Acid, Alcohol Denat, Propylene Glycol, Glycerin, Triethanolamine, Sodium Hyaluronate, Tocopherol" },
+  { id:"a11", cat:"serum", name:"Retinol B3 Serum", brand:"La Roche-Posay", tier:4, ings:["retinol","niacinamid"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:false, tester:true, vg:false },
+  { id:"a12", cat:"serum", name:"Retrinal 0.1 Intensive Cream", brand:"Avène", tier:4, ings:["retinol"], goal:"aldring", for:["normal","torr","kombi"], hue:"#FFD6E4", cf:true, vg:false },
+  { id:"a13", cat:"serum", name:"Azelaic Acid Serum", brand:"Naturium", tier:4, ings:["azelainsyre","niacinamid"], goal:"kviser", for:["fet","kombi","sens","normal"], hue:"#FFF2BD", cf:true, vg:true },
+  { id:"a14", cat:"serum", name:"Hydrating B5 Gel", brand:"SkinCeuticals", tier:4, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","sens","normal","kombi"], hue:"#E2F3D5", cf:false, vg:false },
+  { id:"a15", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:4, ings:["panthenol","ceramider"], for:["sens","torr","normal","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false, inci:"Aqua, Glycerin, Butyrospermum Parkii Butter, Panthenol, Zinc Gluconate, Madecassoside, Phenoxyethanol" },
+  { id:"a16", cat:"maske", name:"Cicalfate Repair Mask", brand:"Avène", tier:4, ings:["panthenol","sink"], for:["sens","torr","normal"], hue:"#E8DDC8", cf:true, vg:false },
+  { id:"a17", cat:"maske", name:"Rehydrating Sheet Mask", brand:"Eucerin", tier:4, ings:["hyaluron"], for:["torr","normal","sens","kombi","fet"], hue:"#E8DDC8", cf:false, tester:true, vg:false },
+  { id:"a18", cat:"toner", name:"Thermal Spring Water", brand:"Avène", tier:4, ings:[], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"a19", cat:"toner", name:"Effaclar Micellar Water", brand:"La Roche-Posay", tier:4, ings:["niacinamid"], for:["fet","kombi","normal"], hue:"#EAE2FF", cf:false, tester:true, vg:false },
+  { id:"a20", cat:"krem", name:"AtoPalm MLE Cream", brand:"AtoPalm", tier:4, ings:["ceramider"], for:["torr","sens","normal"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"a21", cat:"spf", name:"Photoderm Nude Touch SPF50+", brand:"Bioderma", tier:4, ings:[], for:["fet","kombi","normal","sens","torr"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"a22", cat:"olje", name:"Lipikar Cleansing Oil AP+", brand:"Avène", tier:4, ings:[], for:["torr","sens","normal"], hue:"#FFE9D6", cf:true, vg:false },
+  { id:"a1", cat:"rens", name:"Toleriane Caring Wash", brand:"La Roche-Posay", tier:4, ings:["ceramider","niacinamid"], for:["sens","torr","normal","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"a2", cat:"serum", name:"Hyalu B5 Serum", brand:"La Roche-Posay", tier:4, ings:["hyaluron","panthenol"], goal:"ro", for:["torr","sens","normal","kombi"], hue:"#E2F3D5", cf:false, tester:true, vg:false },
+  { id:"a3", cat:"serum", name:"Sebiaclear Serum", brand:"Avène", tier:4, ings:["niacinamid"], goal:"kviser", for:["fet","kombi","sens"], hue:"#FFF2BD", cf:true, vg:false },
+  { id:"a4", cat:"krem", name:"Tolérance Control Cream", brand:"Avène", tier:4, ings:["ceramider"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:false },
+  { id:"a5", cat:"krem", name:"Aquaphor / Repair Balm", brand:"Eucerin", tier:4, ings:["panthenol"], for:["torr","sens","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"a6", cat:"serum", name:"Hyaluron-Filler Serum", brand:"Eucerin", tier:4, ings:["hyaluron"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#FFD6E4", cf:false, tester:true, vg:false },
+  { id:"a7", cat:"spf", name:"Anthelios Fluid SPF50+", brand:"La Roche-Posay", tier:4, ings:[], for:["fet","kombi","normal","sens"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"a8", cat:"toner", name:"Sensibio Micellar Water", brand:"Bioderma", tier:4, ings:[], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:false, tester:true, vg:false },
+  { id:"c9", cat:"rens", name:"Salicylic Acid Cleanser", brand:"CeraVe", tier:4, ings:["salisylsyre","niacinamid"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c10", cat:"rens", name:"Pure Clay Cleanser", brand:"L'Oréal", tier:1, ings:["gronn-te"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c11", cat:"rens", name:"Soy Face Cleanser", brand:"Fresh", tier:3, ings:[], for:["torr","normal","sens","kombi"], hue:"#D9F2E6", cf:true, vg:false },
   { id:"t3", cat:"toner", name:"Centella Toner", brand:"Skin1004", tier:1, ings:["centella"], for:["sens","torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
-  { id:"t4", cat:"toner", name:"AHA/BHA Clarifying Treatment Toner", brand:"COSRX", tier:1, ings:["glykolsyre","salisylsyre"], for:["fet","kombi","normal"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"t5", cat:"toner", name:"Daily Reviving Concentrate", brand:"Kiehl's", tier:2, ings:["gronn-te","skvalan"], for:["normal","torr","kombi"], hue:"#EAE2FF", cf:false, tester:true, vg:false },
   { id:"t6", cat:"toner", name:"Ginseng Essence Water", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], for:["torr","normal","kombi","sens"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"s15", cat:"serum", name:"Alpha Arbutin 2% + HA", brand:"The Ordinary", tier:1, ings:["hyaluron"], goal:"glow", for:["normal","kombi","fet","torr","sens"], hue:"#FFF2BD", cf:true, vg:true },
@@ -49,12 +155,11 @@ const P = [
   { id:"m9", cat:"krem", name:"Ultra Facial Cream", brand:"Kiehl's", tier:2, ings:["skvalan","hyaluron"], for:["torr","normal","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m10", cat:"krem", name:"Protini Polypeptide Cream", brand:"Drunk Elephant", tier:3, ings:["peptider"], for:["normal","kombi","torr"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m11", cat:"krem", name:"Panthenol Barrier Cream", brand:"Byoma", tier:1, ings:["panthenol","ceramider"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"m12", cat:"krem", name:"Oil-Free Moisturizer", brand:"Cetaphil", tier:1, ings:["hyaluron"], for:["fet","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
+  { id:"m12", cat:"krem", name:"Oil-Free Moisturizer", brand:"Cetaphil", tier:4, ings:["hyaluron"], for:["fet","kombi"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"f5", cat:"spf", name:"UV Clear SPF 46", brand:"EltaMD", tier:2, ings:["niacinamid"], for:["fet","kombi","sens","normal"], hue:"#FFE59A", cf:false, vg:false },
   { id:"f6", cat:"spf", name:"Vitamin C SPF 40", brand:"Naturium", tier:1, ings:["vitamin-c","vitamin-e"], for:["normal","kombi","torr","fet"], hue:"#FFE59A", cf:true, vg:true },
   { id:"k1", cat:"maske", name:"Indian Healing Clay", brand:"Aztec Secret", tier:1, ings:[], for:["fet","kombi","normal"], hue:"#E8DDC8", cf:true, vg:true },
   { id:"k2", cat:"maske", name:"Rich Moist Soothing Sheet Mask", brand:"Klairs", tier:1, ings:["centella","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#E8DDC8", cf:true, vg:true },
-  { id:"k3", cat:"maske", name:"Water Sleeping Mask", brand:"Laneige", tier:2, ings:["hyaluron"], for:["torr","normal","kombi","fet"], hue:"#E8DDC8", cf:false, vg:false },
   { id:"k4", cat:"maske", name:"Honey Mask", brand:"I'm From", tier:2, ings:[], for:["torr","sens","normal"], hue:"#E8DDC8", cf:true, vg:false },
   { id:"o1", cat:"olje", name:"Clean It Zero Original", brand:"Banila Co", tier:1, ings:[], for:["torr","fet","kombi","normal","sens"], hue:"#FFE9D6", cf:true, vg:false },
   { id:"o2", cat:"olje", name:"All Clean Balm", brand:"Heimish", tier:1, ings:[], for:["torr","fet","kombi","normal","sens"], hue:"#FFE9D6", cf:true, vg:false },
@@ -67,32 +172,26 @@ const P = [
   { id:"s14", cat:"serum", name:"Hyaluronic Acid Serum", brand:"The Inkey List", tier:1, ings:["hyaluron"], goal:"ro", for:["torr","normal","sens","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"m7", cat:"krem", name:"Moisturizing Rich Cream", brand:"Byoma", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:true, vg:true },
   { id:"m8", cat:"krem", name:"Holy Hydration! Face Cream", brand:"e.l.f.", tier:1, ings:["hyaluron","niacinamid","peptider"], for:["torr","normal","kombi","fet"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
-  { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:2, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c1", cat:"rens", name:"Hydrating Cleanser", brand:"CeraVe", tier:4, ings:["ceramider","hyaluron","niacinamid"], for:["torr","normal","sens"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c2", cat:"rens", name:"Toleriane Dermo-Cleanser", brand:"La Roche-Posay", tier:4, ings:["ceramider","niacinamid"], for:["torr","sens","normal"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"c3", cat:"rens", name:"Low pH Good Morning Gel", brand:"COSRX", tier:1, ings:["gronn-te","salisylsyre"], for:["fet","kombi","normal","sens"], hue:"#D9F2E6", cf:true, vg:true },
   { id:"c4", cat:"rens", name:"Green Clean Balm", brand:"Farmacy", tier:3, ings:["gronn-te"], for:["torr","normal","kombi"], hue:"#D9F2E6", cf:true, vg:false },
   { id:"c6", cat:"rens", name:"Matcha Hemp Hydrating Cleanser", brand:"Krave Beauty", tier:2, ings:["gronn-te","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#D9F2E6", cf:true, vg:true },
-  { id:"c5", cat:"rens", name:"Foaming Cleanser", brand:"CeraVe", tier:1, ings:["ceramider","niacinamid","hyaluron"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
+  { id:"c5", cat:"rens", name:"Foaming Cleanser", brand:"CeraVe", tier:4, ings:["ceramider","niacinamid","hyaluron"], for:["fet","kombi"], hue:"#D9F2E6", cf:false, tester:true, vg:false },
   { id:"t1", cat:"toner", name:"Supple Preparation Toner", brand:"Klairs", tier:2, ings:["centella","hyaluron"], for:["torr","sens","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"t2", cat:"toner", name:"Advanced Snail 96 Mucin", brand:"COSRX", tier:2, ings:["mucin","hyaluron"], for:["torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:false },
-  { id:"s10", cat:"serum", name:"Lactic Acid 10% + HA", brand:"The Ordinary", tier:1, ings:["glykolsyre","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFD9C7", cf:true, vg:true },
   { id:"s11", cat:"serum", name:"Glow Tonic (AHA)", brand:"Pixi", tier:2, ings:["glykolsyre","gronn-te"], goal:"glow", for:["normal","kombi","fet"], hue:"#FFD9C7", cf:true, vg:true },
   { id:"s1", cat:"serum", name:"2% BHA Liquid Exfoliant", brand:"Paula's Choice", tier:2, ings:["salisylsyre","gronn-te"], goal:"kviser", for:["fet","kombi","normal"], hue:"#FFD9C7", cf:true, vg:true },
   { id:"s2", cat:"serum", name:"Azelaic Acid 10%", brand:"The Ordinary", tier:1, ings:["azelainsyre"], goal:"kviser", for:["sens","torr","normal","kombi","fet"], hue:"#FFD9C7", cf:true, vg:true },
   { id:"s3", cat:"serum", name:"Vitamin C 23% + Ferulic", brand:"Timeless", tier:2, ings:["vitamin-c","hyaluron"], goal:"glow", for:["normal","kombi","fet","torr"], hue:"#FFF2BD", cf:true, vg:true },
-  { id:"s4", cat:"serum", name:"C E Ferulic", brand:"SkinCeuticals", tier:3, ings:["vitamin-c"], goal:"glow", for:["normal","torr","kombi"], hue:"#FFF2BD", cf:false, vg:false },
-  { id:"s5", cat:"serum", name:"Crystal Retinal 3", brand:"Medik8", tier:3, ings:["retinol","hyaluron"], goal:"aldring", for:["normal","kombi","torr","fet"], hue:"#FFD6E4", cf:true, vg:true },
   { id:"s6", cat:"serum", name:"Granactive Retinoid 2%", brand:"The Ordinary", tier:1, ings:["retinol"], goal:"aldring", for:["normal","kombi","fet"], hue:"#FFD6E4", cf:true, vg:true },
   { id:"s7", cat:"serum", name:"Bakuchiol Serum", brand:"Herbivore", tier:3, ings:["bakuchiol"], goal:"aldring", for:["sens","torr","normal"], hue:"#E2F3D5", cf:true, vg:true },
-  { id:"s8", cat:"serum", name:"Centella Unscented Serum", brand:"Purito", tier:1, ings:["centella","niacinamid"], goal:"ro", for:["sens","torr","normal","kombi","fet"], hue:"#E2F3D5", cf:true, vg:true },
   { id:"s9", cat:"serum", name:"Niacinamide 10% + Zinc", brand:"The Ordinary", tier:1, ings:["niacinamid"], goal:"glow", for:["fet","kombi","normal"], hue:"#D6E9FF", cf:true, vg:true },
-  { id:"m1", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:1, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
-  { id:"m2", cat:"krem", name:"Cicaplast Baume B5+", brand:"La Roche-Posay", tier:2, ings:["centella","niacinamid"], for:["sens","torr","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
-  { id:"m6", cat:"krem", name:"Natural Moisturizing Factors + HA", brand:"The Ordinary", tier:1, ings:["hyaluron","ceramider"], for:["torr","normal","sens","kombi"], hue:"#E1E8FF", cf:true, vg:true },
+  { id:"m1", cat:"krem", name:"Moisturising Cream", brand:"CeraVe", tier:4, ings:["ceramider","hyaluron"], for:["torr","normal","sens"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m3", cat:"krem", name:"Water Cream", brand:"Tatcha", tier:3, ings:["gronn-te","hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:true, vg:false },
   { id:"m4", cat:"krem", name:"Hydro Boost Gel", brand:"Neutrogena", tier:1, ings:["hyaluron"], for:["fet","kombi","normal"], hue:"#E1E8FF", cf:false, tester:true, vg:false },
   { id:"m5", cat:"krem", name:"Dynamic Skin Recovery", brand:"Dermalogica", tier:3, ings:["peptider","hyaluron"], for:["normal","torr","kombi"], hue:"#E1E8FF", cf:true, vg:true },
-  { id:"f1", cat:"spf", name:"Anthelios UVMune 400", brand:"La Roche-Posay", tier:2, ings:["hyaluron"], for:["sens","torr","normal","kombi","fet"], hue:"#FFE59A", cf:false, tester:true, vg:false },
+  { id:"f1", cat:"spf", name:"Anthelios UVMune 400", brand:"La Roche-Posay", tier:4, ings:["hyaluron"], for:["sens","torr","normal","kombi","fet"], hue:"#FFE59A", cf:false, tester:true, vg:false },
   { id:"f2", cat:"spf", name:"Relief Sun SPF50", brand:"Beauty of Joseon", tier:1, ings:["mucin","gronn-te"], for:["torr","normal","kombi","sens"], hue:"#FFE59A", cf:true, vg:false },
   { id:"f4", cat:"spf", name:"Rice + Probiotics SPF50 (vegansk)", brand:"Beauty of Joseon", tier:1, ings:["niacinamid"], for:["torr","normal","kombi","sens","fet"], hue:"#FFE59A", cf:true, vg:true },
   { id:"f3", cat:"spf", name:"Unseen Sunscreen", brand:"Supergoop!", tier:3, ings:[], for:["fet","kombi","normal"], hue:"#FFE59A", cf:true, vg:true },
@@ -100,6 +199,90 @@ const P = [
 
 const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin" };
 const nvn = (i) => NAVN[i] || i;
+
+/* INCI-gjenkjenning: mapper offisielle ingrediensnavn til våre nøkler. Utvid fritt. */
+const INCI_MAP = {
+  "vitamin-c": ["ascorbic acid","l-ascorbic acid","ascorbyl glucoside","sodium ascorbyl phosphate","magnesium ascorbyl phosphate","ascorbyl palmitate","tetrahexyldecyl ascorbate","3-o-ethyl ascorbic acid","ethyl ascorbic acid","ascorbyl tetraisopalmitate"],
+  "niacinamid": ["niacinamide","nicotinamide"],
+  "hyaluron": ["hyaluronic acid","sodium hyaluronate","hydrolyzed hyaluronic acid","sodium acetylated hyaluronate"],
+  "ceramider": ["ceramide","ceramide np","ceramide ap","ceramide eop","ceramide ns"],
+  "salisylsyre": ["salicylic acid","betaine salicylate"],
+  "glykolsyre": ["glycolic acid","lactic acid","mandelic acid","citric acid","tartaric acid"],
+  "retinol": ["retinol","retinal","retinaldehyde","hydroxypinacolone retinoate","retinyl palmitate","granactive retinoid","retinoic acid"],
+  "bakuchiol": ["bakuchiol"],
+  "centella": ["centella asiatica","asiaticoside","madecassoside","asiatic acid","cica"],
+  "azelainsyre": ["azelaic acid","potassium azeloyl diglycinate"],
+  "peptider": ["peptide","palmitoyl","copper tripeptide","matrixyl","acetyl hexapeptide","oligopeptide"],
+  "mucin": ["snail secretion filtrate","snail mucin"],
+  "gronn-te": ["camellia sinensis","green tea","egcg"],
+  "skvalan": ["squalane","squalene"],
+  "panthenol": ["panthenol","dexpanthenol","pantothenic acid"],
+  "vitamin-e": ["tocopherol","tocopheryl acetate","vitamin e"],
+  "urea": ["urea"],
+  "pha": ["gluconolactone","lactobionic acid","galactose"],
+  "sink": ["zinc pca","zinc oxide","zinc gluconate"],
+  "parfyme": ["parfum","fragrance","perfume","aroma","linalool","limonene","citronellol","geraniol"],
+  "alkohol": ["alcohol denat","denatured alcohol","sd alcohol","isopropyl alcohol"],
+};
+/* Ord som må matche som helord (unngår at f.eks. triethanolamine treffer "ethanol") */
+function inneholderOrd(tekst, frag) {
+  if (frag.includes(" ")) return tekst.includes(frag);
+  const re = new RegExp("\\b" + frag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b");
+  return re.test(tekst);
+}
+/* Funksjonelt ingrediensbibliotek: forklarer HVA en ingrediens gjør og HVORFOR den er i produktet.
+   Dekker aktive + støtteingredienser (fuktbindere, emulgatorer, konservering, tekstur, pH). */
+const INGREDIENS_INFO = [
+  // Baser & fuktbindere
+  { m:["aqua","water"], n:"Vann", r:"Base", d:"Løsemiddelet de fleste ingrediensene er blandet i. Står nesten alltid først." },
+  { m:["propanediol","propylene glycol","butylene glycol","pentylene glycol"], n:"Glykol (fuktbinder)", r:"Fuktbinder", d:"Trekker fukt inn i huden og hjelper andre ingredienser å trenge inn. Mild og vanlig." },
+  { m:["glycerin","glycerol"], n:"Glyserin", r:"Fuktbinder", d:"En av de mest brukte og best dokumenterte fuktgiverne – trekker vann inn i huden." },
+  { m:["dimethyl isosorbide"], n:"Dimethyl Isosorbide", r:"Bærer", d:"Hjelper aktive ingredienser (som vitamin C) å løses opp og trenge bedre inn i huden." },
+  { m:["ethoxydiglycol"], n:"Ethoxydiglycol", r:"Bærer", d:"Løsemiddel som øker opptak og stabilitet av aktive ingredienser." },
+  { m:["1,2-hexanediol","hexanediol"], n:"Hexanediol", r:"Fukt + konservering", d:"Gir fukt og bidrar til å holde produktet friskt uten tradisjonelle konserveringsmidler." },
+  // Emulgatorer & tekstur
+  { m:["isoceteth","ceteth","steareth","laureth"], n:"Emulgator", r:"Tekstur", d:"Binder vann og olje sammen så kremen ikke skiller seg. Gir jevn tekstur." },
+  { m:["xanthan gum"], n:"Xantangummi", r:"Fortykningsmiddel", d:"Naturlig fortykningsmiddel som gir produktet gel-/serumtekstur." },
+  { m:["carbomer"], n:"Carbomer", r:"Fortykningsmiddel", d:"Skaper gelaktig konsistens og holder formelen stabil." },
+  { m:["cetearyl alcohol","cetyl alcohol","stearyl alcohol"], n:"Fettalkohol", r:"Tekstur", d:"IKKE uttørkende alkohol – dette er mykgjørende fettstoffer som gir kremet konsistens." },
+  { m:["caprylic/capric triglyceride"], n:"Triglyserid", r:"Mykgjører", d:"Lett olje fra kokos som glatter og mykgjør huden." },
+  { m:["dimethicone","cyclopentasiloxane"], n:"Silikon", r:"Tekstur", d:"Gir silkeaktig gli og danner en pustende film som holder på fukt." },
+  // pH & stabilitet
+  { m:["triethanolamine","aminomethyl propanol","sodium hydroxide","tromethamine"], n:"pH-justerer", r:"pH", d:"Justerer produktets surhet til et hudvennlig nivå så det virker godt og ikke irriterer." },
+  { m:["trisodium ethylenediamine","disodium edta","tetrasodium edta","edta"], n:"Chelateringsmiddel", r:"Stabilisator", d:"Binder metallioner i vannet så produktet holder seg stabilt og friskt lenger." },
+  { m:["sodium metabisulfite","sodium sulfite"], n:"Antioksidant (stabilisator)", r:"Stabilisator", d:"Hindrer at aktive ingredienser (som vitamin C) oksiderer og mister effekt." },
+  // Konserveringsmidler
+  { m:["phenoxyethanol"], n:"Phenoxyethanol", r:"Konservering", d:"Vanlig, godt tolerert konserveringsmiddel som hindrer bakterie- og soppvekst." },
+  { m:["caprylyl glycol"], n:"Caprylyl Glycol", r:"Fukt + konservering", d:"Gir fukt og forsterker konserveringen mildt – vanlig i «konserveringsmiddel-frie» formler." },
+  { m:["ethylhexylglycerin"], n:"Ethylhexylglycerin", r:"Konservering", d:"Mildt konserveringsforsterkende stoff som også mykgjør." },
+  { m:["potassium sorbate","sodium benzoate","benzoic acid"], n:"Mild konservering", r:"Konservering", d:"Matvaregodkjente konserveringsmidler som holder produktet trygt." },
+  { m:["chlorphenesin"], n:"Chlorphenesin", r:"Konservering", d:"Konserveringsmiddel som hindrer mikrobevekst." },
+];
+function forklarIngrediens(navn) {
+  const l = navn.toLowerCase().trim();
+  // Først: er det en aktiv vi kjenner?
+  for (const [key, syns] of Object.entries(INCI_MAP)) {
+    if (syns.some((syn) => inneholderOrd(l, syn))) return { navn: nvn(key), rolle: "Aktiv", d: ING[key]?.s || "Aktiv ingrediens", aktivKey: key };
+  }
+  // Så: støtteingrediens?
+  for (const it of INGREDIENS_INFO) {
+    if (it.m.some((frag) => l.includes(frag))) return { navn: it.n, rolle: it.r, d: it.d };
+  }
+  return null;
+}
+function analyserFullListe(text) {
+  const deler = (text || "").split(/,|\n/).map((x) => x.replace(/\([^)]*\)/g, "").trim()).filter((x) => x.length > 1);
+  return deler.map((navn) => ({ raa: navn, info: forklarIngrediens(navn) }));
+}
+
+function matchINCI(text) {
+  const lower = (text || "").toLowerCase();
+  const funnet = [];
+  for (const [key, syns] of Object.entries(INCI_MAP)) {
+    if (syns.some((syn) => inneholderOrd(lower, syn))) funnet.push(key);
+  }
+  return funnet;
+}
 
 const SENS_OPTS = [
   { v:"parfyme", t:"Parfyme/duft" }, { v:"alkohol", t:"Alkohol" },
@@ -146,25 +329,62 @@ function scoreProduct(p, ans, avoid, dislikedIngs) {
   if (gentle && p.for.includes("sens")) sc += 3;
   if (gentle && !p.for.includes("sens")) sc -= 3;
   if (p.goal && p.goal === ans.maal) sc += 4;
-  if (ans.budsjett.includes(p.tier)) sc += 2; else sc -= 2;
+  if (!ans.budsjett.includes(p.tier)) return -999; /* Hardt budsjett-filter */
+  sc += 2;
   if (ans.etikk?.includes("parfymefri") && p.ings.includes("parfyme")) return -999;
   if (p.tester && !p.custom) return -999; /* Utelukk merker vi vet tester på dyr */
   if (ans.etikk?.includes("lb") && !p.cf && !p.custom) return -999; /* Valgfritt: kun Leaping Bunny */
   if (ans.toleranse === "erfaren" && p.ings.some((i) => ING[i]?.sun || i === "retinol")) sc += 1;
   if (ans.toleranse === "ny" && ans.sensitiv !== "nei" && p.ings.includes("retinol")) sc -= 1;
+  // Aldersjustering (finjustering – hudtype/toleranse veier tyngre)
+  if (ans.alder === "ung") {
+    // Under 20: styr mot mildt, fukt og SPF. Demp anti-aldring-aktive; behold BHA mot kviser.
+    if (p.ings.includes("retinol")) sc -= 6;
+    if (p.ings.includes("glykolsyre")) sc -= 2;
+    if (p.ings.includes("peptider")) sc -= 3;
+    if (p.goal === "aldring") sc -= 4;
+    if (p.ings.includes("salisylsyre") || p.ings.includes("niacinamid")) sc += 1; // trygge mot kviser
+    if (p.cat === "spf" || p.ings.includes("hyaluron") || p.ings.includes("centella")) sc += 1;
+  } else if (ans.alder === "20") {
+    if (p.ings.includes("vitamin-c")) sc += 1; // prevention-fasen: antioksidanter
+  } else if (ans.alder === "30") {
+    if (p.ings.includes("retinol") || p.ings.includes("peptider")) sc += 2;
+  } else if (ans.alder === "45") {
+    // Modnere hud: løft fukt, barriere og retinoider; syrer times forsiktigere (håndteres andre steder)
+    if (p.ings.includes("retinol") || p.ings.includes("peptider")) sc += 2;
+    if (p.ings.includes("ceramider") || p.ings.includes("hyaluron") || p.ings.includes("panthenol")) sc += 2;
+    if (p.goal === "aldring") sc += 1;
+  }
   for (const d of dislikedIngs) if (p.ings.includes(d)) sc -= 3;
   return sc;
 }
 
 function whyText(p, ans) {
   const bits = [];
-  if (p.custom) return "Ditt eget produkt – rutinen er bygget rundt det.";
+  // Egne produkter: forklar ut fra gjenkjente ingredienser + quiz-svar
+  if (p.custom) {
+    if (!p.ings || p.ings.length === 0) return "Ditt eget produkt – lagt inn i rutinen. Legg til ingredienser for en personlig analyse.";
+    const iBits = [];
+    const heroer = p.ings.filter((i) => ING[i]).map((i) => nvn(i));
+    if (p.ings.includes("vitamin-c")) iBits.push(ans.maal === "glow" ? "vitamin C treffer glød-målet ditt direkte – den bremser pigment og gir jevnere tone" : "vitamin C gir antioksidant-beskyttelse alle har nytte av, uansett mål");
+    if (p.ings.includes("niacinamid")) iBits.push(ans.sensitiv === "ja" ? "niacinamid er mild og roer rødhet – trygt for sensitiv hud" : "niacinamid jevner tonen og styrker barrieren");
+    if (p.ings.includes("hyaluron")) iBits.push(ans.hudtype === "torr" ? "hyaluronsyre gir tørr hud ekstra fukt" : "hyaluronsyre gir lett fukt");
+    if (p.ings.includes("retinol")) iBits.push(ans.toleranse === "ny" ? "retinol er kraftig – start forsiktig siden du er ny på aktive" : "retinol jobber mot linjer og tekstur");
+    if (p.ings.includes("salisylsyre")) iBits.push("salisylsyre renser porene – bra mot urenheter");
+    if (p.ings.includes("centella")) iBits.push("centella roer og reparerer – snill mot huden");
+    if (p.ings.includes("panthenol")) iBits.push("panthenol beroliger og støtter barrieren");
+    const grunn = iBits.length ? iBits.join(". ") + "." : "Inneholder " + heroer.join(", ") + " – analysert mot resten av rutinen din.";
+    let advarsel = "";
+    if (p.ings.some((i) => ING[i]?.sun)) advarsel = " ☀️ Gir økt solfølsomhet – SPF hver morgen er ekstra viktig.";
+    if (ans.sensitiv === "ja" && p.ings.includes("retinol")) advarsel += " ⚠️ Du oppga sensitiv hud – introduser dette sakte.";
+    return "Ditt produkt. " + grunn + advarsel;
+  }
   if (p.for.includes(ans.hudtype)) bits.push(`passer ${ans.hudtype === "torr" ? "tørr" : ans.hudtype} hud`);
   if (ans.sensitiv === "ja" && p.for.includes("sens")) bits.push("trygg for sensitiv hud");
   if (ans.helse.includes("gravid") && !pregnancyUnsafe(p) && p.cat === "serum") bits.push("trygg ved graviditet");
   if (p.goal === ans.maal) bits.push("treffer hovedmålet ditt");
   const hero = p.ings.find((i) => ING[i]);
-  if (hero) bits.push(`inneholder ${hero} (${ING[hero].s.toLowerCase()})`);
+  if (hero) bits.push(`inneholder ${nvn(hero)} (${ING[hero].s.toLowerCase()})`);
   return bits.length ? "Valgt fordi den " + bits.join(" · ") : "Solid allrounder for din profil";
 }
 
@@ -189,16 +409,40 @@ function analyse(p, ans) {
 function oppsummering(nivaa, routine, ans, cycling) {
   const amIng = routine.serumAM?.main?.ings.find((i) => ING[i]);
   const pmP = cycling ? null : routine.serumPM?.main;
-  const pmIng = pmP?.ings.find((i) => ING[i]?.freq) || pmP?.ings[0];
+  const pmIng = (pmP?.ings.find((i) => ING[i]?.freq)) || (pmP?.ings[0]);
   const kremIng = routine.krem?.main?.ings[0];
-  const hud = { torr:"tørr", fet:"fet", kombi:"kombinert", normal:"balansert" }[ans.hudtype];
-  const maal = { kviser:"urenheter", glow:"glød og jevnere hudtone", aldring:"fine linjer", ro:"roligere hud" }[ans.maal];
+  const hud = { torr:"tørr", fet:"fet", kombi:"kombinert", normal:"balansert" }[ans.hudtype] || "din";
+  const maal = { kviser:"urenheter", glow:"glød og jevnere hudtone", aldring:"fine linjer", ro:"roligere hud" }[ans.maal] || "sunn hud";
 
-  if (nivaa === 1) return `Rutinen din er bygget for ${hud} hud med mål om ${maal} – og den følger en enkel logikk: rens skånsomt, behandle målrettet, beskytt alltid. Om morgenen gjør du minst mulig (vann, ${amIng ? nvn(amIng).toLowerCase() + "-serum, " : ""}krem og solkrem), for morgenens viktigste jobb er beskyttelse. Om kvelden gjør du selve jobben: dobbelrens fjerner dagens solkrem og smuss, ${cycling ? "og de aktive ingrediensene dine veksler mellom kvelder så huden får hvile mellom øktene" : pmIng ? "og " + nvn(pmIng).toLowerCase() + " jobber mens du sover" : "og huden får ro"}. Fuktighetskremen til slutt låser alt inn. Hvorfor funker dette? Fordi hvert steg har én tydelig jobb, ingenting krangler med hverandre, og det viktigste steget av alle – solkrem – er med hver eneste dag.`;
+  if (nivaa === 1) {
+    const am = amIng ? (nvn(amIng).toLowerCase() + "-serum, ") : "";
+    let kveld;
+    if (cycling) kveld = "og de aktive ingrediensene dine veksler mellom kvelder så huden får hvile mellom øktene";
+    else if (pmIng) kveld = "og " + nvn(pmIng).toLowerCase() + " jobber mens du sover";
+    else kveld = "og huden får ro";
+    return "Rutinen din er bygget for " + hud + " hud med mål om " + maal + " – og den følger en enkel logikk: rens skånsomt, behandle målrettet, beskytt alltid. Om morgenen gjør du minst mulig (vann, " + am + "krem og solkrem), for morgenens viktigste jobb er beskyttelse. Om kvelden gjør du selve jobben: dobbelrens fjerner dagens solkrem og smuss, " + kveld + ". Fuktighetskremen til slutt låser alt inn. Hvorfor funker dette? Fordi hvert steg har én tydelig jobb, ingenting krangler med hverandre, og det viktigste steget av alle – solkrem – er med hver eneste dag.";
+  }
 
-  if (nivaa === 2) return `Strukturen følger prinsippet tynnest til tykkest, og deler døgnet i to roller: dagen beskytter, natten reparerer. ${amIng ? nvn(amIng) + " om morgenen er plassert der med vilje – antioksidanter jobber best under solkremen, hvor de fanger frie radikaler før de når kollagenet." : "Morgenrutinen er bevisst minimal for å bevare hudbarrieren."} ${cycling ? "Kveldene dine kjører skin-cycling: eksfoliering og retinol på hver sine kvelder, med pausenetter imellom – slik får du effekten av begge uten irritasjonen av å stable dem." : pmIng ? "Kveldens " + nvn(pmIng).toLowerCase() + " ligger på kvelden fordi " + (ING[pmIng]?.sun ? "den gjør huden mer lysfølsom og brytes ned av UV" : "natten er hudens reparasjonsvindu") + "."} ${kremIng ? "Fuktighetskremen med " + nvn(kremIng).toLowerCase() + " er støtteapparatet: den styrker barrieren slik at de aktive ingrediensene kan virke uten å tære på huden." : ""} Ingrediensene er valgt for å komplementere, ikke konkurrere – ingen overlappende syrer, ingen kombinasjoner som nøytraliserer hverandre.`;
+  if (nivaa === 2) {
+    const amDel = amIng ? (nvn(amIng) + " om morgenen er plassert der med vilje – antioksidanter jobber best under solkremen, hvor de fanger frie radikaler før de når kollagenet.") : "Morgenrutinen er bevisst minimal for å bevare hudbarrieren.";
+    let pmDel = "";
+    if (cycling) pmDel = "Kveldene dine kjører skin-cycling: eksfoliering og retinol på hver sine kvelder, med pausenetter imellom – slik får du effekten av begge uten irritasjonen av å stable dem.";
+    else if (pmIng) { const grunn = ING[pmIng]?.sun ? "den gjør huden mer lysfølsom og brytes ned av UV" : "natten er hudens reparasjonsvindu"; pmDel = "Kveldens " + nvn(pmIng).toLowerCase() + " ligger på kvelden fordi " + grunn + "."; }
+    const kremDel = kremIng ? ("Fuktighetskremen med " + nvn(kremIng).toLowerCase() + " er støtteapparatet: den styrker barrieren slik at de aktive ingrediensene kan virke uten å tære på huden.") : "";
+    return "Strukturen følger prinsippet tynnest til tykkest, og deler døgnet i to roller: dagen beskytter, natten reparerer. " + amDel + " " + pmDel + " " + kremDel + " Ingrediensene er valgt for å komplementere, ikke konkurrere – ingen overlappende syrer, ingen kombinasjoner som nøytraliserer hverandre.";
+  }
 
-  return `For nerden: rutinen er komponert rundt barriere-først-prinsippet. ${amIng === "vitamin-c" ? "L-askorbinsyre/C-derivat i AM gir fotoprotektiv synergi med SPF – antioksidant + filter demper UV-indusert oksidativt stress bedre enn filter alene." : amIng ? nvn(amIng) + " i AM gir antiinflammatorisk støtte uten fotosensitivisering." : ""} ${cycling ? "PM kjører syklisk eksponering: kjemisk eksfoliering øker celleturnover og penetrasjon, retinoid oppregulerer kollagensyntese via retinsyrereseptorene, og recovery-netter lar TEWL normaliseres – dokumentert strategi for å bevare retinoid-effekt med lavere irritasjonsscore." : pmIng ? nvn(pmIng) + " i PM: " + (ING[pmIng]?.d || "").split(".")[0].toLowerCase() + "." : ""} ${kremIng === "ceramider" ? "Ceramid-dominant okklusjon post-aktiver reduserer irritasjonsrisiko og støtter lamellær lipidstruktur." : kremIng === "niacinamid" ? "Niacinamid i fuktighetslaget øker endogen ceramidsyntese – smart pairing med aktive." : ""} ${routine.olje?.main ? "Dobbelrensen sikrer fullstendig fjerning av filmdannende UV-filtre uten å stripped barrieren (lav-pH andretrinn)." : ""} Ingen ingrediens-antagonisme: syrer og retinoider er temporalt separert, og pH-avhengige aktiver ligger på egne tidspunkt.`;
+  let amN = "";
+  if (amIng === "vitamin-c") amN = "L-askorbinsyre/C-derivat i AM gir fotoprotektiv synergi med SPF – antioksidant + filter demper UV-indusert oksidativt stress bedre enn filter alene.";
+  else if (amIng) amN = nvn(amIng) + " i AM gir antiinflammatorisk støtte uten fotosensitivisering.";
+  let pmN = "";
+  if (cycling) pmN = "PM kjører syklisk eksponering: kjemisk eksfoliering øker celleturnover og penetrasjon, retinoid oppregulerer kollagensyntese via retinsyrereseptorene, og recovery-netter lar TEWL normaliseres – dokumentert strategi for å bevare retinoid-effekt med lavere irritasjonsscore.";
+  else if (pmIng) pmN = nvn(pmIng) + " i PM: " + ((ING[pmIng]?.d || "").split(".")[0].toLowerCase()) + ".";
+  let kremN = "";
+  if (kremIng === "ceramider") kremN = "Ceramid-dominant okklusjon post-aktiver reduserer irritasjonsrisiko og støtter lamellær lipidstruktur.";
+  else if (kremIng === "niacinamid") kremN = "Niacinamid i fuktighetslaget øker endogen ceramidsyntese – smart pairing med aktive.";
+  const oljeN = routine.olje?.main ? "Dobbelrensen sikrer fullstendig fjerning av filmdannende UV-filtre uten å stripped barrieren (lav-pH andretrinn)." : "";
+  return "For nerden: rutinen er komponert rundt barriere-først-prinsippet. " + amN + " " + pmN + " " + kremN + " " + oljeN + " Ingen ingrediens-antagonisme: syrer og retinoider er temporalt separert, og pH-avhengige aktiver ligger på egne tidspunkt.";
 }
 
 function serumTiming(p) {
@@ -209,6 +453,65 @@ function serumTiming(p) {
   return "AM eller PM";
 }
 
+function erAktivEksfoliant(p) { return p?.ings?.some((i) => ["glykolsyre","salisylsyre","pha","azelainsyre"].includes(i)); }
+function erAktivPM(p) { return p?.ings?.some((i) => ING[i]?.sun || i === "retinol"); }
+
+/* Helhetlig konfliktsjekk: ser på ALLE produktene i rutinen samlet og advarer om
+   kombinasjoner som kan irritere eller nøytralisere hverandre. Returnerer liste med advarsler. */
+function finnKonflikter(produkter, cycling) {
+  const advarsler = [];
+  const alle = produkter.filter(Boolean);
+  const harIng = (ing) => alle.filter((p) => p.ings?.includes(ing));
+  const navnliste = (ps) => ps.map((p) => `${p.brand} ${p.name}`).join(" + ");
+
+  // 1. Flere eksfolierende syrer samtidig (AHA + BHA + PHA)
+  const syrer = alle.filter((p) => erAktivEksfoliant(p));
+  if (syrer.length > 1 && !cycling) {
+    advarsler.push({ niva:"advarsel", tekst:`Du har flere eksfolierende syrer i rutinen (${navnliste(syrer)}). Å bruke dem samtidig kan overeksfoliere og skade hudbarrieren. Bruk dem på ulike dager, eller velg én.` });
+  }
+  // 2. Syre + retinol (uten skin-cycling som separerer dem)
+  const retinoler = harIng("retinol");
+  if (syrer.length >= 1 && retinoler.length >= 1 && !cycling) {
+    advarsler.push({ niva:"advarsel", tekst:`Syre (${navnliste(syrer)}) og retinol (${navnliste(retinoler)}) samme kveld kan gi kraftig irritasjon. Bruk dem på hver sine kvelder – eller la verktøyet sette opp skin-cycling for deg.` });
+  }
+  // 3. Flere retinoider/retinol-produkter
+  if (retinoler.length > 1) {
+    advarsler.push({ niva:"advarsel", tekst:`Du har flere retinol-produkter (${navnliste(retinoler)}). Å stable retinoider øker irritasjon uten ekstra effekt – hold deg til ett.` });
+  }
+  // 4. Ren vitamin C (L-askorbinsyre) + retinol – kan begge irritere; info-nivå
+  const cvit = harIng("vitamin-c");
+  if (cvit.length >= 1 && retinoler.length >= 1) {
+    advarsler.push({ niva:"info", tekst:`Vitamin C og retinol brukes best til hver sin tid på døgnet: vitamin C om morgenen (antioksidant under SPF), retinol om kvelden. Rutinen din er satt opp slik – bare bekreftende.` });
+  }
+  // 5. Mange aktive totalt for nybegynner-lignende rutine
+  const aktiveTotalt = alle.filter((p) => erAktivEksfoliant(p) || p.ings?.includes("retinol")).length;
+  if (aktiveTotalt >= 3 && !cycling) {
+    advarsler.push({ niva:"info", tekst:`Rutinen inneholder ${aktiveTotalt} aktive ingredienser. Det er mye på én gang – vurder å introdusere dem gradvis, ett produkt hver 1–2 uke, så huden får venne seg til.` });
+  }
+  return advarsler;
+}
+/* Analyserer hvor invasivt/sterkt et aktivt produkt er, ut fra produkttype + konsentrasjon.
+   Renseprodukter som skylles av er mildere enn leave-on serum med samme syre. */
+function kortnavn(p) {
+  if (!p) return "";
+  const ord = (p.name || "").split(" ");
+  return ord.slice(0, 2).join(" ");
+}
+function aktivStyrke(p) {
+  if (!p || !erAktivEksfoliant(p) && !p.ings?.includes("retinol")) return null;
+  const tekst = ((p.name || "") + " " + (p.inci || "")).toLowerCase();
+  const pctMatch = tekst.match(/(\d{1,2}(?:[.,]\d)?)\s*%/g);
+  let pct = 0;
+  if (pctMatch) pct = Math.max(...pctMatch.map((x) => parseFloat(x.replace(",", ".").replace("%", ""))));
+  const skyllesAv = p.cat === "rens" || p.cat === "olje";
+  let niva, tekst2;
+  if (skyllesAv) { niva = "mild"; tekst2 = "Skylles av – syren har kort kontakttid, så dette er et mildt eksfolierings-trinn du trygt kan bruke ofte."; }
+  else if (pct >= 10 || p.name?.toLowerCase().includes("peel")) { niva = "sterk"; tekst2 = pct ? `Høy konsentrasjon (~${pct}%) og ligger på huden – dette er et kraftig aktivt trinn. Start 1–2x/uke og bygg opp.` : "Konsentrert peel som ligger på huden – kraftig. Start forsiktig, 1–2x/uke."; }
+  else if (pct >= 5) { niva = "moderat"; tekst2 = `Moderat konsentrasjon (~${pct}%), leave-on. Bygg opp til annenhver kveld etter toleranse.`; }
+  else if (p.ings?.includes("retinol")) { niva = "moderat"; tekst2 = "Retinol/retinoid som ligger på huden – introduser gradvis, 2–3 kvelder/uke først."; }
+  else { niva = "mild-moderat"; tekst2 = "Leave-on syre i lav/uoppgitt konsentrasjon – mild til moderat. Følg med på hvordan huden reagerer."; }
+  return { niva, pct, skyllesAv, tekst: tekst2 };
+}
 function sunWarning(p) { return p?.ings.some((i) => ING[i]?.sun); }
 function freqText(p) { const i = p?.ings.find((x) => ING[x]?.freq); return i ? ING[i].freq : null; }
 
@@ -222,7 +525,7 @@ function serumDays(p) {
 }
 
 /* ============ PRISER ============ */
-const BASE = { 1: 149, 2: 329, 3: 749 };
+const BASE = { 1: 149, 2: 329, 3: 749, 4: 219 };
 function offers(p) {
   const base = BASE[p.tier] + ((p.id.charCodeAt(1) || 5) % 7) * 10;
   return [
@@ -292,7 +595,8 @@ h1{font-family:'Fraunces',serif;font-weight:600;font-size:32px;line-height:1.12;
 .offer.best{border-color:${sage}}
 .gostore{font-size:12px;font-weight:700;color:#fff;background:${ink};border:none;border-radius:99px;padding:9px 14px;cursor:pointer;font-family:Inter;white-space:nowrap}
 .pricetag{font-size:17px;font-weight:700}
-.week{width:100%;border-collapse:collapse;font-size:11px;margin-top:10px}
+.weekscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px -4px 0;padding:0 4px}
+.week{width:100%;min-width:560px;border-collapse:collapse;font-size:11px}
 .week th{font-weight:700;padding:6px 2px;color:#8B8880;text-transform:uppercase;letter-spacing:.06em;font-size:9.5px}
 .week td{border:1px solid ${line};padding:5px 3px;text-align:center;background:#fff;border-radius:4px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin:1px}
@@ -311,15 +615,20 @@ const Shell = ({ eyebrow, title, subtitle, children }) => (
 /* ============ APP ============ */
 export default function Klinikk() {
   const [step, setStep] = useState(0);
-  const [ans, setAns] = useState({ hudtype:null, sensitiv:null, toleranse:null, sensList:[], helse:[], maal:null, budsjett:[], etikk:[] });
+  const [ans, setAns] = useState({ hudtype:null, alder:null, sensitiv:null, toleranse:null, sensList:[], helse:[], maal:null, budsjett:[], etikk:[] });
   const [liked, setLiked] = useState([]);
   const [custom, setCustom] = useState([]);
   const [disliked, setDisliked] = useState([]);
+  const [feedback, setFeedback] = useState({});
+  const [fbOpen, setFbOpen] = useState(null);
+  const [cellEdit, setCellEdit] = useState(null);
+  const [cellOverrides, setCellOverrides] = useState({});
   const [q, setQ] = useState("");
   const [addingCat, setAddingCat] = useState(null);
   const [swaps, setSwaps] = useState({});
   const [removed, setRemoved] = useState([]);
   const [openIng, setOpenIng] = useState(null);
+  const [openFullIng, setOpenFullIng] = useState(null);
   const [deepIng, setDeepIng] = useState(null);
   const [toast, setToast] = useState(null);
   const [saved, setSaved] = useState(null);
@@ -329,6 +638,10 @@ export default function Klinikk() {
   const [showHow, setShowHow] = useState(false);
   const [layers, setLayers] = useState({ tonerCount:0, maske:false });
   const [oppsNivaa, setOppsNivaa] = useState(1);
+  const [visOpps, setVisOpps] = useState(true);
+  const [stegFerdig, setStegFerdig] = useState({});
+  const [apneSteg, setApneSteg] = useState(null);
+  const [egetForslag, setEgetForslag] = useState({});
   const [custIngs, setCustIngs] = useState([]);
   /* Auto-aktiver valgfrie lag når brukeren har eget/likt produkt i kategorien */
   useEffect(() => {
@@ -338,6 +651,8 @@ export default function Klinikk() {
     setLayers((l) => ({ ...l, tonerCount: harToner && l.tonerCount === 0 ? 1 : l.tonerCount, maske: harMaske ? true : l.maske }));
   }, [liked, custom]);
   const [ingSok, setIngSok] = useState("");
+  const [inciTekst, setInciTekst] = useState("");
+  const [inciTreff, setInciTreff] = useState([]);
   const [maskeFreq, setMaskeFreq] = useState(1);
   const [lockedIn, setLockedIn] = useState(false);
   const [openAnalyse, setOpenAnalyse] = useState(null);
@@ -348,11 +663,13 @@ export default function Klinikk() {
 
   useEffect(() => {
     (async () => {
-      try { const r = await storage.get("min-rutine"); if (r) { const sv = JSON.parse(r.value); if (typeof sv.ans?.budsjett === "number") sv.ans.budsjett = [sv.ans.budsjett]; if (!sv.ans?.toleranse) sv.ans.toleranse = "litt"; if (!sv.ans?.etikk) sv.ans.etikk = []; setSaved(sv); } } catch (e) {}
+      try { const r = await storage.get("min-rutine"); if (r) { const sv = JSON.parse(r.value); if (typeof sv.ans?.budsjett === "number") sv.ans.budsjett = [sv.ans.budsjett]; if (!sv.ans?.toleranse) sv.ans.toleranse = "litt"; if (!sv.ans?.etikk) sv.ans.etikk = []; if (!sv.ans?.alder) sv.ans.alder = "30"; setSaved(sv); } } catch (e) {}
+      try { const fb = await storage.get("skinatlas-feedback"); if (fb) setFeedback(JSON.parse(fb.value)); } catch (e) {}
     })();
   }, []);
 
   const ping = (m) => { setToast(m); setTimeout(() => setToast(null), 2600); };
+
   const set = (k, v) => { setAns({ ...ans, [k]: v }); setStep(step + 1); };
   const allProducts = [...P, ...custom];
   const daysSince = (iso) => Math.floor((Date.now() - new Date(iso)) / 86400000);
@@ -366,14 +683,21 @@ export default function Klinikk() {
     const dislikedIngs = disliked.flatMap((id) => allProducts.find((x) => x.id === id)?.ings || []);
     const etikkOK = (p) => p.custom || (!p.tester && (!ans.etikk?.includes("lb") || p.cf) && (!ans.etikk?.includes("vegan") || p.vg) && (!ans.etikk?.includes("parfymefri") || !p.ings.includes("parfyme")));
     const isAMserum = (p) => p.ings.includes("vitamin-c") || (p.ings.includes("niacinamid") && !p.ings.some((i) => ING[i]?.sun));
+    const scoreWith = (p, ignoreBudget) => {
+      if (ignoreBudget) { const saved = ans.budsjett; const tmp = { ...ans, budsjett: [1,2,3,4] }; return scoreProduct(p, tmp, avoid, dislikedIngs); }
+      return scoreProduct(p, ans, avoid, dislikedIngs);
+    };
     const build = (cat, filterFn) => {
       const likedHere = [...liked, ...custom.map((c) => c.id)].find((id) => { const x = allProducts.find((y) => y.id === id); return x?.cat === cat && (!filterFn || filterFn(x)); });
-      const pool = allProducts.filter((p) => p.cat === cat && !disliked.includes(p.id) && !p.custom && etikkOK(p) && (!filterFn || filterFn(p)))
-        .map((p) => ({ p, sc: scoreProduct(p, ans, avoid, dislikedIngs) }))
-        .filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc);
+      const base = allProducts.filter((p) => p.cat === cat && !disliked.includes(p.id) && !p.custom && etikkOK(p) && (!filterFn || filterFn(p)));
+      // Primær: kun valgt(e) budsjettnivå
+      let pool = base.map((p) => ({ p, sc: scoreWith(p, false), off: false })).filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc);
+      // Fallback: hvis ingen i valgt nivå, tillat andre nivåer (markeres off=true)
+      if (pool.length === 0) pool = base.map((p) => ({ p, sc: scoreWith(p, true), off: true })).filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc);
       const key = filterFn ? cat + (filterFn === isAMserum ? "AM" : "PM") : cat;
       const main = swaps[key] || (likedHere ? allProducts.find((x) => x.id === likedHere) : pool[0]?.p || null);
-      return { main, locked: !!likedHere && !swaps[key], alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 3).map((x) => x.p) };
+      const offBudget = pool[0]?.off && !swaps[key] && !likedHere;
+      return { main, locked: !!likedHere && !swaps[key], offBudget, alts: pool.filter((x) => x.p.id !== main?.id).slice(0, 3).map((x) => x.p) };
     };
     const out = {};
     out.olje = build("olje");
@@ -384,10 +708,14 @@ export default function Klinikk() {
       .filter((x) => x.sc > -100).sort((a, b) => b.sc - a.sc).map((x) => x.p);
     out.maske = build("maske");
     out.rens = build("rens");
-    out.serumAM = build("serum", isAMserum);
-    out.serumPM = build("serum", (p) => !isAMserum(p));
+    const erCvit = (p) => p.ings.includes("vitamin-c");
+    const erFuktserum = (p) => (p.ings.includes("hyaluron") || p.ings.includes("panthenol") || p.ings.includes("centella") || p.ings.includes("mucin")) && !p.ings.some((i) => ING[i]?.sun) && !p.ings.includes("vitamin-c") && !p.ings.includes("niacinamid");
+    out.serumC = build("serum", erCvit);                       // C-vitamin / antioksidant (AM)
+    out.serumAM = build("serum", (p) => isAMserum(p) && !erCvit(p)); // annet dagserum (f.eks. niacinamid)
+    out.serumHydra = build("serum", erFuktserum);              // rent fuktserum – eget trinn
+    out.serumPM = build("serum", (p) => !isAMserum(p) && !erFuktserum(p)); // aktivt kveldsserum
     /* Skin-cycling for erfarne: både eksfoliering og retinol */
-    const wantCycle = ans.toleranse !== "ny" && !ans.helse.includes("gravid") && (ans.maal === "aldring" || ans.maal === "glow") && !ans.sensList.includes("retinol") && !ans.sensList.includes("salisylsyre");
+    const wantCycle = ans.alder !== "ung" && ans.toleranse !== "ny" && !ans.helse.includes("gravid") && (ans.maal === "aldring" || ans.maal === "glow") && !ans.sensList.includes("retinol") && !ans.sensList.includes("salisylsyre");
     if (wantCycle) {
       const ex = build("serum", (p) => p.ings.includes("glykolsyre") || p.ings.includes("salisylsyre"));
       const ret = build("serum", (p) => p.ings.includes("retinol") || p.ings.includes("bakuchiol"));
@@ -396,7 +724,11 @@ export default function Klinikk() {
     out.krem = build("krem");
     out.spf = build("spf");
     /* Unngå duplikat-effekt: hvis AM og PM endte med samme hero, dropp AM */
-    if (out.serumAM.main && out.serumPM.main && out.serumAM.main.id === out.serumPM.main.id) out.serumAM.main = null;
+    // Fjern duplikater på tvers av serum-slots (samme produkt skal ikke stå to steder)
+    const brukteSerum = new Set();
+    ["serumC","serumAM","serumHydra","serumPM","serumEx","serumRet"].forEach((k) => {
+      if (out[k]?.main) { if (brukteSerum.has(out[k].main.id)) out[k] = { main:null, alts:out[k].alts || [] }; else brukteSerum.add(out[k].main.id); }
+    });
     return out;
   }, [ans, liked, disliked, swaps, custom]);
 
@@ -414,6 +746,7 @@ export default function Klinikk() {
         </div>
       )}
       <button className="primary" onClick={() => setStep(1)}>Begynn konsultasjonen</button>
+      <p className="sub" style={{fontSize:11.5, marginTop:10, color:"#8B8880"}}>Nytt verktøy under utvikling. Gir generell veiledning basert på ingredienser – ikke medisinske råd. Introduser produkter forsiktig, og rådfør deg med lege ved graviditet, hudsykdom eller tvil.</p>
       <div style={{display:"flex", gap:0}}>
         <button className="ghost" onClick={() => { setShowHow(!showHow); setShowTrust(false); setShowPersonvern(false); }}>🤖 Hvordan funker veilederen?</button>
         <button className="ghost" onClick={() => { setShowTrust(!showTrust); setShowHow(false); setShowPersonvern(false); }}>Hvorfor stole på oss? ↓</button>
@@ -469,7 +802,14 @@ export default function Klinikk() {
         <button key={o.v} className={"opt" + (ans.hudtype === o.v ? " on" : "")} onClick={() => setAns({ ...ans, hudtype: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
       <p className="sub" style={{fontSize:12, marginTop:14}}>Usikker? Vask ansiktet, vent 1 time uten produkter: stram = tørr, blank = fet, blank kun i T-sonen = kombinert.</p>
-      <button className="primary" onClick={() => { if (ans.hudtype) setStep(2); else ping("Velg ett svar"); }}>Fortsett</button>
+      <div style={{fontSize:13, fontWeight:700, margin:"20px 0 6px"}}>Hvor gammel er du?</div>
+      <div style={{display:"flex", gap:6, flexWrap:"wrap"}}>
+        {[{v:"ung",t:"Under 20"},{v:"20",t:"20–29"},{v:"30",t:"30–44"},{v:"45",t:"45+"}].map((o) => (
+          <button key={o.v} className="chip" style={{padding:"8px 14px", background: ans.alder === o.v ? "#16130F" : "#fff", color: ans.alder === o.v ? "#fff" : "#16130F"}} onClick={() => setAns({ ...ans, alder: o.v })}>{o.t}</button>
+        ))}
+      </div>
+      <p className="sub" style={{fontSize:11.5, marginTop:8}}>Alder finjusterer anbefalingen – men hudtype og toleranse betyr mest. En robust hud tåler mer uansett alder.</p>
+      <button className="primary" onClick={() => { if (ans.hudtype && ans.alder) setStep(2); else ping("Velg hudtype og alder"); }}>Fortsett</button>
       {toast && <div className="toast">{toast}</div>}
     </Shell>
   );
@@ -537,8 +877,8 @@ export default function Klinikk() {
   if (step === 6) return (
     <Shell eyebrow="Steg 6 av 7" title="Hvilket nivå skal vi handle på?">
       <Prog />
-      <p className="sub" style={{fontSize:13, marginBottom:6}}>Velg ett eller flere – mange kombinerer billig rens med luksus-serum. Vi finner beste match i nivåene du åpner for.</p>
-      {[{v:1,t:"Smart budsjett",d:"Effektivt uten å blø – The Ordinary, K-beauty"},{v:2,t:"Klinikk-klassikere",d:"Paula's Choice, Klairs, Pixi"},{v:3,t:"Luksus",d:"Tatcha, Medik8, Herbivore"}].map((o) => (
+      <p className="sub" style={{fontSize:13, marginBottom:6}}>Velg ett eller flere prisnivåer – merkene under er bare eksempler, ikke en fasit. Mange kombinerer billig rens med dyrere serum. Vi finner beste match i nivåene du åpner for.</p>
+      {[{v:1,t:"Smart budsjett",d:"Rimelig og effektivt. F.eks. The Ordinary, COSRX, The Inkey List, Byoma"},{v:4,t:"Apotek",d:"Dermatolog-testet, ofte for sensitiv hud. F.eks. La Roche-Posay, Avène, CeraVe, Eucerin, Bioderma"},{v:2,t:"Mellomsjikt",d:"F.eks. Paula's Choice, Klairs, Pixi, Naturium, Beauty of Joseon"},{v:3,t:"Luksus",d:"F.eks. Tatcha, Medik8, Drunk Elephant, Herbivore"}].map((o) => (
         <button key={o.v} className={"opt" + (ans.budsjett.includes(o.v) ? " on" : "")} onClick={() => setAns({ ...ans, budsjett: ans.budsjett.includes(o.v) ? ans.budsjett.filter((x) => x !== o.v) : [...ans.budsjett, o.v] })}>{o.t}<small>{o.d}</small></button>
       ))}
       <button className="primary" onClick={() => { if (ans.budsjett.length) setStep(7); else ping("Velg minst ett nivå"); }}>Fortsett</button>
@@ -582,18 +922,41 @@ export default function Klinikk() {
       )}
       {addingCat && addingCat.cat && (
         <div className="stepcard" style={{marginTop:10}}>
-          <div style={{fontSize:13, fontWeight:700}}>Hvilke hovedingredienser har «{addingCat.navn}»?</div>
-          <div style={{fontSize:12, color:"#6B6862", marginTop:2}}>Sjekk baksiden av produktet eller søk det opp på incidecoder.com – velg de 1–4 viktigste, så analyserer vi det mot resten av rutinen din (soltimer, hyppighet, kollisjoner osv.).</div>
-          <input className="search" style={{marginTop:8}} placeholder="Filtrer ingredienser..." value={ingSok} onChange={(e) => setIngSok(e.target.value)} />
-          <div style={{marginTop:8}}>
-            {Object.keys(ING).filter((k) => nvn(k).toLowerCase().includes(ingSok.toLowerCase())).map((k) => (
-              <button key={k} className="chip" style={{background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : custIngs.length < 4 ? [...custIngs, k] : custIngs)}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
+          <div style={{fontSize:13, fontWeight:700}}>Lim inn ingredienslisten til «{addingCat.navn}»</div>
+          <div style={{fontSize:12, color:"#6B6862", marginTop:2}}>Kopier hele INCI-listen fra produktsiden (f.eks. KICKS, incidecoder.com eller baksiden), lim inn her, og vi gjenkjenner de aktive ingrediensene automatisk – inkludert derivater som «Ascorbyl Glucoside» (vitamin C).</div>
+          <textarea className="search" style={{marginTop:8, minHeight:80, resize:"vertical", fontFamily:"inherit"}} placeholder="Aqua, Ascorbyl Glucoside, Propanediol, Niacinamide, ..." value={inciTekst} onChange={(e) => { setInciTekst(e.target.value); setInciTreff(matchINCI(e.target.value)); }} />
+          {inciTreff.length > 0 && (
+            <div style={{marginTop:10}}>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880"}}>Aktive ingredienser gjenkjent ({inciTreff.length}) – huk av det som skal telle i analysen:</div>
+              <div style={{marginTop:6}}>
+                {inciTreff.map((k) => (
+                  <button key={k} className="chip" style={{background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : [...custIngs, k])}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
+                ))}
+              </div>
+            </div>
+          )}
+          {inciTekst.length > 10 && (() => { const full = analyserFullListe(inciTekst); const kjent = full.filter((x) => x.info); return kjent.length > 0 && (
+            <div style={{marginTop:12, paddingTop:10, borderTop:"1px solid #E4E1DA"}}>
+              <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880", marginBottom:6}}>Hele lista forklart ({kjent.length} av {full.length} gjenkjent)</div>
+              {full.map((x, i) => (
+                <div key={i} style={{display:"flex", gap:8, padding:"6px 0", borderBottom:"1px solid #F0EEE8", fontSize:12.5, alignItems:"flex-start"}}>
+                  <span style={{minWidth:130, fontWeight:600, color: x.info ? "#16130F" : "#B8B4AA"}}>{x.info ? x.info.navn : x.raa}</span>
+                  {x.info ? <span style={{flex:1, color:"#4A4842"}}><b style={{fontSize:10, letterSpacing:".06em", textTransform:"uppercase", color:"#8B8880"}}>{x.info.rolle}</b> · {x.info.d}</span> : <span style={{flex:1, color:"#B8B4AA", fontStyle:"italic"}}>{x.raa} – ikke i databasen ennå</span>}
+                </div>
+              ))}
+              <div style={{fontSize:11, color:"#8B8880", marginTop:8, fontStyle:"italic"}}>Aktive ingredienser påvirker rutine-analysen. Støtteingredienser (fuktbindere, emulgatorer, konservering) er med for kunnskapens skyld – de forteller hva produktet ellers inneholder og hvorfor.</div>
+            </div>
+          ); })()}
+          {inciTekst.length > 20 && inciTreff.length === 0 && <div className="note" style={{marginTop:8}}>Ingen aktive ingredienser gjenkjent – produktet er nok en fukt-/støtteformel. Det kan fortsatt legges inn som eget steg.</div>}
+          <div style={{marginTop:10, fontSize:11, color:"#8B8880"}}>Eller velg manuelt:</div>
+          <div style={{marginTop:4}}>
+            {Object.keys(ING).map((k) => (
+              <button key={k} className="chip" style={{padding:"4px 9px", background: custIngs.includes(k) ? "#16130F" : "#fff", color: custIngs.includes(k) ? "#fff" : "#16130F"}} onClick={() => setCustIngs(custIngs.includes(k) ? custIngs.filter((x) => x !== k) : [...custIngs, k])}>{custIngs.includes(k) ? "✓ " : "+ "}{nvn(k)}</button>
             ))}
           </div>
-          <a className="learn" href={`https://incidecoder.com/search?query=${encodeURIComponent(addingCat.navn)}`} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:8}}>🔍 Slå opp «{addingCat.navn}» på INCIDecoder →</a>
           <button className="primary" style={{marginTop:12}} onClick={() => {
-            const np = { id:"cu"+Date.now(), cat:addingCat.cat, name:addingCat.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:custIngs, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6" };
-            setCustom([...custom, np]); setQ(""); setAddingCat(null); setCustIngs([]);
+            const np = { id:"cu"+Date.now(), cat:addingCat.cat, name:addingCat.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:custIngs, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6", vg:true, inci:inciTekst };
+            setCustom([...custom, np]); setQ(""); setAddingCat(null); setCustIngs([]); setInciTekst(""); setInciTreff([]);
             ping(custIngs.length ? "Lagt inn med " + custIngs.length + " ingredienser – analyseres i rutinen ♥" : "Lagt inn i rutinen din ♥");
           }}>{custIngs.length ? `Lagre med ${custIngs.length} ingrediens${custIngs.length > 1 ? "er" : ""}` : "Lagre uten ingredienser"}</button>
         </div>
@@ -609,22 +972,6 @@ export default function Klinikk() {
   );
 
   /* ---- RESULTAT ---- */
-  const order = [
-    { cat:"olje", label:"Oljerens (dobbelrens steg 1)", when:"PM · løser opp SPF og sminke", n:NYBEGYNNER.olje },
-    { cat:"rens", label:"Rens (dobbelrens steg 2)", when:"PM · om morgenen holder lunkent vann", n:NYBEGYNNER.rens },
-    { cat:"serumAM", label:"Dagserum", when:"AM – antioksidant-skjold under solkremen", n:NYBEGYNNER.serum },
-    ...(routine?.serumEx?.main ? [
-      { cat:"serumEx", label:"Kveld A – Eksfoliering", when:"PM · syre-kveld i syklusen", n:NYBEGYNNER.serum },
-      { cat:"serumRet", label:"Kveld B – Retinol", when:"PM · retinol-kveld i syklusen", n:NYBEGYNNER.serum },
-    ] : [
-      { cat:"serumPM", label:"Kveldsserum (aktiv)", when:serumTiming(routine?.serumPM?.main), n:NYBEGYNNER.serum },
-    ]),
-    ...tonerSlots.map((_, i) => ({ cat:"tonerL" + i, tslot:i, label: i === 0 ? "Toner/essence · lag 1" : `Essence · lag ${i + 1}`, when:"AM + PM · tynnest først", n:NYBEGYNNER.toner, layer:true })),
-    { cat:"krem", label:"Fuktighet", when:"AM + PM", n:NYBEGYNNER.krem },
-    ...(layers.maske ? [{ cat:"maske", label:"Maske (ukentlig)", when:`${maskeFreq}x i uken · kveld uten aktive`, n:NYBEGYNNER.maske, layer:true }] : []),
-    { cat:"spf", label:"Solbeskyttelse", when:"AM – hver dag, hele året", n:NYBEGYNNER.spf },
-  ].filter((o) => !removed.includes(o.cat));
-
   const tonerSlots = [...Array(layers.tonerCount)].map((_, i) => {
     const used = [...Array(i)].map((__, j) => (swaps["tonerL" + j] || routine.tonerRanked[j])?.id);
     const pool = routine.tonerRanked.filter((p) => !used.includes(p.id));
@@ -639,6 +986,25 @@ export default function Klinikk() {
   const sDays = custDays ?? serumDays(serum);
   const serumAMp = routine?.serumAM?.main;
   const serumIsAM = false;
+
+  const order = [
+    { cat:"olje", label:"Oljerens (dobbelrens steg 1)", when:"PM · løser opp SPF og sminke", n:NYBEGYNNER.olje },
+    { cat:"rens", label:"Rens (dobbelrens steg 2)", when:"PM · om morgenen holder lunkent vann", n:NYBEGYNNER.rens },
+    ...(routine?.serumC?.main ? [{ cat:"serumC", label:"C-vitamin / antioksidant", when:"AM – antioksidant-skjold under solkremen", n:NYBEGYNNER.serum }] : []),
+    ...(routine?.serumAM?.main ? [{ cat:"serumAM", label:"Dagserum", when:"AM – etter C-vitamin", n:NYBEGYNNER.serum }] : []),
+    ...(routine?.serumHydra?.main ? [{ cat:"serumHydra", label:"Fuktserum", when:"AM + PM – hydrerende lag", n:NYBEGYNNER.serum }] : []),
+    ...(routine?.serumEx?.main ? [
+      { cat:"serumEx", label:"Kveld A – Eksfoliering", when:"PM · syre-kveld i syklusen", n:NYBEGYNNER.serum },
+      { cat:"serumRet", label:"Kveld B – Retinol", when:"PM · retinol-kveld i syklusen", n:NYBEGYNNER.serum },
+    ] : [
+      { cat:"serumPM", label:"Kveldsserum (aktiv)", when:serumTiming(routine?.serumPM?.main), n:NYBEGYNNER.serum },
+    ]),
+    ...tonerSlots.map((_, i) => ({ cat:"tonerL" + i, tslot:i, label: i === 0 ? "Toner/essence · lag 1" : `Essence · lag ${i + 1}`, when:"AM + PM · tynnest først", n:NYBEGYNNER.toner, layer:true })),
+    { cat:"krem", label:"Fuktighet", when:"AM + PM", n:NYBEGYNNER.krem },
+    ...(layers.maske ? [{ cat:"maske", label:"Maske (ukentlig)", when:`${maskeFreq}x i uken · kveld uten aktive`, n:NYBEGYNNER.maske, layer:true }] : []),
+    { cat:"spf", label:"Solbeskyttelse", when:"AM – hver dag, hele året", n:NYBEGYNNER.spf },
+  ].filter((o) => !removed.includes(o.cat));
+
   const DAGER = ["Man","Tir","Ons","Tor","Fre","Lør","Søn"];
   const GOALNAVN = { kviser:"Kviser", glow:"Glød", aldring:"Linjer", ro:"Roe hud" };
   const HUDNAVN = { torr:"Tørr", fet:"Fet", kombi:"Kombinert", normal:"Balansert" };
@@ -663,6 +1029,8 @@ export default function Klinikk() {
       </p>
 
       {ans.helse.includes("gravid") && <div className="note" style={{maxWidth:460, margin:"12px auto 0"}}>🤰 Tilpasset graviditet/amming: uten retinol og sterke syrer.</div>}
+      {ans.alder === "ung" && <div className="note" style={{maxWidth:460, margin:"12px auto 0"}}>🌱 Tilpasset ung hud: fokus på mild rensing, fukt og solkrem. Vi holder igjen på retinol og sterke anti-aldringssyrer – ung hud fornyer seg raskt selv og trenger dem sjelden. Har du kviser, er mild BHA (salisylsyre) trygt. Er du under 18 og vurderer aktive ingredienser, snakk gjerne med en voksen eller lege først.</div>}
+      {ans.alder === "45" && <div className="note" style={{maxWidth:460, margin:"12px auto 0"}}>🌿 Tilpasset modnere hud: ekstra vekt på fukt, barrierestøtte (ceramider, hyaluron) og dokumenterte anti-aldringsingredienser som retinoider og peptider. Aktive syrer times gjerne litt forsiktigere når huden er tørrere.</div>}
       {(ans.helse.includes("hudsykdom") || ans.helse.includes("behandling") || ans.helse.includes("hormon")) && <div className="warn" style={{maxWidth:460, margin:"12px auto 0"}}>⚕️ Med helsesituasjonen du oppga: vis denne rutinen til lege/dermatolog før du starter. Generell veiledning erstatter ikke medisinsk vurdering.</div>}
 
       <div style={{height:10}} />
@@ -671,12 +1039,14 @@ export default function Klinikk() {
       <div className="stepcard" style={{marginTop:0, marginBottom:14, borderColor:"#16130F"}}>
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8}}>
           <div style={{fontFamily:"'Fraunces',serif", fontSize:21}}>Rutinen din, oppsummert 💡</div>
-          <div style={{display:"flex", gap:4}}>
-            {[[1,"Helt enkelt"],[2,"Litt nerdete"],[3,"Full nerd 🤓"]].map(([v,t]) => (
+          <div style={{display:"flex", gap:4, alignItems:"center"}}>
+            {visOpps && [[1,"Helt enkelt"],[2,"Litt nerdete"],[3,"Full nerd 🤓"]].map(([v,t]) => (
               <button key={v} className="altbtn" style={{width:"auto", marginTop:0, padding:"6px 10px", background: oppsNivaa === v ? "#16130F" : undefined, color: oppsNivaa === v ? "#fff" : undefined}} onClick={() => setOppsNivaa(v)}>{t}</button>
             ))}
+            <button className="mini" onClick={() => setVisOpps(!visOpps)}>{visOpps ? "Skjul" : "Vis"}</button>
           </div>
         </div>
+        {visOpps && (<>
         <p style={{fontSize:13.5, lineHeight:1.7, color:"#4A4842", margin:"10px 0 0"}}>{oppsummering(oppsNivaa, routine, ans, cycling)}</p>
         <div style={{marginTop:12, paddingTop:12, borderTop:"1px solid #E4E1DA"}}>
           <div style={{fontSize:12, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", marginBottom:8}}>Hva kan du forvente?</div>
@@ -688,12 +1058,69 @@ export default function Klinikk() {
           ))}
           <div style={{fontSize:11.5, color:"#8B8880", marginTop:10, fontStyle:"italic"}}>Hud er individuelt – dette er typiske forløp, ikke løfter. Ser du vedvarende irritasjon, ta en pause og rådfør deg med lege/hudpleier.</div>
         </div>
+        </>)}
       </div>
 
+      {(() => {
+        // Samle faktiske produkter i rutinen (respekterer bytter og rotasjon)
+        const iRutinen = [];
+        order.forEach((o) => { const sl = o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat]; if (sl?.main) iRutinen.push(sl.main); (rotations[o.cat] || []).forEach((id) => { const rp = allProducts.find((x) => x.id === id); if (rp) iRutinen.push(rp); }); });
+        const konflikter = finnKonflikter(iRutinen, cycling);
+        return konflikter.length > 0 && (
+          <div className={konflikter.some((k) => k.niva === "advarsel") ? "warn" : "note"} style={{marginBottom:14}}>
+            <div style={{fontWeight:700, marginBottom:6}}>{konflikter.some((k) => k.niva === "advarsel") ? "⚠️ Sjekk kombinasjonene dine" : "ℹ️ Om kombinasjonene dine"}</div>
+            {konflikter.map((k, i) => (
+              <p key={i} style={{margin: i === konflikter.length - 1 ? 0 : "0 0 8px", fontSize:13, lineHeight:1.55}}>{k.niva === "advarsel" ? "⚠️ " : "• "}{k.tekst}</p>
+            ))}
+          </div>
+        );
+      })()}
+
+      {(() => { const totalt = order.filter((o) => (o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat])?.main).length; const ferdig = order.filter((o) => stegFerdig[o.cat]).length; return ferdig > 0 && (
+        <div className="note" style={{display:"flex", justifyContent:"space-between", alignItems:"center", background:"#EAF4E6"}}>
+          <span style={{fontSize:13}}>✓ <b>{ferdig} av {totalt}</b> steg lagret{ferdig === totalt ? " – rutinen din er komplett! 🎉" : ""}</span>
+          <button className="mini" onClick={() => { setStegFerdig({}); setApneSteg(null); }}>Åpne alle igjen</button>
+        </div>
+      ); })()}
+      <div style={{display:"flex", justifyContent:"flex-end", marginBottom:8}}>
+        <button className="mini" onClick={() => setApneSteg(apneSteg === "ALLE" ? null : "ALLE")}>{apneSteg === "ALLE" ? "▤ Vis ett steg av gangen" : "▦ Vis alle steg samtidig"}</button>
+      </div>
       {order.map((o, i) => {
         const slot = o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat];
         if (!slot?.main) return null;
         const p = slot.main;
+        if (stegFerdig[o.cat]) return (
+          <div key={o.cat} className="stepcard" style={{opacity:0.62, padding:"12px 16px"}}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8}}>
+              <div style={{display:"flex", alignItems:"center", gap:10}}>
+                <span style={{fontSize:18, color:"#4A8B5C"}}>✓</span>
+                <div>
+                  <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#8B8880"}}>{(o.label.split("(")[0]).trim()}</span>
+                  <div style={{fontSize:13}}><b>{p.brand}</b> {p.name}</div>
+                </div>
+              </div>
+              <button className="mini" onClick={() => setStegFerdig({ ...stegFerdig, [o.cat]: false })}>Endre</button>
+            </div>
+          </div>
+        );
+        // Accordion: hvilket steg er "åpent"? Default = første ikke-ferdige. Bruker kan overstyre.
+        const forsteApne = order.find((oo) => { const sl = oo.tslot !== undefined ? tonerSlots[oo.tslot] : routine[oo.cat]; return sl?.main && !stegFerdig[oo.cat]; });
+        const aktivtApent = apneSteg || forsteApne?.cat;
+        const erApent = o.cat === aktivtApent || apneSteg === "ALLE";
+        if (!erApent) return (
+          <div key={o.cat} className="stepcard" style={{padding:"12px 16px", cursor:"pointer"}} onClick={() => setApneSteg(o.cat)}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8}}>
+              <div style={{display:"flex", alignItems:"center", gap:10}}>
+                <span style={{fontFamily:"'Fraunces',serif", fontSize:15, color:coral, fontWeight:600}}>{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#8B8880"}}>{(o.label.split("(")[0]).trim()}</span>
+                  <div style={{fontSize:13, color:"#6B6862"}}><b>{p.brand}</b> {p.name}</div>
+                </div>
+              </div>
+              <span style={{fontSize:12, color:"#8B8880"}}>Åpne ↓</span>
+            </div>
+          </div>
+        );
         return (
           <div key={o.cat} className="stepcard">
             <div style={{display:"flex", gap:14, alignItems:"flex-start"}}>
@@ -702,18 +1129,21 @@ export default function Klinikk() {
                 <Flaske p={p} />
               </div>
               <div style={{flex:1}}>
-                <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"center"}}>
-                  <div style={{fontSize:10.5, letterSpacing:".14em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>{o.label} · {o.when}</div>
-                  {slot.locked && <span className="badge">Din favoritt</span>}
+                <div style={{display:"flex", justifyContent:"space-between", gap:8, alignItems:"flex-start", flexWrap:"wrap"}}>
+                  <div style={{display:"flex", alignItems:"center", gap:8, flexWrap:"wrap"}}>
+                    <span style={{fontFamily:"'Fraunces',serif", fontSize:17, fontWeight:600, color:"#16130F"}}>{(o.label.split("(")[0]).trim()}</span>
+                    <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#8B8880", background:"#F3F0EA", borderRadius:20, padding:"2px 9px"}}>{(o.when.split("·")[0]).trim()}</span>
+                  </div>
+                  <div style={{display:"flex", gap:5, flexWrap:"wrap"}}>
+                    {p.vg && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default", fontSize:11}} title="Vegansk – ingen animalske ingredienser">🌱</span>}
+                    {p.cf && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default", fontSize:11}} title="Leaping Bunny – dyretestfri">🐇</span>}
+                    {slot.locked && <span className="badge">Favoritt</span>}
+                    {slot.offBudget && <span className="ingtag" style={{background:"#FFF3EC", cursor:"default", fontSize:11}} title="Ingen match i valgt prisnivå – viser beste alternativ">ⓘ</span>}
+                  </div>
                 </div>
-                <div className="pbrand" style={{marginTop:6}}>{p.brand}</div>
-                <div className="pname">{p.name}</div>
-                <div style={{display:"flex", gap:5, marginTop:4, flexWrap:"wrap"}}>
-                  {p.cf && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}} title="Leaping Bunny-sertifisert – strengeste dyretestfri-standard">🐇 Leaping Bunny</span>}
-                  {p.vg && <span className="ingtag" style={{background:"#EAF4E6", cursor:"default"}}>🌱 Vegansk</span>}
-                  {p.tester && <span className="ingtag" style={{background:"#FBEFEC", cursor:"default"}} title="Vi viser normalt ikke slike merker">⚠️ Tester på dyr</span>}
-                </div>
-                <div style={{fontSize:13, color:"#6B6862", marginTop:5, lineHeight:1.55}}>{whyText(p, ans)} <button className="learn" onClick={() => setOpenAnalyse(openAnalyse === o.cat ? null : o.cat)}>{openAnalyse === o.cat ? "Skjul analysen" : "Vis analysen →"}</button></div>
+                <div style={{marginTop:6}}><span className="pbrand">{p.brand}</span> <span className="pname">{p.name}</span></div>
+                <div style={{fontSize:12.5, color:"#8B8880", marginTop:2}}>{o.when}</div>
+                <div style={{fontSize:13, color:"#6B6862", marginTop:6, lineHeight:1.55}}>{whyText(p, ans)} <button className="learn" onClick={() => setOpenAnalyse(openAnalyse === o.cat ? null : o.cat)}>{openAnalyse === o.cat ? "Skjul" : "Lær mer →"}</button></div>
                 {openAnalyse === o.cat && (
                   <div className="note">
                     <b>🤖 Slik ble dette produktet valgt</b>
@@ -723,24 +1153,50 @@ export default function Klinikk() {
                   </div>
                 )}
                 {(rotations[o.cat] || []).length > 0 && (
-                  <div className="note">🔄 <b>I rotasjon (ditt skin-geek-valg):</b> {rotations[o.cat].map((id) => { const rp = allProducts.find((x) => x.id === id); return rp && <span key={id} className="chip" style={{padding:"3px 9px"}} onClick={() => setRotations({ ...rotations, [o.cat]: rotations[o.cat].filter((x) => x !== id) })}>{rp.brand} {rp.name} ✕</span>; })} Veksle etter humør eller annenhver dag – helt trygt så lenge de aktive følger syklusen.</div>
+                  <div className="note">🔄 <b>I rotasjon:</b> {rotations[o.cat].map((id) => { const rp = allProducts.find((x) => x.id === id); return rp && <span key={id} className="chip" style={{padding:"3px 9px"}} onClick={() => setRotations({ ...rotations, [o.cat]: rotations[o.cat].filter((x) => x !== id) })}>{rp.brand} {rp.name} ✕</span>; })} Ukeplanen veksler mellom disse dag for dag. {o.cat.startsWith("serum") ? "For aktive syrer/retinol: hold syklusen så du ikke stabler dem samme kveld." : "Fukt, toner og krem kan roteres fritt – gøy for deg som liker variasjon."}</div>
                 )}
                 <div className="note">🧑‍🎓 <b>{o.n.amount}:</b> {o.n.how}</div>
                 {o.cat === "serumPM" && freqText(p) && <div className="note">📅 <b>Hvor ofte:</b> {freqText(p)}</div>}
+                {aktivStyrke(p) && (() => { const st = aktivStyrke(p); const farge = { "mild":"#E2F3D5", "mild-moderat":"#FFF2BD", "moderat":"#FFE0C7", "sterk":"#FFD1D1" }[st.niva]; return <div className="note" style={{background:farge}}>💪 <b>Styrke: {st.niva}{st.pct ? ` (~${st.pct}%)` : ""}.</b> {st.tekst}</div>; })()}
+                {o.cat.startsWith("tonerL") && erAktivEksfoliant(p) && <div className="sunwarn">🧪 <b>OBS – aktiv syre-toner:</b> Denne toneren inneholder eksfolierende syrer (AHA/BHA). Behandle den som et aktivt trinn: bruk den om kvelden, ikke samme kveld som retinol eller et annet syre-produkt, og bruk SPF dagen etter. Kjører du skin-cycling, legg denne på syre-kvelden.</div>}
                 {o.cat === "serumPM" && sunWarning(p) && <div className="sunwarn">☀️ <b>Solvarsel:</b> Denne ingrediensen gjør huden mer solfølsom i flere uker. Solkrem SPF 30+ hver dag er ikke valgfritt – uten den kan du få pigmentflekker og skade i stedet for effekt. Vent med oppstart hvis du skal på solferie.</div>}
                 {o.cat === "spf" && <div className="note">☀️ <b>Hvorfor så viktig?</b> UV-stråler står for opptil 80 % av synlig hudaldring – og SPF beskytter mot hudkreft. Solkremen er limet som gjør at resten av rutinen virker.</div>}
                 <div style={{marginTop:8}}>
                   {p.ings.map((ing) => <span key={ing} className="ingtag" onClick={() => { setOpenIng(openIng === ing ? null : ing); setDeepIng(null); }}>{nvn(ing)}</span>)}
-                  {!p.custom && <a className="ingtag" style={{textDecoration:"none"}} href={`https://incidecoder.com/search?query=${encodeURIComponent(p.brand + " " + p.name)}`} target="_blank" rel="noreferrer">📋 Full ingrediensliste (INCIDecoder) →</a>}
+                  {p.inci && <span className="ingtag" style={{background: openFullIng === p.id ? "#16130F" : "#F0EEE8", color: openFullIng === p.id ? "#fff" : "#16130F"}} onClick={() => setOpenFullIng(openFullIng === p.id ? null : p.id)}>🔬 {openFullIng === p.id ? "Skjul" : "Forklar hele lista"}</span>}
                 </div>
+                {openFullIng === p.id && p.inci && (
+                  <div className="note" style={{marginTop:6}}>
+                    <div style={{fontSize:11, fontWeight:700, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880", marginBottom:6}}>Ingredienslista forklart</div>
+                    {analyserFullListe(p.inci).map((x, ix) => (
+                      <div key={ix} style={{display:"flex", gap:8, padding:"5px 0", borderBottom:"1px solid #EDEAE3", fontSize:12.5, alignItems:"flex-start"}}>
+                        <span style={{minWidth:120, fontWeight:600, color: x.info ? "#16130F" : "#B8B4AA"}}>{x.info ? x.info.navn : x.raa}</span>
+                        {x.info ? <span style={{flex:1, color:"#4A4842"}}><b style={{fontSize:10, letterSpacing:".05em", textTransform:"uppercase", color:"#8B8880"}}>{x.info.rolle}</b> · {x.info.d}</span> : <span style={{flex:1, color:"#B8B4AA", fontStyle:"italic"}}>ikke i databasen ennå</span>}
+                      </div>
+                    ))}
+                  </div>
+                )}
                 {openIng && p.ings.includes(openIng) && (
                   <div className="note">
                     <b>{nvn(openIng)}</b> – {ING[openIng].s}.
                     {deepIng === openIng
-                      ? <><div style={{marginTop:6}}>{ING[openIng].d}</div><a className="learn" href={ING[openIng].u} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:6}}>📄 Se forskningen på PubMed →</a></>
+                      ? <><div style={{marginTop:6}}>{ING[openIng].d}</div>{ING[openIng].u && <a className="learn" href={ING[openIng].u} target="_blank" rel="noreferrer" style={{display:"inline-block", marginTop:6}}>📄 Se forskningen på PubMed →</a>}</>
                       : <button className="learn" style={{marginLeft:6}} onClick={() => setDeepIng(openIng)}>Lær mer →</button>}
                   </div>
                 )}
+                {(() => {
+                  // Dine egne/likte produkter i samme kategori som kan roteres inn
+                  const mineIKat = [...liked, ...custom.map((c) => c.id)]
+                    .map((id) => allProducts.find((x) => x.id === id))
+                    .filter((x) => x && x.cat === (o.tslot !== undefined ? "toner" : o.cat.replace(/AM|PM/, "")) && x.id !== p.id && !(rotations[o.cat] || []).includes(x.id));
+                  return mineIKat.length > 0 && (
+                    <div className="note" style={{background:"#F3F0FF"}}>
+                      🔄 <b>Roter inn dine egne:</b> Du har flere produkter i denne kategorien.
+                      {" "}{mineIKat.map((mp) => <button key={mp.id} className="chip" style={{padding:"3px 9px"}} onClick={() => { const r = rotations[o.cat] || []; setRotations({ ...rotations, [o.cat]: [...r, mp.id] }); ping("Lagt i rotasjon 🔄"); }}>+ {mp.brand} {mp.name}</button>)}
+                      {(o.cat === "krem" || o.cat === "rens") && <div style={{marginTop:6, fontSize:11.5, fontStyle:"italic", color:"#6B6862"}}>💡 Tips: {o.cat === "krem" ? "Har kremene ulik funksjon (f.eks. lett gel-krem vs. tykk barriere-krem), er det ofte smartest å bruke riktig krem etter behov – lett når huden er i balanse, rik når den er tørr/irritert – heller enn fast rotasjon. Har de lik funksjon, roter fritt." : "Renseprodukter kan trygt veksles etter behov."}</div>}
+                    </div>
+                  );
+                })()}
                 {!lockedIn && slot.alts.length > 0 && (
                   <div style={{marginTop:10}}>
                     <div style={{fontSize:10.5, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>Eller velg:</div>
@@ -752,11 +1208,63 @@ export default function Klinikk() {
                     ))}
                   </div>
                 )}
+                {!lockedIn && (() => { const kat = o.tslot !== undefined ? "toner" : o.cat.replace(/AM|PM/, ""); const ek = egetForslag[o.cat]; return (
+                  <div style={{marginTop:8}}>
+                    {!ek ? (
+                      <button className="mini" onClick={() => setEgetForslag({ ...egetForslag, [o.cat]: { navn:"", inci:"", ings:[] } })}>+ Ingen passer – legg til mitt eget produkt her</button>
+                    ) : (
+                      <div className="note" style={{background:"#F3F0FF"}}>
+                        <div style={{fontSize:12.5, fontWeight:700, marginBottom:6}}>Ditt eget produkt til «{(o.label.split("(")[0]).trim()}»</div>
+                        <input className="search" style={{marginTop:0, marginBottom:6}} placeholder="Søk i databasen, eller skriv produktnavn..." value={ek.navn} onChange={(e) => setEgetForslag({ ...egetForslag, [o.cat]: { ...ek, navn: e.target.value } })} />
+                        {ek.navn.trim().length >= 2 && (() => {
+                          const treff = allProducts.filter((x) => !x.custom && (x.brand + " " + x.name).toLowerCase().includes(ek.navn.toLowerCase())).slice(0, 5);
+                          return treff.length > 0 && (
+                            <div style={{marginBottom:8}}>
+                              <div style={{fontSize:10.5, letterSpacing:".08em", textTransform:"uppercase", color:"#8B8880", fontWeight:700, marginBottom:4}}>Funnet i databasen – trykk for å velge:</div>
+                              {treff.map((x) => (
+                                <button key={x.id} className="altbtn" style={{textAlign:"left"}} onClick={() => { setSwaps({ ...swaps, [o.cat]: x }); setEgetForslag({ ...egetForslag, [o.cat]: null }); ping("Valgt: " + x.brand + " " + x.name + " ✓"); }}>↺ {x.brand} — {x.name} {x.cat !== kat && <span style={{color:"#C0392B", fontSize:11}}>· ({x.cat})</span>}</button>
+                              ))}
+                            </div>
+                          );
+                        })()}
+                        <textarea className="search" style={{minHeight:60, resize:"vertical", fontFamily:"inherit"}} placeholder="Finner du det ikke? Lim inn ingredienslisten (valgfritt) – vi gjenkjenner de aktive automatisk" value={ek.inci} onChange={(e) => setEgetForslag({ ...egetForslag, [o.cat]: { ...ek, inci: e.target.value, ings: matchINCI(e.target.value) } })} />
+                        {ek.ings.length > 0 && <div style={{marginTop:6, fontSize:12}}>Gjenkjent: {ek.ings.map(nvn).join(", ")}</div>}
+                        <div style={{display:"flex", gap:6, marginTop:8}}>
+                          <button className="primary" style={{width:"auto", marginTop:0}} disabled={!ek.navn.trim()} onClick={() => {
+                            const np = { id:"cu"+Date.now(), cat:kat, name:ek.navn, brand:"Ditt produkt", tier:(ans.budsjett && ans.budsjett[0]) || 2, ings:ek.ings, for:["torr","fet","kombi","normal","sens"], custom:true, hue:"#EFEDE6", vg:true, inci:ek.inci };
+                            setCustom([...custom, np]); setSwaps({ ...swaps, [o.cat]: np }); setEgetForslag({ ...egetForslag, [o.cat]: null });
+                            ping("Ditt produkt er lagt inn i dette steget ✓");
+                          }}>Bruk som eget produkt</button>
+                          <button className="mini" onClick={() => setEgetForslag({ ...egetForslag, [o.cat]: null })}>Avbryt</button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ); })()}
                 <div style={{display:"flex", gap:4, marginTop:8, alignItems:"center", flexWrap:"wrap"}}>
                   <button className="buy" onClick={() => setPriceFor(p)}>Se beste pris</button>
+                  <button className="buy" style={{background:"#4A8B5C"}} onClick={() => { setStegFerdig({ ...stegFerdig, [o.cat]: true }); setApneSteg(null); ping("Steg lagret ✓"); }}>✓ Ferdig med dette steget</button>
+                  <button className="mini" onClick={() => setFbOpen(fbOpen === p.id ? null : p.id)}>💬 Tilbakemelding{feedback[p.id] ? " ✓" : ""}</button>
                   {!p.custom && <button className="mini" onClick={() => { setDisliked([...new Set([...disliked, p.id])]); const ns = { ...swaps }; delete ns[o.cat]; setSwaps(ns); ping("Notert! Vi husker det og har byttet til nest beste match ✓"); }}>✕ Passer ikke meg</button>}
                   {!lockedIn && <button className="mini" onClick={() => setRemoved([...removed, o.cat])}>Fjern steg</button>}
                 </div>
+                {fbOpen === p.id && (
+                  <div className="note" style={{marginTop:8, background:"#F7F5FF"}}>
+                    <div style={{fontSize:12.5, fontWeight:700}}>Hvordan reagerer huden på dette? 💬</div>
+                    <div style={{fontSize:11.5, color:"#6B6862", marginTop:2, marginBottom:8}}>Etter 2–3 ukers bruk lærer dette verktøyet hvordan akkurat DIN hud reagerer – og bruker det til å justere fremtidige anbefalinger. Kom tilbake og oppdater etter hvert.</div>
+                    {[["elsker","😍 Elsker det","#E2F3D5"],["ok","🙂 Greit","#FFF2BD"],["irriterer","😣 Irriterer / bryter ut","#FFD1D1"]].map(([v,t,c]) => (
+                      <button key={v} className="chip" style={{background: feedback[p.id]?.reaksjon === v ? "#16130F" : c, color: feedback[p.id]?.reaksjon === v ? "#fff" : "#16130F"}} onClick={() => {
+                        const nf = { ...feedback, [p.id]: { ...feedback[p.id], reaksjon: v, dato: Date.now(), ings: p.ings } };
+                        setFeedback(nf); try { storage.set("skinatlas-feedback", JSON.stringify(nf)); } catch(e){}
+                        if (v === "irriterer") { const badIngs = p.ings.filter((i) => ING[i]); ping(badIngs.length ? "Notert – vi blir mer forsiktige med " + badIngs.map(nvn).join(", ") + " 📝" : "Notert – takk! 📝"); }
+                        else ping("Notert – takk for tilbakemeldingen! 📝");
+                      }}>{t}</button>
+                    ))}
+                    {feedback[p.id]?.reaksjon === "irriterer" && p.ings.filter((i) => ING[i]).length > 0 && (
+                      <div style={{fontSize:11.5, marginTop:8, color:"#4A4842"}}>Vil du at vi skal styre unna <b>{p.ings.filter((i) => ING[i]).map(nvn).join(", ")}</b> fremover? <button className="learn" onClick={() => { const ex = ans.sensList || []; const nye = [...new Set([...ex, ...p.ings.filter((i) => ING[i])])]; setAns({ ...ans, sensList: nye }); ping("Lagt til i «unngå»-lista – rutinen oppdateres ✓"); setFbOpen(null); }}>Ja, unngå disse →</button></div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -789,42 +1297,84 @@ export default function Klinikk() {
           <div style={{fontFamily:"'Fraunces',serif", fontSize:19}}>Ukeplanen din 📅</div>
           <button className="mini" onClick={() => setShowWeek(!showWeek)}>{showWeek ? "Skjul" : "Vis"}</button>
         </div>
-        {showWeek && (
+        {showWeek && (() => {
+          // Bygg celleinnhold per dag/tid: liste av {label, hue, prod, aktiv, warn}
+          const spf = routine.spf?.main, krem = routine.krem?.main, dagS = routine.serumAM?.main, rens = routine.rens?.main, olje = routine.olje?.main;
+          const kremRot = [krem?.id, ...(rotations.krem || [])].filter(Boolean);
+          const serumRot = [serum?.id, ...(rotations.serumPM || [])].filter(Boolean);
+          const byId = (id) => allProducts.find((x) => x.id === id);
+          const buildCells = (dag, tid) => {
+            const ov = cellOverrides[tid + dag];
+            if (ov) return ov.map((id) => { const pr = byId(id); return pr && { id, navn: kortnavn(pr), hue: pr.hue, aktiv: erAktivEksfoliant(pr) || pr.ings?.includes("retinol"), prod: pr }; }).filter(Boolean);
+            const cells = [];
+            if (tid === "AM") {
+              cells.push({ navn: amRens ? "Rens" : "Vann", hue: "#F3F0EA" });
+              tonerSlots.forEach((ts) => ts.main && cells.push({ id: ts.main.id, navn: kortnavn(ts.main), hue: ts.main.hue, aktiv: erAktivEksfoliant(ts.main), prod: ts.main }));
+              if (dagS) cells.push({ id: dagS.id, navn: kortnavn(dagS), hue: dagS.hue, aktiv: false, prod: dagS });
+              const km = byId(kremRot[dag % kremRot.length]) || krem; if (km) cells.push({ id: km.id, navn: kortnavn(km), hue: km.hue, prod: km });
+              if (spf) cells.push({ id: spf.id, navn: kortnavn(spf), hue: spf.hue, prod: spf, spf: true });
+            } else {
+              if (olje) cells.push({ id: olje.id, navn: kortnavn(olje), hue: olje.hue, prod: olje });
+              if (rens) cells.push({ id: rens.id, navn: kortnavn(rens), hue: rens.hue, prod: rens });
+              tonerSlots.forEach((ts) => ts.main && cells.push({ id: ts.main.id, navn: kortnavn(ts.main), hue: ts.main.hue, aktiv: erAktivEksfoliant(ts.main), prod: ts.main }));
+              if (layers.maske && routine.maske?.main && (maskeFreq === 2 ? [2,6] : [6]).includes(dag)) cells.push({ id: routine.maske.main.id, navn: "Maske", hue: routine.maske.main.hue, prod: routine.maske.main });
+              if (cycling) {
+                if (CYCLE[dag] === "ex" && exP) cells.push({ id: exP.id, navn: kortnavn(exP), hue: exP.hue, aktiv: true, prod: exP });
+                else if (CYCLE[dag] === "ret" && retP) cells.push({ id: retP.id, navn: kortnavn(retP), hue: retP.hue, aktiv: true, prod: retP });
+                else cells.push({ navn: "Pause", hue: "#F3F0EA", pause: true });
+              } else if (serum && sDays.includes(dag)) {
+                const sv = byId(serumRot[dag % serumRot.length]) || serum;
+                cells.push({ id: sv.id, navn: kortnavn(sv), hue: sv.hue, aktiv: erAktivEksfoliant(sv) || sv.ings?.includes("retinol"), prod: sv });
+              }
+              const km = byId(kremRot[dag % kremRot.length]) || krem; if (km) cells.push({ id: km.id, navn: kortnavn(km), hue: km.hue, prod: km });
+            }
+            return cells;
+          };
+          // Kollisjonssjekk: to aktive samme kveld?
+          const cellWarn = (cells) => cells.filter((c) => c.aktiv).length > 1;
+          return (
           <>
-            <div style={{fontSize:12, color:"#6B6862", marginTop:4}}>Tilvenningsuke – {serum ? `«${serum.name}» kun på markerte dager` : "uten aktivt serum"}.</div>
+            <div style={{fontSize:12, color:"#6B6862", marginTop:4}}>Trykk en celle for å bytte, fjerne eller legge til produkt. Rødt = mulig kollisjon. <span style={{color:"#B8B4AA"}}>(Sveip sidelengs på mobil →)</span></div>
+            <div className="weekscroll">
             <table className="week">
               <thead><tr><th></th>{DAGER.map((d) => <th key={d}>{d}</th>)}</tr></thead>
               <tbody>
-                <tr>
-                  <td style={{fontWeight:700}}>☀️ AM</td>
-                  {DAGER.map((_, d) => (
-                    <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
-                      <div style={{color:"#8B8880"}}>{amRens ? "Rens" : "Vann"}</div>
-                      {layers.tonerCount > 0 && <div style={{background:"#EAE2FF", borderRadius:4, padding:"1px 4px"}}>Toner{layers.tonerCount > 1 ? " ×" + layers.tonerCount : ""}</div>}
-                      {serumAMp && <div style={{background:serumAMp.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Dagserum</div>}
-                      <div style={{background:routine.krem?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Krem</div>
-                      <div style={{background:routine.spf?.main?.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>SPF</div>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td style={{fontWeight:700}}>🌙 PM</td>
-                  {DAGER.map((_, d) => (
-                    <td key={d} style={{fontSize:9.5, lineHeight:1.7, textAlign:"left", padding:"5px 4px"}}>
-                      {routine.olje?.main && <div style={{background:routine.olje.main.hue, borderRadius:4, padding:"1px 4px"}}>Olje</div>}
-                      <div style={{background:routine.rens?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Rens</div>
-                      {layers.tonerCount > 0 && <div style={{background:"#EAE2FF", borderRadius:4, padding:"1px 4px"}}>Toner{layers.tonerCount > 1 ? " ×" + layers.tonerCount : ""}</div>}
-                      {layers.maske && routine.maske?.main && (maskeFreq === 2 ? [2,6] : [6]).includes(d) && <div style={{background:routine.maske.main.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Maske</div>}
-                      {cycling && CYCLE[d] === "ex" && <div style={{background:exP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Syre</div>}
-                      {cycling && CYCLE[d] === "ret" && <div style={{background:retP.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Retinol</div>}
-                      {cycling && CYCLE[d] === "pause" && <div style={{color:"#B8B4AA"}}>Pause</div>}
-                      {!cycling && serum && sDays.includes(d) && <div style={{background:serum.hue, borderRadius:4, padding:"1px 4px", fontWeight:700}}>Aktiv</div>}
-                      <div style={{background:routine.krem?.main?.hue, borderRadius:4, padding:"1px 4px"}}>Krem</div>
-                    </td>
-                  ))}
-                </tr>
+                {["AM","PM"].map((tid) => (
+                  <tr key={tid}>
+                    <td style={{fontWeight:700}}>{tid === "AM" ? "☀️ AM" : "🌙 PM"}</td>
+                    {DAGER.map((_, d) => { const cells = buildCells(d, tid); const warn = cellWarn(cells); return (
+                      <td key={d} onClick={() => setCellEdit({ dag: d, tid, cells })} style={{fontSize:9.5, lineHeight:1.6, textAlign:"left", padding:"5px 4px", cursor:"pointer", background: warn ? "#FFECEC" : (cellEdit && cellEdit.dag === d && cellEdit.tid === tid ? "#F3F0FF" : "transparent"), borderRadius:6}}>
+                        {cells.map((c, ci) => <div key={ci} style={{background:c.hue, borderRadius:4, padding:"1px 4px", fontWeight: c.aktiv || c.spf ? 700 : 400, color: c.pause ? "#B8B4AA" : "#16130F", marginBottom:1, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis"}} title={c.prod ? c.prod.brand + " " + c.prod.name : c.navn}>{c.navn}</div>)}
+                        {warn && <div style={{color:"#C0392B", fontWeight:700, fontSize:9}}>⚠️ 2 aktive</div>}
+                      </td>
+                    ); })}
+                  </tr>
+                ))}
               </tbody>
             </table>
+            </div>
+            {cellEdit && (() => { const cells = buildCells(cellEdit.dag, cellEdit.tid); const key = cellEdit.tid + cellEdit.dag; const kat = order.filter((o) => routine[o.cat]?.main || (o.tslot !== undefined)); return (
+              <div className="note" style={{background:"#F7F5FF", marginTop:8}}>
+                <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+                  <b style={{fontSize:13}}>{DAGER[cellEdit.dag]} {cellEdit.tid} – juster</b>
+                  <button className="mini" onClick={() => setCellEdit(null)}>Lukk ✕</button>
+                </div>
+                <div style={{fontSize:11.5, color:"#6B6862", margin:"4px 0 8px"}}>Produkter denne økten:</div>
+                {cells.map((c, ci) => c.prod && (
+                  <div key={ci} style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:6, padding:"3px 0"}}>
+                    <span style={{fontSize:12}}>{c.prod.brand} {c.prod.name} {c.aktiv && <span style={{color:"#C0392B"}}>· aktiv</span>}</span>
+                    <button className="mini" onClick={() => { const base = cells.map((x) => x.id).filter(Boolean); setCellOverrides({ ...cellOverrides, [key]: base.filter((id) => id !== c.id) }); }}>Fjern</button>
+                  </div>
+                ))}
+                <div style={{fontSize:11.5, color:"#6B6862", margin:"8px 0 4px"}}>Legg til fra rutinen din:</div>
+                <div>{[...new Set(order.map((o) => routine[o.cat]?.main).filter(Boolean).concat(tonerSlots.map((t) => t.main).filter(Boolean)).concat([...liked, ...custom.map((c) => c.id)].map((id) => byId(id)).filter(Boolean)))].map((mp) => (
+                  <button key={mp.id} className="chip" style={{padding:"3px 9px"}} onClick={() => { const base = cells.map((x) => x.id).filter(Boolean); if (!base.includes(mp.id)) setCellOverrides({ ...cellOverrides, [key]: [...base, mp.id] }); }}>+ {kortnavn(mp)}</button>
+                ))}</div>
+                {cellWarn(cells) && <div style={{fontSize:11.5, color:"#C0392B", marginTop:8}}>⚠️ Du har to aktive ingredienser samme økt (f.eks. to syrer, eller syre + retinol). Det kan irritere huden – vurder å flytte den ene til en annen kveld.</div>}
+                {cellOverrides[key] && <button className="learn" style={{marginTop:8}} onClick={() => { const no = { ...cellOverrides }; delete no[key]; setCellOverrides(no); }}>↺ Tilbakestill denne økten til anbefaling</button>}
+              </div>
+            ); })()}
+            {Object.keys(cellOverrides).length > 0 && <button className="ghost" style={{marginTop:8}} onClick={() => { setCellOverrides({}); ping("Kalenderen er tilbakestilt til anbefaling ✓"); }}>↺ Tilbakestill HELE kalenderen til anbefaling</button>}
             <div style={{fontSize:12, color:"#6B6862", marginTop:10, lineHeight:1.7}}>
               {order.map((o, i) => routine[o.cat]?.main && <div key={o.cat}><b style={{background:routine[o.cat].main.hue, borderRadius:4, padding:"0 5px"}}>{o.label}</b> = {routine[o.cat].main.brand} {routine[o.cat].main.name} · {o.n.amount}</div>)}
               <div style={{marginTop:12, paddingTop:10, borderTop:"1px solid #E4E1DA"}}>
@@ -850,13 +1400,23 @@ export default function Klinikk() {
                 </div>
               </div>
               {cycling && <div className="note" style={{marginTop:10}}>🔄 <b>Skin-cycling:</b> Du roterer syre-kveld → retinol-kveld → pausekvelder (kun fukt). Idéen, popularisert av dermatolog Whitney Bowe, er at pausenettene lar hudbarrieren reparere seg – slik at du får effekten av begge aktive uten irritasjonen av å stable dem. Konseptet bygger på dokumentasjonen for at gradvis, ikke-daglig retinoidbruk gir mindre irritasjon med bevart effekt. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/25738849/" target="_blank" rel="noreferrer">Retinoid-forskning →</a> <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/22916351/" target="_blank" rel="noreferrer">AHA-forskning →</a> Aldri syre og retinol samme kveld i starten.</div>}
-              <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere. <a className="learn" href="https://pubmed.ncbi.nlm.nih.gov/?term=skin+barrier+cleansing+surfactant" target="_blank" rel="noreferrer">Om hudbarrieren →</a></div>
+              <div style={{marginTop:6}}>💧 <b>Vann</b> = skyll med lunkent vann – rens er unødvendig om morgenen for de fleste. Mindre rens = sterkere hudbarriere.</div>
             </div>
           </>
-        )}
-      </div>
+          ); })()}
+        </div>
 
       <div className="note" style={{marginTop:14}}>🤝 <b>Åpenhet:</b> «Se beste pris» inneholder annonselenker – handler du der, får vi provisjon uten ekstra kostnad for deg. Anbefalingene er valgt av ingredienser og din profil, aldri av hvem som betaler.</div>
+
+      <div className="warn" style={{marginTop:14}}>
+        <div style={{fontWeight:700, marginBottom:6}}>⚠️ Viktig – les før du starter</div>
+        <p style={{margin:"0 0 8px"}}>Skinatlas er et <b>nytt verktøy under utvikling</b>. Forslagene er automatisk genererte ut fra det du oppga, og bygger på generell ingrediensvitenskap – ikke en undersøkelse av akkurat din hud. Behandle dem som et utgangspunkt til å tenke og lære, <b>ikke som en fasit du kan følge blindt.</b></p>
+        <p style={{margin:"0 0 8px"}}>Introduser alltid ett nytt produkt om gangen, gjør en lappetest på innsiden av underarmen først, og lytt til huden din – opplever du svie, utslett eller vedvarende irritasjon, stopp og ta en pause. Verktøyet kan ta feil, mangle informasjon om et produkt, eller foreslå noe som ikke passer nettopp deg.</p>
+        <p style={{margin:"0 0 8px"}}><b>Ved graviditet/amming, hudsykdom (eksem, rosacea, psoriasis), pågående behandling, eller hvis du er usikker på hva huden din tåler: rådfør deg med lege eller hudlege før du følger rutinen.</b> Skinatlas erstatter ikke medisinsk rådgivning.</p>
+        <p style={{margin:0}}>📩 <b>Oppdager du en feil?</b> Feil ingrediens, et produkt som er feilkategorisert, en anbefaling som virker gal – eller har du et forslag? Si ifra til <a className="learn" href="mailto:hei@skinatlas.no?subject=Tilbakemelding%20om%20Skinatlas">hei@skinatlas.no</a>. Tilbakemeldingene dine gjør verktøyet tryggere og bedre for alle.</p>
+      </div>
+
+      <div style={{textAlign:"center", fontSize:12, color:"#8B8880", marginTop:14}}>Vil du dykke dypere i ingrediensene til et produkt? <a className="learn" href="https://incidecoder.com" target="_blank" rel="noreferrer">Slå opp på INCIDecoder →</a> (uavhengig ingrediensdatabase)</div>
 
       {!lockedIn
         ? <button className="primary" onClick={async () => {
