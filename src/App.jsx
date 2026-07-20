@@ -1695,22 +1695,25 @@ export default function Klinikk() {
                     { k:"vegansk", t:"Vegansk", test:(p)=>p.vg === true },
                     { k:"kbeauty", t:"K-beauty", test:(p)=>KBEAUTY.includes(p.brand) },
                   ];
-                  const aktivt = behovFilter[o.cat];
+                  const aktive = behovFilter[o.cat] || [];
                   let vis = slot.alts;
-                  if (aktivt) { const f = BEHOV.find((b)=>b.k===aktivt); if (f) vis = slot.alts.filter(f.test); }
+                  if (aktive.length) { const fs = BEHOV.filter((b)=>aktive.includes(b.k)); vis = slot.alts.filter((p)=>fs.every((f)=>f.test(p))); }
                   const antall = visFlere[o.cat] ? vis.length : 3;
                   return (
                   <div style={{marginTop:10}}>
                     <div style={{fontSize:10.5, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", fontWeight:700}}>Liker du ikke forslaget? Bytt, eller filtrer på behov:</div>
                     <div style={{display:"flex", gap:5, flexWrap:"wrap", margin:"8px 0"}}>
                       {BEHOV.map((b) => {
-                        const paa = aktivt === b.k;
-                        const treff = slot.alts.filter(b.test).length;
+                        const paa = aktive.includes(b.k);
+                        // Vis antall som matcher NÅR dette filteret legges til de allerede aktive
+                        const andreFs = BEHOV.filter((x)=>aktive.includes(x.k) && x.k!==b.k);
+                        const treff = slot.alts.filter((p)=>b.test(p) && andreFs.every((f)=>f.test(p))).length;
                         if (treff === 0 && !paa) return null;
-                        return <button key={b.k} onClick={() => { setBehovFilter({ ...behovFilter, [o.cat]: paa ? null : b.k }); setVisFlere({ ...visFlere, [o.cat]: true }); }} style={{fontSize:11.5, padding:"5px 11px", borderRadius:20, border:"1px solid " + (paa ? "#16130F" : "#D8D4CC"), background: paa ? "#16130F" : "#fff", color: paa ? "#fff" : "#4A4842", cursor:"pointer", fontWeight:500}}>{paa ? "✓ " : ""}{b.t}</button>;
+                        return <button key={b.k} onClick={() => { const ny = paa ? aktive.filter((k)=>k!==b.k) : [...aktive, b.k]; setBehovFilter({ ...behovFilter, [o.cat]: ny }); setVisFlere({ ...visFlere, [o.cat]: true }); }} style={{fontSize:11.5, padding:"5px 11px", borderRadius:20, border:"1px solid " + (paa ? "#5F8465" : "#D8D4CC"), background: paa ? "#5F8465" : "#fff", color: paa ? "#fff" : "#4A4842", cursor:"pointer", fontWeight:500}}>{paa ? "✓ " : ""}{b.t}</button>;
                       })}
+                      {aktive.length > 0 && <button onClick={() => setBehovFilter({ ...behovFilter, [o.cat]: [] })} style={{fontSize:11.5, padding:"5px 11px", borderRadius:20, border:"1px solid #D8D4CC", background:"#fff", color:"#8B8880", cursor:"pointer", fontWeight:500}}>✕ Nullstill</button>}
                     </div>
-                    {vis.length === 0 && <div style={{fontSize:12, color:"#8B8880", fontStyle:"italic", marginBottom:6}}>Fant ingen som matcher akkurat dette behovet i databasen. Prøv et annet filter, eller legg til ditt eget produkt under.</div>}
+                    {vis.length === 0 && <div style={{fontSize:12, color:"#8B8880", fontStyle:"italic", marginBottom:6}}>Fant ingen som matcher alle disse behovene samtidig. Prøv å fjerne ett filter, eller legg til ditt eget produkt under.</div>}
                     <div style={{fontSize:11, color:"#8B8880", marginBottom:6}}>«Bytt» erstatter produktet. «+ Roter» lar deg veksle mellom flere i ukeplanen.</div>
                     {vis.slice(0, antall).map((a) => (
                       <div key={a.id} style={{display:"flex", gap:4, marginBottom:4}}>
