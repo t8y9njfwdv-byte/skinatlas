@@ -19,8 +19,10 @@ const ING = {
   "vitamin-c": { s:"Antioksidant – glød og beskyttelse", d:"Nøytraliserer frie radikaler fra sol og forurensning FØR de skader kollagen – derfor hører den hjemme om MORGENEN, under solkremen. Bremser også pigmentproduksjon.", freq:"Hver morgen, under solkrem. Litt kribling første ukene er vanlig." },
   centella: { s:"Roer og reparerer (K-beauty-klassiker)", d:"Centella asiatica («cica») demper betennelse og stimulerer sårheling – førstehjelp for stresset hud.", freq:"Daglig, morgen og/eller kveld." , u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8956065/"},
   azelainsyre: { s:"Mot kviser og rødhet – veldig mild", d:"Dreper kvisebakterier, roer rødhet og jevner pigment – så mild at den brukes ved rosacea og i graviditet.", freq:"1x daglig første uken → øk til morgen + kveld." , u:"https://pubmed.ncbi.nlm.nih.gov/37550898/"},
-  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «lurer» huden til å produsere mer kollagen. Mild og godt tolerert.", freq:"Daglig." },
-  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden.", freq:"Daglig." },
+  peptider: { s:"Signalstoffer for fastere hud", d:"Små proteinbiter som «signaliserer» til huden om å produsere mer kollagen. Mild og godt tolerert, og lovende i studier – men effekten er gradvis og subtil, ikke dramatisk.", freq:"Daglig." },
+  pdrn: { s:"«Laks-DNA» – hypet, men les det lille med skriften", d:"PDRN (polydeoxyribonukleotid, ofte fra laksesæd) er en av de mest virale ingrediensene akkurat nå. Som INJEKSJON (f.eks. Rejuran hos hudpleieklinikk) har den god dokumentasjon på hudfornyelse. MEN i serum er evidensen svak: DNA-fragmentene er trolig for store til å trenge gjennom huden (500-Dalton-regelen), så mye av «effekten» i et serum kommer sannsynligvis fra fukt- og barriereingrediensene rundt. Fint fuktprodukt – bare ikke forvent injeksjon-resultater fra en krukke.", freq:"Daglig, som et fukt-/pleietrinn.", u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11763902/" },
+  kollagen: { s:"Myten: kollagen i krem bygger IKKE kollagen", d:"Kollagen-molekylet er altfor stort til å trenge ned i huden der kollagen faktisk bygges – så en kollagenkrem bygger ikke ny kollagen slik markedsføringen antyder. Den virker som en god fuktbinder på overflaten, men vil du faktisk STIMULERE kollagenproduksjon, er retinol, vitamin C og peptider veien å gå. Ærlig snakk: spar pengene på «kollagen-serum» og velg dokumenterte ingredienser.", freq:"Som fuktprodukt." },
+  mucin: { s:"Sneglemucin – fukt og glød", d:"Rikt på glykoproteiner og hyaluron – fukt, heling og den koreanske «glass skin»-gløden. Godt tolerert og populært i K-beauty.", freq:"Daglig." },
   skvalan: { s:"Lett olje som ligner hudens egen talg", d:"Skvalan er en stabil, ikke-komedogen olje som etterligner hudens naturlige lipider. Mykgjør uten å tette porer – derfor elsket av både tørr og fet hud.", },
   panthenol: { s:"Pro-vitamin B5 – roer og reparerer", d:"Panthenol omdannes til pantotensyre i huden og støtter sårheling og barrierereparasjon. En av de mest veldokumenterte beroligende ingrediensene.", },
   "vitamin-e": { s:"Antioksidant som beskytter hudens fett", d:"Tokoferol beskytter hudens lipider mot oksidering og forsterker effekten av vitamin C – klassisk antioksidant-duo.", },
@@ -223,9 +225,13 @@ const P = [
   { id:"k40", cat:"rens", name:"Salicylic Acid Daily Gentle Cleanser", brand:"COSRX", tier:1, ings:["salisylsyre"], for:["fet","kombi","normal"], hue:"#D9F2E6", cf:true, vg:true },
   { id:"k41", cat:"serum", name:"Rice Toner (glow, viral)", brand:"I'm From", tier:2, ings:["niacinamid"], goal:"glow", for:["torr","normal","kombi","sens"], hue:"#EAE2FF", cf:true, vg:true },
   { id:"k42", cat:"maske", name:"Dead Sea Mud Mask", brand:"Innisfree", tier:1, ings:["gronn-te"], goal:"kviser", for:["fet","kombi"], hue:"#EAD9C7", cf:true, vg:true },
+  { id:"k43", cat:"serum", name:"PDRN Pink Peptide Serum", brand:"Medicube", tier:2, ings:["pdrn","peptider"], goal:"aldring", for:["torr","normal","kombi","sens"], hue:"#FFD6E4", cf:true, vg:false },
+  { id:"k44", cat:"serum", name:"Salmon DNA PDRN Ampoule", brand:"VT Cosmetics", tier:2, ings:["pdrn","niacinamid"], goal:"glow", for:["torr","normal","kombi"], hue:"#FFD6E4", cf:true, vg:false },
+  { id:"k45", cat:"serum", name:"Multi-Peptide + HA Serum", brand:"The Ordinary", tier:1, ings:["peptider","hyaluron"], goal:"aldring", for:["torr","normal","kombi","fet"], hue:"#EAE2FF", cf:true, vg:true },
+  { id:"k46", cat:"serum", name:"Peptide Bond Repair Serum", brand:"The Inkey List", tier:1, ings:["peptider"], goal:"aldring", for:["torr","normal","kombi"], hue:"#EAE2FF", cf:true, vg:true },
 ];
 
-const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin" };
+const NAVN = { skvalan:"Skvalan", panthenol:"Panthenol (B5)", "vitamin-e":"Vitamin E", urea:"Urea", pha:"PHA-syre", sink:"Sink", "gronn-te":"Grønn te", "vitamin-c":"Vitamin C", ceramider:"Ceramider", hyaluron:"Hyaluronsyre", niacinamid:"Niacinamid", salisylsyre:"Salisylsyre (BHA)", glykolsyre:"AHA-syre", retinol:"Retinol", bakuchiol:"Bakuchiol", centella:"Centella", azelainsyre:"Azelainsyre", peptider:"Peptider", mucin:"Sneglemucin", pdrn:"PDRN (laks-DNA)", kollagen:"Kollagen" };
 const nvn = (i) => NAVN[i] || i;
 
 /* INCI-gjenkjenning: mapper offisielle ingrediensnavn til våre nøkler. Utvid fritt. */
@@ -674,6 +680,16 @@ h1{font-family:'Fraunces',serif;font-weight:600;font-size:32px;line-height:1.12;
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin:1px}
 `;
 
+const Hjelp = ({ tekst }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <span style={{display:"inline-block", position:"relative"}}>
+      <button onClick={() => setOpen(!open)} aria-label="Hjelp" style={{border:"1.5px solid #C7614A", color:"#C7614A", background:"#fff", borderRadius:"50%", width:20, height:20, fontSize:12, fontWeight:700, cursor:"pointer", lineHeight:1, padding:0, marginLeft:6, verticalAlign:"middle"}}>?</button>
+      {open && <span style={{display:"block", marginTop:6, background:"#FFF6E5", border:"1px solid #EADFC0", borderRadius:10, padding:"10px 12px", fontSize:12.5, color:"#4A4842", lineHeight:1.55, fontWeight:400}}>{tekst}</span>}
+    </span>
+  );
+};
+
 const Shell = ({ eyebrow, title, subtitle, children }) => (
   <div className="page"><style>{css}</style><div className="wrap">
     <div className="eyebrow">{eyebrow}</div>
@@ -742,7 +758,6 @@ export default function Klinikk() {
 
   const ping = (m) => { setToast(m); setTimeout(() => setToast(null), 2600); };
 
-  const set = (k, v) => { setAns({ ...ans, [k]: v }); setStep(step + 1); };
   const allProducts = [...P, ...custom];
   const daysSince = (iso) => Math.floor((Date.now() - new Date(iso)) / 86400000);
 
@@ -873,25 +888,22 @@ export default function Klinikk() {
     </Shell>
   );
 
-  const answered = (i) => i === 1 ? (!!ans.hudtype && !!ans.alder) : i === 2 ? true : i === 3 ? (!!ans.sensitiv && !!ans.toleranse) : i === 4 ? true : i === 5 ? !!ans.maal : i === 6 ? ans.budsjett.length > 0 : true;
-  const canGo = (i) => { for (let j = 1; j < i; j++) if (!answered(j)) return false; return true; };
-  const Prog = () => <div className="prog">{[1,2,3,4,5,6,7].map((i) => <i key={i} className={i <= step ? "on" : ""} style={{cursor: canGo(i) ? "pointer" : "default", width: i === step ? 34 : 26}} onClick={() => canGo(i) && setStep(i)} title={"Steg " + i} />)}</div>;
+  const Prog = () => <div className="prog">{[1,2,3,4,5,6,7].map((i) => <i key={i} className={i <= step ? "on" : ""} style={{width: i === step ? 34 : 26}} title={"Steg " + i} />)}</div>;
 
   /* ---- 1 HUDTYPE ---- */
   if (step === 1) return (
     <Shell eyebrow="Steg 1 av 7" title="Hvordan oppfører huden din seg?">
       <Prog />
+      <div style={{marginBottom:10}}><span style={{fontSize:13, color:"#6B6862"}}>Usikker på hudtypen din?</span><Hjelp tekst="Enkel test: Vask ansiktet med en mild rens, og vent 1 time uten å påføre noe. Kjenn så etter: Er huden stram og flassete? Da er den tørr. Blank over hele ansiktet? Fet. Blank kun i pannen/nesen (T-sonen), men normal/tørr på kinnene? Kombinert. Ingen særlige problemer? Balansert/normal." /></div>
       {[{v:"torr",t:"Tørr",d:"Stram, flasser lett, drikker krem"},{v:"fet",t:"Fet",d:"Blank utover dagen, synlige porer"},{v:"kombi",t:"Kombinert",d:"Fet T-sone, tørre kinn"},{v:"normal",t:"Balansert",d:"Sjelden problemer, vil optimalisere"}].map((o) => (
         <button key={o.v} className={"opt" + (ans.hudtype === o.v ? " on" : "")} onClick={() => setAns({ ...ans, hudtype: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
-      <p className="sub" style={{fontSize:12, marginTop:14}}>Usikker? Vask ansiktet, vent 1 time uten produkter: stram = tørr, blank = fet, blank kun i T-sonen = kombinert.</p>
-      <div style={{fontSize:13, fontWeight:700, margin:"20px 0 6px"}}>Hvor gammel er du?</div>
+      <div style={{fontSize:13, fontWeight:700, margin:"20px 0 6px", display:"flex", alignItems:"center"}}>Hvor gammel er du?<Hjelp tekst="Alder brukes bare til å finjustere: yngre hud trenger sjelden sterke anti-aldringsingredienser, mens modnere hud har mer nytte av fukt og retinoider. Hudtype og toleranse betyr mer enn alder – så bare velg omtrentlig aldersgruppe." /></div>
       <div style={{display:"flex", gap:6, flexWrap:"wrap"}}>
         {[{v:"ung",t:"Under 20"},{v:"20",t:"20–29"},{v:"30",t:"30–44"},{v:"45",t:"45+"}].map((o) => (
           <button key={o.v} className="chip" style={{padding:"8px 14px", background: ans.alder === o.v ? "#16130F" : "#fff", color: ans.alder === o.v ? "#fff" : "#16130F"}} onClick={() => setAns({ ...ans, alder: o.v })}>{o.t}</button>
         ))}
       </div>
-      <p className="sub" style={{fontSize:11.5, marginTop:8}}>Alder finjusterer anbefalingen – men hudtype og toleranse betyr mest. En robust hud tåler mer uansett alder.</p>
       <button className="primary" onClick={() => { if (ans.hudtype && ans.alder) setStep(2); else ping("Velg hudtype og alder"); }}>Fortsett</button>
       {toast && <div className="toast">{toast}</div>}
     </Shell>
@@ -920,7 +932,7 @@ export default function Klinikk() {
       {[{v:"ja",t:"Ja",d:"Blir lett rød, svir eller klør av nye produkter"},{v:"litt",t:"Litt",d:"Reagerer av og til"},{v:"nei",t:"Nei",d:"Tåler det meste"}].map((o) => (
         <button key={o.v} className={"opt" + (ans.sensitiv === o.v ? " on" : "")} onClick={() => setAns({ ...ans, sensitiv: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
-      <div style={{fontSize:13, fontWeight:700, margin:"18px 0 2px"}}>Erfaring med aktive ingredienser (syrer/retinol)?</div>
+      <div style={{fontSize:13, fontWeight:700, margin:"18px 0 2px", display:"flex", alignItems:"center"}}>Erfaring med aktive ingredienser (syrer/retinol)?<Hjelp tekst="«Aktive ingredienser» er de kraftige virkestoffene som syrer (AHA/BHA) og retinol/retinoider. Har du aldri brukt slike, velg «Helt ny» – da starter vi forsiktig med opptrapping. Har du brukt dem uten problemer, velg «Litt erfaren». Bruker du dem jevnlig og tåler dem godt, velg «Skin-geek»." /></div>
       {[{v:"ny",t:"Helt ny",d:"Aldri brukt – vi starter forsiktig med opptrapping"},{v:"litt",t:"Litt erfaren",d:"Har prøvd, tålte det greit"},{v:"erfaren",t:"Skin-geek 🤓",d:"Bruker aktive jevnlig med god toleranse – vi hopper over babysteget"}].map((o) => (
         <button key={o.v} className={"opt" + (ans.toleranse === o.v ? " on" : "")} onClick={() => setAns({ ...ans, toleranse: o.v })}>{o.t}<small>{o.d}</small></button>
       ))}
