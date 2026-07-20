@@ -550,7 +550,7 @@ function finnKonflikter(produkter, cycling) {
   // 4. Ren vitamin C (L-askorbinsyre) + retinol – kan begge irritere; info-nivå
   const cvit = leaveOn.filter((p) => p.ings?.includes("vitamin-c"));
   if (cvit.length >= 1 && retinoler.length >= 1) {
-    advarsler.push({ niva:"info", tekst:`Vitamin C og retinol brukes best til hver sin tid på døgnet: vitamin C om morgenen (antioksidant under SPF), retinol om kvelden. Rutinen din er satt opp slik – bare bekreftende.` });
+    advarsler.push({ niva:"info", tekst:`Du har både vitamin C og retinol i rutinen. Det er helt fint – de jobber best til hver sin tid på døgnet, og rutinen din er allerede satt opp riktig: vitamin C om morgenen (antioksidant-skjold under solkremen), retinol om kvelden. Ingenting du trenger å endre.` });
   }
   // 5. Mange aktive totalt for nybegynner-lignende rutine
   const aktiveTotalt = leaveOn.filter((p) => erAktivEksfoliant(p) || p.ings?.includes("retinol")).length;
