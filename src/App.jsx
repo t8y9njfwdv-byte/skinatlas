@@ -691,9 +691,12 @@ const Hjelp = ({ tekst }) => {
 };
 
 const ARTIKLER = [
+  { url: "/pdrn.html", tag: "Viral", t: "PDRN: hype eller ekte?", d: "«Laks-DNA» er overalt akkurat nå. Vi går ærlig gjennom hva forskningen faktisk viser." },
   { url: "/niacinamid.html", tag: "Ingrediens", t: "Hva er niacinamid?", d: "Den milde allrounderen som roer rødhet, styrker barrieren og jevner ut huden." },
-  { url: "/aha-vs-bha.html", tag: "Guide", t: "AHA eller BHA?", d: "To eksfolierende syrer – slik velger du riktig for akkurat din hud." },
   { url: "/retinol.html", tag: "Nybegynner", t: "Retinol for nybegynnere", d: "Forskjellen på retinol, retinal og tretinoin – og hvordan du starter trygt." },
+  { url: "/aha-vs-bha.html", tag: "Guide", t: "AHA eller BHA?", d: "To eksfolierende syrer – slik velger du riktig for akkurat din hud." },
+  { url: "/kollagen.html", tag: "Myteknusing", t: "Bygger kollagenkrem kollagen?", d: "Dermatologer forklarer hvorfor svaret som regel er nei – og hva som virker." },
+  { url: "/hyaluronsyre.html", tag: "Ingrediens", t: "Hyaluronsyre: fuktbomben", d: "Fuktmagneten alle snakker om – og den vanlige feilen som kan tørke huden ut." },
 ];
 
 const Kunnskapsbank = ({ mork }) => (
