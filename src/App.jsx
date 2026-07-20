@@ -818,10 +818,6 @@ export default function Klinikk() {
   /* ---- INTRO ---- */
   if (step === 0) return (
     <Shell eyebrow="Kartet til hudpleierutinen din" title="Huden din fortjener en plan, ikke en gjetning" subtitle="Ingen hype, ingen mirakler – en rutine bygget på hudtypen din, helsen din og ingredienser med dokumentert effekt.">
-      <div style={{marginBottom:24}}>
-        <span style={{fontFamily:"'Fraunces',serif", fontSize:34, fontWeight:600, color:"#16130F"}}>Skin<span style={{color:"#E8896B"}}>atlas</span></span>
-        <div style={{width:150, height:3, borderRadius:2, background:"#E8896B", marginTop:4}} />
-      </div>
       {saved && (
         <div className="stepcard" style={{textAlign:"center"}}>
           <div className="pbrand">Velkommen tilbake</div>
