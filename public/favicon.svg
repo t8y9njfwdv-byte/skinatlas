@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skinatlas">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;display=swap');
+      .mono { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 40px; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="64" height="64" rx="16" fill="#16130F"/>
+  <text x="32" y="46" text-anchor="middle" class="mono" fill="#FBFAF7">S</text>
+  <circle cx="46" cy="18" r="5" fill="none" stroke="#E8896B" stroke-width="2"/>
+</svg>
