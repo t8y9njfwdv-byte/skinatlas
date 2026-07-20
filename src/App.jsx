@@ -583,6 +583,8 @@ export default function Klinikk() {
   const [showHow, setShowHow] = useState(false);
   const [layers, setLayers] = useState({ tonerCount:0, maske:false });
   const [oppsNivaa, setOppsNivaa] = useState(1);
+  const [visOpps, setVisOpps] = useState(true);
+  const [stegFerdig, setStegFerdig] = useState({});
   const [custIngs, setCustIngs] = useState([]);
   /* Auto-aktiver valgfrie lag når brukeren har eget/likt produkt i kategorien */
   useEffect(() => {
@@ -610,6 +612,7 @@ export default function Klinikk() {
   }, []);
 
   const ping = (m) => { setToast(m); setTimeout(() => setToast(null), 2600); };
+
   const set = (k, v) => { setAns({ ...ans, [k]: v }); setStep(step + 1); };
   const allProducts = [...P, ...custom];
   const daysSince = (iso) => Math.floor((Date.now() - new Date(iso)) / 86400000);
@@ -959,12 +962,14 @@ export default function Klinikk() {
       <div className="stepcard" style={{marginTop:0, marginBottom:14, borderColor:"#16130F"}}>
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8}}>
           <div style={{fontFamily:"'Fraunces',serif", fontSize:21}}>Rutinen din, oppsummert 💡</div>
-          <div style={{display:"flex", gap:4}}>
-            {[[1,"Helt enkelt"],[2,"Litt nerdete"],[3,"Full nerd 🤓"]].map(([v,t]) => (
+          <div style={{display:"flex", gap:4, alignItems:"center"}}>
+            {visOpps && [[1,"Helt enkelt"],[2,"Litt nerdete"],[3,"Full nerd 🤓"]].map(([v,t]) => (
               <button key={v} className="altbtn" style={{width:"auto", marginTop:0, padding:"6px 10px", background: oppsNivaa === v ? "#16130F" : undefined, color: oppsNivaa === v ? "#fff" : undefined}} onClick={() => setOppsNivaa(v)}>{t}</button>
             ))}
+            <button className="mini" onClick={() => setVisOpps(!visOpps)}>{visOpps ? "Skjul" : "Vis"}</button>
           </div>
         </div>
+        {visOpps && (<>
         <p style={{fontSize:13.5, lineHeight:1.7, color:"#4A4842", margin:"10px 0 0"}}>{oppsummering(oppsNivaa, routine, ans, cycling)}</p>
         <div style={{marginTop:12, paddingTop:12, borderTop:"1px solid #E4E1DA"}}>
           <div style={{fontSize:12, fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"#8B8880", marginBottom:8}}>Hva kan du forvente?</div>
@@ -976,12 +981,33 @@ export default function Klinikk() {
           ))}
           <div style={{fontSize:11.5, color:"#8B8880", marginTop:10, fontStyle:"italic"}}>Hud er individuelt – dette er typiske forløp, ikke løfter. Ser du vedvarende irritasjon, ta en pause og rådfør deg med lege/hudpleier.</div>
         </div>
+        </>)}
       </div>
 
+      {(() => { const totalt = order.filter((o) => (o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat])?.main).length; const ferdig = order.filter((o) => stegFerdig[o.cat]).length; return ferdig > 0 && (
+        <div className="note" style={{display:"flex", justifyContent:"space-between", alignItems:"center", background:"#EAF4E6"}}>
+          <span style={{fontSize:13}}>✓ <b>{ferdig} av {totalt}</b> steg sjekket ut{ferdig === totalt ? " – rutinen din er komplett! 🎉" : ""}</span>
+          <button className="mini" onClick={() => setStegFerdig({})}>Åpne alle igjen</button>
+        </div>
+      ); })()}
       {order.map((o, i) => {
         const slot = o.tslot !== undefined ? tonerSlots[o.tslot] : routine[o.cat];
         if (!slot?.main) return null;
         const p = slot.main;
+        if (stegFerdig[o.cat]) return (
+          <div key={o.cat} className="stepcard" style={{opacity:0.62, padding:"12px 16px"}}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", gap:8}}>
+              <div style={{display:"flex", alignItems:"center", gap:10}}>
+                <span style={{fontSize:18, color:"#4A8B5C"}}>✓</span>
+                <div>
+                  <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#8B8880"}}>{(o.label.split("(")[0]).trim()}</span>
+                  <div style={{fontSize:13}}><b>{p.brand}</b> {p.name}</div>
+                </div>
+              </div>
+              <button className="mini" onClick={() => setStegFerdig({ ...stegFerdig, [o.cat]: false })}>Endre</button>
+            </div>
+          </div>
+        );
         return (
           <div key={o.cat} className="stepcard">
             <div style={{display:"flex", gap:14, alignItems:"flex-start"}}>
@@ -1072,6 +1098,7 @@ export default function Klinikk() {
                 )}
                 <div style={{display:"flex", gap:4, marginTop:8, alignItems:"center", flexWrap:"wrap"}}>
                   <button className="buy" onClick={() => setPriceFor(p)}>Se beste pris</button>
+                  <button className="mini" style={{background:"#EAF4E6", borderColor:"#4A8B5C"}} onClick={() => { setStegFerdig({ ...stegFerdig, [o.cat]: true }); ping("Steg sjekket ut ✓"); }}>✓ Sjekk ut</button>
                   <button className="mini" onClick={() => setFbOpen(fbOpen === p.id ? null : p.id)}>💬 Tilbakemelding{feedback[p.id] ? " ✓" : ""}</button>
                   {!p.custom && <button className="mini" onClick={() => { setDisliked([...new Set([...disliked, p.id])]); const ns = { ...swaps }; delete ns[o.cat]; setSwaps(ns); ping("Notert! Vi husker det og har byttet til nest beste match ✓"); }}>✕ Passer ikke meg</button>}
                   {!lockedIn && <button className="mini" onClick={() => setRemoved([...removed, o.cat])}>Fjern steg</button>}
