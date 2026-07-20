@@ -690,6 +690,28 @@ const Hjelp = ({ tekst }) => {
   );
 };
 
+const ARTIKLER = [
+  { url: "/niacinamid.html", tag: "Ingrediens", t: "Hva er niacinamid?", d: "Den milde allrounderen som roer rødhet, styrker barrieren og jevner ut huden." },
+  { url: "/aha-vs-bha.html", tag: "Guide", t: "AHA eller BHA?", d: "To eksfolierende syrer – slik velger du riktig for akkurat din hud." },
+  { url: "/retinol.html", tag: "Nybegynner", t: "Retinol for nybegynnere", d: "Forskjellen på retinol, retinal og tretinoin – og hvordan du starter trygt." },
+];
+
+const Kunnskapsbank = ({ mork }) => (
+  <div style={{marginTop:20}}>
+    <div style={{fontFamily:"'Fraunces',serif", fontSize:20, fontWeight:600, color: mork ? "#FBFAF7" : "#16130F"}}>Lær mer om hudpleie 📚</div>
+    <div style={{fontSize:13, color: mork ? "#C9C6BE" : "#6B6862", marginTop:2, marginBottom:12}}>Ærlige, forskningsbaserte guider til ingrediensene – uten hype.</div>
+    <div style={{display:"grid", gap:10}}>
+      {ARTIKLER.map((a) => (
+        <a key={a.url} href={a.url} style={{display:"block", textDecoration:"none", background: mork ? "#211D18" : "#fff", border:"1px solid " + (mork ? "#3A342C" : "#E4E1DA"), borderRadius:12, padding:"14px 16px"}}>
+          <span style={{fontSize:10, letterSpacing:".1em", textTransform:"uppercase", fontWeight:700, color:"#C7614A"}}>{a.tag}</span>
+          <div style={{fontFamily:"'Fraunces',serif", fontSize:16, fontWeight:600, color: mork ? "#FBFAF7" : "#16130F", marginTop:2}}>{a.t}</div>
+          <div style={{fontSize:12.5, color: mork ? "#C9C6BE" : "#6B6862", marginTop:3, lineHeight:1.5}}>{a.d}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+);
+
 const Shell = ({ eyebrow, title, subtitle, children }) => (
   <div className="page"><style>{css}</style><div className="wrap">
     <div className="eyebrow">{eyebrow}</div>
@@ -849,6 +871,7 @@ export default function Klinikk() {
         <button className="ghost" onClick={() => { setShowHow(!showHow); setShowTrust(false); setShowPersonvern(false); }}>🤖 Hvordan funker veilederen?</button>
         <button className="ghost" onClick={() => { setShowTrust(!showTrust); setShowHow(false); setShowPersonvern(false); }}>Hvorfor stole på oss? ↓</button>
       </div>
+      <Kunnskapsbank />
       {showHow && (
         <div className="stepcard" style={{fontSize:13.5, lineHeight:1.65, textAlign:"left"}}>
           <div style={{fontFamily:"'Fraunces',serif", fontSize:20, marginBottom:8}}>Hvordan funker veilederen?</div>
@@ -1519,6 +1542,8 @@ export default function Klinikk() {
       </div>
 
       <div style={{textAlign:"center", fontSize:12, color:"#8B8880", marginTop:14}}>Vil du dykke dypere i ingrediensene til et produkt? <a className="learn" href="https://incidecoder.com" target="_blank" rel="noreferrer">Slå opp på INCIDecoder →</a> (uavhengig ingrediensdatabase)</div>
+
+      <Kunnskapsbank />
 
       {!lockedIn
         ? <button className="primary" onClick={async () => {
